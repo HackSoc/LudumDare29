@@ -51,7 +51,7 @@ int main() {
 	
 	for(unsigned int y = 0; y < LEVELHEIGHT; y++) {
 		for(unsigned int x = 0; x < LEVELWIDTH; x++) {
-			level.cells[x][y] = calloc(1, sizeof(Cell));
+			level.cells[x][y] = xalloc(Cell);
 			if(y == 0 || y == LEVELHEIGHT - 1) {
 				level.cells[x][y]->baseSymbol = '-';
 				level.cells[x][y]->solid = true;

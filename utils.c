@@ -1,4 +1,6 @@
 #include <curses.h>
+#include <stdlib.h>
+#include <assert.h>
 #include "utils.h"
 
 /**
@@ -23,4 +25,25 @@ void addprintf(const char * fmt, ...) {
 	vsnprintf(buf, SCREENWIDTH, fmt, ap);
 	va_end(ap);
 	addstr(buf);
+}
+
+/**
+ * Allocate (and zero) memory and immediately bail out if it fails.
+ * Use the xalloc macro.
+ */
+void* _xalloc(size_t size) {
+	void* mem = calloc(1, size);
+	assert(mem != NULL);
+	return mem;
+}
+
+/**
+ * Free a non-NULL pointer.
+ * Use the xfree macro.
+ */
+void _xfree(void** ptr) {
+	if(*ptr != NULL) {
+		free(*ptr);
+		*ptr = NULL;
+	}
 }
