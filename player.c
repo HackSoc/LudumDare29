@@ -3,8 +3,64 @@
 
 #include "mob.h"
 #include "level.h"
+#include "utils.h"
+#include "player.h"
+
+char * races[] = {"Human",
+				  "Dutch",
+				  "Elf",
+				  "Dwarf",
+				  "Halfling",
+				  "Quarterling",
+				  NULL};
+
+char * professions[] = {"Miner",
+						"Attorney",
+						"Clog Maker",
+						"Huntsman",
+						"Chef",
+						"Tourist",
+						"Dog",
+						NULL};
 
 extern bool quit;
+
+/**
+ * Create and return a new player. This prompts the user for stuff,
+ * and clears the screen when it is done.
+ */
+Mob * create_player() {
+	char buf[80];
+	Mob * player = xalloc(Mob);
+	player->symbol = '@';
+	player->colour = COLOR_WHITE;
+	player->is_bold = true;
+	player->hostile = false;
+	player->turn_action = &player_turn;
+	player->death_action = &player_death;
+	player->health = 100;
+	player->max_health = 100;
+
+	echo();
+
+	clear();
+	mvaddprintf(9, 10, "Enter your player's name: ");
+	getnstr(buf, 79);
+	player->name = strdup(buf);
+	
+	player->race = list_choice(9, 10, "What is your race?",
+							   "Don't be silly, choose a proper race.",
+							   races);
+
+	player->profession = list_choice(9, 10, "And finally, what is your profession?",
+									 "That's not a real job!",
+									 professions);
+
+	noecho();
+	clear();
+	
+	return player;
+}
 
 /**
  * Move and attack at the same time - if a mob is in the target cell,

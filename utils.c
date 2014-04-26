@@ -60,6 +60,45 @@ void mvaddchcol(unsigned int y, unsigned int x,
 }
 
 /**
+ * Select from a list of things, berate the player if they enter a bad
+ * choice. This clears the screen before and after running.
+ * @param y The Y coordinate to put the question
+ *          (choices are on subsequent lines).
+ * @param x The X coordinate.
+ * @param prompt The initial question.
+ * @param prompt2 The prompt to use after a bad choice.
+ * @param choices NULL-terminated list of choices.
+ */
+char * list_choice(unsigned int y, unsigned int x,
+				   const char * prompt,
+				   const char * prompt2,
+				   const char * choices[]) {
+	clear();
+	int num_choices;
+	for(num_choices = 0; choices[num_choices] != NULL; num_choices ++) {
+		mvaddprintf(y + 1 + num_choices, x,
+					"%c. %s", 'a' + num_choices, choices[num_choices]);
+	}
+
+	mvaddstr(y, x, prompt);
+	addch(' ');
+
+	int choice = -1;
+	while(choice < 0 || choice > num_choices) {
+		choice = getch() - 'a';
+		if(choice < 0 || choice > num_choices) {
+			move(y, x);
+			clrtoeol();
+			addstr(prompt2);
+			addch(' ');
+		} else {
+			clear();
+			return strdup(choices[choice]);
+		}
+	}
+}
+
+/**
  * Allocate (and zero) memory and immediately bail out if it fails.
  * @param size Amount of memory to allocate (in bytes).
  * @return Allocated memory.

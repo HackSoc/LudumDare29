@@ -14,45 +14,6 @@ bool quit = false;
 
 /** Entry point. */
 int main() {
-	srand(time(NULL));
-
-	/* Simple static level for rendering */
-	Mob player = {
-		.level = NULL,
-		.symbol = '@',
-		.colour = COLOR_WHITE,
-		.is_bold = true,
-		.next = NULL,
-		.prev = NULL,
-		.items = NULL,
-		.hostile = false,
-		.turn_action = &player_turn,
-		.death_action = &player_death,
-		.effect_action = NULL,
-		.name = "Elrond",
-		.race = "Half-Elf",
-		.profession = "Orc Slayer",
-		.health = 100,
-		.max_health = 100,
-		.xpos = 15,
-		.ypos = 10
-	};
-
-	Level level = {
-		.next = NULL,
-		.prev = NULL,
-		.mobs = &player,
-		.player = &player
-	};
-
-	player.level = &level;
-
-	build_level(&level);
-	player.xpos = level.startx;
-	player.ypos = level.starty;
-
-	level.cells[player.xpos][player.ypos]->occupant = &player;
-
 	/* Initialise curses */
 	initscr();
 	start_color();
@@ -62,8 +23,27 @@ int main() {
 
 	intrflush(stdscr, FALSE);
 	keypad(stdscr, TRUE);
-	//start_color();
+	start_color();
 	curs_set(0);
+
+	srand(time(NULL));
+
+	Mob * player = create_player();
+
+	Level level = {
+		.next = NULL,
+		.prev = NULL,
+		.mobs = player,
+		.player = player
+	};
+
+	player->level = &level;
+
+	build_level(&level);
+
+	player->xpos = level.startx;
+	player->ypos = level.starty;
+	level.cells[player->xpos][player->ypos]->occupant = player;
 
 	/* Intro text */
 	mvaddprintf(10, 10, "You enter a cave.");
