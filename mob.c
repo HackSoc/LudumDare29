@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <assert.h>
 
 #include "mob.h"
 #include "level.h"
@@ -64,21 +65,27 @@ bool damage_mob(Mob * mob, unsigned int damage) {
 			mob->death_action(mob);
 		}
 
-		Cell * cell = mob->level->cells[mob->xpos][mob->ypos];
+		Level * level = mob->level;
+		Cell * cell = level->cells[mob->xpos][mob->ypos];
+		Mob * prev = mob->prev;
+		Mob * next = mob->next;
 
-		/* Remove it from the world */
+		/* Remove it from the cell */
 		cell->occupant = NULL;
 
-		if(mob->level->mobs == mob) {
-			mob->level->mobs = mob->next;
+		/* Special case: head of the mobs list */
+		if(level->mobs == mob) {
+			assert(prev == NULL);
+			level->mobs = next;
 		}
 
-		if(mob->prev != NULL) {
-			mob->prev->next = mob->next;
+		/* Remove from the doubly-linked list */
+		if(prev != NULL) {
+			prev->next = next;
 		}
 
-		if(mob->next != NULL) {
-			mob->next->prev = mob->prev;
+		if(next != NULL) {
+			next->prev = prev;
 		}
 
 		/* Drop its items */
@@ -90,7 +97,6 @@ bool damage_mob(Mob * mob, unsigned int damage) {
 			last->next = mob->items;
 			last->next->prev = last;
 		}
-		xfree(mob);
 		return true;
 	}
 	return false;

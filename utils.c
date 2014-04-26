@@ -38,7 +38,7 @@ void addprintf(const char * fmt, ...) {
  * @param str String to duplicate
  */
 char * strdup(const char * str) {
-	char * out = xcalloc(strlen(str), char);
+	char * out = xcalloc(strlen(str) + 1, char);
 	strcpy(out, str);
 	return out;
 }

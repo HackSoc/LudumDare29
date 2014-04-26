@@ -15,7 +15,7 @@ bool quit = false;
 /** Entry point. */
 int main() {
 	/* Initialise curses */
-	initscr();
+	WINDOW * mainwin = initscr();
 	start_color();
 	cbreak();
 	noecho();
@@ -30,20 +30,17 @@ int main() {
 
 	Mob * player = create_player();
 
-	Level level = {
-		.next = NULL,
-		.prev = NULL,
-		.mobs = player,
-		.player = player
-	};
+	Level * level = xalloc(Level);
+	level->mobs = player;
+	level->player = player;
 
-	player->level = &level;
+	player->level = level;
 
-	build_level(&level);
+	build_level(level);
 
-	player->xpos = level.startx;
-	player->ypos = level.starty;
-	level.cells[player->xpos][player->ypos]->occupant = player;
+	player->xpos = level->startx;
+	player->ypos = level->starty;
+	level->cells[player->xpos][player->ypos]->occupant = player;
 
 	/* Intro text */
 	mvaddprintf(10, 10, "You enter a cave.");
@@ -91,5 +88,6 @@ int main() {
 	nl();
 	echo();
 	nocbreak();
+	delwin(mainwin);
 	endwin();
 }

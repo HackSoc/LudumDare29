@@ -161,13 +161,9 @@ static void add_mob(Level * level) {
 	new->symbol = 'H';
 	new->colour = COLOR_YELLOW;
 	new->is_bold = false;
-	new->next = NULL;
 	new->prev = tail;
-	new->items = NULL;
 	new->hostile = true;
 	new->turn_action = &simple_enemy_turn;
-	new->death_action = NULL;
-	new->effect_action = NULL;
 	new->health = 5;
 	new->max_health = 5;
 	new->xpos = x;
@@ -276,13 +272,14 @@ void build_level(Level * level) {
 void do_affliction(Mob * mob) {
 	if(!is_afflicted(mob)) return;
 
-	mob->effect_action(mob);
-
-	if(mob->effect_duration == 1) {
+	if(mob->effect_duration == 0) {
 		mob->effect_action = NULL;
-	} else if(mob->effect_duration > 1) {
+		return;
+	} else if(mob->effect_duration > 0) {
 		mob->effect_duration --;
 	}
+
+	mob->effect_action(mob);
 }
 
 /**
@@ -293,10 +290,22 @@ void do_affliction(Mob * mob) {
  */
 void run_turn(Level * level) {
 	for(Mob * mob = level->mobs; mob != NULL && !quit; mob = mob->next) {
+		if(mob->health <= 0) {
+			continue;
+		}
+
 		if(mob->turn_action != NULL) {
 			mob->turn_action(mob);
 		}
 		do_affliction(mob);
+	}
+
+	Mob * next = NULL;
+	for(Mob * mob = level->mobs; mob != NULL; mob = next) {
+		next = mob->next;
+		if(mob->health <= 0) {
+			xfree(mob);
+		}
 	}
 }
 
@@ -309,7 +318,8 @@ void display_level(Level * level) {
 	Mob * player = level->player;
 	for(unsigned int x = 0; x < LEVELWIDTH; x++) {
 		for(unsigned int y = 0; y < LEVELHEIGHT; y++) {
-			if(level->cells[x][y]->occupant != NULL) {
+			if(level->cells[x][y]->occupant != NULL &&
+			   level->cells[x][y]->occupant->health > 0) {
 				mvaddchcol(y, x,
 						   level->cells[x][y]->occupant->symbol,
 						   level->cells[x][y]->occupant->colour, COLOR_BLACK,
