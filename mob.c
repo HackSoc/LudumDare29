@@ -30,7 +30,7 @@ bool move_mob(Mob * mob, unsigned int x, unsigned int y) {
 	mob->ypos = y;
 
 	/* Check for poison water - this should not be in move, but it
-	   works for now. */	
+	   works for now. */
 	if(target->baseSymbol == '~' && mob->effect_action != &effect_poison) {
 		afflict(mob, &effect_poison, 5);
 	}
@@ -90,6 +90,8 @@ bool damage_mob(Mob * mob, unsigned int damage) {
 			last->next = mob->items;
 			last->next->prev = last;
 		}
+		xfree(mob);
+		mob = NULL;
 		return true;
 	}
 	return false;

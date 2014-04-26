@@ -60,6 +60,30 @@ int main() {
 		clear();
 	}
 
+	/* Free the things */
+	while (current_level != NULL) {
+		Level * level = current_level;
+		current_level = current_level->next;
+
+		Mob * m = level->mobs;
+		while (m != NULL) {
+			Mob * tmp = m;
+			m = m->next;
+			xfree(tmp->name);
+			xfree(tmp->race);
+			xfree(tmp->profession);
+			xfree(tmp);
+		}
+		for (int x = 0; x < LEVELWIDTH; x++) {
+			for (int y = 0; y < LEVELHEIGHT; y++) {
+				xfree(level->cells[x][y]);
+			}
+			xfree(level->cells[x]);
+		}
+		xfree(level->cells);
+		xfree(level);
+	}
+
 	/* Deinitialise curses */
 	curs_set(1);
 	nl();
