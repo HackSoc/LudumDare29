@@ -69,7 +69,7 @@ bool damage_mob(Mob * mob, unsigned int damage) {
 			last->next = mob->items;
 			last->next->prev = last;
 		}
-		
+
 		return true;
 	}
 
@@ -82,7 +82,7 @@ bool damage_mob(Mob * mob, unsigned int damage) {
  */
 void simple_enemy_turn(Mob * enemy) {
 	Mob * player = enemy->level->player;
-	
+
 	int xdiff = enemy->xpos - player->xpos;
 	int ydiff = enemy->ypos - player->ypos;
 
