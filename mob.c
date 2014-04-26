@@ -2,6 +2,7 @@
 
 #include "mob.h"
 #include "level.h"
+#include "utils.h"
 
 /**
  * Move the given mob to the new coordinates.
@@ -114,4 +115,60 @@ void simple_enemy_turn(Mob * enemy) {
 			move_mob_relative(enemy, (xdiff < 0) ? 1 : -1, 0);
 		}
 	}
+}
+
+/**
+ * Moves the given mod to the next or previous level.
+ * @param mob Mob to move.
+ * @param toprev Determines which direction the movement is in. If true, the movement is to the previous level, otherwise to the next.
+ * @return If the mob moved sucessfully.
+ */
+bool move_mob_level(Mob * mob, bool toprev) {
+	Level * level = mob->level;
+	int newx, newy;
+	Level * newlevel;
+
+	if (toprev) {
+		if (level->prev == NULL) {
+			/* top of the cave so no previous level */
+			return false;
+		}
+		newlevel = level->prev;
+		newx = newlevel->endx;
+		newy = newlevel->endy;
+	} else {
+		if (level->next == NULL) {
+			/* no next level so make one */
+			level->next = xalloc(Level);
+			build_level(level->next);
+			level->next->prev = level;
+		}
+		newlevel = level->next;
+		newx = newlevel->startx;
+		newy = newlevel->starty;
+	}
+
+	/* remove the mob from the current level */
+	if (mob->prev != NULL) {
+		mob->prev->next = mob->next;
+	}
+	if (mob->next != NULL) {
+		mob->next->prev = mob->prev;
+	}
+	mob->next = NULL;
+	mob->prev = NULL;
+	level->cells[mob->xpos][mob->ypos]->occupant = NULL;
+
+	/*put the mob in the new level */
+	mob->level = newlevel;
+	mob->next = newlevel->mobs;
+	newlevel->mobs = mob;
+	newlevel->cells[newx][newy]->occupant = mob;
+	if (mob->next != NULL) {
+		mob->next->prev = mob;
+	}
+	mob->xpos = newx;
+	mob->ypos = newy;
+
+	return true;
 }

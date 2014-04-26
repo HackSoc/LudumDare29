@@ -40,6 +40,7 @@ typedef struct Mob {
 
 bool move_mob(struct Mob * mob, unsigned int x, unsigned int y);
 bool move_mob_relative(struct Mob * mob, int xdiff, int ydiff);
+bool move_mob_level(Mob * mob, bool toprev);
 bool damage_mob(struct Mob * mob, unsigned int amount);
 void simple_enemy_turn(Mob * enemy);
 

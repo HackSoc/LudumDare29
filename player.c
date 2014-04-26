@@ -53,28 +53,34 @@ void player_turn(Mob * player) {
 	display_level(player->level);
 	ch = getch();
 	switch (ch) {
-		case 'k':
-		case '8':
-		case KEY_UP:
+	case 'k':
+	case '8':
+	case KEY_UP:
 			attackmove_relative(player, 0, -1, 5);
 			break;
-		case 'j':
-		case '2':
-		case KEY_DOWN:
+	case 'j':
+	case '2':
+	case KEY_DOWN:
 			attackmove_relative(player, 0, 1, 5);
 			break;
-		case 'h':
-		case '4':
-		case KEY_LEFT:
-			attackmove_relative(player, -1, 0, 5);
-			break;
-		case 'l':
-		case '6':
-		case KEY_RIGHT:
+	case 'h':
+	case '4':
+	case KEY_LEFT:
+		attackmove_relative(player, -1, 0, 5);
+		break;
+	case 'l':
+	case '6':
+	case KEY_RIGHT:
 			attackmove_relative(player, 1, 0, 5);
 			break;
-		case 'q':
-			quit = true;
+	case '>':
+		move_mob_level(player, false);
+		break;
+	case '<':
+		move_mob_level(player, true);
+		break;
+	case 'q':
+		quit = true;
 	}
 }
 
