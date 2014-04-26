@@ -3,6 +3,7 @@
 #include "mob.h"
 #include "level.h"
 #include "utils.h"
+#include "effect.h"
 
 /**
  * Move the given mob to the new coordinates.
@@ -27,6 +28,12 @@ bool move_mob(Mob * mob, unsigned int x, unsigned int y) {
 	target->occupant = mob;
 	mob->xpos = x;
 	mob->ypos = y;
+
+	/* Check for poison water - this should not be in move, but it
+	   works for now. */	
+	if(target->baseSymbol == '~' && mob->effect_action != &effect_poison) {
+		afflict(mob, &effect_poison, 5);
+	}
 
 	return true;
 }
