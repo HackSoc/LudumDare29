@@ -25,7 +25,6 @@ void run_turn(Level * level) {
  * according to the following priorities: occupant > top item > base.
  */
 void display_level(Level * level) {
-	int x, y;
 	for(unsigned int x = 0; x < LEVELWIDTH; x++) {
 		for(unsigned int y = 0; y < LEVELHEIGHT; y++) {
 			if(level->cells[x][y]->occupant != NULL) {
