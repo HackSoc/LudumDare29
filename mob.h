@@ -13,6 +13,7 @@ typedef struct Mob{
 	struct Mob * next;
 	struct Mob * prev;
 	struct Item * items;
+	void (*action)(Mob *);
 } Mob;
 
 #endif /*MOB_H*/
