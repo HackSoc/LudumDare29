@@ -1,6 +1,7 @@
 #include <curses.h>
 #include <stdbool.h>
 #include <stdlib.h>
+#include <time.h>
 
 #include "utils.h"
 #include "level.h"
@@ -13,6 +14,8 @@ bool quit = false;
 
 /** Entry point. */
 int main() {
+	srand(time(NULL));
+
 	/* Simple static level for rendering */
 	Mob player = {
 		.level = NULL,
@@ -59,6 +62,8 @@ int main() {
 	player.next = &hedgehog;
 
 	build_level(&level);
+	player.xpos = level.startx;
+	player.ypos = level.starty;
 
 	level.cells[player.xpos][player.ypos]->occupant = &player;
 	level.cells[hedgehog.xpos][hedgehog.ypos]->occupant = &hedgehog;
