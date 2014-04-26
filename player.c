@@ -74,10 +74,14 @@ void player_turn(Mob * player) {
 			attackmove_relative(player, 1, 0, 5);
 			break;
 	case '>':
-		move_mob_level(player, false);
+		if (player->level->cells[player->xpos][player->ypos]->baseSymbol == '>'){
+			move_mob_level(player, false);
+		}
 		break;
 	case '<':
-		move_mob_level(player, true);
+		if (player->level->cells[player->xpos][player->ypos]->baseSymbol == '<'){
+			move_mob_level(player, true);
+		}
 		break;
 	case 'q':
 		quit = true;
