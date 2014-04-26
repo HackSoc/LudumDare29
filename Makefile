@@ -2,14 +2,14 @@ OBJDIR=objs
 
 CC=clang
 CFLAGS=-c -Wall -Wextra -pedantic -g -std=c99
-LDFLAGS=
+LDFLAGS=-lncurses
 SOURCES=ld29.c
 
 OBJECTS=$(addprefix $(OBJDIR)/,$(SOURCES:.c=.o))
 TARGET=ld29
 
 all: $(TARGET)
-	
+
 $(TARGET): $(OBJECTS)
 	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
 
