@@ -3,7 +3,7 @@ OBJDIR=objs
 CC=clang
 CFLAGS=-c -Wall -Wextra -pedantic -g -std=c99
 LDFLAGS=-lcurses
-SOURCES=ld29.c
+SOURCES=$(wildcard *.c)
 
 OBJECTS=$(addprefix $(OBJDIR)/,$(SOURCES:.c=.o))
 TARGET=ld29

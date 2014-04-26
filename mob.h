@@ -7,13 +7,13 @@ struct Level;
 #include "item.h"
 #include "level.h"
 
-typedef struct Mob{
+typedef struct Mob {
 	struct Level * level;
 	char symbol;
 	struct Mob * next;
 	struct Mob * prev;
 	struct Item * items;
-	void (*action)(Mob *);
+	void (*action)(struct Mob *);
 } Mob;
 
 #endif /*MOB_H*/

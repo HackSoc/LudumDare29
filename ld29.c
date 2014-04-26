@@ -64,21 +64,11 @@ int main() {
 	Level * current_level = &level;
 	//while(true) {
 	/* Update mobs */
-	for(Mob * mob = current_level->mobs; mob != NULL; mob = mob->next) {
-		//mob update
-	}
+	run_turn(current_level);
 	
 	/* Render level */
 	clear();
-	for(unsigned int y = 0; y < LEVELHEIGHT; y ++) {
-		for(unsigned int x = 0; x < LEVELWIDTH; x++) {
-			if(current_level->cells[x][y]->occupant != NULL) {
-				mvaddch(y, x, current_level->cells[x][y]->occupant->symbol);
-			} else {
-				mvaddch(y, x, current_level->cells[x][y]->baseSymbol);
-			}
-		}
-	}
+	display_level(current_level);
 	
 	/* Hang for output */
 	getch();

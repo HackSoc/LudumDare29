@@ -1,4 +1,6 @@
 #include "level.h"
+#include <curses.h>
+#include <stdlib.h>
 
 void run_turn(Level * level) {
 	Mob * mob;
@@ -19,7 +21,7 @@ void display_level(Level * level) {
 			} else if(level->cells[x][y]->items != NULL) {
 				mvaddch(y, x, level->cells[x][y]->items->symbol);
 			} else {
-				mvaddch(y, x, level->cells[x][y]-baseSymbol);
+				mvaddch(y, x, level->cells[x][y]->baseSymbol);
 			}
 		}
 	}

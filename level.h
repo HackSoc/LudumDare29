@@ -23,4 +23,7 @@ typedef struct Level{
 	struct Cell * cells[LEVELWIDTH][LEVELHEIGHT];
 } Level;
 
+void run_turn(Level * level);
+void display_level(Level * level);
+
 #endif /*LEVEL_H*/
