@@ -162,6 +162,22 @@ void player_turn(Mob * player) {
 	case KEY_RIGHT:
 			attackmove_relative(player, 1, 0, 5);
 			break;
+	case 'y':
+	case '7':
+		attackmove_relative(player, -1, -1, 5);
+		break;
+	case 'u':
+	case '9':
+		attackmove_relative(player, 1, -1, 5);
+		break;
+	case 'n':
+	case '3':
+		attackmove_relative(player, 1, 1, 5);
+		break;
+	case 'b'
+	case '1':
+		attackmove_relative(player, -1, 1, 5);
+		break;
 	case '>':
 		if (player->level->cells[player->xpos][player->ypos]->baseSymbol == '>'){
 			move_mob_level(player, false);
