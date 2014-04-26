@@ -162,6 +162,10 @@ bool move_mob_level(Mob * mob, bool toprev) {
 	}
 
 	/* remove the mob from the current level */
+	if(mob->level->mobs == mob) {
+		mob->level->mobs = mob->next;
+	}
+
 	if (mob->prev != NULL) {
 		mob->prev->next = mob->next;
 	}
