@@ -59,20 +59,7 @@ int main() {
 	hedgehog.level = &level;
 	player.next = &hedgehog;
 
-	for(unsigned int y = 0; y < LEVELHEIGHT; y++) {
-		for(unsigned int x = 0; x < LEVELWIDTH; x++) {
-			level.cells[x][y] = xalloc(Cell);
-			if(y == 0 || y == LEVELHEIGHT - 1) {
-				level.cells[x][y]->baseSymbol = '-';
-				level.cells[x][y]->solid = true;
-			} else if (x == 0 || x == LEVELWIDTH - 1) {
-				level.cells[x][y]->baseSymbol = '|';
-				level.cells[x][y]->solid = true;
-			} else {
-				level.cells[x][y]->baseSymbol = '.';
-			}
-		}
-	}
+	build_level(&level);
 
 	level.cells[player.xpos][player.ypos]->occupant = &player;
 	level.cells[hedgehog.xpos][hedgehog.ypos]->occupant = &hedgehog;

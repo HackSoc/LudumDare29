@@ -47,6 +47,8 @@ typedef struct Level{
 	struct Cell * cells[LEVELWIDTH][LEVELHEIGHT]; /**< The map */
 } Level;
 
+void build_level(Level * level);
+
 /**
  * A "turn" consists of all of the mobs acting once, possibly followed
  * by some constant effect on the mob. As the player is a turn, this
