@@ -9,6 +9,11 @@ extern bool quit;
 /**
  * Move and attack at the same time - if a mob is in the target cell,
  * damage it, but don't move.
+ * @param player Entity representing the player.
+ * @param x x-coordinate to move to.
+ * @param y y-coordinate to move to.
+ * @param damage Amount of damage to inflict on any mobs, if present.
+ * @return If the player moved (no damage done).
  */
 bool attackmove(Mob * player, unsigned int x, unsigned int y,
 				unsigned int damage) {
@@ -23,7 +28,12 @@ bool attackmove(Mob * player, unsigned int x, unsigned int y,
 }
 
 /**
- * Like attackmove, but relative position
+ * Like attackmove, but relative position.
+ * @param player Entity representing the player.
+ * @param xdiff Difference in the x-axis to move.
+ * @param ydiff Difference in the y-axis to move.
+ * @param damage Damage to do to any mobs, if present.
+ * @return If the player moved (no damage done).
  */
 bool attackmove_relative(Mob * player, int xdiff, int ydiff,
 						 unsigned int damage) {
@@ -35,6 +45,7 @@ bool attackmove_relative(Mob * player, int xdiff, int ydiff,
 
 /**
  * Wait for user input, and then act accordingly.
+ * @param player Player entity.
  */
 void player_turn(Mob * player) {
 	int ch;
@@ -69,6 +80,8 @@ void player_turn(Mob * player) {
 
 /**
  * Say that the player is dead, and do stuff.
+ * @param player Player that died.
+ * @todo Implement properly.
  */
 void player_death(Mob * player) {
 	// Just quit

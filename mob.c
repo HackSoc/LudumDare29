@@ -4,8 +4,11 @@
 #include "level.h"
 
 /**
- * Move the given mob to the new coordinates
- * Returns false if the given space can't be moved into.
+ * Move the given mob to the new coordinates.
+ * @param mob Entity to move.
+ * @param x Target x position.
+ * @param y Target y position.
+ * @return false if the given space can't be moved into.
  */
 bool move_mob(Mob * mob, unsigned int x, unsigned int y) {
 	Level * level = mob->level;
@@ -29,14 +32,20 @@ bool move_mob(Mob * mob, unsigned int x, unsigned int y) {
 
 /**
  * Move a mob by a relative position
+ * @param mob Entity to move.
+ * @param xdiff x-coordinate difference.
+ * @param ydiff y-coordinate difference.
+ * @return If the mob was moved successfully.
  */
 bool move_mob_relative(Mob * mob, int xdiff, int ydiff) {
 	return move_mob(mob, mob->xpos + xdiff, mob->ypos + ydiff);
 }
 
 /**
- * Damage a mob
- * Returns true if this killed the mob, a mob is dead if its health
+ * Damage a mob.
+ * @param mob Entity to damage.
+ * @param damage Amount of damage to apply to the mob.
+ * @return true if this killed the mob, a mob is dead if its health
  * drops to zero or below.
  */
 bool damage_mob(Mob * mob, unsigned int damage) {
@@ -69,16 +78,14 @@ bool damage_mob(Mob * mob, unsigned int damage) {
 			last->next = mob->items;
 			last->next->prev = last;
 		}
-
 		return true;
 	}
-
 	return false;
 }
 
 /**
- * A very simple enemy: move towards the player, and damage them if
- * adjacent
+ * A very simple enemy: move towards the player, and damage them if adjacent.
+ * @param enemy Entity to move.
  */
 void simple_enemy_turn(Mob * enemy) {
 	Mob * player = enemy->level->player;
@@ -87,8 +94,7 @@ void simple_enemy_turn(Mob * enemy) {
 	int ydiff = enemy->ypos - player->ypos;
 
 	/* If adjacent to the player, damage them */
-	if((abs(xdiff) == 1 && ydiff == 0) ||
-	   (xdiff == 0 && abs(ydiff) == 1)) {
+	if((abs(xdiff) == 1 && ydiff == 0) || (xdiff == 0 && abs(ydiff) == 1)) {
 		damage_mob(player, 2);
 		return;
 	}

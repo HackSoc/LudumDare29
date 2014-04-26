@@ -32,6 +32,7 @@ void build_level(Level * level) {
  * A "turn" consists of all of the mobs acting once, possibly followed
  * by some constant effect on the mob. As the player is a turn, this
  * is (indirectly) where blocking for input happens.
+ * @param level The level grid to run the turn on.
  */
 void run_turn(Level * level) {
 	for(Mob * mob = level->mobs; mob != NULL && !quit; mob = mob->next) {
@@ -45,6 +46,7 @@ void run_turn(Level * level) {
 /**
  * Render the level to the screen. The symbol for a level is picked
  * according to the following priorities: occupant > top item > base.
+ * @param level Grid to display.
  */
 void display_level(Level * level) {
 	for(unsigned int x = 0; x < LEVELWIDTH; x++) {

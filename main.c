@@ -8,11 +8,10 @@
 #include "item.h"
 #include "player.h"
 
-/**
- * Whether to quit the game or not
- */
+/** Whether to quit the game or not. */
 bool quit = false;
 
+/** Entry point. */
 int main() {
 	/* Simple static level for rendering */
 	Mob player = {

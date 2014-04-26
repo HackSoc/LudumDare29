@@ -4,7 +4,10 @@
 #include "utils.h"
 
 /**
- * printf the given string at the given position
+ * printf the given string at the given position.
+ * @param y y-coordinate of the screen.
+ * @param x x-coordinate of the screen.
+ * @param fmt Format of the string.
  */
 void mvaddprintf(unsigned int y, unsigned int x, const char * fmt, ...) {
 	char buf[SCREENWIDTH - x];
@@ -16,7 +19,8 @@ void mvaddprintf(unsigned int y, unsigned int x, const char * fmt, ...) {
 }
 
 /**
- * printf the given string at the current position of the cursor
+ * printf the given string at the current position of the cursor.
+ * @param fmt Format of the string.
  */
 void addprintf(const char * fmt, ...) {
 	char buf[SCREENWIDTH];
@@ -29,19 +33,22 @@ void addprintf(const char * fmt, ...) {
 
 /**
  * Allocate (and zero) memory and immediately bail out if it fails.
- * Use the xalloc macro.
+ * @param size Amount of memory to allocate (in bytes).
+ * @return Allocated memory.
+ * @note Do not use this directly, use the xalloc macro instead.
  */
-void* _xalloc(size_t size) {
-	void* mem = calloc(1, size);
+void * _xalloc(size_t size) {
+	void * mem = calloc(1, size);
 	assert(mem != NULL);
 	return mem;
 }
 
 /**
  * Free a non-NULL pointer.
- * Use the xfree macro.
+ * @param ptr Pointer to memory to free.
+ * @note Do not use this directly, use the xfree macro instead.
  */
-void _xfree(void** ptr) {
+void _xfree(void ** ptr) {
 	if(*ptr != NULL) {
 		free(*ptr);
 		*ptr = NULL;
