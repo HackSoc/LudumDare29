@@ -2,3 +2,4 @@ ld29
 objs/*
 html/*
 latex/*
+doxygen_warnings.txt
