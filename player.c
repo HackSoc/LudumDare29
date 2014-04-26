@@ -174,7 +174,7 @@ void player_turn(Mob * player) {
 	case '3':
 		attackmove_relative(player, 1, 1, 5);
 		break;
-	case 'b'
+	case 'b':
 	case '1':
 		attackmove_relative(player, -1, 1, 5);
 		break;
