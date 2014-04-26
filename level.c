@@ -34,6 +34,7 @@ static void place_cell(Level * level,
 	}
 
 	level->cells[x][y]->baseSymbol = to_place->baseSymbol;
+	level->cells[x][y]->colour     = to_place->colour;
 	level->cells[x][y]->solid      = to_place->solid;
 	level->cells[x][y]->occupant   = to_place->occupant;
 	level->cells[x][y]->items      = to_place->items;
@@ -156,6 +157,8 @@ static void add_mob(Level * level) {
 	Mob * new = xalloc(Mob);
 	new->level = level;
 	new->symbol = 'H';
+	new->colour = COLOR_YELLOW;
+	new->is_bold = false;
 	new->next = NULL;
 	new->prev = tail;
 	new->items = NULL;
@@ -217,6 +220,7 @@ void build_level(Level * level) {
 	/* Mine out passageways */
 	Cell floor = {
 		.baseSymbol = '.',
+		.colour = COLOR_WHITE,
 		.solid = false,
 		.occupant = NULL,
 		.items = NULL};
@@ -229,6 +233,7 @@ void build_level(Level * level) {
 	/* Mine out lakes */
 	Cell poison_lake = {
 		.baseSymbol = '~',
+		.colour = COLOR_GREEN,
 		.solid = false,
 		.occupant = NULL,
 		.items = NULL};
@@ -295,11 +300,17 @@ void display_level(Level * level) {
 	for(unsigned int x = 0; x < LEVELWIDTH; x++) {
 		for(unsigned int y = 0; y < LEVELHEIGHT; y++) {
 			if(level->cells[x][y]->occupant != NULL) {
-				mvaddch(y, x, level->cells[x][y]->occupant->symbol);
+				mvaddchcol(y, x,
+						   level->cells[x][y]->occupant->symbol,
+						   level->cells[x][y]->occupant->colour, COLOR_BLACK,
+						   level->cells[x][y]->occupant->is_bold);
 			} else if(level->cells[x][y]->items != NULL) {
 				mvaddch(y, x, level->cells[x][y]->items->symbol);
 			} else {
-				mvaddch(y, x, level->cells[x][y]->baseSymbol);
+				mvaddchcol(y, x,
+						   level->cells[x][y]->baseSymbol,
+						   level->cells[x][y]->colour, COLOR_BLACK,
+						   false);
 			}
 		}
 	}

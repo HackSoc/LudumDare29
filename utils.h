@@ -18,6 +18,10 @@
 
 void mvaddprintf(unsigned int y, unsigned int x, const char * fmt, ...);
 void addprintf(const char * fmt, ...);
+void mvaddchcol(unsigned int y, unsigned int x,
+				char chr,
+				int fg, int bg,
+				bool bold);
 void * _xalloc(size_t size);
 void _xfree(void ** ptr);
 

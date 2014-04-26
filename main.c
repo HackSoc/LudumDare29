@@ -20,6 +20,8 @@ int main() {
 	Mob player = {
 		.level = NULL,
 		.symbol = '@',
+		.colour = COLOR_WHITE,
+		.is_bold = true,
 		.next = NULL,
 		.prev = NULL,
 		.items = NULL,
@@ -53,11 +55,14 @@ int main() {
 
 	/* Initialise curses */
 	initscr();
+	start_color();
 	cbreak();
 	noecho();
 	nonl();
+
 	intrflush(stdscr, FALSE);
 	keypad(stdscr, TRUE);
+	//start_color();
 	curs_set(0);
 
 	/* Intro text */

@@ -22,6 +22,8 @@ struct Item;
  */
 typedef struct Cell {
 	char baseSymbol; /**< The symbol of the cell (floor, wall, etc). */
+	int colour; /**< The colour to use to render the cell (if unoccupied). */
+
 	bool solid;      /**< Whether the cell is solid (impassible) or not. */
 
 	struct Mob * occupant; /**< The occpuant (may be NULL). */
