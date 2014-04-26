@@ -36,22 +36,6 @@ int main() {
 		.ypos = 10
 	};
 
-	Mob hedgehog = {
-		.level = NULL,
-		.symbol = 'H',
-		.next = NULL,
-		.prev = &player,
-		.items = NULL,
-		.hostile = true,
-		.turn_action = &simple_enemy_turn,
-		.death_action = NULL,
-		.effect_action = NULL,
-		.health = 5,
-		.max_health = 5,
-		.xpos = 20,
-		.ypos = 3
-	};
-
 	Level level = {
 		.next = NULL,
 		.prev = NULL,
@@ -60,15 +44,12 @@ int main() {
 	};
 
 	player.level = &level;
-	hedgehog.level = &level;
-	player.next = &hedgehog;
 
 	build_level(&level);
 	player.xpos = level.startx;
 	player.ypos = level.starty;
 
 	level.cells[player.xpos][player.ypos]->occupant = &player;
-	level.cells[hedgehog.xpos][hedgehog.ypos]->occupant = &hedgehog;
 
 	/* Initialise curses */
 	initscr();

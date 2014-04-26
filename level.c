@@ -120,7 +120,7 @@ static void mine_level(Level * level,
 			place_cell(level, minersx[m], minersy[m]-dy, to_place, true);
 		}
 	}
-	
+
 	/* drop the downstair at the position of a random miner */
 	if (make_stairs) {
 		int m = rand() % num_miners;
@@ -129,6 +129,47 @@ static void mine_level(Level * level,
 		level->endx = minersx[m];
 		level->endy = minersy[m];
 	}
+}
+
+/**
+ * Add a mob to a level.
+ * @param level The level to add to.
+ */
+static void add_mob(Level * level) {
+	/* Try 20 times to get a random clear tile. */
+	int x, y;
+	bool found = false;
+	for (int i = 0; i < 20; i++) {
+		x = rand() % (LEVELWIDTH - 1);
+		y = rand() % (LEVELHEIGHT - 1);
+
+		if (!level->cells[x][y]->solid && level->cells[x][y]->occupant == NULL) {
+			found = true;
+			break;
+		}
+	}
+	if (!found) return;
+
+	Mob * tail = NULL;
+	for (tail = level->mobs; tail->next != NULL; tail = tail->next);
+
+	Mob * new = xalloc(Mob);
+	new->level = level;
+	new->symbol = 'H';
+	new->next = NULL;
+	new->prev = tail;
+	new->items = NULL;
+	new->hostile = true;
+	new->turn_action = &simple_enemy_turn;
+	new->death_action = NULL;
+	new->effect_action = NULL;
+	new->health = 5;
+	new->max_health = 5;
+	new->xpos = x;
+	new->ypos = y;
+
+	tail->next = new;
+	level->cells[x][y]->occupant = new;
 }
 
 /**
@@ -206,6 +247,11 @@ void build_level(Level * level) {
 	/* Place the stairs */
 	level->cells[level->startx][level->starty]->baseSymbol = '<';
 	level->cells[level->startx][level->starty]->solid = false;
+
+	/* Arbitrary number of mobs */
+	for (int i = 0; i < 5; i++) {
+		add_mob(level);
+	}
 }
 
 /**
@@ -257,7 +303,7 @@ void display_level(Level * level) {
 			}
 		}
 	}
-	
+
 	/* Display player stats */
 	mvaddprintf(21, 5, "%s, the %s %s", player->name, player->race, player->profession);
 	mvaddprintf(22, 5, "HP: %d/%d", player->health, player->max_health);
