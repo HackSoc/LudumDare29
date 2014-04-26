@@ -29,9 +29,12 @@ void build_level(Level * level) {
 				level->cells[x][y]->baseSymbol = '|';
 				level->cells[x][y]->solid = true;
 			} else {
-				/*fill 99% of the level with rocks*/
+				/*fill 99% of the level with rocks and poison water*/
 				if (rand() % 100 == 0) {
 					level->cells[x][y]->baseSymbol = '.';
+					level->cells[x][y]->solid = false;
+				} else if(rand() % 50 == 0) {
+					level->cells[x][y]->baseSymbol = '~';
 					level->cells[x][y]->solid = false;
 				} else {
 					level->cells[x][y]->baseSymbol = '#';
