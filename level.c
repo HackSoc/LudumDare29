@@ -39,7 +39,7 @@ void build_level(Level * level) {
 			}
 		}
 	}
-	
+
 	/* generate starting coordinates near the middle and place the stairs */
 	level->startx = 39 + (rand() % 20);
 	level->starty = 4  + (rand() % 10);
@@ -112,7 +112,7 @@ void build_level(Level * level) {
 			level->cells[minersx[m]][minersy[m]-dy]->solid = false;
 		}
 	}
-	
+
 	/* drop the downstair at the position of a random miner */
 	{
 		int m = rand() % NMINERS;
@@ -136,6 +136,8 @@ void run_turn(Level * level) {
 		}
 		//every turn effects on the mob go here
 	}
+	/* Player is special, and goes last */
+	level->player->turn_action(level->player);
 }
 
 /**
