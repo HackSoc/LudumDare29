@@ -11,7 +11,7 @@ TARGET=ld29
 all: $(TARGET)
 
 $(TARGET): $(OBJECTS)
-	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
+	$(CC) $(OBJECTS) $(LDFLAGS) -o $@
 
 $(OBJDIR)/%.o: %.c
 	mkdir -p $(OBJDIR)
