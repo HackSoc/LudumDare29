@@ -34,6 +34,7 @@ static void place_cell(Level * level,
 	}
 
 	level->cells[x][y]->baseSymbol = to_place->baseSymbol;
+	level->cells[x][y]->colour     = to_place->colour;
 	level->cells[x][y]->solid      = to_place->solid;
 	level->cells[x][y]->occupant   = to_place->occupant;
 	level->cells[x][y]->items      = to_place->items;
@@ -176,6 +177,7 @@ void build_level(Level * level) {
 	/* Mine out passageways */
 	Cell floor = {
 		.baseSymbol = '.',
+		.colour = COLOR_WHITE,
 		.solid = false,
 		.occupant = NULL,
 		.items = NULL};
@@ -188,6 +190,7 @@ void build_level(Level * level) {
 	/* Mine out lakes */
 	Cell poison_lake = {
 		.baseSymbol = '~',
+		.colour = COLOR_GREEN,
 		.solid = false,
 		.occupant = NULL,
 		.items = NULL};
@@ -249,11 +252,25 @@ void display_level(Level * level) {
 	for(unsigned int x = 0; x < LEVELWIDTH; x++) {
 		for(unsigned int y = 0; y < LEVELHEIGHT; y++) {
 			if(level->cells[x][y]->occupant != NULL) {
+				short cpair = level->cells[x][y]->occupant->colour;
+				init_pair(cpair, level->cells[x][y]->occupant->colour, COLOR_BLACK);
+				attron(COLOR_PAIR(cpair));
+				if(level->cells[x][y]->occupant->is_bold) {
+					attron(A_BOLD);
+				}
 				mvaddch(y, x, level->cells[x][y]->occupant->symbol);
+				if(level->cells[x][y]->occupant->is_bold) {
+					attroff(A_BOLD);
+				}
+				attroff(COLOR_PAIR(cpair));
 			} else if(level->cells[x][y]->items != NULL) {
 				mvaddch(y, x, level->cells[x][y]->items->symbol);
 			} else {
+				short cpair = level->cells[x][y]->colour;
+				init_pair(cpair, level->cells[x][y]->colour, COLOR_BLACK);
+				attron(COLOR_PAIR(cpair));
 				mvaddch(y, x, level->cells[x][y]->baseSymbol);
+				attroff(COLOR_PAIR(cpair));
 			}
 		}
 	}

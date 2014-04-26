@@ -22,6 +22,8 @@ typedef struct Mob {
 	unsigned int ypos;    /**< The Y position. */
 
 	char symbol; /**< The symbol to use to render the mob. */
+	int colour; /**< The colour to use to render the mob. */
+	bool is_bold; /**< Whether to render the mob bold. */
 
 	struct Item * items; /**< List of items the mob is holding. */
 
