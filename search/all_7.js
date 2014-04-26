@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['level',['Level',['../structLevel.html',1,'Level'],['../structMob.html#af906189f04ac20cd90bc818d0e813490',1,'Mob::level()'],['../level_8h.html#acbbd3b915a1b66979d7ef6881390fa67',1,'Level():&#160;level.h']]],
-  ['level_2ec',['level.c',['../level_8c.html',1,'']]],
-  ['level_2eh',['level.h',['../level_8h.html',1,'']]],
-  ['levelheight',['LEVELHEIGHT',['../level_8h.html#a6566994a452a9ee93df6f84a8399b9a7',1,'level.h']]],
-  ['levelwidth',['LEVELWIDTH',['../level_8h.html#a5d9a520a2e4ec01dea4a4a37cb76be2c',1,'level.h']]]
+  ['is_5fafflicted',['is_afflicted',['../effect_8c.html#a6e22581aa928d7cc65e2b9e054ff4346',1,'is_afflicted(Mob *mob):&#160;effect.c'],['../effect_8h.html#a6e22581aa928d7cc65e2b9e054ff4346',1,'is_afflicted(Mob *mob):&#160;effect.c']]],
+  ['item',['Item',['../structItem.html',1,'Item'],['../item_8h.html#a65e1a907ac9c378deab3f18ed458b6cc',1,'Item():&#160;item.h']]],
+  ['item_2eh',['item.h',['../item_8h.html',1,'']]],
+  ['items',['items',['../structCell.html#ac8d3f905b3c23b78ad65c7bcb2807bc9',1,'Cell::items()'],['../structMob.html#a58d83f00ba46d15c0c72d7810e904884',1,'Mob::items()']]]
 ];

@@ -1,7 +1,13 @@
 <map id="player_turn" name="player_turn">
-<area shape="rect" id="node3" href="$level_8c.html#ad45cdcc4cf6ee2a61993cb4031ef44f3" title="display_level" alt="" coords="163,5,259,35"/>
-<area shape="rect" id="node5" href="$player_8c.html#a5e0010bccc1ea8cea62e8ca87602d8a6" title="attackmove_relative" alt="" coords="141,59,280,88"/>
-<area shape="rect" id="node7" href="$player_8c.html#abb7e876b7e49f4b7c991815e5feea483" title="attackmove" alt="" coords="328,59,419,88"/>
-<area shape="rect" id="node9" href="$mob_8c.html#a55ca3ba9d41a343311f102b64e1e7f4c" title="move_mob" alt="" coords="475,32,560,61"/>
-<area shape="rect" id="node11" href="$mob_8c.html#a7ead5d0347250949fcc7a6c5548f50b0" title="damage_mob" alt="" coords="468,85,567,115"/>
+<area shape="rect" id="node3" href="$level_8c.html#ad45cdcc4cf6ee2a61993cb4031ef44f3" title="display_level" alt="" coords="163,56,259,85"/>
+<area shape="rect" id="node5" href="$player_8c.html#a5e0010bccc1ea8cea62e8ca87602d8a6" title="attackmove_relative" alt="" coords="141,109,280,139"/>
+<area shape="rect" id="node18" href="$mob_8c.html#a0f41f8c35df68e0cea8335b114029a36" title="move_mob_level" alt="" coords="151,163,271,192"/>
+<area shape="rect" id="node7" href="$player_8c.html#abb7e876b7e49f4b7c991815e5feea483" title="attackmove" alt="" coords="328,109,419,139"/>
+<area shape="rect" id="node9" href="$mob_8c.html#a55ca3ba9d41a343311f102b64e1e7f4c" title="move_mob" alt="" coords="468,59,553,88"/>
+<area shape="rect" id="node13" href="$mob_8c.html#a7ead5d0347250949fcc7a6c5548f50b0" title="damage_mob" alt="" coords="753,59,852,88"/>
+<area shape="rect" id="node11" href="$effect_8c.html#a8efc8653d207577779ab551e99a28aee" title="effect_poison" alt="" coords="604,5,703,35"/>
+<area shape="rect" id="node15" href="$effect_8c.html#a94aa3d083f9258eaf68081be0a61401e" title="afflict" alt="" coords="627,59,680,88"/>
+<area shape="rect" id="node20" href="$level_8c.html#ada2b32c329163f1f38b89dc34fb76e4b" title="build_level" alt="" coords="332,163,415,192"/>
+<area shape="rect" id="node22" href="$level_8c.html#a70ec2e330210334f74c1104bb8095148" title="mine_level" alt="" coords="469,163,552,192"/>
+<area shape="rect" id="node24" href="$level_8c.html#a38271195df96b41f0dd8ac1a04a5e180" title="place_cell" alt="" coords="613,163,693,192"/>
 </map>

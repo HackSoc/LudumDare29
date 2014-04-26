@@ -38,7 +38,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -61,7 +62,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
+      <li><a href="globals.html"><span>Globals</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -69,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -89,12 +90,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="mob_8h_source.html">mob.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="level_8h_source.html">level.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="utils_8h_source.html">utils.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="effect_8h_source.html">effect.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for mob.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="mob_8c__incl.png" border="0" usemap="#mob_8c" alt=""/></div>
 <map name="mob_8c" id="mob_8c">
-<area shape="rect" id="node5" href="mob_8h.html" title="mob.h" alt="" coords="93,83,152,112"/><area shape="rect" id="node9" href="level_8h.html" title="level.h" alt="" coords="127,160,185,189"/><area shape="rect" id="node7" href="item_8h.html" title="item.h" alt="" coords="60,237,119,267"/></map>
+<area shape="rect" id="node5" href="mob_8h.html" title="mob.h" alt="" coords="144,160,203,189"/><area shape="rect" id="node9" href="level_8h.html" title="level.h" alt="" coords="111,237,169,267"/><area shape="rect" id="node16" href="utils_8h.html" title="utils.h" alt="" coords="195,83,251,112"/><area shape="rect" id="node18" href="effect_8h.html" title="effect.h" alt="" coords="275,83,341,112"/><area shape="rect" id="node7" href="item_8h.html" title="item.h" alt="" coords="177,315,236,344"/></map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -107,6 +110,8 @@ Functions</h2></td></tr>
 <tr class="separator:a7ead5d0347250949fcc7a6c5548f50b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4e1f704b7be0c4f0ecbc7bd41ace77de"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mob_8c.html#a4e1f704b7be0c4f0ecbc7bd41ace77de">simple_enemy_turn</a> (<a class="el" href="structMob.html">Mob</a> *enemy)</td></tr>
 <tr class="separator:a4e1f704b7be0c4f0ecbc7bd41ace77de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f41f8c35df68e0cea8335b114029a36"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mob_8c.html#a0f41f8c35df68e0cea8335b114029a36">move_mob_level</a> (<a class="el" href="structMob.html">Mob</a> *mob, bool toprev)</td></tr>
+<tr class="separator:a0f41f8c35df68e0cea8335b114029a36"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a class="anchor" id="a7ead5d0347250949fcc7a6c5548f50b0"></a>
@@ -132,14 +137,21 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Damage a mob Returns true if this killed the mob, a mob is dead if its health drops to zero or below. </p>
+<p>Damage a mob. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mob</td><td>Entity to damage. </td></tr>
+    <tr><td class="paramname">damage</td><td>Amount of damage to apply to the mob. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if this killed the mob, a mob is dead if its health drops to zero or below. </dd></dl>
 
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="mob_8c_a7ead5d0347250949fcc7a6c5548f50b0_icgraph.png" border="0" usemap="#mob_8c_a7ead5d0347250949fcc7a6c5548f50b0_icgraph" alt=""/></div>
 <map name="mob_8c_a7ead5d0347250949fcc7a6c5548f50b0_icgraph" id="mob_8c_a7ead5d0347250949fcc7a6c5548f50b0_icgraph">
-<area shape="rect" id="node3" href="mob_8h.html#a4e1f704b7be0c4f0ecbc7bd41ace77de" title="simple_enemy_turn" alt="" coords="296,5,429,35"/><area shape="rect" id="node7" href="player_8h.html#a02161c22295cced9c43b0ca34e33fc20" title="attackmove" alt="" coords="155,59,245,88"/><area shape="rect" id="node5" href="main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="616,33,667,63"/><area shape="rect" id="node9" href="player_8h.html#aea872e7b1d97b5eadb9835927315e597" title="attackmove_relative" alt="" coords="293,59,432,88"/><area shape="rect" id="node11" href="player_8h.html#a3829d1675d5789e2531ffcc90fcad6a2" title="player_turn" alt="" coords="481,59,567,88"/></map>
+<area shape="rect" id="node3" href="effect_8h.html#a8efc8653d207577779ab551e99a28aee" title="effect_poison" alt="" coords="156,35,255,65"/><area shape="rect" id="node9" href="mob_8h.html#a4e1f704b7be0c4f0ecbc7bd41ace77de" title="simple_enemy_turn" alt="" coords="627,34,760,63"/><area shape="rect" id="node13" href="player_8h.html#a02161c22295cced9c43b0ca34e33fc20" title="attackmove" alt="" coords="463,87,553,117"/><area shape="rect" id="node5" href="mob_8h.html#acb34e33fee99269178a2e5f8e4e066bc" title="move_mob" alt="" coords="305,35,391,65"/><area shape="rect" id="node7" href="mob_8h.html#a1843c3d72d3955258d9c6ff0fefff9ee" title="move_mob_relative" alt="" coords="441,34,575,63"/><area shape="rect" id="node11" href="main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="947,62,997,91"/><area shape="rect" id="node15" href="player_8h.html#aea872e7b1d97b5eadb9835927315e597" title="attackmove_relative" alt="" coords="624,87,763,117"/><area shape="rect" id="node17" href="player_8h.html#a3829d1675d5789e2531ffcc90fcad6a2" title="player_turn" alt="" coords="812,87,897,117"/></map>
 </div>
 </p>
 
@@ -174,7 +186,24 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Move the given mob to the new coordinates Returns false if the given space can't be moved into. </p>
+<p>Move the given mob to the new coordinates. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mob</td><td>Entity to move. </td></tr>
+    <tr><td class="paramname">x</td><td>Target x position. </td></tr>
+    <tr><td class="paramname">y</td><td>Target y position. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>false if the given space can't be moved into. </dd></dl>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="mob_8c_a55ca3ba9d41a343311f102b64e1e7f4c_cgraph.png" border="0" usemap="#mob_8c_a55ca3ba9d41a343311f102b64e1e7f4c_cgraph" alt=""/></div>
+<map name="mob_8c_a55ca3ba9d41a343311f102b64e1e7f4c_cgraph" id="mob_8c_a55ca3ba9d41a343311f102b64e1e7f4c_cgraph">
+<area shape="rect" id="node3" href="effect_8c.html#a8efc8653d207577779ab551e99a28aee" title="effect_poison" alt="" coords="143,5,241,35"/><area shape="rect" id="node7" href="effect_8c.html#a94aa3d083f9258eaf68081be0a61401e" title="afflict" alt="" coords="165,59,219,88"/><area shape="rect" id="node5" href="mob_8c.html#a7ead5d0347250949fcc7a6c5548f50b0" title="damage_mob" alt="" coords="292,5,391,35"/></map>
+</div>
+</p>
 
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -182,6 +211,58 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="mob_8c_a55ca3ba9d41a343311f102b64e1e7f4c_icgraph.png" border="0" usemap="#mob_8c_a55ca3ba9d41a343311f102b64e1e7f4c_icgraph" alt=""/></div>
 <map name="mob_8c_a55ca3ba9d41a343311f102b64e1e7f4c_icgraph" id="mob_8c_a55ca3ba9d41a343311f102b64e1e7f4c_icgraph">
 <area shape="rect" id="node3" href="mob_8h.html#a1843c3d72d3955258d9c6ff0fefff9ee" title="move_mob_relative" alt="" coords="143,5,276,35"/><area shape="rect" id="node9" href="player_8h.html#a02161c22295cced9c43b0ca34e33fc20" title="attackmove" alt="" coords="164,59,255,88"/><area shape="rect" id="node5" href="mob_8h.html#a4e1f704b7be0c4f0ecbc7bd41ace77de" title="simple_enemy_turn" alt="" coords="513,5,647,35"/><area shape="rect" id="node7" href="main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="696,32,747,61"/><area shape="rect" id="node11" href="player_8h.html#aea872e7b1d97b5eadb9835927315e597" title="attackmove_relative" alt="" coords="325,59,464,88"/><area shape="rect" id="node13" href="player_8h.html#a3829d1675d5789e2531ffcc90fcad6a2" title="player_turn" alt="" coords="537,59,623,88"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a0f41f8c35df68e0cea8335b114029a36"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool move_mob_level </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structMob.html">Mob</a> *&#160;</td>
+          <td class="paramname"><em>mob</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>toprev</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Moves the given mod to the next or previous level. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mob</td><td><a class="el" href="structMob.html">Mob</a> to move. </td></tr>
+    <tr><td class="paramname">toprev</td><td>Determines which direction the movement is in. If true, the movement is to the previous level, otherwise to the next. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>If the mob moved sucessfully. </dd></dl>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="mob_8c_a0f41f8c35df68e0cea8335b114029a36_cgraph.png" border="0" usemap="#mob_8c_a0f41f8c35df68e0cea8335b114029a36_cgraph" alt=""/></div>
+<map name="mob_8c_a0f41f8c35df68e0cea8335b114029a36_cgraph" id="mob_8c_a0f41f8c35df68e0cea8335b114029a36_cgraph">
+<area shape="rect" id="node3" href="level_8c.html#ada2b32c329163f1f38b89dc34fb76e4b" title="build_level" alt="" coords="173,5,256,35"/><area shape="rect" id="node5" href="level_8c.html#a70ec2e330210334f74c1104bb8095148" title="mine_level" alt="" coords="305,5,388,35"/><area shape="rect" id="node7" href="level_8c.html#a38271195df96b41f0dd8ac1a04a5e180" title="place_cell" alt="" coords="437,5,517,35"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="mob_8c_a0f41f8c35df68e0cea8335b114029a36_icgraph.png" border="0" usemap="#mob_8c_a0f41f8c35df68e0cea8335b114029a36_icgraph" alt=""/></div>
+<map name="mob_8c_a0f41f8c35df68e0cea8335b114029a36_icgraph" id="mob_8c_a0f41f8c35df68e0cea8335b114029a36_icgraph">
+<area shape="rect" id="node3" href="player_8h.html#a3829d1675d5789e2531ffcc90fcad6a2" title="player_turn" alt="" coords="175,5,260,35"/><area shape="rect" id="node5" href="main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="309,5,360,35"/></map>
 </div>
 </p>
 
@@ -216,14 +297,22 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Move a mob by a relative position </p>
+<p>Move a mob by a relative position </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mob</td><td>Entity to move. </td></tr>
+    <tr><td class="paramname">xdiff</td><td>x-coordinate difference. </td></tr>
+    <tr><td class="paramname">ydiff</td><td>y-coordinate difference. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>If the mob was moved successfully. </dd></dl>
 
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="mob_8c_a23e360489b32985e54e378a80e447531_cgraph.png" border="0" usemap="#mob_8c_a23e360489b32985e54e378a80e447531_cgraph" alt=""/></div>
 <map name="mob_8c_a23e360489b32985e54e378a80e447531_cgraph" id="mob_8c_a23e360489b32985e54e378a80e447531_cgraph">
-<area shape="rect" id="node3" href="mob_8c.html#a55ca3ba9d41a343311f102b64e1e7f4c" title="move_mob" alt="" coords="191,5,276,35"/></map>
+<area shape="rect" id="node3" href="mob_8c.html#a55ca3ba9d41a343311f102b64e1e7f4c" title="move_mob" alt="" coords="191,32,276,61"/><area shape="rect" id="node5" href="effect_8c.html#a8efc8653d207577779ab551e99a28aee" title="effect_poison" alt="" coords="327,5,425,35"/><area shape="rect" id="node9" href="effect_8c.html#a94aa3d083f9258eaf68081be0a61401e" title="afflict" alt="" coords="349,59,403,88"/><area shape="rect" id="node7" href="mob_8c.html#a7ead5d0347250949fcc7a6c5548f50b0" title="damage_mob" alt="" coords="476,5,575,35"/></map>
 </div>
 </p>
 
@@ -251,14 +340,19 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>A very simple enemy: move towards the player, and damage them if adjacent </p>
+<p>A very simple enemy: move towards the player, and damage them if adjacent. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">enemy</td><td>Entity to move. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="mob_8c_a4e1f704b7be0c4f0ecbc7bd41ace77de_cgraph.png" border="0" usemap="#mob_8c_a4e1f704b7be0c4f0ecbc7bd41ace77de_cgraph" alt=""/></div>
 <map name="mob_8c_a4e1f704b7be0c4f0ecbc7bd41ace77de_cgraph" id="mob_8c_a4e1f704b7be0c4f0ecbc7bd41ace77de_cgraph">
-<area shape="rect" id="node3" href="mob_8c.html#a7ead5d0347250949fcc7a6c5548f50b0" title="damage_mob" alt="" coords="208,5,307,35"/><area shape="rect" id="node5" href="mob_8c.html#a23e360489b32985e54e378a80e447531" title="move_mob_relative" alt="" coords="191,59,324,88"/><area shape="rect" id="node7" href="mob_8c.html#a55ca3ba9d41a343311f102b64e1e7f4c" title="move_mob" alt="" coords="375,59,460,88"/></map>
+<area shape="rect" id="node3" href="mob_8c.html#a7ead5d0347250949fcc7a6c5548f50b0" title="damage_mob" alt="" coords="660,5,759,35"/><area shape="rect" id="node5" href="mob_8c.html#a23e360489b32985e54e378a80e447531" title="move_mob_relative" alt="" coords="191,31,324,60"/><area shape="rect" id="node7" href="mob_8c.html#a55ca3ba9d41a343311f102b64e1e7f4c" title="move_mob" alt="" coords="375,31,460,60"/><area shape="rect" id="node9" href="effect_8c.html#a8efc8653d207577779ab551e99a28aee" title="effect_poison" alt="" coords="511,31,609,60"/><area shape="rect" id="node12" href="effect_8c.html#a94aa3d083f9258eaf68081be0a61401e" title="afflict" alt="" coords="533,84,587,113"/></map>
 </div>
 </p>
 
@@ -276,7 +370,7 @@ Here is the caller graph for this function:</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Apr 26 2014 08:37:20 for Ludum Dare 29 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Apr 26 2014 18:57:38 for Ludum Dare 29 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

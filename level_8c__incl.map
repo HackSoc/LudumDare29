@@ -1,5 +1,7 @@
 <map id="level.c" name="level.c">
 <area shape="rect" id="node7" href="$level_8h.html" title="level.h" alt="" coords="189,83,248,112"/>
 <area shape="rect" id="node11" href="$mob_8h.html" title="mob.h" alt="" coords="256,160,315,189"/>
+<area shape="rect" id="node18" href="$utils_8h.html" title="utils.h" alt="" coords="323,83,379,112"/>
+<area shape="rect" id="node20" href="$effect_8h.html" title="effect.h" alt="" coords="403,83,469,112"/>
 <area shape="rect" id="node13" href="$item_8h.html" title="item.h" alt="" coords="223,237,281,267"/>
 </map>

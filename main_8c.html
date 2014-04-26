@@ -38,7 +38,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -61,7 +62,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
+      <li><a href="globals.html"><span>Globals</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -69,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -90,6 +91,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="textblock"><code>#include &lt;curses.h&gt;</code><br />
 <code>#include &lt;stdbool.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;time.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="utils_8h_source.html">utils.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="level_8h_source.html">level.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="mob_8h_source.html">mob.h</a>&quot;</code><br />
@@ -100,7 +102,7 @@ Include dependency graph for main.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="main_8c__incl.png" border="0" usemap="#main_8c" alt=""/></div>
 <map name="main_8c" id="main_8c">
-<area shape="rect" id="node9" href="utils_8h.html" title="utils.h" alt="" coords="240,83,296,112"/><area shape="rect" id="node11" href="level_8h.html" title="level.h" alt="" coords="320,83,379,112"/><area shape="rect" id="node14" href="mob_8h.html" title="mob.h" alt="" coords="371,160,429,189"/><area shape="rect" id="node16" href="item_8h.html" title="item.h" alt="" coords="371,237,429,267"/><area shape="rect" id="node22" href="player_8h.html" title="player.h" alt="" coords="504,83,571,112"/></map>
+<area shape="rect" id="node11" href="utils_8h.html" title="utils.h" alt="" coords="323,83,379,112"/><area shape="rect" id="node13" href="level_8h.html" title="level.h" alt="" coords="403,83,461,112"/><area shape="rect" id="node16" href="mob_8h.html" title="mob.h" alt="" coords="453,160,512,189"/><area shape="rect" id="node18" href="item_8h.html" title="item.h" alt="" coords="453,237,512,267"/><area shape="rect" id="node24" href="player_8h.html" title="player.h" alt="" coords="587,83,653,112"/></map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -126,13 +128,14 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Entry point. </p>
 
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4_cgraph.png" border="0" usemap="#main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4_cgraph" alt=""/></div>
 <map name="main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4_cgraph" id="main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4_cgraph">
-<area shape="rect" id="node3" href="player_8c.html#a3829d1675d5789e2531ffcc90fcad6a2" title="player_turn" alt="" coords="109,57,195,87"/><area shape="rect" id="node5" href="level_8c.html#ad45cdcc4cf6ee2a61993cb4031ef44f3" title="display_level" alt="" coords="269,5,365,35"/><area shape="rect" id="node15" href="player_8c.html#abc728d3e21a1504f9157866c89c3ab89" title="player_death" alt="" coords="104,161,200,191"/><area shape="rect" id="node17" href="mob_8c.html#a4e1f704b7be0c4f0ecbc7bd41ace77de" title="simple_enemy_turn" alt="" coords="251,112,384,141"/><area shape="rect" id="node24" href="utils_8c.html#a2dc03125a4bc69b78615c7690a01f7e8" title="mvaddprintf" alt="" coords="107,215,197,244"/><area shape="rect" id="node26" href="level_8c.html#afa299a655307d17486c06015c556bab6" title="run_turn" alt="" coords="117,268,187,297"/><area shape="rect" id="node7" href="player_8c.html#a5e0010bccc1ea8cea62e8ca87602d8a6" title="attackmove_relative" alt="" coords="248,59,387,88"/><area shape="rect" id="node9" href="player_8c.html#abb7e876b7e49f4b7c991815e5feea483" title="attackmove" alt="" coords="457,59,548,88"/><area shape="rect" id="node11" href="mob_8c.html#a55ca3ba9d41a343311f102b64e1e7f4c" title="move_mob" alt="" coords="627,137,712,167"/><area shape="rect" id="node13" href="mob_8c.html#a7ead5d0347250949fcc7a6c5548f50b0" title="damage_mob" alt="" coords="620,72,719,101"/><area shape="rect" id="node20" href="mob_8c.html#a23e360489b32985e54e378a80e447531" title="move_mob_relative" alt="" coords="436,163,569,192"/></map>
+<area shape="rect" id="node3" href="player_8c.html#a3829d1675d5789e2531ffcc90fcad6a2" title="player_turn" alt="" coords="109,159,195,188"/><area shape="rect" id="node5" href="level_8c.html#ad45cdcc4cf6ee2a61993cb4031ef44f3" title="display_level" alt="" coords="269,79,365,108"/><area shape="rect" id="node22" href="level_8c.html#ada2b32c329163f1f38b89dc34fb76e4b" title="build_level" alt="" coords="461,224,544,254"/><area shape="rect" id="node28" href="player_8c.html#abc728d3e21a1504f9157866c89c3ab89" title="player_death" alt="" coords="104,290,200,319"/><area shape="rect" id="node30" href="mob_8c.html#a4e1f704b7be0c4f0ecbc7bd41ace77de" title="simple_enemy_turn" alt="" coords="251,26,384,55"/><area shape="rect" id="node37" href="utils_8c.html#a2dc03125a4bc69b78615c7690a01f7e8" title="mvaddprintf" alt="" coords="107,343,197,372"/><area shape="rect" id="node40" href="level_8c.html#afa299a655307d17486c06015c556bab6" title="run_turn" alt="" coords="117,396,187,426"/><area shape="rect" id="node7" href="player_8c.html#a5e0010bccc1ea8cea62e8ca87602d8a6" title="attackmove_relative" alt="" coords="248,132,387,162"/><area shape="rect" id="node20" href="mob_8c.html#a0f41f8c35df68e0cea8335b114029a36" title="move_mob_level" alt="" coords="257,186,377,215"/><area shape="rect" id="node9" href="player_8c.html#abb7e876b7e49f4b7c991815e5feea483" title="attackmove" alt="" coords="457,132,548,162"/><area shape="rect" id="node11" href="mob_8c.html#a55ca3ba9d41a343311f102b64e1e7f4c" title="move_mob" alt="" coords="620,80,705,110"/><area shape="rect" id="node15" href="mob_8c.html#a7ead5d0347250949fcc7a6c5548f50b0" title="damage_mob" alt="" coords="905,107,1004,136"/><area shape="rect" id="node13" href="effect_8c.html#a8efc8653d207577779ab551e99a28aee" title="effect_poison" alt="" coords="756,107,855,136"/><area shape="rect" id="node17" href="effect_8c.html#a94aa3d083f9258eaf68081be0a61401e" title="afflict" alt="" coords="779,54,832,83"/><area shape="rect" id="node24" href="level_8c.html#a70ec2e330210334f74c1104bb8095148" title="mine_level" alt="" coords="621,224,704,254"/><area shape="rect" id="node26" href="level_8c.html#a38271195df96b41f0dd8ac1a04a5e180" title="place_cell" alt="" coords="765,224,845,254"/><area shape="rect" id="node33" href="mob_8c.html#a23e360489b32985e54e378a80e447531" title="move_mob_relative" alt="" coords="436,54,569,83"/><area shape="rect" id="node42" href="effect_8c.html#a6e22581aa928d7cc65e2b9e054ff4346" title="is_afflicted" alt="" coords="275,396,360,426"/></map>
 </div>
 </p>
 
@@ -148,14 +151,14 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Whether to quit the game or not </p>
+<p>Whether to quit the game or not. </p>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Apr 26 2014 08:37:20 for Ludum Dare 29 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Apr 26 2014 18:57:38 for Ludum Dare 29 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

@@ -1,4 +1,6 @@
 <map id="attackmove" name="attackmove">
-<area shape="rect" id="node3" href="$mob_8c.html#a55ca3ba9d41a343311f102b64e1e7f4c" title="move_mob" alt="" coords="152,5,237,35"/>
-<area shape="rect" id="node5" href="$mob_8c.html#a7ead5d0347250949fcc7a6c5548f50b0" title="damage_mob" alt="" coords="145,59,244,88"/>
+<area shape="rect" id="node3" href="$mob_8c.html#a55ca3ba9d41a343311f102b64e1e7f4c" title="move_mob" alt="" coords="145,59,231,88"/>
+<area shape="rect" id="node7" href="$mob_8c.html#a7ead5d0347250949fcc7a6c5548f50b0" title="damage_mob" alt="" coords="431,59,529,88"/>
+<area shape="rect" id="node5" href="$effect_8c.html#a8efc8653d207577779ab551e99a28aee" title="effect_poison" alt="" coords="281,5,380,35"/>
+<area shape="rect" id="node9" href="$effect_8c.html#a94aa3d083f9258eaf68081be0a61401e" title="afflict" alt="" coords="304,59,357,88"/>
 </map>

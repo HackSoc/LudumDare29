@@ -38,7 +38,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -60,9 +61,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
-      <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
-      <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
+      <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
+      <li><a href="classes.html"><span>Data&#160;Structure&#160;Index</span></a></li>
+      <li><a href="functions.html"><span>Data&#160;Fields</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -70,7 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -82,8 +83,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="structLevel-members.html">List of all members</a>  </div>
+<a href="#pub-attribs">Data Fields</a>  </div>
   <div class="headertitle">
 <div class="title">Level Struct Reference</div>  </div>
 </div><!--header-->
@@ -99,7 +99,7 @@ Collaboration diagram for Level:</div>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
+Data Fields</h2></td></tr>
 <tr class="memitem:a6e14acb28f80e4839dbce6a744489902"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structLevel.html">Level</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLevel.html#a6e14acb28f80e4839dbce6a744489902">next</a></td></tr>
 <tr class="separator:a6e14acb28f80e4839dbce6a744489902"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a885d2f1067467e3ef2eb834a77b53b5a"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structLevel.html">Level</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLevel.html#a885d2f1067467e3ef2eb834a77b53b5a">prev</a></td></tr>
@@ -108,12 +108,20 @@ Public Attributes</h2></td></tr>
 <tr class="separator:aa2a3b8f537b8bdded21d2007dd8ed16b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a94f3b76de30a3f5a9e2bbac2a246cddd"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structMob.html">Mob</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLevel.html#a94f3b76de30a3f5a9e2bbac2a246cddd">player</a></td></tr>
 <tr class="separator:a94f3b76de30a3f5a9e2bbac2a246cddd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92a9c3f6566dab4888c27610ea53a80e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLevel.html#a92a9c3f6566dab4888c27610ea53a80e">startx</a></td></tr>
+<tr class="separator:a92a9c3f6566dab4888c27610ea53a80e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a746112c0715aafb499f62a5d92feb341"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLevel.html#a746112c0715aafb499f62a5d92feb341">starty</a></td></tr>
+<tr class="separator:a746112c0715aafb499f62a5d92feb341"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee89e27142ddb872c8e51a99a88833c0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLevel.html#aee89e27142ddb872c8e51a99a88833c0">endx</a></td></tr>
+<tr class="separator:aee89e27142ddb872c8e51a99a88833c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7873a5608228576dc6946bf1c6ddd84a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLevel.html#a7873a5608228576dc6946bf1c6ddd84a">endy</a></td></tr>
+<tr class="separator:a7873a5608228576dc6946bf1c6ddd84a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2790b5dbfaff2c0d753c5a4588cf8c7e"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structCell.html">Cell</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLevel.html#a2790b5dbfaff2c0d753c5a4588cf8c7e">cells</a> [<a class="el" href="level_8h.html#a5d9a520a2e4ec01dea4a4a37cb76be2c">LEVELWIDTH</a>][<a class="el" href="level_8h.html#a6566994a452a9ee93df6f84a8399b9a7">LEVELHEIGHT</a>]</td></tr>
 <tr class="separator:a2790b5dbfaff2c0d753c5a4588cf8c7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A level is the current part of the game which is active, it gets rendered to the screen, has a bunch of mobs, and a single player. Levels form a doubly-linked list. </p>
-</div><h2 class="groupheader">Member Data Documentation</h2>
+</div><h2 class="groupheader">Field Documentation</h2>
 <a class="anchor" id="a2790b5dbfaff2c0d753c5a4588cf8c7e"></a>
 <div class="memitem">
 <div class="memproto">
@@ -123,7 +131,32 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The map </p>
+<p>The map. </p>
+
+</div>
+</div>
+<a class="anchor" id="aee89e27142ddb872c8e51a99a88833c0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Level::endx</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a7873a5608228576dc6946bf1c6ddd84a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Level::endy</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The x and y positions of the stairs to the next level. </p>
 
 </div>
 </div>
@@ -136,7 +169,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Doubly-linked list of mobs in the level </p>
+<p>Doubly-linked list of mobs in the level. </p>
 
 </div>
 </div>
@@ -149,7 +182,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The level after this one </p>
+<p>The level after this one. </p>
 
 </div>
 </div>
@@ -162,7 +195,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The player mob (must also be in mobs) </p>
+<p>The player mob (must also be in mobs). </p>
 
 </div>
 </div>
@@ -175,7 +208,32 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The level before this one </p>
+<p>The level before this one. </p>
+
+</div>
+</div>
+<a class="anchor" id="a92a9c3f6566dab4888c27610ea53a80e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Level::startx</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a746112c0715aafb499f62a5d92feb341"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Level::starty</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The x and y positions of the stairs from the previous level. </p>
 
 </div>
 </div>
@@ -185,7 +243,7 @@ Public Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Apr 26 2014 08:37:21 for Ludum Dare 29 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Apr 26 2014 18:57:38 for Ludum Dare 29 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

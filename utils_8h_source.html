@@ -38,7 +38,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -61,7 +62,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
+      <li><a href="globals.html"><span>Globals</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -70,7 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -87,33 +88,30 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="utils_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef _UTILS_H</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define _UTILS_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
-<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="utils_8h.html#ada0cc738d27aad251151e69cb8d250e1">    7</a></span>&#160;<span class="preprocessor">#define SCREENWIDTH 80</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="utils_8h.html#ae189e98d0ef9263c37869ce1ff3710a5">   12</a></span>&#160;<span class="preprocessor">#define SCREENHEIGHT 25</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="utils_8h.html#a10286155e8feb514efc6c2551ccb5c36">   17</a></span>&#160;<span class="preprocessor">#define xalloc(T) _xalloc(sizeof(T))</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="utils_8h.html#ada0cc738d27aad251151e69cb8d250e1">    5</a></span>&#160;<span class="preprocessor">#define SCREENWIDTH 80</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="utils_8h.html#ae189e98d0ef9263c37869ce1ff3710a5">    8</a></span>&#160;<span class="preprocessor">#define SCREENHEIGHT 25</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="utils_8h.html#a10286155e8feb514efc6c2551ccb5c36">   11</a></span>&#160;<span class="preprocessor">#define xalloc(T) _xalloc(sizeof(T))</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="utils_8h.html#ac4a1aa89678d06d3b66f2c74397703f2">   14</a></span>&#160;<span class="preprocessor">#define xcalloc(S,T) _xalloc(S * sizeof(T));</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="utils_8h.html#a41a18869d83fe43068ee8b0531ea98aa">   17</a></span>&#160;<span class="preprocessor">#define xfree(P) _xfree(&amp;P)</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="utils_8h.html#ac4a1aa89678d06d3b66f2c74397703f2">   22</a></span>&#160;<span class="preprocessor">#define xcalloc(S,T) _xalloc(S * sizeof(T));</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keywordtype">void</span> <a class="code" href="utils_8h.html#a2dc03125a4bc69b78615c7690a01f7e8">mvaddprintf</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> y, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> x, <span class="keyword">const</span> <span class="keywordtype">char</span> * fmt, ...);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keywordtype">void</span> <a class="code" href="utils_8h.html#a35ad0e79347a52a03a6853b8cf373707">addprintf</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * fmt, ...);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keywordtype">void</span> * <a class="code" href="utils_8h.html#a475fb7505de244db61daf1108e221a14">_xalloc</a>(<span class="keywordtype">size_t</span> size);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keywordtype">void</span> <a class="code" href="utils_8h.html#ae1a76bfc4fa8d16e11a93f827a4bfb52">_xfree</a>(<span class="keywordtype">void</span> ** ptr);</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="utils_8h.html#a41a18869d83fe43068ee8b0531ea98aa">   27</a></span>&#160;<span class="preprocessor">#define xfree(P) _xfree(&amp;P)</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keywordtype">void</span> <a class="code" href="utils_8h.html#a2dc03125a4bc69b78615c7690a01f7e8">mvaddprintf</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> y, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> x, <span class="keyword">const</span> <span class="keywordtype">char</span> * fmt, ...);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keywordtype">void</span> <a class="code" href="utils_8h.html#a35ad0e79347a52a03a6853b8cf373707">addprintf</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * fmt, ...);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keywordtype">void</span>* <a class="code" href="utils_8h.html#a475fb7505de244db61daf1108e221a14">_xalloc</a>(<span class="keywordtype">size_t</span> size);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keywordtype">void</span> <a class="code" href="utils_8h.html#ae1a76bfc4fa8d16e11a93f827a4bfb52">_xfree</a>(<span class="keywordtype">void</span>** ptr);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="utils_8h_html_a35ad0e79347a52a03a6853b8cf373707"><div class="ttname"><a href="utils_8h.html#a35ad0e79347a52a03a6853b8cf373707">addprintf</a></div><div class="ttdeci">void addprintf(const char *fmt,...)</div><div class="ttdef"><b>Definition:</b> utils.c:21</div></div>
-<div class="ttc" id="utils_8h_html_a2dc03125a4bc69b78615c7690a01f7e8"><div class="ttname"><a href="utils_8h.html#a2dc03125a4bc69b78615c7690a01f7e8">mvaddprintf</a></div><div class="ttdeci">void mvaddprintf(unsigned int y, unsigned int x, const char *fmt,...)</div><div class="ttdef"><b>Definition:</b> utils.c:9</div></div>
-<div class="ttc" id="utils_8h_html_ae1a76bfc4fa8d16e11a93f827a4bfb52"><div class="ttname"><a href="utils_8h.html#ae1a76bfc4fa8d16e11a93f827a4bfb52">_xfree</a></div><div class="ttdeci">void _xfree(void **ptr)</div><div class="ttdef"><b>Definition:</b> utils.c:44</div></div>
-<div class="ttc" id="utils_8h_html_a475fb7505de244db61daf1108e221a14"><div class="ttname"><a href="utils_8h.html#a475fb7505de244db61daf1108e221a14">_xalloc</a></div><div class="ttdeci">void * _xalloc(size_t size)</div><div class="ttdef"><b>Definition:</b> utils.c:34</div></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="utils_8h_html_a35ad0e79347a52a03a6853b8cf373707"><div class="ttname"><a href="utils_8h.html#a35ad0e79347a52a03a6853b8cf373707">addprintf</a></div><div class="ttdeci">void addprintf(const char *fmt,...)</div><div class="ttdef"><b>Definition:</b> utils.c:25</div></div>
+<div class="ttc" id="utils_8h_html_a2dc03125a4bc69b78615c7690a01f7e8"><div class="ttname"><a href="utils_8h.html#a2dc03125a4bc69b78615c7690a01f7e8">mvaddprintf</a></div><div class="ttdeci">void mvaddprintf(unsigned int y, unsigned int x, const char *fmt,...)</div><div class="ttdef"><b>Definition:</b> utils.c:12</div></div>
+<div class="ttc" id="utils_8h_html_ae1a76bfc4fa8d16e11a93f827a4bfb52"><div class="ttname"><a href="utils_8h.html#ae1a76bfc4fa8d16e11a93f827a4bfb52">_xfree</a></div><div class="ttdeci">void _xfree(void **ptr)</div><div class="ttdef"><b>Definition:</b> utils.c:51</div></div>
+<div class="ttc" id="utils_8h_html_a475fb7505de244db61daf1108e221a14"><div class="ttname"><a href="utils_8h.html#a475fb7505de244db61daf1108e221a14">_xalloc</a></div><div class="ttdeci">void * _xalloc(size_t size)</div><div class="ttdef"><b>Definition:</b> utils.c:40</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Apr 26 2014 08:37:20 for Ludum Dare 29 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Apr 26 2014 18:57:37 for Ludum Dare 29 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

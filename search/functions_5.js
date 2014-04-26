@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['run_5fturn',['run_turn',['../level_8c.html#afa299a655307d17486c06015c556bab6',1,'run_turn(Level *level):&#160;level.c'],['../level_8h.html#afa299a655307d17486c06015c556bab6',1,'run_turn(Level *level):&#160;level.c']]]
+  ['is_5fafflicted',['is_afflicted',['../effect_8c.html#a6e22581aa928d7cc65e2b9e054ff4346',1,'is_afflicted(Mob *mob):&#160;effect.c'],['../effect_8h.html#a6e22581aa928d7cc65e2b9e054ff4346',1,'is_afflicted(Mob *mob):&#160;effect.c']]]
 ];

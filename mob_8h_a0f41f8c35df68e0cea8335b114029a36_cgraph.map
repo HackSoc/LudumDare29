@@ -1,0 +1,5 @@
+<map id="move_mob_level" name="move_mob_level">
+<area shape="rect" id="node3" href="$level_8c.html#ada2b32c329163f1f38b89dc34fb76e4b" title="build_level" alt="" coords="173,5,256,35"/>
+<area shape="rect" id="node5" href="$level_8c.html#a70ec2e330210334f74c1104bb8095148" title="mine_level" alt="" coords="305,5,388,35"/>
+<area shape="rect" id="node7" href="$level_8c.html#a38271195df96b41f0dd8ac1a04a5e180" title="place_cell" alt="" coords="437,5,517,35"/>
+</map>

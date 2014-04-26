@@ -1,0 +1,5 @@
+<map id="move_mob" name="move_mob">
+<area shape="rect" id="node3" href="$effect_8c.html#a8efc8653d207577779ab551e99a28aee" title="effect_poison" alt="" coords="143,5,241,35"/>
+<area shape="rect" id="node7" href="$effect_8c.html#a94aa3d083f9258eaf68081be0a61401e" title="afflict" alt="" coords="165,59,219,88"/>
+<area shape="rect" id="node5" href="$mob_8c.html#a7ead5d0347250949fcc7a6c5548f50b0" title="damage_mob" alt="" coords="292,5,391,35"/>
+</map>

@@ -38,7 +38,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -60,9 +61,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
-      <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
-      <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
+      <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
+      <li><a href="classes.html"><span>Data&#160;Structure&#160;Index</span></a></li>
+      <li><a href="functions.html"><span>Data&#160;Fields</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -70,7 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -82,8 +83,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="structMob-members.html">List of all members</a>  </div>
+<a href="#pub-attribs">Data Fields</a>  </div>
   <div class="headertitle">
 <div class="title">Mob Struct Reference</div>  </div>
 </div><!--header-->
@@ -99,7 +99,7 @@ Collaboration diagram for Mob:</div>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
+Data Fields</h2></td></tr>
 <tr class="memitem:af41b28cc2d2e69829e8706be52dad20c"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structMob.html">Mob</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMob.html#af41b28cc2d2e69829e8706be52dad20c">next</a></td></tr>
 <tr class="separator:af41b28cc2d2e69829e8706be52dad20c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6909c33ed75852772bef6e90f508b44f"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structMob.html">Mob</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMob.html#a6909c33ed75852772bef6e90f508b44f">prev</a></td></tr>
@@ -118,6 +118,10 @@ Public Attributes</h2></td></tr>
 <tr class="separator:ab2d09c4a3deff10f4d0a3a31b9ee54f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a97834256736bccdf83a371958d816832"><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMob.html#a97834256736bccdf83a371958d816832">death_action</a> )(struct <a class="el" href="structMob.html">Mob</a> *)</td></tr>
 <tr class="separator:a97834256736bccdf83a371958d816832"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34cf33b80b1da6d4183e82a4de262c3e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMob.html#a34cf33b80b1da6d4183e82a4de262c3e">effect_duration</a></td></tr>
+<tr class="separator:a34cf33b80b1da6d4183e82a4de262c3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab9d3b92b0b0bfe04ed6cffa81cc0345"><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMob.html#aab9d3b92b0b0bfe04ed6cffa81cc0345">effect_action</a> )(struct <a class="el" href="structMob.html">Mob</a> *)</td></tr>
+<tr class="separator:aab9d3b92b0b0bfe04ed6cffa81cc0345"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5000ead0272726436e56677ec8c12ac8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMob.html#a5000ead0272726436e56677ec8c12ac8">hostile</a></td></tr>
 <tr class="separator:a5000ead0272726436e56677ec8c12ac8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a44fe15f835a9ee08b1dc7933c103b3ac"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMob.html#a44fe15f835a9ee08b1dc7933c103b3ac">name</a></td></tr>
@@ -133,7 +137,7 @@ Public Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A mob is something which roams around the world, they are tied to a level, and all the mobs in one level form a doubly-linked list. There are a couple of callbacks associated with them to determine what happens in certain situations. </p>
-</div><h2 class="groupheader">Member Data Documentation</h2>
+</div><h2 class="groupheader">Field Documentation</h2>
 <a class="anchor" id="a97834256736bccdf83a371958d816832"></a>
 <div class="memitem">
 <div class="memproto">
@@ -143,7 +147,33 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>What to do on death </p>
+<p>What to do on death. </p>
+
+</div>
+</div>
+<a class="anchor" id="aab9d3b92b0b0bfe04ed6cffa81cc0345"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void(* Mob::effect_action)(struct <a class="el" href="structMob.html">Mob</a> *)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The effect to apply every turn. </p>
+
+</div>
+</div>
+<a class="anchor" id="a34cf33b80b1da6d4183e82a4de262c3e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Mob::effect_duration</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>How long the current efefct will last. </p>
 
 </div>
 </div>
@@ -156,7 +186,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The current health, signed to prevent underflow </p>
+<p>The current health, signed to prevent underflow. </p>
 
 </div>
 </div>
@@ -169,7 +199,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>A mob is hostile if the player can damage it </p>
+<p>A mob is hostile if the player can damage it. </p>
 
 </div>
 </div>
@@ -182,7 +212,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>List of items the mob is holding </p>
+<p>List of items the mob is holding. </p>
 
 </div>
 </div>
@@ -195,7 +225,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The level the mob is in </p>
+<p>The level the mob is in. </p>
 
 </div>
 </div>
@@ -208,7 +238,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The maximum health </p>
+<p>The maximum health. </p>
 
 </div>
 </div>
@@ -221,7 +251,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The name of the mob (may be NULL for NPC) </p>
+<p>The name of the mob (may be NULL for NPC). </p>
 
 </div>
 </div>
@@ -234,7 +264,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The next mob in the list </p>
+<p>The next mob in the list. </p>
 
 </div>
 </div>
@@ -247,7 +277,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The prior mob in the list </p>
+<p>The prior mob in the list. </p>
 
 </div>
 </div>
@@ -260,7 +290,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The job of the mob (may be NULL for NPC) </p>
+<p>The job of the mob (may be NULL for NPC). </p>
 
 </div>
 </div>
@@ -273,7 +303,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The race of the mob (may be NULL for NPC) </p>
+<p>The race of the mob (may be NULL for NPC). </p>
 
 </div>
 </div>
@@ -286,7 +316,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The symbol to use to render the mob </p>
+<p>The symbol to use to render the mob. </p>
 
 </div>
 </div>
@@ -299,7 +329,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>What to do every turn </p>
+<p>What to do every turn. </p>
 
 </div>
 </div>
@@ -312,7 +342,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The X position </p>
+<p>The X position. </p>
 
 </div>
 </div>
@@ -325,7 +355,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The Y position </p>
+<p>The Y position. </p>
 
 </div>
 </div>
@@ -335,7 +365,7 @@ Public Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Apr 26 2014 08:37:21 for Ludum Dare 29 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Apr 26 2014 18:57:38 for Ludum Dare 29 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

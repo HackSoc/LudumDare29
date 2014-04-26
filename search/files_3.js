@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['player_2ec',['player.c',['../player_8c.html',1,'']]],
-  ['player_2eh',['player.h',['../player_8h.html',1,'']]]
+  ['main_2ec',['main.c',['../main_8c.html',1,'']]],
+  ['mob_2ec',['mob.c',['../mob_8c.html',1,'']]],
+  ['mob_2eh',['mob.h',['../mob_8h.html',1,'']]]
 ];
