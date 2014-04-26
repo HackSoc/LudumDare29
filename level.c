@@ -1,6 +1,8 @@
-#include "level.h"
 #include <curses.h>
 #include <stdlib.h>
+
+#include "level.h"
+#include "mob.h"
 
 extern bool quit;
 
@@ -27,4 +29,28 @@ void display_level(Level * level) {
 			}
 		}
 	}
+}
+
+/**
+ * Move the given mob to the new coordinates
+ * Returns false if the given space can't be moved into.
+ */
+bool move_mob(Mob * mob, unsigned int x, unsigned int y) {
+	Level * level = mob->level;
+	Cell * source = level->cells[mob->xpos][mob->ypos];
+	Cell * target = level->cells[x][y];
+
+	if(source == target)
+		return true;
+
+	if(target->solid == true || target->occupant != NULL) {
+		return false;
+	}
+
+	source->occupant = NULL;
+	target->occupant = mob;
+	mob->xpos = x;
+	mob->ypos = y;
+
+	return true;
 }

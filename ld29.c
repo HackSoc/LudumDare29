@@ -13,22 +13,6 @@ void player_action(Mob *);
 
 int main() {
 	/* Simple static level for rendering */
-	Cell hwall = {.baseSymbol = '-',
-				  .occupant   = NULL,
-				  .items      = NULL};
-	
-	Cell vwall = {.baseSymbol = '|',
-				  .occupant   = NULL,
-				  .items      = NULL};
-	
-	Cell floor = {.baseSymbol = '.',
-				  .occupant   = NULL,
-				  .items      = NULL};
-	
-	Cell floor2 = {.baseSymbol = '.',
-				   .occupant   = NULL,
-				   .items      = NULL};
-	
 	Mob player = {.level = NULL,
 				  .symbol = '@',
 				  .next = NULL,
@@ -52,8 +36,10 @@ int main() {
 			level.cells[x][y] = calloc(1, sizeof(Cell));
 			if(y == 0 || y == LEVELHEIGHT - 1) {
 				level.cells[x][y]->baseSymbol = '-';
+				level.cells[x][y]->solid = true;
 			} else if (x == 0 || x == LEVELWIDTH - 1) {
 				level.cells[x][y]->baseSymbol = '|';
+				level.cells[x][y]->solid = true;
 			} else {
 				level.cells[x][y]->baseSymbol = '.';
 			}

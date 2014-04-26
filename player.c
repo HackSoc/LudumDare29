@@ -13,7 +13,6 @@ void player_action(Mob * player) {
 
 	display_level(player->level);
 	ch = getch();
-	player->level->cells[x][y]->occupant = NULL;
 	switch (ch) {
 		case 'k':
 		case '8':
@@ -39,7 +38,5 @@ void player_action(Mob * player) {
 			quit = true;
 		}
 
-	player->xpos = x;
-	player->ypos = y;
-	player->level->cells[x][y]->occupant = player;
+	move_mob(player, x, y);
 }
