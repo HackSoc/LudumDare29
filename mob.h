@@ -29,4 +29,21 @@ typedef struct Mob {
 	unsigned int max_health;
 } Mob;
 
+/**
+ * Move the given mob to the new coordinates
+ * Returns false if the given space can't be moved into.
+ */
+bool move_mob(struct Mob * mob, unsigned int x, unsigned int y);
+
+/**
+ * Move a mob by a relative position
+ */
+bool move_mob_relative(struct Mob * mob, int xdiff, int ydiff);
+
+/**
+ * Damage a mob
+ * Returns true if this killed the mob.
+ */
+bool damage_mob(struct Mob * mob, unsigned int amount);
+
 #endif /*MOB_H*/
