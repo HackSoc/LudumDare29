@@ -75,9 +75,6 @@ int main() {
 		clear();
 	}
 	
-	/* Hang for output */
-	getch();
-	
 	/* Deinitialise curses */
 	curs_set(1);
 	nl();
