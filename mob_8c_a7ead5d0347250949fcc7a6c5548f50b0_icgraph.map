@@ -1,0 +1,7 @@
+<map id="damage_mob" name="damage_mob">
+<area shape="rect" id="node3" href="$mob_8h.html#a4e1f704b7be0c4f0ecbc7bd41ace77de" title="simple_enemy_turn" alt="" coords="296,5,429,35"/>
+<area shape="rect" id="node7" href="$player_8h.html#a02161c22295cced9c43b0ca34e33fc20" title="attackmove" alt="" coords="155,59,245,88"/>
+<area shape="rect" id="node5" href="$main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="616,33,667,63"/>
+<area shape="rect" id="node9" href="$player_8h.html#aea872e7b1d97b5eadb9835927315e597" title="attackmove_relative" alt="" coords="293,59,432,88"/>
+<area shape="rect" id="node11" href="$player_8h.html#a3829d1675d5789e2531ffcc90fcad6a2" title="player_turn" alt="" coords="481,59,567,88"/>
+</map>

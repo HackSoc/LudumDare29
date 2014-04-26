@@ -1,0 +1,4 @@
+<map id="attackmove" name="attackmove">
+<area shape="rect" id="node3" href="$mob_8c.html#a55ca3ba9d41a343311f102b64e1e7f4c" title="move_mob" alt="" coords="152,5,237,35"/>
+<area shape="rect" id="node5" href="$mob_8c.html#a7ead5d0347250949fcc7a6c5548f50b0" title="damage_mob" alt="" coords="145,59,244,88"/>
+</map>

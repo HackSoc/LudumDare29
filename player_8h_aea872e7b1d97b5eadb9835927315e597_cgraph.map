@@ -1,0 +1,5 @@
+<map id="attackmove_relative" name="attackmove_relative">
+<area shape="rect" id="node3" href="$player_8c.html#abb7e876b7e49f4b7c991815e5feea483" title="attackmove" alt="" coords="192,32,283,61"/>
+<area shape="rect" id="node5" href="$mob_8c.html#a55ca3ba9d41a343311f102b64e1e7f4c" title="move_mob" alt="" coords="339,5,424,35"/>
+<area shape="rect" id="node7" href="$mob_8c.html#a7ead5d0347250949fcc7a6c5548f50b0" title="damage_mob" alt="" coords="332,59,431,88"/>
+</map>
