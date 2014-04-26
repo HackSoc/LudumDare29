@@ -1,6 +1,8 @@
 #include <curses.h>
 #include <stdlib.h>
 #include <assert.h>
+#include <string.h>
+
 #include "utils.h"
 
 /**
@@ -29,6 +31,16 @@ void addprintf(const char * fmt, ...) {
 	vsnprintf(buf, SCREENWIDTH, fmt, ap);
 	va_end(ap);
 	addstr(buf);
+}
+
+/**
+ * Duplicate a string
+ * @param str String to duplicate
+ */
+char * strdup(const char * str) {
+	char * out = xcalloc(strlen(str), char);
+	strcpy(out, str);
+	return out;
 }
 
 /**
@@ -69,10 +81,10 @@ void mvaddchcol(unsigned int y, unsigned int x,
  * @param prompt2 The prompt to use after a bad choice.
  * @param choices NULL-terminated list of choices.
  */
-char * list_choice(unsigned int y, unsigned int x,
-				   const char * prompt,
-				   const char * prompt2,
-				   const char * choices[]) {
+const char * list_choice(unsigned int y, unsigned int x,
+						 const char * prompt,
+						 const char * prompt2,
+						 const char * choices[]) {
 	clear();
 	int num_choices;
 	for(num_choices = 0; choices[num_choices] != NULL; num_choices ++) {
@@ -91,11 +103,21 @@ char * list_choice(unsigned int y, unsigned int x,
 			clrtoeol();
 			addstr(prompt2);
 			addch(' ');
-		} else {
-			clear();
-			return strdup(choices[choice]);
 		}
 	}
+	clear();
+	return choices[choice];
+}
+
+/**
+ * Select a random value from a list
+ * @param choices NULL-terminates list of choices.
+ */
+const void * random_choice(const void * choices[]) {
+	int num_choices;
+	for(num_choices = 0; choices[num_choices] != NULL; num_choices ++);
+
+	return choices[rand() % num_choices];
 }
 
 /**

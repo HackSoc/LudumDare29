@@ -18,14 +18,16 @@
 
 void mvaddprintf(unsigned int y, unsigned int x, const char * fmt, ...);
 void addprintf(const char * fmt, ...);
+char * strdup(const char * str);
 void mvaddchcol(unsigned int y, unsigned int x,
 				char chr,
 				int fg, int bg,
 				bool bold);
-char * list_choice(unsigned int y, unsigned int x,
-				   const char * prompt,
-				   const char * prompt2,
-				   const char * choices[]);
+const char * list_choice(unsigned int y, unsigned int x,
+						 const char * prompt,
+						 const char * prompt2,
+						 const char * choices[]);
+const void * random_choice(const void * choices[]);
 void * _xalloc(size_t size);
 void _xfree(void ** ptr);
 

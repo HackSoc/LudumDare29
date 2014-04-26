@@ -6,31 +6,68 @@
 #include "utils.h"
 #include "player.h"
 
-char * races[] = {"Human",
-				  "Dutch",
-				  "Elf",
-				  "Dwarf",
-				  "Halfling",
-				  "Quarterling",
-				  NULL};
-
-char * professions[] = {"Miner",
-						"Attorney",
-						"Clog Maker",
-						"Huntsman",
-						"Chef",
-						"Tourist",
-						"Dog",
+const char * names[] = {"Colin",
 						NULL};
 
+const char * races[] = {"Human",
+						"Dutch",
+						"Elf",
+						"Dwarf",
+						"Halfling",
+						"Quarterling",
+						NULL};
+
+const char * professions[] = {"Miner",
+							  "Attorney",
+							  "Clog Maker",
+							  "Huntsman",
+							  "Chef",
+							  "Tourist",
+							  "Dog",
+							  NULL};
+
 extern bool quit;
+
+/**
+ * Randomise a player's name, race, and profession.
+ * @param player The player
+ */
+static void randomise_player(Mob * player) {
+	player->name = strdup((char *) random_choice((const void**) names));
+	player->race = strdup((char *) random_choice((const void**) races));
+	player->profession = strdup((char *) random_choice((const void**) professions));
+}
+
+/**
+ * Have the human player enter the character player's name, race, and
+ * profession (the opposite of randomise_player).
+ * @param player The player
+ */
+static void design_player(Mob * player) {
+	clear();
+	echo();
+	mvaddprintf(9, 10, "Enter your player's name: ");
+	char buf[80];
+	getnstr(buf, 79);
+	player->name = strdup(buf);
+	noecho();
+
+	player->race = strdup(list_choice(9, 10,
+									  "What is your race?",
+									  "Don't be silly, choose a proper race.",
+									  races));
+
+	player->profession = strdup(list_choice(9, 10,
+											"And finally, what is your profession?",
+											"That's not a real job!",
+											professions));
+}
 
 /**
  * Create and return a new player. This prompts the user for stuff,
  * and clears the screen when it is done.
  */
 Mob * create_player() {
-	char buf[80];
 	Mob * player = xalloc(Mob);
 	player->symbol = '@';
 	player->colour = COLOR_WHITE;
@@ -41,24 +78,20 @@ Mob * create_player() {
 	player->health = 100;
 	player->max_health = 100;
 
-	echo();
+	clear();
+	mvaddprintf(9, 10, "Do you want to randomly generate your player? ");
+	while(true) {
+		int choice = getch();
+		if(choice == 'y' || choice == 'Y') {
+			randomise_player(player);
+			break;
+		} else if(choice == 'n' || choice == 'N') {
+			design_player(player);
+			break;
+		}
+	}
 
 	clear();
-	mvaddprintf(9, 10, "Enter your player's name: ");
-	getnstr(buf, 79);
-	player->name = strdup(buf);
-	
-	player->race = list_choice(9, 10, "What is your race?",
-							   "Don't be silly, choose a proper race.",
-							   races);
-
-	player->profession = list_choice(9, 10, "And finally, what is your profession?",
-									 "That's not a real job!",
-									 professions);
-
-	noecho();
-	clear();
-	
 	return player;
 }
 
