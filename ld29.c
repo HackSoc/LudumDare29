@@ -2,6 +2,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
+#include "curses.h"
 #include "level.h"
 #include "mob.h"
 #include "item.h"
@@ -28,7 +29,12 @@ int main() {
 				  .symbol = '@',
 				  .next = NULL,
 				  .prev = NULL,
-				  .items = NULL};
+				  .items = NULL,
+				  .name = "Elrond",
+				  .race = "Half-Elf",
+				  .profession = "Orc Slayer",
+				  .health = 100,
+				  .max_health = 100};
 	
 	Level level = {.next = NULL,
 				   .prev = NULL,
@@ -69,6 +75,11 @@ int main() {
 	/* Render level */
 	clear();
 	display_level(current_level);
+	
+	/* Display player stats */
+	mvaddprintf(21, 5, "%s, the %s %s", player.name, player.race, player.profession);
+	mvaddprintf(22, 5, "HP: %d/%d", player.health, player.max_health);
+	//}
 	
 	/* Hang for output */
 	getch();

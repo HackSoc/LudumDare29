@@ -14,6 +14,14 @@ typedef struct Mob {
 	struct Mob * prev;
 	struct Item * items;
 	void (*action)(struct Mob *);
+
+	/* Statistics - can be NULL/0/whatever for mobs where these are
+	   not relevent. */
+	char* name;
+	char* race;
+	char* profession;
+	unsigned int health;
+	unsigned int max_health;
 } Mob;
 
 #endif /*MOB_H*/
