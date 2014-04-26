@@ -11,16 +11,16 @@ struct Item;
 #define LEVELHEIGHT 20
 
 typedef struct Cell{
-  char baseSymbol;
-  struct Mob * occupant;
-  struct Item * items;
+	char baseSymbol;
+	struct Mob * occupant;
+	struct Item * items;
 } Cell;
 
 typedef struct Level{
-  struct Level * next;
-  struct Level * prev;
-  struct Mob * mobs;
-  struct Cell * cells[LEVELWIDTH][LEVELHEIGHT];
+	struct Level * next;
+	struct Level * prev;
+	struct Mob * mobs;
+	struct Cell * cells[LEVELWIDTH][LEVELHEIGHT];
 } Level;
 
 #endif /*LEVEL_H*/

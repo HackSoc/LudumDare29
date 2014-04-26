@@ -52,43 +52,43 @@ int main() {
 	level.cells[15][10] = &floor2;
 	level.cells[15][10]->occupant = &player;
 
-  //set up curses
-  initscr();
-  cbreak();
-  noecho();
-  nonl();
-  intrflush(stdscr, FALSE);
-  keypad(stdscr, TRUE);
-  curs_set(0);
+	/* Initialise curses */
+	initscr();
+	cbreak();
+	noecho();
+	nonl();
+	intrflush(stdscr, FALSE);
+	keypad(stdscr, TRUE);
+	curs_set(0);
 
-  /* Game loop */
-  Level * current_level = &level;
-  //while(true) {
-	  /* Update mobs */
-	  for(Mob * mob = current_level->mobs; mob != NULL; mob = mob->next) {
-		  //mob update
-	  }
+	/* Game loop */
+	Level * current_level = &level;
+	//while(true) {
+		/* Update mobs */
+		for(Mob * mob = current_level->mobs; mob != NULL; mob = mob->next) {
+			//mob update
+		}
 	  
-	  /* Render level */
-	  clear();
-	  for(unsigned int y = 0; y < LEVELHEIGHT; y ++) {
-		  for(unsigned int x = 0; x < LEVELWIDTH; x++) {
-			  if(current_level->cells[x][y]->occupant != NULL) {
-				  mvaddch(y, x, current_level->cells[x][y]->occupant->symbol);
-			  } else {
-				  mvaddch(y, x, current_level->cells[x][y]->baseSymbol);
-			  }
-		  }
-	  }
-  //}
+		/* Render level */
+		clear();
+		for(unsigned int y = 0; y < LEVELHEIGHT; y ++) {
+			for(unsigned int x = 0; x < LEVELWIDTH; x++) {
+				if(current_level->cells[x][y]->occupant != NULL) {
+					mvaddch(y, x, current_level->cells[x][y]->occupant->symbol);
+				} else {
+					mvaddch(y, x, current_level->cells[x][y]->baseSymbol);
+				}
+			}
+		}
+	//}
 
-  // Hang for output
-  getch();
+	/* Hang for output */
+	getch();
 
-  //end curses
-  curs_set(1);
-  nl();
-  echo();
-  nocbreak();
-  endwin();
+	/* Deinitialise curses */
+	curs_set(1);
+	nl();
+	echo();
+	nocbreak();
+	endwin();
 }
