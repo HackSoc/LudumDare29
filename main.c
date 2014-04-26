@@ -51,6 +51,9 @@ int main() {
 	mvaddprintf(19, 44, "A game for Ludum Dare 29 by HackSoc.");
 	getch();
 
+	/* Keep track of the first level, for assistance freeing */
+	Level * level_head = player->level;
+
 	/* Game loop */
 	while(!quit) {
 		/* Update mobs */
@@ -60,9 +63,9 @@ int main() {
 	}
 
 	/* Free the things */
-	while (current_level != NULL) {
-		Level * level = current_level;
-		current_level = current_level->next;
+	while (level_head != NULL) {
+		Level * level = level_head;
+		level_head = level_head->next;
 
 		Mob * m = level->mobs;
 		while (m != NULL) {

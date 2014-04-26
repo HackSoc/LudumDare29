@@ -91,7 +91,6 @@ bool damage_mob(Mob * mob, unsigned int damage) {
 			last->next->prev = last;
 		}
 		xfree(mob);
-		mob = NULL;
 		return true;
 	}
 	return false;
