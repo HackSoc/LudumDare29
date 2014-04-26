@@ -44,11 +44,11 @@ int main() {
 				   .prev = NULL,
 				   .mobs = &player,
 				   .player = &player};
-	
+
 	player.level = &level;
 	hedgehog.level = &level;
 	player.next = &hedgehog;
-	
+
 	for(unsigned int y = 0; y < LEVELHEIGHT; y++) {
 		for(unsigned int x = 0; x < LEVELWIDTH; x++) {
 			level.cells[x][y] = xalloc(Cell);
@@ -63,7 +63,7 @@ int main() {
 			}
 		}
 	}
-	
+
 	level.cells[15][10]->occupant = &player;
 	player.xpos = 15;
 	player.ypos = 10;
@@ -80,13 +80,19 @@ int main() {
 	intrflush(stdscr, FALSE);
 	keypad(stdscr, TRUE);
 	curs_set(0);
-	
+
+	/* Intro text */
+	mvaddprintf(10, 10, "You enter a cave.");
+	mvaddprintf(11, 10, "It's beneath the surface.");
+	mvaddprintf(19, 44, "A game for Ludum Dare 29 by HackSoc.");
+	getch();
+
 	/* Game loop */
 	Level * current_level = &level;
 	while(!quit) {
 		/* Render level */
 		display_level(current_level);
-	
+
 		/* Display player stats */
 		mvaddprintf(21, 5, "%s, the %s %s", player.name, player.race, player.profession);
 		mvaddprintf(22, 5, "HP: %d/%d", player.health, player.max_health);
@@ -96,7 +102,7 @@ int main() {
 
 		clear();
 	}
-	
+
 	/* Deinitialise curses */
 	curs_set(1);
 	nl();
