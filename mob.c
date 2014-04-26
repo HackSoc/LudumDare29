@@ -77,6 +77,10 @@ bool damage_mob(Mob * mob, unsigned int damage) {
 			mob->prev->next = mob->next;
 		}
 
+		if(mob->next != NULL) {
+			mob->next->prev = mob->prev;
+		}
+
 		/* Drop its items */
 		if(cell->items == NULL) {
 			cell->items = mob->items;
