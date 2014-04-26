@@ -36,7 +36,8 @@ bool move_mob_relative(Mob * mob, int xdiff, int ydiff) {
 
 /**
  * Damage a mob
- * Returns true if this killed the mob.
+ * Returns true if this killed the mob, a mob is dead if its health
+ * drops to zero or below.
  */
 bool damage_mob(Mob * mob, unsigned int damage) {
 	mob->health -= damage;
@@ -46,15 +47,27 @@ bool damage_mob(Mob * mob, unsigned int damage) {
 			mob->death_action(mob);
 		}
 
-		mob->level->cells[mob->xpos][mob->ypos]->occupant = NULL;
+		Cell * cell = mob->level->cells[mob->xpos][mob->ypos];
 
 		/* Remove it from the world */
+		cell->occupant = NULL;
+
 		if(mob->level->mobs == mob) {
 			mob->level->mobs = mob->next;
 		}
 
 		if(mob->prev != NULL) {
 			mob->prev->next = mob->next;
+		}
+
+		/* Drop its items */
+		if(cell->items == NULL) {
+			cell->items = mob->items;
+		} else {
+			Item * last;
+			for(last = cell->items; last != NULL; last = last->next) {}
+			last->next = mob->items;
+			last->next->prev = last;
 		}
 		
 		return true;

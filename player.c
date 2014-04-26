@@ -33,6 +33,9 @@ bool attackmove_relative(Mob * player, int xdiff, int ydiff,
 	return attackmove(player, x, y, damage);
 }
 
+/**
+ * Wait for user input, and then act accordingly.
+ */
 void player_turn(Mob * player) {
 	int ch;
 
@@ -64,6 +67,9 @@ void player_turn(Mob * player) {
 	}
 }
 
+/**
+ * Say that the player is dead, and do stuff.
+ */
 void player_death(Mob * player) {
 	// Just quit
 	quit = true;

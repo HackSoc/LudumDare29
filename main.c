@@ -6,12 +6,12 @@
 #include "level.h"
 #include "mob.h"
 #include "item.h"
+#include "player.h"
 
+/**
+ * Whether to quit the game or not
+ */
 bool quit = false;
-
-void player_turn(Mob *);
-void player_death(Mob *);
-void simple_enemy_turn(Mob *);
 
 int main() {
 	/* Simple static level for rendering */

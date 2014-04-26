@@ -14,4 +14,14 @@ bool attackmove(struct Mob * player, unsigned int xdiff, unsigned int ydiff,
 bool attackmove_relative(struct Mob * player, int xdiff, int ydiff,
 						 unsigned int damage);
 
+/**
+ * Wait for user input, and then act accordingly.
+ */
+void player_turn(Mob * player);
+
+/**
+ * Say that the player is dead, and do stuff.
+ */
+void player_death(Mob * player);
+
 #endif
