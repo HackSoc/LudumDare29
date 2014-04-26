@@ -15,35 +15,45 @@ bool quit = false;
 
 int main() {
 	/* Simple static level for rendering */
-	Mob player = {.level = NULL,
-				  .symbol = '@',
-				  .next = NULL,
-				  .prev = NULL,
-				  .items = NULL,
-				  .hostile = false,
-				  .turn_action = &player_turn,
-				  .death_action = &player_death,
-				  .name = "Elrond",
-				  .race = "Half-Elf",
-				  .profession = "Orc Slayer",
-				  .health = 100,
-				  .max_health = 100};
+	Mob player = {
+		.level = NULL,
+		.symbol = '@',
+		.next = NULL,
+		.prev = NULL,
+		.items = NULL,
+		.hostile = false,
+		.turn_action = &player_turn,
+		.death_action = &player_death,
+		.name = "Elrond",
+		.race = "Half-Elf",
+		.profession = "Orc Slayer",
+		.health = 100,
+		.max_health = 100,
+		.xpos = 15,
+		.ypos = 10
+	};
 
-	Mob hedgehog = {.level = NULL,
-					.symbol = 'H',
-					.next = NULL,
-					.prev = &player,
-					.items = NULL,
-					.hostile = true,
-					.turn_action = &simple_enemy_turn,
-					.death_action = NULL,
-					.health = 5,
-					.max_health = 5};
+	Mob hedgehog = {
+		.level = NULL,
+		.symbol = 'H',
+		.next = NULL,
+		.prev = &player,
+		.items = NULL,
+		.hostile = true,
+		.turn_action = &simple_enemy_turn,
+		.death_action = NULL,
+		.health = 5,
+		.max_health = 5,
+		.xpos = 20,
+		.ypos = 3
+	};
 
-	Level level = {.next = NULL,
-				   .prev = NULL,
-				   .mobs = &player,
-				   .player = &player};
+	Level level = {
+		.next = NULL,
+		.prev = NULL,
+		.mobs = &player,
+		.player = &player
+	};
 
 	player.level = &level;
 	hedgehog.level = &level;
@@ -64,13 +74,8 @@ int main() {
 		}
 	}
 
-	level.cells[15][10]->occupant = &player;
-	player.xpos = 15;
-	player.ypos = 10;
-
-	level.cells[20][3]->occupant = &hedgehog;
-	hedgehog.xpos = 20;
-	hedgehog.ypos = 3;
+	level.cells[player.xpos][player.ypos]->occupant = &player;
+	level.cells[hedgehog.xpos][hedgehog.ypos]->occupant = &hedgehog;
 
 	/* Initialise curses */
 	initscr();
