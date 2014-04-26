@@ -258,6 +258,7 @@ void build_level(Level * level) {
 	/* Place the stairs */
 	level->cells[level->startx][level->starty]->baseSymbol = '<';
 	level->cells[level->startx][level->starty]->solid = false;
+	level->cells[level->startx][level->starty]->colour = COLOR_WHITE;
 
 	/* Arbitrary number of mobs */
 	for (int i = 0; i < 5; i++) {
