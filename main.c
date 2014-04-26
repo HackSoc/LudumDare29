@@ -30,26 +30,23 @@ int main() {
 
 	Mob * player = create_player();
 
-	Level * level = xalloc(Level);
-	level->mobs = player;
-	level->player = player;
+	Level * level_head = xalloc(Level);
+	level_head->mobs = player;
+	level_head->player = player;
 
-	player->level = level;
+	player->level = level_head;
 
-	build_level(level);
+	build_level(level_head);
 
-	player->xpos = level->startx;
-	player->ypos = level->starty;
-	level->cells[player->xpos][player->ypos]->occupant = player;
+	player->xpos = level_head->startx;
+	player->ypos = level_head->starty;
+	level_head->cells[player->xpos][player->ypos]->occupant = player;
 
 	/* Intro text */
 	mvaddprintf(10, 10, "You enter a cave.");
 	mvaddprintf(11, 10, "It's beneath the surface.");
 	mvaddprintf(19, 44, "A game for Ludum Dare 29 by HackSoc.");
 	getch();
-
-	/* Keep track of the first level, for assistance freeing */
-	Level * level_head = player->level;
 
 	/* Game loop */
 	while(!quit) {

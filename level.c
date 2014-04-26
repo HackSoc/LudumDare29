@@ -258,6 +258,7 @@ void build_level(Level * level) {
 	/* Place the stairs */
 	level->cells[level->startx][level->starty]->baseSymbol = '<';
 	level->cells[level->startx][level->starty]->solid = false;
+	level->cells[level->startx][level->starty]->colour = COLOR_WHITE;
 
 	/* Arbitrary number of mobs */
 	for (int i = 0; i < 5; i++) {
@@ -289,6 +290,7 @@ void do_affliction(Mob * mob) {
  * @param level The level grid to run the turn on.
  */
 void run_turn(Level * level) {
+	/* Process each mob's turn */
 	for(Mob * mob = level->mobs; mob != NULL && !quit; mob = mob->next) {
 		if(mob->health <= 0) {
 			continue;
@@ -300,11 +302,13 @@ void run_turn(Level * level) {
 		do_affliction(mob);
 	}
 
-	Mob * next = NULL;
-	for(Mob * mob = level->mobs; mob != NULL; mob = next) {
-		next = mob->next;
+	/* Free dead mobs */
+	Mob * mob = level->mobs;
+	while(mob != NULL) {
 		if(mob->health <= 0) {
-			xfree(mob);
+			mob = kill_mob(mob);
+		} else {
+			mob = mob->next;
 		}
 	}
 }

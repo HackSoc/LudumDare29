@@ -60,46 +60,59 @@ bool move_mob_relative(Mob * mob, int xdiff, int ydiff) {
 bool damage_mob(Mob * mob, unsigned int damage) {
 	mob->health -= damage;
 
+	return (mob->health <= 0);
 	if(mob->health <= 0) {
-		if(mob->death_action != NULL) {
-			mob->death_action(mob);
-		}
-
-		Level * level = mob->level;
-		Cell * cell = level->cells[mob->xpos][mob->ypos];
-		Mob * prev = mob->prev;
-		Mob * next = mob->next;
-
-		/* Remove it from the cell */
-		cell->occupant = NULL;
-
-		/* Special case: head of the mobs list */
-		if(level->mobs == mob) {
-			assert(prev == NULL);
-			level->mobs = next;
-		}
-
-		/* Remove from the doubly-linked list */
-		if(prev != NULL) {
-			prev->next = next;
-		}
-
-		if(next != NULL) {
-			next->prev = prev;
-		}
-
-		/* Drop its items */
-		if(cell->items == NULL) {
-			cell->items = mob->items;
-		} else {
-			Item * last;
-			for(last = cell->items; last != NULL; last = last->next) {}
-			last->next = mob->items;
-			last->next->prev = last;
-		}
 		return true;
 	}
 	return false;
+}
+
+/**
+ * Kill a mob - free it, and remove it from the lists.
+ * @param mob The mob to kill
+ * @return The next mob in the list, or NULL
+ */
+Mob * kill_mob(Mob * mob) {
+	if(mob->death_action != NULL) {
+		mob->death_action(mob);
+	}
+
+	Level * level = mob->level;
+	Cell * cell = level->cells[mob->xpos][mob->ypos];
+	Mob * prev = mob->prev;
+	Mob * next = mob->next;
+
+	/* Remove it from the cell */
+	cell->occupant = NULL;
+
+	/* Special case: head of the mobs list */
+	if(level->mobs == mob) {
+		assert(prev == NULL);
+		level->mobs = next;
+	}
+
+	/* Remove from the doubly-linked list */
+	if(prev != NULL) {
+		prev->next = next;
+	}
+
+	if(next != NULL) {
+		next->prev = prev;
+	}
+
+	/* Drop its items */
+	if(cell->items == NULL) {
+		cell->items = mob->items;
+	} else {
+		Item * last;
+		for(last = cell->items; last != NULL; last = last->next) {}
+		last->next = mob->items;
+		last->next->prev = last;
+	}
+
+	xfree(mob);
+
+	return next;
 }
 
 /**
