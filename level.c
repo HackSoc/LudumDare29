@@ -112,6 +112,15 @@ void build_level(Level * level) {
 			level->cells[minersx[m]][minersy[m]-dy]->solid = false;
 		}
 	}
+	
+	/* drop the downstair at the position of a random miner */
+	{
+		int m = rand() % NMINERS;
+		level->cells[minersx[m]][minersy[m]]->baseSymbol = '>';
+		level->cells[minersx[m]][minersy[m]]->solid = false;
+		level->endx = minersx[m];
+		level->endy = minersy[m];
+	}
 }
 
 /**

@@ -41,6 +41,7 @@ typedef struct Level {
 	struct Mob * player; /**< The player mob (must also be in mobs). */
 
 	int startx, starty; /**< The x and y positions of the stairs from the previous level. */
+	int endx, endy; /**< The x and y positions of the stairs to the next level. */
 
 	struct Cell * cells[LEVELWIDTH][LEVELHEIGHT]; /**< The map. */
 } Level;
