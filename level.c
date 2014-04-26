@@ -4,6 +4,7 @@
 #include "level.h"
 #include "mob.h"
 #include "utils.h"
+#include "effect.h"
 
 extern bool quit;
 
@@ -134,7 +135,15 @@ void run_turn(Level * level) {
 		if(mob->turn_action != NULL) {
 			mob->turn_action(mob);
 		}
-		//every turn effects on the mob go here
+		if(is_afflicted(mob)) {
+			mob->effect_action(mob);
+
+			if(mob->effect_duration == 1) {
+				mob->effect_action = NULL;
+			} else if(mob->effect_duration > 1) {
+				mob->effect_duration --;
+			}
+		}
 	}
 }
 

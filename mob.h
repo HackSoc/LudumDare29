@@ -28,6 +28,9 @@ typedef struct Mob {
 	void (*turn_action)(struct Mob *);  /**< What to do every turn. */
 	void (*death_action)(struct Mob *); /**< What to do on death. */
 
+	int effect_duration; /**< How long the current efefct will last. */
+	void (*effect_action)(struct Mob *); /**< The effect to apply every turn. */
+
 	bool hostile; /**< A mob is hostile if the player can damage it. */
 
 	char* name; /**< The name of the mob (may be NULL for NPC). */
