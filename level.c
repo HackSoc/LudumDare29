@@ -120,7 +120,7 @@ static void mine_level(Level * level,
 			place_cell(level, minersx[m], minersy[m]-dy, to_place, true);
 		}
 	}
-
+	
 	/* drop the downstair at the position of a random miner */
 	if (make_stairs) {
 		int m = rand() % num_miners;
@@ -237,9 +237,6 @@ void run_turn(Level * level) {
 		}
 		do_affliction(mob);
 	}
-	/* Player is special, and goes last */
-	level->player->turn_action(level->player);
-	do_affliction(level->player);
 }
 
 /**

@@ -40,7 +40,7 @@ int main() {
 		.level = NULL,
 		.symbol = 'H',
 		.next = NULL,
-		.prev = NULL,
+		.prev = &player,
 		.items = NULL,
 		.hostile = true,
 		.turn_action = &simple_enemy_turn,
@@ -55,12 +55,13 @@ int main() {
 	Level level = {
 		.next = NULL,
 		.prev = NULL,
-		.mobs = NULL,
+		.mobs = &player,
 		.player = &player
 	};
 
 	player.level = &level;
 	hedgehog.level = &level;
+	player.next = &hedgehog;
 
 	build_level(&level);
 	player.xpos = level.startx;
