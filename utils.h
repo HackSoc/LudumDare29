@@ -14,7 +14,7 @@
 #define xcalloc(S,T) _xalloc(S * sizeof(T));
 
 /** Wrapper macro for _xfree to add the extra indirection. */
-#define xfree(P) _xfree(&P)
+#define xfree(P) _xfree((void **)&P)
 
 void mvaddprintf(unsigned int y, unsigned int x, const char * fmt, ...);
 void addprintf(const char * fmt, ...);
