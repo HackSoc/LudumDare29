@@ -1,2 +1,4 @@
 ld29
 objs/*
+html/*
+latex/*
