@@ -42,7 +42,8 @@ static void mine_level(Level * level,
 					   unsigned int spread,
 					   unsigned int iterations,
 					   unsigned int startx, unsigned int starty,
-					   Cell * to_place) {
+					   Cell * to_place,
+					   bool make_stairs) {
 	unsigned int minersx[num_miners], minersy[num_miners];
 	unsigned int i, m;
 
@@ -108,8 +109,8 @@ static void mine_level(Level * level,
 	}
 	
 	/* drop the downstair at the position of a random miner */
-	{
-		int m = rand() % NMINERS;
+	if (make_stairs) {
+		int m = rand() % num_miners;
 		level->cells[minersx[m]][minersy[m]]->baseSymbol = '>';
 		level->cells[minersx[m]][minersy[m]]->solid = false;
 		level->endx = minersx[m];
@@ -169,7 +170,7 @@ void build_level(Level * level) {
 	mine_level(level,
 			   NMINERS, SPREAD, ITERATIONS,
 			   level->startx, level->starty,
-			   &floor);
+			   &floor, true);
 
 	/* Mine out lakes */
 	Cell poison_lake = {
@@ -186,7 +187,7 @@ void build_level(Level * level) {
 		mine_level(level,
 				   NLAKEMINERS, LAKESPREAD, LAKEITERATIONS,
 				   lx, ly,
-				   &poison_lake);
+				   &poison_lake, false);
 	}
 
 	/* Place the stairs */
@@ -223,6 +224,7 @@ void run_turn(Level * level) {
  * @param level Grid to display.
  */
 void display_level(Level * level) {
+	Mob * player = level->player;
 	for(unsigned int x = 0; x < LEVELWIDTH; x++) {
 		for(unsigned int y = 0; y < LEVELHEIGHT; y++) {
 			if(level->cells[x][y]->occupant != NULL) {
@@ -234,4 +236,8 @@ void display_level(Level * level) {
 			}
 		}
 	}
+	
+	/* Display player stats */
+	mvaddprintf(21, 5, "%s, the %s %s", player->name, player->race, player->profession);
+	mvaddprintf(22, 5, "HP: %d/%d", player->health, player->max_health);
 }

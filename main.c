@@ -88,13 +88,6 @@ int main() {
 	/* Game loop */
 	Level * current_level = &level;
 	while(!quit) {
-		/* Render level */
-		display_level(current_level);
-
-		/* Display player stats */
-		mvaddprintf(21, 5, "%s, the %s %s", player.name, player.race, player.profession);
-		mvaddprintf(22, 5, "HP: %d/%d", player.health, player.max_health);
-
 		/* Update mobs */
 		run_turn(current_level);
 

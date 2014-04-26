@@ -177,5 +177,10 @@ bool move_mob_level(Mob * mob, bool toprev) {
 	mob->xpos = newx;
 	mob->ypos = newy;
 
+	if (mob == level->player) {
+		level->player = NULL;
+		newlevel->player = mob;
+	}
+
 	return true;
 }
