@@ -252,25 +252,17 @@ void display_level(Level * level) {
 	for(unsigned int x = 0; x < LEVELWIDTH; x++) {
 		for(unsigned int y = 0; y < LEVELHEIGHT; y++) {
 			if(level->cells[x][y]->occupant != NULL) {
-				short cpair = level->cells[x][y]->occupant->colour;
-				init_pair(cpair, level->cells[x][y]->occupant->colour, COLOR_BLACK);
-				attron(COLOR_PAIR(cpair));
-				if(level->cells[x][y]->occupant->is_bold) {
-					attron(A_BOLD);
-				}
-				mvaddch(y, x, level->cells[x][y]->occupant->symbol);
-				if(level->cells[x][y]->occupant->is_bold) {
-					attroff(A_BOLD);
-				}
-				attroff(COLOR_PAIR(cpair));
+				mvaddchcol(y, x,
+						   level->cells[x][y]->occupant->symbol,
+						   level->cells[x][y]->occupant->colour, COLOR_BLACK,
+						   level->cells[x][y]->occupant->is_bold);
 			} else if(level->cells[x][y]->items != NULL) {
 				mvaddch(y, x, level->cells[x][y]->items->symbol);
 			} else {
-				short cpair = level->cells[x][y]->colour;
-				init_pair(cpair, level->cells[x][y]->colour, COLOR_BLACK);
-				attron(COLOR_PAIR(cpair));
-				mvaddch(y, x, level->cells[x][y]->baseSymbol);
-				attroff(COLOR_PAIR(cpair));
+				mvaddchcol(y, x,
+						   level->cells[x][y]->baseSymbol,
+						   level->cells[x][y]->colour, COLOR_BLACK,
+						   false);
 			}
 		}
 	}

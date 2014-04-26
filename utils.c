@@ -32,6 +32,34 @@ void addprintf(const char * fmt, ...) {
 }
 
 /**
+ * Render the given char at the given position with the given colour
+ * pair.
+ * @param y The Y position
+ * @param x The X position
+ * @param chr The character to render
+ * @param fg The foreground colour
+ * @param bg The background colour
+ * @param bold Whether to bold or not
+ */
+void mvaddchcol(unsigned int y, unsigned int x,
+				char chr,
+				int fg, int bg,
+				bool bold) {
+	init_pair(fg << 3 | bg, fg, bg);
+	attron(COLOR_PAIR(fg << 3 | bg));
+	if(bold) {
+		attron(A_BOLD);
+	}
+
+	mvaddch(y, x, chr);
+
+	if(bold) {
+		attroff(A_BOLD);
+	}
+	attroff(COLOR_PAIR(fg << 3 | bg));
+}
+
+/**
  * Allocate (and zero) memory and immediately bail out if it fails.
  * @param size Amount of memory to allocate (in bytes).
  * @return Allocated memory.
