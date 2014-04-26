@@ -1,5 +1,5 @@
-#ifndef _CURSES_H
-#define _CURSES_H
+#ifndef _UTILS_H
+#define _UTILS_H
 
 /**
  * The width of the screen, in characters

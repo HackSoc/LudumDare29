@@ -1,5 +1,5 @@
 #include <curses.h>
-#include "curses.h"
+#include "utils.h"
 
 /**
  * printf the given string at the given position

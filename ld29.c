@@ -2,7 +2,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
-#include "curses.h"
+#include "utils.h"
 #include "level.h"
 #include "mob.h"
 #include "item.h"
