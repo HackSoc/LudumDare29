@@ -107,7 +107,7 @@ static void mine_level(Level * level,
 			place_cell(level, minersx[m], minersy[m]-dy, to_place);
 		}
 	}
-	
+
 	/* drop the downstair at the position of a random miner */
 	if (make_stairs) {
 		int m = rand() % num_miners;
@@ -155,7 +155,7 @@ void build_level(Level * level) {
 			}
 		}
 	}
-	
+
 	/* generate starting coordinates near the middle */
 	level->startx = 39 + (rand() % 20);
 	level->starty = 4  + (rand() % 10);
@@ -196,6 +196,22 @@ void build_level(Level * level) {
 }
 
 /**
+ * Run afflicated routines on a mob.
+ * @param mob Afflicted mob.
+ */
+void do_affliction(Mob * mob) {
+	if(!is_afflicted(mob)) return;
+
+	mob->effect_action(mob);
+
+	if(mob->effect_duration == 1) {
+		mob->effect_action = NULL;
+	} else if(mob->effect_duration > 1) {
+		mob->effect_duration --;
+	}
+}
+
+/**
  * A "turn" consists of all of the mobs acting once, possibly followed
  * by some constant effect on the mob. As the player is a turn, this
  * is (indirectly) where blocking for input happens.
@@ -206,16 +222,11 @@ void run_turn(Level * level) {
 		if(mob->turn_action != NULL) {
 			mob->turn_action(mob);
 		}
-		if(is_afflicted(mob)) {
-			mob->effect_action(mob);
-
-			if(mob->effect_duration == 1) {
-				mob->effect_action = NULL;
-			} else if(mob->effect_duration > 1) {
-				mob->effect_duration --;
-			}
-		}
+		do_affliction(mob);
 	}
+	/* Player is special, and goes last */
+	level->player->turn_action(level->player);
+	do_affliction(level->player);
 }
 
 /**
