@@ -151,8 +151,10 @@ static void add_mob(Level * level) {
 	}
 	if (!found) return;
 
-	Mob * tail = NULL;
-	for (tail = level->mobs; tail->next != NULL; tail = tail->next);
+	Mob * tail;
+	for (tail = level->mobs;
+		 tail != NULL && tail->next != NULL;
+		 tail = tail->next);
 
 	Mob * new = xalloc(Mob);
 	new->level = level;
@@ -171,7 +173,11 @@ static void add_mob(Level * level) {
 	new->xpos = x;
 	new->ypos = y;
 
-	tail->next = new;
+	if(tail == NULL) {
+		level->mobs = new;
+	} else {
+		tail->next = new;
+	}
 	level->cells[x][y]->occupant = new;
 }
 
