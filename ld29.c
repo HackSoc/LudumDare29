@@ -9,7 +9,9 @@
 
 bool quit = false;
 
-void player_action(Mob *);
+void player_turn(Mob *);
+void player_death(Mob *);
+void simple_enemy_turn(Mob *);
 
 int main() {
 	/* Simple static level for rendering */
@@ -18,18 +20,34 @@ int main() {
 				  .next = NULL,
 				  .prev = NULL,
 				  .items = NULL,
-				  .action = &player_action,
+				  .hostile = false,
+				  .turn_action = &player_turn,
+				  .death_action = &player_death,
 				  .name = "Elrond",
 				  .race = "Half-Elf",
 				  .profession = "Orc Slayer",
 				  .health = 100,
 				  .max_health = 100};
-	
+
+	Mob hedgehog = {.level = NULL,
+					.symbol = 'H',
+					.next = NULL,
+					.prev = &player,
+					.items = NULL,
+					.hostile = true,
+					.turn_action = &simple_enemy_turn,
+					.death_action = NULL,
+					.health = 5,
+					.max_health = 5};
+
 	Level level = {.next = NULL,
 				   .prev = NULL,
-				   .mobs = &player};
+				   .mobs = &player,
+				   .player = &player};
 	
 	player.level = &level;
+	hedgehog.level = &level;
+	player.next = &hedgehog;
 	
 	for(unsigned int y = 0; y < LEVELHEIGHT; y++) {
 		for(unsigned int x = 0; x < LEVELWIDTH; x++) {
@@ -49,6 +67,10 @@ int main() {
 	level.cells[15][10]->occupant = &player;
 	player.xpos = 15;
 	player.ypos = 10;
+
+	level.cells[20][3]->occupant = &hedgehog;
+	hedgehog.xpos = 20;
+	hedgehog.ypos = 3;
 
 	/* Initialise curses */
 	initscr();

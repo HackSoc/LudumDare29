@@ -14,7 +14,11 @@ typedef struct Mob {
 	struct Mob * next;
 	struct Mob * prev;
 	struct Item * items;
-	void (*action)(struct Mob *);
+	void (*turn_action)(struct Mob *);
+	void (*death_action)(struct Mob *);
+
+	/* A mob is hostile if the player can damage it */
+	bool hostile;
 
 	/* Statistics - can be NULL/0/whatever for mobs where these are
 	   not relevent. */

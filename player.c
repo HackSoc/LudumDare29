@@ -6,10 +6,8 @@
 
 extern bool quit;
 
-void player_action(Mob * player) {
+void player_turn(Mob * player) {
 	int ch;
-	int x = player->xpos;
-	int y = player->ypos;
 
 	display_level(player->level);
 	ch = getch();
@@ -17,26 +15,29 @@ void player_action(Mob * player) {
 		case 'k':
 		case '8':
 		case KEY_UP:
-			y--;
+			attackmove_relative(player, 0, -1, 5);
 			break;
 		case 'j':
 		case '2':
 		case KEY_DOWN:
-			y++;
+			attackmove_relative(player, 0, 1, 5);
 			break;
 		case 'h':
 		case '4':
 		case KEY_LEFT:
-			x--;
+			attackmove_relative(player, -1, 0, 5);
 			break;
 		case 'l':
 		case '6':
 		case KEY_RIGHT:
-			x++;
+			attackmove_relative(player, 1, 0, 5);
 			break;
 		case 'q':
 			quit = true;
-		}
+	}
+}
 
-	move_mob(player, x, y);
+void player_death(Mob * player) {
+	// Just quit
+	quit = true;
 }
