@@ -42,6 +42,8 @@ typedef struct Level {
 	struct Mob * mobs;   /**< Doubly-linked list of mobs in the level. */
 	struct Mob * player; /**< The player mob (must also be in mobs). */
 
+	int depth; /**< The depth of the level.*/
+
 	int startx, starty; /**< The x and y positions of the stairs from the previous level. */
 	int endx, endy; /**< The x and y positions of the stairs to the next level. */
 

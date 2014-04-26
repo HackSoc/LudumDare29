@@ -223,6 +223,10 @@ void build_level(Level * level) {
 	level->startx = 39 + (rand() % 20);
 	level->starty = 4  + (rand() % 10);
 
+	/* assign depth number. if this isn't the first level,
+	   this will be corrected pretty darn swiftly. */
+	level->depth = 0;
+
 	/* Mine out passageways */
 	Cell floor = {
 		.baseSymbol = '.',
@@ -324,4 +328,7 @@ void display_level(Level * level) {
 	/* Display player stats */
 	mvaddprintf(21, 5, "%s, the %s %s", player->name, player->race, player->profession);
 	mvaddprintf(22, 5, "HP: %d/%d", player->health, player->max_health);
+
+	/* Display what level we are on */
+	mvaddprintf(21, 67, "Depth: %d", level->depth);
 }

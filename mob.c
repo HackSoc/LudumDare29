@@ -155,6 +155,7 @@ bool move_mob_level(Mob * mob, bool toprev) {
 			level->next = xalloc(Level);
 			build_level(level->next);
 			level->next->prev = level;
+			level->next->depth = level->depth + 1;
 		}
 		newlevel = level->next;
 		newx = newlevel->startx;
