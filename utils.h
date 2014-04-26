@@ -19,7 +19,7 @@
 /**
  * Handy calloc-like function using _xalloc
  */
-#define xcalloc(S,N) _xalloc(S * sizeof(N));
+#define xcalloc(S,T) _xalloc(S * sizeof(T));
 
 /**
  * Wrapper macro for _xfree to add the extra indirection
