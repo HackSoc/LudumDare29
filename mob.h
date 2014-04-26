@@ -9,6 +9,7 @@ struct Level;
 
 typedef struct Mob {
 	struct Level * level;
+	int xpos, ypos;
 	char symbol;
 	struct Mob * next;
 	struct Mob * prev;

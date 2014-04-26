@@ -7,6 +7,10 @@
 #include "mob.h"
 #include "item.h"
 
+bool quit = false;
+
+void player_action(Mob *);
+
 int main() {
 	/* Simple static level for rendering */
 	Cell hwall = {.baseSymbol = '-',
@@ -30,6 +34,7 @@ int main() {
 				  .next = NULL,
 				  .prev = NULL,
 				  .items = NULL,
+				  .action = &player_action,
 				  .name = "Elrond",
 				  .race = "Half-Elf",
 				  .profession = "Orc Slayer",
@@ -44,18 +49,20 @@ int main() {
 	
 	for(unsigned int y = 0; y < LEVELHEIGHT; y++) {
 		for(unsigned int x = 0; x < LEVELWIDTH; x++) {
+			level.cells[x][y] = calloc(1, sizeof(Cell));
 			if(y == 0 || y == LEVELHEIGHT - 1) {
-				level.cells[x][y] = &hwall;
+				level.cells[x][y]->baseSymbol = '-';
 			} else if (x == 0 || x == LEVELWIDTH - 1) {
-				level.cells[x][y] = &vwall;
+				level.cells[x][y]->baseSymbol = '|';
 			} else {
-				level.cells[x][y] = &floor;
+				level.cells[x][y]->baseSymbol = '.';
 			}
 		}
 	}
 	
-	level.cells[15][10] = &floor2;
 	level.cells[15][10]->occupant = &player;
+	player.xpos = 15;
+	player.ypos = 10;
 
 	/* Initialise curses */
 	initscr();
@@ -68,7 +75,7 @@ int main() {
 	
 	/* Game loop */
 	Level * current_level = &level;
-	//while(true) {
+	while(!quit) {
 	/* Update mobs */
 	run_turn(current_level);
 	
@@ -79,7 +86,7 @@ int main() {
 	/* Display player stats */
 	mvaddprintf(21, 5, "%s, the %s %s", player.name, player.race, player.profession);
 	mvaddprintf(22, 5, "HP: %d/%d", player.health, player.max_health);
-	//}
+	}
 	
 	/* Hang for output */
 	getch();

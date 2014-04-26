@@ -2,9 +2,11 @@
 #include <curses.h>
 #include <stdlib.h>
 
+extern bool quit;
+
 void run_turn(Level * level) {
 	Mob * mob;
-	for(mob = level->mobs; mob != NULL; mob = mob->next) {
+	for(mob = level->mobs; mob != NULL && !quit; mob = mob->next) {
 		if(mob->action != NULL) {
 			mob->action(mob);
 		}
