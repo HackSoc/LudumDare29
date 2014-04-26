@@ -15,7 +15,7 @@ bool attackmove(Mob * player, unsigned int x, unsigned int y,
 	Mob * mob = player->level->cells[x][y]->occupant;
 	bool unoccupied = move_mob(player, x, y);
 
-	if(!unoccupied && mob->hostile) {
+	if(!unoccupied && mob != NULL && mob->hostile) {
 		damage_mob(mob, damage);
 	}
 
