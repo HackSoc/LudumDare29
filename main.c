@@ -52,10 +52,9 @@ int main() {
 	getch();
 
 	/* Game loop */
-	Level * current_level = &level;
 	while(!quit) {
 		/* Update mobs */
-		run_turn(current_level);
+		run_turn(player->level);
 
 		clear();
 	}
