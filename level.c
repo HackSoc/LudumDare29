@@ -15,11 +15,23 @@ extern bool quit;
  * @param x The X coordinate.
  * @param y The Y coordinate.
  * @param to_place The cell to clone.
+ * @param careful Only place if the space is occuped by a wall or floor.
  */
 static void place_cell(Level * level,
 					   unsigned int x,
 					   unsigned int y,
-					   Cell * to_place) {
+					   Cell * to_place,
+					   bool careful) {
+
+	if(careful) {
+		switch(level->cells[x][y]->baseSymbol) {
+		case '#':
+		case '.':
+			break;
+		default:
+			return;
+		}
+	}
 
 	level->cells[x][y]->baseSymbol = to_place->baseSymbol;
 	level->cells[x][y]->solid      = to_place->solid;
@@ -75,9 +87,10 @@ static void mine_level(Level * level,
 				minersy[m] = LEVELHEIGHT - 2;
 			}
 
-			place_cell(level, minersx[m], minersy[m], to_place);
-			place_cell(level, minersx[m]-dx, minersy[m], to_place);
-			place_cell(level, minersx[m], minersy[m]-dy, to_place);
+			/* Place a cell, making sure we don't overwrite any features */
+			place_cell(level, minersx[m], minersy[m], to_place, true);
+			place_cell(level, minersx[m]-dx, minersy[m], to_place, true);
+			place_cell(level, minersx[m], minersy[m]-dy, to_place, true);
 		}
 	}
 	for(i = 0; i < iterations; i++) {
@@ -102,9 +115,9 @@ static void mine_level(Level * level,
 				minersy[m] = LEVELHEIGHT - 2;
 			}
 
-			place_cell(level, minersx[m], minersy[m], to_place);
-			place_cell(level, minersx[m]-dx, minersy[m], to_place);
-			place_cell(level, minersx[m], minersy[m]-dy, to_place);
+			place_cell(level, minersx[m], minersy[m], to_place, true);
+			place_cell(level, minersx[m]-dx, minersy[m], to_place, true);
+			place_cell(level, minersx[m], minersy[m]-dy, to_place, true);
 		}
 	}
 
