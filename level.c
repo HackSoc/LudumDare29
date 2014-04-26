@@ -108,8 +108,6 @@ void build_level(Level * level) {
 			level->cells[minersx[m]][minersy[m]]->solid = false;
 			level->cells[minersx[m]-dx][minersy[m]]->baseSymbol = '.';
 			level->cells[minersx[m]-dx][minersy[m]]->solid = false;
-			level->cells[minersx[m]-dx+1][minersy[m]]->baseSymbol = '.';
-			level->cells[minersx[m]-dx+1][minersy[m]]->solid = false;
 			level->cells[minersx[m]][minersy[m]-dy]->baseSymbol = '.';
 			level->cells[minersx[m]][minersy[m]-dy]->solid = false;
 		}
