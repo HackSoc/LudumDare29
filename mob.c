@@ -116,6 +116,57 @@ Mob * kill_mob(Mob * mob) {
 }
 
 /**
+ * Determine if a mob can see the given point. All points are visible
+ * unless there is a wall in the way. This uses Bresenham's line
+ * algorithm to determine line-of-sight.
+ *
+ * Note: as this will be primarily used to render the level, a better
+ * version might be to operate on a 2d array of three-state variables
+ * ("visible", "blocked", and "unknown"), and just iterate the
+ * algorithm with different starting points until every point is
+ * known. This would avoid the need to check each individual point,
+ * possibly duplicating work.
+ *
+ * @param mob The mob
+ * @param x The target X coordinate
+ * @param y The target Y coordinate
+ */
+bool can_see(Mob * mob, unsigned int x, unsigned int y) {
+	Level * level = mob->level;
+
+	unsigned int x0 = mob->xpos;
+	unsigned int y0 = mob->ypos;
+
+	int dx = abs(x0 - x);
+	int dy = abs(y0 - y) ;
+
+	int sx = (x0 < x) ? 1 : -1;
+	int sy = (y0 < y) ? 1 : -1;
+
+	int err = dx - dy;
+
+	while(x0 != x || y0 != y) {
+		if(level->cells[x0][y0]->baseSymbol == '#') {
+			return false;
+		}
+
+		int e2 = err << 2;
+		
+		if(e2 > -dy) {
+			err -= dy;
+			x0 += sx;
+		}
+
+		if(e2 < dx) {
+			err += dx;
+			y0 += sy;
+		}
+	}
+
+	return true;
+}
+
+/**
  * A very simple enemy: move towards the player, and damage them if adjacent.
  * @param enemy Entity to move.
  */

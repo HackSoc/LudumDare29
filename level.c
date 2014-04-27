@@ -322,6 +322,10 @@ void display_level(Level * level) {
 	Mob * player = level->player;
 	for(unsigned int x = 0; x < LEVELWIDTH; x++) {
 		for(unsigned int y = 0; y < LEVELHEIGHT; y++) {
+			if(!can_see(player, x, y)) {
+				continue;
+			}
+
 			if(level->cells[x][y]->occupant != NULL &&
 			   level->cells[x][y]->occupant->health > 0) {
 				mvaddchcol(y, x,
