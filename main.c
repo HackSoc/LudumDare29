@@ -21,8 +21,8 @@ int main() {
 	noecho();
 	nonl();
 
-	intrflush(stdscr, FALSE);
-	keypad(stdscr, TRUE);
+	intrflush(stdscr, false);
+	keypad(stdscr, true);
 	start_color();
 	curs_set(0);
 
