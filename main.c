@@ -2,6 +2,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <time.h>
+#include <signal.h>
 
 #include "utils.h"
 #include "level.h"
@@ -12,6 +13,15 @@
 
 /** Whether to quit the game or not. */
 bool quit = false;
+
+/**
+ * Catch a sigint and exit gracefully
+ */
+void catch_sigint(int dummy) {
+	(void) dummy;
+
+    quit = true;
+}
 
 /** Entry point. */
 int main() {
@@ -27,6 +37,9 @@ int main() {
 	start_color();
 	curs_set(0);
 	init_color(COLOR_BLUE, 250, 250, 250);
+
+	/* Attach the signal handler */
+	signal(SIGINT, catch_sigint);
 
 	srand(time(NULL));
 

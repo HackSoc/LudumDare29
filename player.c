@@ -407,9 +407,6 @@ void player_turn(Mob * player) {
 		show_help();
 		break;
 
-	case '!':
-		quit = true;
-		break;
 	default:
 		break;
 	}
