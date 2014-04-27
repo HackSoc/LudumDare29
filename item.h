@@ -8,11 +8,6 @@ struct Equipment;
 struct Item;
 
 /**
- * Used to determine the type of some equipment.
- */
-enum EquipmentType { NONE, WEAPON, ARMOUR };
-
-/**
  * Some items are equipment, and so have a pointer to an equipment
  * struct, which defines its stats.
  */
@@ -20,12 +15,16 @@ typedef struct Equipment {
 	struct Item * item; /**< The item with which this equipment is
 	                       associated */
 
-	enum EquipmentType type; /**< The type of the equiment. */
 	unsigned int attack; /**< The attack damage of the item. */
 	unsigned int defense; /**< The defense value of the item. */
 
 	bool equipped; /**< Whether the equipment is equipped or not. */
 } Equipment;
+
+/**
+ * Used to determine the type of an item
+ */
+enum ItemType { NONE, WEAPON, ARMOUR, FOOD, DRINK };
 
 /**
  * Items are things that mobs can carry around, and possibly
@@ -34,6 +33,8 @@ typedef struct Equipment {
  * luminosity should change by 1.
  */
 typedef struct Item {
+	enum ItemType type; /**< The type of the item. */
+
 	char symbol; /**< The symbol to display when dropped */
 	char * name; /**< The name to display when examined */
 
@@ -49,7 +50,7 @@ typedef struct Item {
 void display_inventory(List * inventory, const char * title);
 List ** choose_items(List * inventory, const char * prompt);
 Equipment * choose_equipment(List * inventory,
-                             enum EquipmentType type,
+                             enum ItemType type,
                              const char * prompt);
 
 #endif /*ITEM_H*/

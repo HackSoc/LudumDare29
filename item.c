@@ -86,7 +86,7 @@ List ** choose_items(List * inventory, const char * prompt){
  * @return NULL if nothing was selected, otherwise a pointer to the choice.
  */
 Equipment * choose_equipment(List * inventory,
-                             enum EquipmentType type,
+                             enum ItemType type,
                              const char * prompt) {
 
 	const char ** names = xcalloc(length(inventory) + 1, char *);
@@ -97,7 +97,7 @@ Equipment * choose_equipment(List * inventory,
 		Item * item = fromlist(Item, inventory, list);
 		if(item->equipment != NULL
 		   && !item->equipment->equipped
-		   && item->equipment->type == type) {
+		   && item->type == type) {
 			names[i] = item->name;
 			equipment[i] = item->equipment;
 			i ++;

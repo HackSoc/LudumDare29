@@ -106,18 +106,18 @@ Mob * create_player() {
 	Item * sword = xalloc(Item);
 	sword->symbol = '/';
 	sword->name = "A Sword";
+	sword->type = WEAPON;
 	sword->equipment = xalloc(Equipment);
 	sword->equipment->item = sword;
-	sword->equipment->type = WEAPON;
 	sword->equipment->attack = 10;
 
 	Item * lantern = xalloc(Item);
 	lantern->symbol = '^';
 	lantern->name = "Lantern";
+	lantern->type = WEAPON;
 	lantern->luminous = true;
 	lantern->equipment = xalloc(Equipment);
 	lantern->equipment->item = lantern;
-	lantern->equipment->type = WEAPON;
 	lantern->equipment->attack = 1;
 
 	player->inventory = insert(player->inventory, &stone->inventory);
