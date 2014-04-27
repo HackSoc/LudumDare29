@@ -62,9 +62,9 @@ int main() {
 		Level * level = level_head;
 		level_head = level_head->next;
 
-		do {
+		while (level->mobs != NULL) {
 			level->mobs = kill_mob(level->mobs);
-		} while (level->mobs != NULL);
+		}
 
 		for (int x = 0; x < LEVELWIDTH; x++) {
 			for (int y = 0; y < LEVELHEIGHT; y++) {
