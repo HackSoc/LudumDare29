@@ -113,12 +113,15 @@ Mob * kill_mob(Mob * mob) {
 	/* Drop its items */
 	cell->items = append(cell->items, mob->inventory);
 
-	/* Only the player needs to have its strings free'd */
+	/* The player mob is a bit special */
 	if (mob->level->player == mob) {
+		PlayerData * pdata = (PlayerData *)mob->data;
+		xfree(pdata->terrain);
 		xfree(mob->name);
 		xfree(mob->profession);
 		xfree(mob->race);
 	}
+	xfree(mob->data);
 	xfree(mob);
 
 	return next;
@@ -276,7 +279,7 @@ bool move_mob_level(Mob * mob, bool toprev) {
 
 	if (mob == level->player) {
 		PlayerData * playerdata = (PlayerData *)level->player->data;
-		
+
 		level->player = NULL;
 		newlevel->player = mob;
 
