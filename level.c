@@ -132,6 +132,17 @@ static void mine_level(Level * level,
 	}
 }
 
+#define DEF_MOB(sym, n, col, hlth) {.symbol = (sym), .colour = (col), .name = (n),\
+	.is_bold = false, .hostile = true, .health = (hlth), .max_health = (hlth),\
+	.level = NULL, .prev = NULL, .turn_action = NULL, .xpos = 0, .ypos = 0}
+
+static const struct Mob default_mobs[] = {
+	DEF_MOB('H', "Hedgehog", COLOR_YELLOW, 5),
+	DEF_MOB('S', "Squirrel", COLOR_YELLOW, 10)
+};
+
+#undef DEF_MOB
+
 /**
  * Add a mob to a level.
  * @param level The level to add to.
@@ -157,15 +168,10 @@ static void add_mob(Level * level) {
 		 tail = tail->next);
 
 	Mob * new = xalloc(Mob);
+	*new = default_mobs[rand() % lengthof(default_mobs)];
 	new->level = level;
-	new->symbol = 'H';
-	new->colour = COLOR_YELLOW;
-	new->is_bold = false;
 	new->prev = tail;
-	new->hostile = true;
 	new->turn_action = &simple_enemy_turn;
-	new->health = 5;
-	new->max_health = 5;
 	new->xpos = x;
 	new->ypos = y;
 

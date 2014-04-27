@@ -11,10 +11,13 @@
 #define xalloc(T) _xalloc(sizeof(T))
 
 /** Handy calloc-like function using _xalloc. */
-#define xcalloc(S,T) _xalloc(S * sizeof(T));
+#define xcalloc(S,T) _xalloc(S * sizeof(T))
 
 /** Wrapper macro for _xfree to add the extra indirection. */
 #define xfree(P) _xfree((void **)&P)
+
+/** Wrapper for getting the length of an array. */
+#define lengthof(x) (sizeof(x) / sizeof(x[0]))
 
 void mvaddprintf(unsigned int y, unsigned int x, const char * fmt, ...);
 void addprintf(const char * fmt, ...);
