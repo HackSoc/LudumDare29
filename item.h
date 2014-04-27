@@ -28,6 +28,8 @@ typedef struct Equipment {
 /**
  * Items are things that mobs can carry around, and possibly
  * equip. They live in inventories.
+ * Note: when a mob picks up or drops a luminous item, its (the mob)
+ * luminosity should change by 1.
  */
 typedef struct Item {
 	char symbol; /**< The symbol to display when dropped */
