@@ -68,6 +68,12 @@ int main() {
 
 		for (int x = 0; x < LEVELWIDTH; x++) {
 			for (int y = 0; y < LEVELHEIGHT; y++) {
+				Item * item = level->cells[x][y]->items;
+				while (item != NULL) {
+					Item * tmp = item;
+					item = item->next;
+					xfree(tmp);
+				}
 				xfree(level->cells[x][y]);
 			}
 			xfree(level->cells[x]);
