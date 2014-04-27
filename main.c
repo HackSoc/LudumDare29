@@ -72,6 +72,7 @@ int main() {
 				while (item != NULL) {
 					Item * tmp = item;
 					item = item->next;
+					xfree(tmp->equipment);
 					xfree(tmp);
 				}
 				xfree(level->cells[x][y]);
