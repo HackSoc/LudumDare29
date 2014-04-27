@@ -81,9 +81,9 @@ int main() {
 		Level * level = level_head;
 		level_head = (level_head->levels.next == NULL) ? NULL : fromlist(Level, levels, level_head->levels.next);
 
-		while (level->mobs != NULL) {
-			Mob * mob = kill_mob(fromlist(Mob, moblist, level->mobs));
-			level->mobs = (mob == NULL) ? NULL : mob->moblist.next;
+		Mob * mob = fromlist(Mob, moblist, level->mobs);
+		while (mob != NULL) {
+			mob = kill_mob(mob);
 		}
 
 		for (int x = 0; x < LEVELWIDTH; x++) {

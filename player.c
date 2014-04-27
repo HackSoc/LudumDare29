@@ -378,6 +378,8 @@ void player_turn(Mob * player) {
 					damage_mob(player, -item->value);
 				}
 			}
+			player->inventory = drop(&item->inventory);
+			xfree(item);
 		}
 		break;
 
@@ -399,6 +401,8 @@ void player_turn(Mob * player) {
 					damage_mob(player, -item->value);
 				}
 			}
+			player->inventory = drop(&item->inventory);
+			xfree(item);
 		}
 		break;
 
@@ -422,6 +426,21 @@ void player_turn(Mob * player) {
  */
 void player_death(Mob * player) {
 	clear();
+
+	/* Free ALL the things! */
+	PlayerData * playerdata = (PlayerData *)player->data;
+	Terrain * terrain = fromlist(Terrain, levels, gethead(&playerdata->terrain->levels));
+	while(terrain != NULL) {
+		Terrain * next = fromlist(Terrain, levels, terrain->levels.next);
+		xfree(terrain);
+		terrain = next;
+	}
+	xfree(playerdata);
+
+	/* Free the stats */
+	xfree(player->name);
+	xfree(player->profession);
+	xfree(player->race);
 
 	mvaddprintf(9, 10, "Oh dear, you died. :(");
 	mvaddprintf(10, 10, "Score: %i", player->score);

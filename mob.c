@@ -98,6 +98,7 @@ bool damage_mob(Mob * mob, unsigned int damage) {
  */
 Mob * kill_mob(Mob * mob) {
 	if(mob->death_action != NULL) {
+		/* Any mob-specific freeing should happen here */
 		mob->death_action(mob);
 	}
 
@@ -114,15 +115,7 @@ Mob * kill_mob(Mob * mob) {
 	/* Drop its items */
 	cell->items = append(cell->items, mob->inventory);
 
-	/* The player mob is a bit special */
-	if (mob->level->player == mob) {
-		PlayerData * pdata = (PlayerData *)mob->data;
-		xfree(pdata->terrain);
-		xfree(mob->name);
-		xfree(mob->profession);
-		xfree(mob->race);
-	}
-	xfree(mob->data);
+	/* Free it */
 	xfree(mob);
 
 	return next;
