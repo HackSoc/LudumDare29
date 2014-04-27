@@ -1,9 +1,10 @@
 <map id="simple_enemy_turn" name="simple_enemy_turn">
-<area shape="rect" id="node3" href="$mob_8c.html#af1fd43535881adae83322576a90a015d" title="can_see_other" alt="" coords="204,5,311,35"/>
-<area shape="rect" id="node7" href="$mob_8c.html#a23e360489b32985e54e378a80e447531" title="move_mob_relative" alt="" coords="191,59,324,88"/>
-<area shape="rect" id="node13" href="$mob_8c.html#a7ead5d0347250949fcc7a6c5548f50b0" title="damage_mob" alt="" coords="660,59,759,88"/>
-<area shape="rect" id="node5" href="$mob_8c.html#a9cf3e62246ac7b1471916c2744638a12" title="can_see" alt="" coords="383,5,452,35"/>
-<area shape="rect" id="node9" href="$mob_8c.html#a55ca3ba9d41a343311f102b64e1e7f4c" title="move_mob" alt="" coords="375,59,460,88"/>
-<area shape="rect" id="node11" href="$effect_8c.html#a8efc8653d207577779ab551e99a28aee" title="effect_poison" alt="" coords="511,5,609,35"/>
-<area shape="rect" id="node15" href="$effect_8c.html#a94aa3d083f9258eaf68081be0a61401e" title="afflict" alt="" coords="533,59,587,88"/>
+<area shape="rect" id="node3" href="$mob_8c.html#af1fd43535881adae83322576a90a015d" title="can_see_other" alt="" coords="204,19,311,48"/>
+<area shape="rect" id="node9" href="$mob_8c.html#a23e360489b32985e54e378a80e447531" title="move_mob_relative" alt="" coords="191,85,324,115"/>
+<area shape="rect" id="node15" href="$mob_8c.html#a7ead5d0347250949fcc7a6c5548f50b0" title="damage_mob" alt="" coords="665,112,764,141"/>
+<area shape="rect" id="node5" href="$mob_8c.html#a9cf3e62246ac7b1471916c2744638a12" title="can_see" alt="" coords="383,19,452,48"/>
+<area shape="rect" id="node7" href="$mob_8c.html#a20a2e7ecd12d928a1dd9fb7e90a6987e" title="can_see_point" alt="" coords="509,5,616,35"/>
+<area shape="rect" id="node11" href="$mob_8c.html#a55ca3ba9d41a343311f102b64e1e7f4c" title="move_mob" alt="" coords="375,85,460,115"/>
+<area shape="rect" id="node13" href="$effect_8c.html#a8efc8653d207577779ab551e99a28aee" title="effect_poison" alt="" coords="513,59,612,88"/>
+<area shape="rect" id="node17" href="$effect_8c.html#a94aa3d083f9258eaf68081be0a61401e" title="afflict" alt="" coords="536,112,589,141"/>
 </map>

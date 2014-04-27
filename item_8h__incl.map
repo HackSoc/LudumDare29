@@ -1,2 +1,6 @@
 <map id="item.h" name="item.h">
+<area shape="rect" id="node5" href="$list_8h.html" title="list.h" alt="" coords="197,237,248,267"/>
+<area shape="rect" id="node7" href="$mob_8h.html" title="mob.h" alt="" coords="113,83,172,112"/>
+<area shape="rect" id="node10" href="$level_8h.html" title="level.h" alt="" coords="47,160,105,189"/>
+<area shape="rect" id="node16" href="$utils_8h.html" title="utils.h" alt="" coords="129,160,185,189"/>
 </map>

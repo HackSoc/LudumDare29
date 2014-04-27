@@ -1,0 +1,5 @@
+<map id="choose_item_by_type" name="choose_item_by_type">
+<area shape="rect" id="node3" href="$list_8c.html#a075844780c304f60937fc19841d72418" title="length" alt="" coords="217,5,273,35"/>
+<area shape="rect" id="node5" href="$utils_8c.html#a8457ea394e29fe3b49e3b9a6d897ea8f" title="list_choice" alt="" coords="204,59,287,88"/>
+<area shape="rect" id="node7" href="$utils_8c.html#a2dc03125a4bc69b78615c7690a01f7e8" title="mvaddprintf" alt="" coords="336,59,427,88"/>
+</map>

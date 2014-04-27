@@ -95,35 +95,80 @@ Collaboration diagram for Item:</div>
 <div class="dyncontent">
 <div class="center"><img src="structItem__coll__graph.png" border="0" usemap="#Item_coll__map" alt="Collaboration graph"/></div>
 <map name="Item_coll__map" id="Item_coll__map">
-<area shape="rect" id="node3" href="structEquipment.html" title="Equipment" alt="" coords="5,107,88,136"/></map>
+<area shape="rect" id="node2" href="structList.html" title="List" alt="" coords="8,8,51,37"/></map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
+<tr class="memitem:a74fcd07bdf3ef39730069ce43edfa320"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="item_8h.html#a443f647757dde85043b49343f5cbe66b">ItemType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structItem.html#a74fcd07bdf3ef39730069ce43edfa320">type</a></td></tr>
+<tr class="separator:a74fcd07bdf3ef39730069ce43edfa320"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9a8145b44e8b8d07304e6d4cd40360d1"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structItem.html#a9a8145b44e8b8d07304e6d4cd40360d1">symbol</a></td></tr>
 <tr class="separator:a9a8145b44e8b8d07304e6d4cd40360d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a06c6faeee0e8202db92886ea8a4472d7"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structItem.html#a06c6faeee0e8202db92886ea8a4472d7">name</a></td></tr>
 <tr class="separator:a06c6faeee0e8202db92886ea8a4472d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6805b7d0bb98eb940404897b713986f7"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structItem.html">Item</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structItem.html#a6805b7d0bb98eb940404897b713986f7">next</a></td></tr>
-<tr class="separator:a6805b7d0bb98eb940404897b713986f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2ac541da55afe6a893990a6b47643fe6"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structItem.html">Item</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structItem.html#a2ac541da55afe6a893990a6b47643fe6">prev</a></td></tr>
-<tr class="separator:a2ac541da55afe6a893990a6b47643fe6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aac75e639e8902fe784fe162776936cd1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structEquipment.html">Equipment</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structItem.html#aac75e639e8902fe784fe162776936cd1">equipment</a></td></tr>
-<tr class="separator:aac75e639e8902fe784fe162776936cd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac38f05fd41953f8db6295b1b1680c5ec"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structItem.html#ac38f05fd41953f8db6295b1b1680c5ec">luminous</a></td></tr>
+<tr class="separator:ac38f05fd41953f8db6295b1b1680c5ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7917c80b47ebcc7e59776eb5f243ae44"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structList.html">List</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structItem.html#a7917c80b47ebcc7e59776eb5f243ae44">inventory</a></td></tr>
+<tr class="separator:a7917c80b47ebcc7e59776eb5f243ae44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc67d61b9927f1322b5c2342b96eb664"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structItem.html#abc67d61b9927f1322b5c2342b96eb664">equipped</a></td></tr>
+<tr class="separator:abc67d61b9927f1322b5c2342b96eb664"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abee19400000e69cbd7aecadb6e93fa7b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structItem.html#abee19400000e69cbd7aecadb6e93fa7b">value</a></td></tr>
+<tr class="separator:abee19400000e69cbd7aecadb6e93fa7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afef2400c739c1748730b2aa960887139"><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structItem.html#afef2400c739c1748730b2aa960887139">effect</a> )(struct <a class="el" href="structMob.html">Mob</a> *)</td></tr>
+<tr class="separator:afef2400c739c1748730b2aa960887139"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Items are things that mobs can carry around, and possibly equip. They live in inventories. </p>
+<div class="textblock"><p>Items are things that mobs can carry around, and possibly equip. They live in inventories. Note: when a mob picks up or drops a luminous item, its (the mob) luminosity should change by 1. </p>
 </div><h2 class="groupheader">Field Documentation</h2>
-<a class="anchor" id="aac75e639e8902fe784fe162776936cd1"></a>
+<a class="anchor" id="afef2400c739c1748730b2aa960887139"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structEquipment.html">Equipment</a>* Item::equipment</td>
+          <td class="memname">void(* Item::effect)(struct <a class="el" href="structMob.html">Mob</a> *)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Pointer to the equipment stats for the item, will be NULL if the item is not equipment. </p>
+<p>Some type-dependent effect </p>
+
+</div>
+</div>
+<a class="anchor" id="abc67d61b9927f1322b5c2342b96eb664"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Item::equipped</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Whether the item is equipped or not </p>
+
+</div>
+</div>
+<a class="anchor" id="a7917c80b47ebcc7e59776eb5f243ae44"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structList.html">List</a> Item::inventory</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The inventory to which this item belongs. </p>
+
+</div>
+</div>
+<a class="anchor" id="ac38f05fd41953f8db6295b1b1680c5ec"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Item::luminous</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Whether the item is luminous or not </p>
 
 </div>
 </div>
@@ -140,32 +185,6 @@ Data Fields</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a6805b7d0bb98eb940404897b713986f7"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct <a class="el" href="structItem.html">Item</a>* Item::next</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>The next item in the inventory </p>
-
-</div>
-</div>
-<a class="anchor" id="a2ac541da55afe6a893990a6b47643fe6"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct <a class="el" href="structItem.html">Item</a>* Item::prev</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>The last item in the inventory </p>
-
-</div>
-</div>
 <a class="anchor" id="a9a8145b44e8b8d07304e6d4cd40360d1"></a>
 <div class="memitem">
 <div class="memproto">
@@ -179,13 +198,39 @@ Data Fields</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a74fcd07bdf3ef39730069ce43edfa320"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="item_8h.html#a443f647757dde85043b49343f5cbe66b">ItemType</a> Item::type</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The type of the item. </p>
+
+</div>
+</div>
+<a class="anchor" id="abee19400000e69cbd7aecadb6e93fa7b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Item::value</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Some type-dependent value </p>
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
 <li><a class="el" href="item_8h_source.html">item.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Apr 27 2014 05:06:58 for Ludum Dare 29 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Apr 27 2014 23:51:29 for Ludum Dare 29 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

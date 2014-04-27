@@ -1,0 +1,8 @@
+<map id="kill_mob" name="kill_mob">
+<area shape="rect" id="node3" href="$list_8c.html#a599f5b7cce35d2760475b947d36d9303" title="drop" alt="" coords="135,72,180,101"/>
+<area shape="rect" id="node11" href="$list_8c.html#afbd6a9cefc144062bf5e3ac722fe6231" title="append" alt="" coords="125,139,189,168"/>
+<area shape="rect" id="node5" href="$list_8c.html#aa03e2734945bc99fc724362223536ed1" title="setnext" alt="" coords="240,5,304,35"/>
+<area shape="rect" id="node7" href="$list_8c.html#a6ee619d39f856742aa60a30b935f672c" title="gethead" alt="" coords="239,59,305,88"/>
+<area shape="rect" id="node9" href="$list_8c.html#a8f767445cdc4ecd0d420708a2b014729" title="setprev" alt="" coords="240,112,304,141"/>
+<area shape="rect" id="node13" href="$list_8c.html#ad7f192fab0de9f5b98c6d7d1cacf7f46" title="gettail" alt="" coords="244,165,300,195"/>
+</map>

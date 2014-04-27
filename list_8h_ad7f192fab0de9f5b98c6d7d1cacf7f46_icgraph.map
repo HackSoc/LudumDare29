@@ -1,0 +1,6 @@
+<map id="gettail" name="gettail">
+<area shape="rect" id="node3" href="$list_8h.html#afbd6a9cefc144062bf5e3ac722fe6231" title="append" alt="" coords="112,32,176,61"/>
+<area shape="rect" id="node5" href="$mob_8h.html#a326036918a9e17984afc509831849725" title="kill_mob" alt="" coords="225,32,295,61"/>
+<area shape="rect" id="node7" href="$level_8h.html#afa299a655307d17486c06015c556bab6" title="run_turn" alt="" coords="344,5,413,35"/>
+<area shape="rect" id="node9" href="$main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="461,32,512,61"/>
+</map>

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['quit',['quit',['../level_8c.html#ac746fa6ad48d19984a159f14bec028a3',1,'quit():&#160;main.c'],['../main_8c.html#ac746fa6ad48d19984a159f14bec028a3',1,'quit():&#160;main.c'],['../player_8c.html#ac746fa6ad48d19984a159f14bec028a3',1,'quit():&#160;main.c']]]
+  ['occupant',['occupant',['../structCell.html#a9ea3e5f560c3f7390b4281593e993b3e',1,'Cell']]],
+  ['offhand',['offhand',['../structMob.html#aa721494b0311b245ef48af39c2cd0121',1,'Mob']]]
 ];

@@ -87,101 +87,63 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">item.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br />
+<div class="textblock"><code>#include &lt;assert.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;stdbool.h&gt;</code><br />
 <code>#include &lt;curses.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="item_8h_source.html">item.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="utils_8h_source.html">utils.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="list_8h_source.html">list.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for item.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="item_8c__incl.png" border="0" usemap="#item_8c" alt=""/></div>
 <map name="item_8c" id="item_8c">
-<area shape="rect" id="node11" href="item_8h.html" title="item.h" alt="" coords="328,83,387,112"/><area shape="rect" id="node14" href="utils_8h.html" title="utils.h" alt="" coords="411,83,467,112"/></map>
+<area shape="rect" id="node13" href="item_8h.html" title="item.h" alt="" coords="339,83,397,112"/><area shape="rect" id="node16" href="list_8h.html" title="list.h" alt="" coords="384,315,435,344"/><area shape="rect" id="node27" href="utils_8h.html" title="utils.h" alt="" coords="472,237,528,267"/><area shape="rect" id="node18" href="mob_8h.html" title="mob.h" alt="" coords="339,160,397,189"/><area shape="rect" id="node21" href="level_8h.html" title="level.h" alt="" coords="288,237,347,267"/></map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a978830d9a1e817a1c511bdbb34755104"><td class="memItemLeft" align="right" valign="top">static const char **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="item_8c.html#a978830d9a1e817a1c511bdbb34755104">inventory_name_array</a> (<a class="el" href="structItem.html">Item</a> *inventory)</td></tr>
-<tr class="separator:a978830d9a1e817a1c511bdbb34755104"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afb3e724583d4c70cd215b057e599d399"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="structItem.html">Item</a> **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="item_8c.html#afb3e724583d4c70cd215b057e599d399">inventory_array</a> (<a class="el" href="structItem.html">Item</a> *inventory)</td></tr>
-<tr class="separator:afb3e724583d4c70cd215b057e599d399"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0bfb620b3fbeb8e01df2d69291b11e94"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="item_8c.html#a0bfb620b3fbeb8e01df2d69291b11e94">display_inventory</a> (<a class="el" href="structItem.html">Item</a> *inventory, const char *title)</td></tr>
-<tr class="separator:a0bfb620b3fbeb8e01df2d69291b11e94"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3cc62d90e9503daa6afa8a7c740260eb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structItem.html">Item</a> **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="item_8c.html#a3cc62d90e9503daa6afa8a7c740260eb">choose_items</a> (<a class="el" href="structItem.html">Item</a> *inventory, const char *prompt)</td></tr>
-<tr class="separator:a3cc62d90e9503daa6afa8a7c740260eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac0fef6832dc853f101528233962de779"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structEquipment.html">Equipment</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="item_8c.html#ac0fef6832dc853f101528233962de779">choose_equipment</a> (<a class="el" href="structItem.html">Item</a> *inventory, enum <a class="el" href="item_8h.html#a043f37c213c3e00687c1bbfabd5e7599">EquipmentType</a> type, const char *prompt)</td></tr>
-<tr class="separator:ac0fef6832dc853f101528233962de779"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9c6918844d3f444af84c7cbee425e5cf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structItem.html">Item</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="item_8c.html#a9c6918844d3f444af84c7cbee425e5cf">remove_items</a> (<a class="el" href="structItem.html">Item</a> *inventory, <a class="el" href="structItem.html">Item</a> **items)</td></tr>
-<tr class="separator:a9c6918844d3f444af84c7cbee425e5cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a910745632255ee16f4e48716225e0d03"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structItem.html">Item</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="item_8c.html#a910745632255ee16f4e48716225e0d03">add_items</a> (<a class="el" href="structItem.html">Item</a> *inventory, <a class="el" href="structItem.html">Item</a> **items)</td></tr>
-<tr class="separator:a910745632255ee16f4e48716225e0d03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afbf50a778f2c23e510ce373a1c10be0f"><td class="memItemLeft" align="right" valign="top">static const char **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="item_8c.html#afbf50a778f2c23e510ce373a1c10be0f">inventory_name_array</a> (<a class="el" href="structList.html">List</a> *inventory)</td></tr>
+<tr class="separator:afbf50a778f2c23e510ce373a1c10be0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a532680d66ba117fda60d945a7e387b45"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="structList.html">List</a> **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="item_8c.html#a532680d66ba117fda60d945a7e387b45">inventory_array</a> (<a class="el" href="structList.html">List</a> *inventory)</td></tr>
+<tr class="separator:a532680d66ba117fda60d945a7e387b45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4bf531409c042547e167d245bd10690f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="item_8c.html#a4bf531409c042547e167d245bd10690f">display_inventory</a> (<a class="el" href="structList.html">List</a> *inventory, const char *title)</td></tr>
+<tr class="separator:a4bf531409c042547e167d245bd10690f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d117255baa216bea18414e78d214e8f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structList.html">List</a> **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="item_8c.html#a9d117255baa216bea18414e78d214e8f">choose_items</a> (<a class="el" href="structList.html">List</a> *inventory, const char *prompt)</td></tr>
+<tr class="separator:a9d117255baa216bea18414e78d214e8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aceab572299b7675a8aca2595d0686fae"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structItem.html">Item</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="item_8c.html#aceab572299b7675a8aca2595d0686fae">choose_item_by_type</a> (<a class="el" href="structList.html">List</a> *inventory, enum <a class="el" href="item_8h.html#a443f647757dde85043b49343f5cbe66b">ItemType</a> type, const char *prompt, bool no_equipped)</td></tr>
+<tr class="separator:aceab572299b7675a8aca2595d0686fae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a910745632255ee16f4e48716225e0d03"></a>
+<a class="anchor" id="aceab572299b7675a8aca2595d0686fae"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structItem.html">Item</a>* add_items </td>
+          <td class="memname"><a class="el" href="structItem.html">Item</a>* choose_item_by_type </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structItem.html">Item</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structList.html">List</a> *&#160;</td>
           <td class="paramname"><em>inventory</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structItem.html">Item</a> **&#160;</td>
-          <td class="paramname"><em>items</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Add a list of items to an inventory. Returns the head of the inventory. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">inventory</td><td>The inventory </td></tr>
-    <tr><td class="paramname">items</td><td>The items to add </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="item_8c_a910745632255ee16f4e48716225e0d03_icgraph.png" border="0" usemap="#item_8c_a910745632255ee16f4e48716225e0d03_icgraph" alt=""/></div>
-<map name="item_8c_a910745632255ee16f4e48716225e0d03_icgraph" id="item_8c_a910745632255ee16f4e48716225e0d03_icgraph">
-<area shape="rect" id="node3" href="player_8h.html#a3829d1675d5789e2531ffcc90fcad6a2" title="player_turn" alt="" coords="137,5,223,35"/><area shape="rect" id="node5" href="player_8h.html#a168d23f1a7acdbae77883b6edf0af5b3" title="create_player" alt="" coords="273,5,372,35"/><area shape="rect" id="node7" href="main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="421,5,472,35"/></map>
-</div>
-</p>
-
-</div>
-</div>
-<a class="anchor" id="ac0fef6832dc853f101528233962de779"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structEquipment.html">Equipment</a>* choose_equipment </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structItem.html">Item</a> *&#160;</td>
-          <td class="paramname"><em>inventory</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">enum <a class="el" href="item_8h.html#a043f37c213c3e00687c1bbfabd5e7599">EquipmentType</a>&#160;</td>
+          <td class="paramtype">enum <a class="el" href="item_8h.html#a443f647757dde85043b49343f5cbe66b">ItemType</a>&#160;</td>
           <td class="paramname"><em>type</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>prompt</em>&#160;</td>
+          <td class="paramname"><em>prompt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>no_equipped</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -190,11 +152,12 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Choose a piece of equipment </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Choose an item by type </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">inventory</td><td>The inventory to choose from </td></tr>
-    <tr><td class="paramname">type</td><td>The type of the equipment </td></tr>
+    <tr><td class="paramname">type</td><td>The type of the item </td></tr>
     <tr><td class="paramname">prompt</td><td>The prompt </td></tr>
+    <tr><td class="paramname">no_equipped</td><td>Don't include equipped things </td></tr>
   </table>
   </dd>
 </dl>
@@ -203,31 +166,31 @@ Here is the caller graph for this function:</div>
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="item_8c_ac0fef6832dc853f101528233962de779_cgraph.png" border="0" usemap="#item_8c_ac0fef6832dc853f101528233962de779_cgraph" alt=""/></div>
-<map name="item_8c_ac0fef6832dc853f101528233962de779_cgraph" id="item_8c_ac0fef6832dc853f101528233962de779_cgraph">
-<area shape="rect" id="node3" href="utils_8c.html#a8457ea394e29fe3b49e3b9a6d897ea8f" title="list_choice" alt="" coords="185,5,268,35"/><area shape="rect" id="node5" href="utils_8c.html#a2dc03125a4bc69b78615c7690a01f7e8" title="mvaddprintf" alt="" coords="317,5,408,35"/></map>
+<div class="center"><img src="item_8c_aceab572299b7675a8aca2595d0686fae_cgraph.png" border="0" usemap="#item_8c_aceab572299b7675a8aca2595d0686fae_cgraph" alt=""/></div>
+<map name="item_8c_aceab572299b7675a8aca2595d0686fae_cgraph" id="item_8c_aceab572299b7675a8aca2595d0686fae_cgraph">
+<area shape="rect" id="node3" href="list_8c.html#a075844780c304f60937fc19841d72418" title="length" alt="" coords="217,5,273,35"/><area shape="rect" id="node5" href="utils_8c.html#a8457ea394e29fe3b49e3b9a6d897ea8f" title="list_choice" alt="" coords="204,59,287,88"/><area shape="rect" id="node7" href="utils_8c.html#a2dc03125a4bc69b78615c7690a01f7e8" title="mvaddprintf" alt="" coords="336,59,427,88"/></map>
 </div>
 </p>
 
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="item_8c_ac0fef6832dc853f101528233962de779_icgraph.png" border="0" usemap="#item_8c_ac0fef6832dc853f101528233962de779_icgraph" alt=""/></div>
-<map name="item_8c_ac0fef6832dc853f101528233962de779_icgraph" id="item_8c_ac0fef6832dc853f101528233962de779_icgraph">
-<area shape="rect" id="node3" href="player_8h.html#a3829d1675d5789e2531ffcc90fcad6a2" title="player_turn" alt="" coords="185,5,271,35"/><area shape="rect" id="node5" href="player_8h.html#a168d23f1a7acdbae77883b6edf0af5b3" title="create_player" alt="" coords="321,5,420,35"/><area shape="rect" id="node7" href="main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="469,5,520,35"/></map>
+<div class="center"><img src="item_8c_aceab572299b7675a8aca2595d0686fae_icgraph.png" border="0" usemap="#item_8c_aceab572299b7675a8aca2595d0686fae_icgraph" alt=""/></div>
+<map name="item_8c_aceab572299b7675a8aca2595d0686fae_icgraph" id="item_8c_aceab572299b7675a8aca2595d0686fae_icgraph">
+<area shape="rect" id="node3" href="player_8h.html#a3829d1675d5789e2531ffcc90fcad6a2" title="player_turn" alt="" coords="204,5,289,35"/><area shape="rect" id="node5" href="player_8h.html#a168d23f1a7acdbae77883b6edf0af5b3" title="create_player" alt="" coords="340,5,439,35"/><area shape="rect" id="node7" href="main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="488,5,539,35"/></map>
 </div>
 </p>
 
 </div>
 </div>
-<a class="anchor" id="a3cc62d90e9503daa6afa8a7c740260eb"></a>
+<a class="anchor" id="a9d117255baa216bea18414e78d214e8f"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structItem.html">Item</a>** choose_items </td>
+          <td class="memname"><a class="el" href="structList.html">List</a>** choose_items </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structItem.html">Item</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structList.html">List</a> *&#160;</td>
           <td class="paramname"><em>inventory</em>, </td>
         </tr>
         <tr>
@@ -254,31 +217,31 @@ Here is the caller graph for this function:</div>
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="item_8c_a3cc62d90e9503daa6afa8a7c740260eb_cgraph.png" border="0" usemap="#item_8c_a3cc62d90e9503daa6afa8a7c740260eb_cgraph" alt=""/></div>
-<map name="item_8c_a3cc62d90e9503daa6afa8a7c740260eb_cgraph" id="item_8c_a3cc62d90e9503daa6afa8a7c740260eb_cgraph">
-<area shape="rect" id="node3" href="item_8c.html#a978830d9a1e817a1c511bdbb34755104" title="inventory_name_array" alt="" coords="159,5,308,35"/><area shape="rect" id="node5" href="item_8c.html#afb3e724583d4c70cd215b057e599d399" title="inventory_array" alt="" coords="179,59,288,88"/><area shape="rect" id="node7" href="utils_8c.html#a8457ea394e29fe3b49e3b9a6d897ea8f" title="list_choice" alt="" coords="192,112,275,141"/><area shape="rect" id="node9" href="utils_8c.html#a2dc03125a4bc69b78615c7690a01f7e8" title="mvaddprintf" alt="" coords="357,112,448,141"/></map>
+<div class="center"><img src="item_8c_a9d117255baa216bea18414e78d214e8f_cgraph.png" border="0" usemap="#item_8c_a9d117255baa216bea18414e78d214e8f_cgraph" alt=""/></div>
+<map name="item_8c_a9d117255baa216bea18414e78d214e8f_cgraph" id="item_8c_a9d117255baa216bea18414e78d214e8f_cgraph">
+<area shape="rect" id="node3" href="item_8c.html#afbf50a778f2c23e510ce373a1c10be0f" title="inventory_name_array" alt="" coords="159,5,308,35"/><area shape="rect" id="node7" href="item_8c.html#a532680d66ba117fda60d945a7e387b45" title="inventory_array" alt="" coords="179,59,288,88"/><area shape="rect" id="node10" href="utils_8c.html#a8457ea394e29fe3b49e3b9a6d897ea8f" title="list_choice" alt="" coords="192,112,275,141"/><area shape="rect" id="node5" href="list_8c.html#a075844780c304f60937fc19841d72418" title="length" alt="" coords="375,32,431,61"/><area shape="rect" id="node12" href="utils_8c.html#a2dc03125a4bc69b78615c7690a01f7e8" title="mvaddprintf" alt="" coords="357,112,448,141"/></map>
 </div>
 </p>
 
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="item_8c_a3cc62d90e9503daa6afa8a7c740260eb_icgraph.png" border="0" usemap="#item_8c_a3cc62d90e9503daa6afa8a7c740260eb_icgraph" alt=""/></div>
-<map name="item_8c_a3cc62d90e9503daa6afa8a7c740260eb_icgraph" id="item_8c_a3cc62d90e9503daa6afa8a7c740260eb_icgraph">
+<div class="center"><img src="item_8c_a9d117255baa216bea18414e78d214e8f_icgraph.png" border="0" usemap="#item_8c_a9d117255baa216bea18414e78d214e8f_icgraph" alt=""/></div>
+<map name="item_8c_a9d117255baa216bea18414e78d214e8f_icgraph" id="item_8c_a9d117255baa216bea18414e78d214e8f_icgraph">
 <area shape="rect" id="node3" href="player_8h.html#a3829d1675d5789e2531ffcc90fcad6a2" title="player_turn" alt="" coords="159,5,244,35"/><area shape="rect" id="node5" href="player_8h.html#a168d23f1a7acdbae77883b6edf0af5b3" title="create_player" alt="" coords="295,5,393,35"/><area shape="rect" id="node7" href="main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="443,5,493,35"/></map>
 </div>
 </p>
 
 </div>
 </div>
-<a class="anchor" id="a0bfb620b3fbeb8e01df2d69291b11e94"></a>
+<a class="anchor" id="a4bf531409c042547e167d245bd10690f"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void display_inventory </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structItem.html">Item</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structList.html">List</a> *&#160;</td>
           <td class="paramname"><em>inventory</em>, </td>
         </tr>
         <tr>
@@ -305,24 +268,24 @@ Here is the caller graph for this function:</div>
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="item_8c_a0bfb620b3fbeb8e01df2d69291b11e94_cgraph.png" border="0" usemap="#item_8c_a0bfb620b3fbeb8e01df2d69291b11e94_cgraph" alt=""/></div>
-<map name="item_8c_a0bfb620b3fbeb8e01df2d69291b11e94_cgraph" id="item_8c_a0bfb620b3fbeb8e01df2d69291b11e94_cgraph">
-<area shape="rect" id="node3" href="item_8c.html#a978830d9a1e817a1c511bdbb34755104" title="inventory_name_array" alt="" coords="177,5,327,35"/><area shape="rect" id="node5" href="utils_8c.html#a8457ea394e29fe3b49e3b9a6d897ea8f" title="list_choice" alt="" coords="211,59,293,88"/><area shape="rect" id="node7" href="utils_8c.html#a2dc03125a4bc69b78615c7690a01f7e8" title="mvaddprintf" alt="" coords="376,59,467,88"/></map>
+<div class="center"><img src="item_8c_a4bf531409c042547e167d245bd10690f_cgraph.png" border="0" usemap="#item_8c_a4bf531409c042547e167d245bd10690f_cgraph" alt=""/></div>
+<map name="item_8c_a4bf531409c042547e167d245bd10690f_cgraph" id="item_8c_a4bf531409c042547e167d245bd10690f_cgraph">
+<area shape="rect" id="node3" href="item_8c.html#afbf50a778f2c23e510ce373a1c10be0f" title="inventory_name_array" alt="" coords="177,5,327,35"/><area shape="rect" id="node7" href="utils_8c.html#a8457ea394e29fe3b49e3b9a6d897ea8f" title="list_choice" alt="" coords="211,59,293,88"/><area shape="rect" id="node5" href="list_8c.html#a075844780c304f60937fc19841d72418" title="length" alt="" coords="393,5,449,35"/><area shape="rect" id="node9" href="utils_8c.html#a2dc03125a4bc69b78615c7690a01f7e8" title="mvaddprintf" alt="" coords="376,59,467,88"/></map>
 </div>
 </p>
 
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="item_8c_a0bfb620b3fbeb8e01df2d69291b11e94_icgraph.png" border="0" usemap="#item_8c_a0bfb620b3fbeb8e01df2d69291b11e94_icgraph" alt=""/></div>
-<map name="item_8c_a0bfb620b3fbeb8e01df2d69291b11e94_icgraph" id="item_8c_a0bfb620b3fbeb8e01df2d69291b11e94_icgraph">
+<div class="center"><img src="item_8c_a4bf531409c042547e167d245bd10690f_icgraph.png" border="0" usemap="#item_8c_a4bf531409c042547e167d245bd10690f_icgraph" alt=""/></div>
+<map name="item_8c_a4bf531409c042547e167d245bd10690f_icgraph" id="item_8c_a4bf531409c042547e167d245bd10690f_icgraph">
 <area shape="rect" id="node3" href="player_8h.html#a3829d1675d5789e2531ffcc90fcad6a2" title="player_turn" alt="" coords="177,5,263,35"/><area shape="rect" id="node5" href="player_8h.html#a168d23f1a7acdbae77883b6edf0af5b3" title="create_player" alt="" coords="313,5,412,35"/><area shape="rect" id="node7" href="main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="461,5,512,35"/></map>
 </div>
 </p>
 
 </div>
 </div>
-<a class="anchor" id="afb3e724583d4c70cd215b057e599d399"></a>
+<a class="anchor" id="a532680d66ba117fda60d945a7e387b45"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -330,9 +293,9 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static const <a class="el" href="structItem.html">Item</a>** inventory_array </td>
+          <td class="memname">static const <a class="el" href="structList.html">List</a>** inventory_array </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structItem.html">Item</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structList.html">List</a> *&#160;</td>
           <td class="paramname"><em>inventory</em></td><td>)</td>
           <td></td>
         </tr>
@@ -351,17 +314,26 @@ Here is the caller graph for this function:</div>
 </dl>
 
 <p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="item_8c_a532680d66ba117fda60d945a7e387b45_cgraph.png" border="0" usemap="#item_8c_a532680d66ba117fda60d945a7e387b45_cgraph" alt=""/></div>
+<map name="item_8c_a532680d66ba117fda60d945a7e387b45_cgraph" id="item_8c_a532680d66ba117fda60d945a7e387b45_cgraph">
+<area shape="rect" id="node3" href="list_8c.html#a075844780c304f60937fc19841d72418" title="length" alt="" coords="167,5,223,35"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="item_8c_afb3e724583d4c70cd215b057e599d399_icgraph.png" border="0" usemap="#item_8c_afb3e724583d4c70cd215b057e599d399_icgraph" alt=""/></div>
-<map name="item_8c_afb3e724583d4c70cd215b057e599d399_icgraph" id="item_8c_afb3e724583d4c70cd215b057e599d399_icgraph">
-<area shape="rect" id="node3" href="item_8h.html#a3cc62d90e9503daa6afa8a7c740260eb" title="choose_items" alt="" coords="167,5,268,35"/><area shape="rect" id="node5" href="player_8h.html#a3829d1675d5789e2531ffcc90fcad6a2" title="player_turn" alt="" coords="319,5,404,35"/><area shape="rect" id="node7" href="player_8h.html#a168d23f1a7acdbae77883b6edf0af5b3" title="create_player" alt="" coords="455,5,553,35"/><area shape="rect" id="node9" href="main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="603,5,653,35"/></map>
+<div class="center"><img src="item_8c_a532680d66ba117fda60d945a7e387b45_icgraph.png" border="0" usemap="#item_8c_a532680d66ba117fda60d945a7e387b45_icgraph" alt=""/></div>
+<map name="item_8c_a532680d66ba117fda60d945a7e387b45_icgraph" id="item_8c_a532680d66ba117fda60d945a7e387b45_icgraph">
+<area shape="rect" id="node3" href="item_8h.html#a9d117255baa216bea18414e78d214e8f" title="choose_items" alt="" coords="167,5,268,35"/><area shape="rect" id="node5" href="player_8h.html#a3829d1675d5789e2531ffcc90fcad6a2" title="player_turn" alt="" coords="319,5,404,35"/><area shape="rect" id="node7" href="player_8h.html#a168d23f1a7acdbae77883b6edf0af5b3" title="create_player" alt="" coords="455,5,553,35"/><area shape="rect" id="node9" href="main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="603,5,653,35"/></map>
 </div>
 </p>
 
 </div>
 </div>
-<a class="anchor" id="a978830d9a1e817a1c511bdbb34755104"></a>
+<a class="anchor" id="afbf50a778f2c23e510ce373a1c10be0f"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -371,7 +343,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">static const char** inventory_name_array </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structItem.html">Item</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structList.html">List</a> *&#160;</td>
           <td class="paramname"><em>inventory</em></td><td>)</td>
           <td></td>
         </tr>
@@ -390,53 +362,20 @@ Here is the caller graph for this function:</div>
 </dl>
 
 <p><div class="dynheader">
-Here is the caller graph for this function:</div>
+Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="item_8c_a978830d9a1e817a1c511bdbb34755104_icgraph.png" border="0" usemap="#item_8c_a978830d9a1e817a1c511bdbb34755104_icgraph" alt=""/></div>
-<map name="item_8c_a978830d9a1e817a1c511bdbb34755104_icgraph" id="item_8c_a978830d9a1e817a1c511bdbb34755104_icgraph">
-<area shape="rect" id="node3" href="item_8h.html#a0bfb620b3fbeb8e01df2d69291b11e94" title="display_inventory" alt="" coords="205,5,328,35"/><area shape="rect" id="node11" href="item_8h.html#a3cc62d90e9503daa6afa8a7c740260eb" title="choose_items" alt="" coords="216,59,317,88"/><area shape="rect" id="node5" href="player_8h.html#a3829d1675d5789e2531ffcc90fcad6a2" title="player_turn" alt="" coords="377,32,463,61"/><area shape="rect" id="node7" href="player_8h.html#a168d23f1a7acdbae77883b6edf0af5b3" title="create_player" alt="" coords="513,32,612,61"/><area shape="rect" id="node9" href="main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="661,32,712,61"/></map>
+<div class="center"><img src="item_8c_afbf50a778f2c23e510ce373a1c10be0f_cgraph.png" border="0" usemap="#item_8c_afbf50a778f2c23e510ce373a1c10be0f_cgraph" alt=""/></div>
+<map name="item_8c_afbf50a778f2c23e510ce373a1c10be0f_cgraph" id="item_8c_afbf50a778f2c23e510ce373a1c10be0f_cgraph">
+<area shape="rect" id="node3" href="list_8c.html#a075844780c304f60937fc19841d72418" title="length" alt="" coords="207,5,263,35"/></map>
 </div>
 </p>
-
-</div>
-</div>
-<a class="anchor" id="a9c6918844d3f444af84c7cbee425e5cf"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structItem.html">Item</a>* remove_items </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structItem.html">Item</a> *&#160;</td>
-          <td class="paramname"><em>inventory</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="structItem.html">Item</a> **&#160;</td>
-          <td class="paramname"><em>items</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Remove a list of items from an inventory. Returns the (possibly new) head of the inventory. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">inventory</td><td>The inentory </td></tr>
-    <tr><td class="paramname">items</td><td>The items to remove </td></tr>
-  </table>
-  </dd>
-</dl>
 
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="item_8c_a9c6918844d3f444af84c7cbee425e5cf_icgraph.png" border="0" usemap="#item_8c_a9c6918844d3f444af84c7cbee425e5cf_icgraph" alt=""/></div>
-<map name="item_8c_a9c6918844d3f444af84c7cbee425e5cf_icgraph" id="item_8c_a9c6918844d3f444af84c7cbee425e5cf_icgraph">
-<area shape="rect" id="node3" href="player_8h.html#a3829d1675d5789e2531ffcc90fcad6a2" title="player_turn" alt="" coords="159,5,244,35"/><area shape="rect" id="node5" href="player_8h.html#a168d23f1a7acdbae77883b6edf0af5b3" title="create_player" alt="" coords="295,5,393,35"/><area shape="rect" id="node7" href="main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="443,5,493,35"/></map>
+<div class="center"><img src="item_8c_afbf50a778f2c23e510ce373a1c10be0f_icgraph.png" border="0" usemap="#item_8c_afbf50a778f2c23e510ce373a1c10be0f_icgraph" alt=""/></div>
+<map name="item_8c_afbf50a778f2c23e510ce373a1c10be0f_icgraph" id="item_8c_afbf50a778f2c23e510ce373a1c10be0f_icgraph">
+<area shape="rect" id="node3" href="item_8h.html#a4bf531409c042547e167d245bd10690f" title="display_inventory" alt="" coords="205,5,328,35"/><area shape="rect" id="node11" href="item_8h.html#a9d117255baa216bea18414e78d214e8f" title="choose_items" alt="" coords="216,59,317,88"/><area shape="rect" id="node5" href="player_8h.html#a3829d1675d5789e2531ffcc90fcad6a2" title="player_turn" alt="" coords="377,32,463,61"/><area shape="rect" id="node7" href="player_8h.html#a168d23f1a7acdbae77883b6edf0af5b3" title="create_player" alt="" coords="513,32,612,61"/><area shape="rect" id="node9" href="main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="661,32,712,61"/></map>
 </div>
 </p>
 
@@ -445,7 +384,7 @@ Here is the caller graph for this function:</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Apr 27 2014 05:06:56 for Ludum Dare 29 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Apr 27 2014 23:51:26 for Ludum Dare 29 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

@@ -1,0 +1,9 @@
+<map id="insert" name="insert">
+<area shape="rect" id="node3" href="$level_8c.html#a073116bdf0b4b0e82e2ea53990671890" title="add_mob" alt="" coords="109,5,184,35"/>
+<area shape="rect" id="node9" href="$mob_8h.html#a0f41f8c35df68e0cea8335b114029a36" title="move_mob_level" alt="" coords="363,57,483,87"/>
+<area shape="rect" id="node13" href="$player_8h.html#a168d23f1a7acdbae77883b6edf0af5b3" title="create_player" alt="" coords="668,83,767,112"/>
+<area shape="rect" id="node17" href="$list_8h.html#a4266762dae625e714c313be8270ed63b" title="insertall" alt="" coords="240,109,307,139"/>
+<area shape="rect" id="node5" href="$level_8h.html#ada2b32c329163f1f38b89dc34fb76e4b" title="build_level" alt="" coords="232,5,315,35"/>
+<area shape="rect" id="node7" href="$main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="816,44,867,73"/>
+<area shape="rect" id="node11" href="$player_8h.html#a3829d1675d5789e2531ffcc90fcad6a2" title="player_turn" alt="" coords="532,83,617,112"/>
+</map>

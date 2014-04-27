@@ -1,6 +1,6 @@
 <map id="Level" name="Level">
-<area shape="rect" id="node10" href="$structMob.html" title="Mob" alt="" coords="131,227,176,256"/>
-<area shape="rect" id="node2" href="$structCell.html" title="Cell" alt="" coords="131,325,176,355"/>
-<area shape="rect" id="node4" href="$structItem.html" title="Item" alt="" coords="217,8,265,37"/>
-<area shape="rect" id="node7" href="$structEquipment.html" title="Equipment" alt="" coords="136,109,219,139"/>
+<area shape="rect" id="node7" href="$structMob.html" title="Mob" alt="" coords="93,259,138,288"/>
+<area shape="rect" id="node2" href="$structCell.html" title="Cell" alt="" coords="93,355,138,384"/>
+<area shape="rect" id="node4" href="$structList.html" title="List" alt="" coords="158,8,201,37"/>
+<area shape="rect" id="node9" href="$structItem.html" title="Item" alt="" coords="227,125,275,155"/>
 </map>

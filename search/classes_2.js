@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['item',['Item',['../structItem.html',1,'']]]
+  ['level',['Level',['../structLevel.html',1,'']]],
+  ['list',['List',['../structList.html',1,'']]]
 ];

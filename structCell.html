@@ -95,7 +95,7 @@ Collaboration diagram for Cell:</div>
 <div class="dyncontent">
 <div class="center"><img src="structCell__coll__graph.png" border="0" usemap="#Cell_coll__map" alt="Collaboration graph"/></div>
 <map name="Cell_coll__map" id="Cell_coll__map">
-<area shape="rect" id="node13" href="structLevel.html" title="Level" alt="" coords="5,205,59,235"/><area shape="rect" id="node2" href="structItem.html" title="Item" alt="" coords="212,8,260,37"/><area shape="rect" id="node5" href="structEquipment.html" title="Equipment" alt="" coords="224,107,307,136"/><area shape="rect" id="node8" href="structMob.html" title="Mob" alt="" coords="137,323,183,352"/></map>
+<area shape="rect" id="node11" href="structLevel.html" title="Level" alt="" coords="140,236,194,265"/><area shape="rect" id="node2" href="structList.html" title="List" alt="" coords="112,8,155,37"/><area shape="rect" id="node5" href="structMob.html" title="Mob" alt="" coords="82,344,127,373"/><area shape="rect" id="node7" href="structItem.html" title="Item" alt="" coords="218,168,266,197"/></map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -106,10 +106,14 @@ Data Fields</h2></td></tr>
 <tr class="separator:a3a62f75d92e0a0225554c963e543f428"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8d46740963859c82a025f3a36538e159"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCell.html#a8d46740963859c82a025f3a36538e159">solid</a></td></tr>
 <tr class="separator:a8d46740963859c82a025f3a36538e159"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb02fc152b9630f97812afeca98a1893"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCell.html#aeb02fc152b9630f97812afeca98a1893">illuminated</a></td></tr>
+<tr class="separator:aeb02fc152b9630f97812afeca98a1893"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb864be0e487ac3b66f86b44fc960135"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCell.html#aeb864be0e487ac3b66f86b44fc960135">luminosity</a></td></tr>
+<tr class="separator:aeb864be0e487ac3b66f86b44fc960135"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ea3e5f560c3f7390b4281593e993b3e"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structMob.html">Mob</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCell.html#a9ea3e5f560c3f7390b4281593e993b3e">occupant</a></td></tr>
 <tr class="separator:a9ea3e5f560c3f7390b4281593e993b3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac8d3f905b3c23b78ad65c7bcb2807bc9"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structItem.html">Item</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCell.html#ac8d3f905b3c23b78ad65c7bcb2807bc9">items</a></td></tr>
-<tr class="separator:ac8d3f905b3c23b78ad65c7bcb2807bc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a181e6eb439a0bb7b3a0425c12c254785"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structList.html">List</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCell.html#a181e6eb439a0bb7b3a0425c12c254785">items</a></td></tr>
+<tr class="separator:a181e6eb439a0bb7b3a0425c12c254785"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A cell is an individual space in a level, they have a base symbol, may be solid, may contain at most one occupant mob, and a list of items. </p>
@@ -140,16 +144,42 @@ Data Fields</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ac8d3f905b3c23b78ad65c7bcb2807bc9"></a>
+<a class="anchor" id="aeb02fc152b9630f97812afeca98a1893"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">struct <a class="el" href="structItem.html">Item</a>* Cell::items</td>
+          <td class="memname">bool Cell::illuminated</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Whether the cell is lit by a light or not. </p>
+
+</div>
+</div>
+<a class="anchor" id="a181e6eb439a0bb7b3a0425c12c254785"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structList.html">List</a>* Cell::items</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>The list of items (may be NULL). </p>
+
+</div>
+</div>
+<a class="anchor" id="aeb864be0e487ac3b66f86b44fc960135"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int Cell::luminosity</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Number of light sources in the cell </p>
 
 </div>
 </div>
@@ -185,7 +215,7 @@ Data Fields</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Apr 27 2014 05:06:58 for Ludum Dare 29 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Apr 27 2014 23:51:28 for Ludum Dare 29 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

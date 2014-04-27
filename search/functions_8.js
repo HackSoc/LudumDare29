@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['list_5fchoice',['list_choice',['../utils_8c.html#a8457ea394e29fe3b49e3b9a6d897ea8f',1,'list_choice(bool nochoice, const char *prompt, const char *prompt2, bool multi, bool empty, const char *choices[], const void *results[]):&#160;utils.c'],['../utils_8h.html#a8457ea394e29fe3b49e3b9a6d897ea8f',1,'list_choice(bool nochoice, const char *prompt, const char *prompt2, bool multi, bool empty, const char *choices[], const void *results[]):&#160;utils.c']]]
+  ['kill_5fmob',['kill_mob',['../mob_8c.html#abeb2923a23965532d5e87ae2cb389202',1,'kill_mob(Mob *mob):&#160;mob.c'],['../mob_8h.html#a326036918a9e17984afc509831849725',1,'kill_mob(struct Mob *mob):&#160;mob.c']]]
 ];

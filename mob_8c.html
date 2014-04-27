@@ -89,16 +89,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="contents">
 <div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;assert.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;math.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="mob_8h_source.html">mob.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="level_8h_source.html">level.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="utils_8h_source.html">utils.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="effect_8h_source.html">effect.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player_8h_source.html">player.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for mob.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="mob_8c__incl.png" border="0" usemap="#mob_8c" alt=""/></div>
 <map name="mob_8c" id="mob_8c">
-<area shape="rect" id="node7" href="mob_8h.html" title="mob.h" alt="" coords="237,160,296,189"/><area shape="rect" id="node13" href="level_8h.html" title="level.h" alt="" coords="204,237,263,267"/><area shape="rect" id="node19" href="utils_8h.html" title="utils.h" alt="" coords="288,83,344,112"/><area shape="rect" id="node21" href="effect_8h.html" title="effect.h" alt="" coords="368,83,435,112"/><area shape="rect" id="node9" href="item_8h.html" title="item.h" alt="" coords="271,315,329,344"/></map>
+<area shape="rect" id="node11" href="mob_8h.html" title="mob.h" alt="" coords="501,160,560,189"/><area shape="rect" id="node20" href="level_8h.html" title="level.h" alt="" coords="415,237,473,267"/><area shape="rect" id="node26" href="utils_8h.html" title="utils.h" alt="" coords="623,237,679,267"/><area shape="rect" id="node31" href="effect_8h.html" title="effect.h" alt="" coords="461,83,528,112"/><area shape="rect" id="node34" href="player_8h.html" title="player.h" alt="" coords="411,160,477,189"/><area shape="rect" id="node13" href="item_8h.html" title="item.h" alt="" coords="489,315,548,344"/><area shape="rect" id="node17" href="list_8h.html" title="list.h" alt="" coords="493,392,544,421"/></map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -113,6 +116,8 @@ Functions</h2></td></tr>
 <tr class="separator:a7ead5d0347250949fcc7a6c5548f50b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abeb2923a23965532d5e87ae2cb389202"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structMob.html">Mob</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mob_8c.html#abeb2923a23965532d5e87ae2cb389202">kill_mob</a> (<a class="el" href="structMob.html">Mob</a> *mob)</td></tr>
 <tr class="separator:abeb2923a23965532d5e87ae2cb389202"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20a2e7ecd12d928a1dd9fb7e90a6987e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mob_8c.html#a20a2e7ecd12d928a1dd9fb7e90a6987e">can_see_point</a> (<a class="el" href="structLevel.html">Level</a> *level, unsigned int x0, unsigned int y0, unsigned int x, unsigned int y)</td></tr>
+<tr class="separator:a20a2e7ecd12d928a1dd9fb7e90a6987e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9cf3e62246ac7b1471916c2744638a12"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mob_8c.html#a9cf3e62246ac7b1471916c2744638a12">can_see</a> (<a class="el" href="structMob.html">Mob</a> *mob, unsigned int x, unsigned int y)</td></tr>
 <tr class="separator:a9cf3e62246ac7b1471916c2744638a12"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af1fd43535881adae83322576a90a015d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mob_8c.html#af1fd43535881adae83322576a90a015d">can_see_other</a> (<a class="el" href="structMob.html">Mob</a> *moba, <a class="el" href="structMob.html">Mob</a> *mobb)</td></tr>
@@ -203,7 +208,7 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Determine if a mob can see the given point. All points are visible unless there is a wall in the way. This uses Bresenham's line algorithm to determine line-of-sight.</p>
+<p>Determine if a mob can see the given point.</p>
 <p>Note: as this will be primarily used to render the level, a better version might be to operate on a 2d array of three-state variables ("visible", "blocked", and "unknown"), and just iterate the algorithm with different starting points until every point is known. This would avoid the need to check each individual point, possibly duplicating work.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -213,6 +218,15 @@ Here is the caller graph for this function:</div>
   </table>
   </dd>
 </dl>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="mob_8c_a9cf3e62246ac7b1471916c2744638a12_cgraph.png" border="0" usemap="#mob_8c_a9cf3e62246ac7b1471916c2744638a12_cgraph" alt=""/></div>
+<map name="mob_8c_a9cf3e62246ac7b1471916c2744638a12_cgraph" id="mob_8c_a9cf3e62246ac7b1471916c2744638a12_cgraph">
+<area shape="rect" id="node3" href="mob_8c.html#a20a2e7ecd12d928a1dd9fb7e90a6987e" title="can_see_point" alt="" coords="125,5,232,35"/></map>
+</div>
+</p>
 
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -261,7 +275,7 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="mob_8c_af1fd43535881adae83322576a90a015d_cgraph.png" border="0" usemap="#mob_8c_af1fd43535881adae83322576a90a015d_cgraph" alt=""/></div>
 <map name="mob_8c_af1fd43535881adae83322576a90a015d_cgraph" id="mob_8c_af1fd43535881adae83322576a90a015d_cgraph">
-<area shape="rect" id="node3" href="mob_8c.html#a9cf3e62246ac7b1471916c2744638a12" title="can_see" alt="" coords="161,5,231,35"/></map>
+<area shape="rect" id="node3" href="mob_8c.html#a9cf3e62246ac7b1471916c2744638a12" title="can_see" alt="" coords="161,5,231,35"/><area shape="rect" id="node5" href="mob_8c.html#a20a2e7ecd12d928a1dd9fb7e90a6987e" title="can_see_point" alt="" coords="280,5,387,35"/></map>
 </div>
 </p>
 
@@ -271,6 +285,69 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="mob_8c_af1fd43535881adae83322576a90a015d_icgraph.png" border="0" usemap="#mob_8c_af1fd43535881adae83322576a90a015d_icgraph" alt=""/></div>
 <map name="mob_8c_af1fd43535881adae83322576a90a015d_icgraph" id="mob_8c_af1fd43535881adae83322576a90a015d_icgraph">
 <area shape="rect" id="node3" href="mob_8h.html#a4e1f704b7be0c4f0ecbc7bd41ace77de" title="simple_enemy_turn" alt="" coords="161,5,295,35"/><area shape="rect" id="node5" href="level_8c.html#a073116bdf0b4b0e82e2ea53990671890" title="add_mob" alt="" coords="344,5,419,35"/><area shape="rect" id="node7" href="level_8h.html#ada2b32c329163f1f38b89dc34fb76e4b" title="build_level" alt="" coords="467,5,549,35"/><area shape="rect" id="node9" href="main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="1051,5,1101,35"/><area shape="rect" id="node11" href="mob_8h.html#a0f41f8c35df68e0cea8335b114029a36" title="move_mob_level" alt="" coords="597,31,717,60"/><area shape="rect" id="node13" href="player_8h.html#a3829d1675d5789e2531ffcc90fcad6a2" title="player_turn" alt="" coords="767,31,852,60"/><area shape="rect" id="node15" href="player_8h.html#a168d23f1a7acdbae77883b6edf0af5b3" title="create_player" alt="" coords="903,31,1001,60"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a20a2e7ecd12d928a1dd9fb7e90a6987e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool can_see_point </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structLevel.html">Level</a> *&#160;</td>
+          <td class="paramname"><em>level</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>x0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>y0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Determine if one point can be seen from another. All points are visible unless there is a wall in the way. This uses Bresenham's line algorithm to determine line-of-sight. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">level</td><td>The level to check </td></tr>
+    <tr><td class="paramname">x0</td><td>The starting X </td></tr>
+    <tr><td class="paramname">y0</td><td>The starting Y </td></tr>
+    <tr><td class="paramname">x</td><td>The target X </td></tr>
+    <tr><td class="paramname">y</td><td>The target Y </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="mob_8c_a20a2e7ecd12d928a1dd9fb7e90a6987e_icgraph.png" border="0" usemap="#mob_8c_a20a2e7ecd12d928a1dd9fb7e90a6987e_icgraph" alt=""/></div>
+<map name="mob_8c_a20a2e7ecd12d928a1dd9fb7e90a6987e_icgraph" id="mob_8c_a20a2e7ecd12d928a1dd9fb7e90a6987e_icgraph">
+<area shape="rect" id="node3" href="level_8c.html#ad5f12fe8e1808812a063c4466f92925b" title="calculate_illumination" alt="" coords="160,5,307,35"/><area shape="rect" id="node13" href="mob_8h.html#a94db45b345799b22361562fdfb66176c" title="can_see" alt="" coords="199,59,268,88"/><area shape="rect" id="node5" href="level_8h.html#ad45cdcc4cf6ee2a61993cb4031ef44f3" title="display_level" alt="" coords="360,5,456,35"/><area shape="rect" id="node7" href="player_8h.html#a3829d1675d5789e2531ffcc90fcad6a2" title="player_turn" alt="" coords="1116,57,1201,87"/><area shape="rect" id="node9" href="player_8h.html#a168d23f1a7acdbae77883b6edf0af5b3" title="create_player" alt="" coords="1252,57,1351,87"/><area shape="rect" id="node11" href="main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="1400,84,1451,113"/><area shape="rect" id="node16" href="mob_8h.html#a6e31ab5280dea5015ef6f7bf7f9fd18f" title="can_see_other" alt="" coords="355,59,461,88"/><area shape="rect" id="node18" href="mob_8h.html#a4e1f704b7be0c4f0ecbc7bd41ace77de" title="simple_enemy_turn" alt="" coords="511,59,644,88"/><area shape="rect" id="node20" href="level_8c.html#a073116bdf0b4b0e82e2ea53990671890" title="add_mob" alt="" coords="693,59,768,88"/><area shape="rect" id="node22" href="level_8h.html#ada2b32c329163f1f38b89dc34fb76e4b" title="build_level" alt="" coords="816,59,899,88"/><area shape="rect" id="node25" href="mob_8h.html#a0f41f8c35df68e0cea8335b114029a36" title="move_mob_level" alt="" coords="947,57,1067,87"/></map>
 </div>
 </p>
 
@@ -313,7 +390,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="mob_8c_a7ead5d0347250949fcc7a6c5548f50b0_icgraph.png" border="0" usemap="#mob_8c_a7ead5d0347250949fcc7a6c5548f50b0_icgraph" alt=""/></div>
 <map name="mob_8c_a7ead5d0347250949fcc7a6c5548f50b0_icgraph" id="mob_8c_a7ead5d0347250949fcc7a6c5548f50b0_icgraph">
-<area shape="rect" id="node3" href="effect_8h.html#a8efc8653d207577779ab551e99a28aee" title="effect_poison" alt="" coords="156,35,255,64"/><area shape="rect" id="node9" href="mob_8h.html#a4e1f704b7be0c4f0ecbc7bd41ace77de" title="simple_enemy_turn" alt="" coords="628,35,761,64"/><area shape="rect" id="node29" href="mob_8h.html#ac510cded63a3d6cb2e5a7077019c708e" title="attack_mob" alt="" coords="304,88,395,117"/><area shape="rect" id="node5" href="mob_8h.html#acb34e33fee99269178a2e5f8e4e066bc" title="move_mob" alt="" coords="307,35,392,64"/><area shape="rect" id="node7" href="mob_8h.html#a1843c3d72d3955258d9c6ff0fefff9ee" title="move_mob_relative" alt="" coords="444,35,577,64"/><area shape="rect" id="node24" href="player_8h.html#adcc566280df07c60c2c5b9394516af1e" title="attackmove" alt="" coords="465,88,556,117"/><area shape="rect" id="node11" href="level_8c.html#a073116bdf0b4b0e82e2ea53990671890" title="add_mob" alt="" coords="843,35,917,64"/><area shape="rect" id="node13" href="level_8h.html#ada2b32c329163f1f38b89dc34fb76e4b" title="build_level" alt="" coords="997,35,1080,64"/><area shape="rect" id="node15" href="main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="1581,11,1632,40"/><area shape="rect" id="node17" href="mob_8h.html#a0f41f8c35df68e0cea8335b114029a36" title="move_mob_level" alt="" coords="1128,36,1248,65"/><area shape="rect" id="node19" href="player_8h.html#a3829d1675d5789e2531ffcc90fcad6a2" title="player_turn" alt="" coords="1297,36,1383,65"/><area shape="rect" id="node21" href="player_8h.html#a168d23f1a7acdbae77883b6edf0af5b3" title="create_player" alt="" coords="1433,36,1532,65"/><area shape="rect" id="node26" href="player_8h.html#af5d9927a7bbaa6e90f6cfed8445f2467" title="attackmove_relative" alt="" coords="811,88,949,117"/></map>
+<area shape="rect" id="node3" href="effect_8h.html#a8efc8653d207577779ab551e99a28aee" title="effect_poison" alt="" coords="156,109,255,139"/><area shape="rect" id="node15" href="mob_8h.html#a4e1f704b7be0c4f0ecbc7bd41ace77de" title="simple_enemy_turn" alt="" coords="628,133,761,163"/><area shape="rect" id="node24" href="player_8h.html#a3829d1675d5789e2531ffcc90fcad6a2" title="player_turn" alt="" coords="1308,84,1393,113"/><area shape="rect" id="node32" href="mob_8h.html#ac510cded63a3d6cb2e5a7077019c708e" title="attack_mob" alt="" coords="304,5,395,35"/><area shape="rect" id="node5" href="effect_8h.html#aa58c98ca2f4096434eaa7011c95e7430" title="cure_poison" alt="" coords="812,212,903,241"/><area shape="rect" id="node11" href="mob_8h.html#acb34e33fee99269178a2e5f8e4e066bc" title="move_mob" alt="" coords="307,109,392,139"/><area shape="rect" id="node7" href="player_8h.html#a168d23f1a7acdbae77883b6edf0af5b3" title="create_player" alt="" coords="1444,109,1543,139"/><area shape="rect" id="node9" href="main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="1592,136,1643,165"/><area shape="rect" id="node13" href="mob_8h.html#a1843c3d72d3955258d9c6ff0fefff9ee" title="move_mob_relative" alt="" coords="444,109,577,139"/><area shape="rect" id="node27" href="player_8h.html#adcc566280df07c60c2c5b9394516af1e" title="attackmove" alt="" coords="465,5,556,35"/><area shape="rect" id="node17" href="level_8c.html#a073116bdf0b4b0e82e2ea53990671890" title="add_mob" alt="" coords="820,133,895,163"/><area shape="rect" id="node19" href="level_8h.html#ada2b32c329163f1f38b89dc34fb76e4b" title="build_level" alt="" coords="980,133,1063,163"/><area shape="rect" id="node22" href="mob_8h.html#a0f41f8c35df68e0cea8335b114029a36" title="move_mob_level" alt="" coords="1139,109,1259,139"/><area shape="rect" id="node29" href="player_8h.html#af5d9927a7bbaa6e90f6cfed8445f2467" title="attackmove_relative" alt="" coords="952,5,1091,35"/></map>
 </div>
 </p>
 
@@ -339,6 +416,15 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The next mob in the list, or NULL </dd></dl>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="mob_8c_abeb2923a23965532d5e87ae2cb389202_cgraph.png" border="0" usemap="#mob_8c_abeb2923a23965532d5e87ae2cb389202_cgraph" alt=""/></div>
+<map name="mob_8c_abeb2923a23965532d5e87ae2cb389202_cgraph" id="mob_8c_abeb2923a23965532d5e87ae2cb389202_cgraph">
+<area shape="rect" id="node3" href="list_8c.html#a599f5b7cce35d2760475b947d36d9303" title="drop" alt="" coords="135,72,180,101"/><area shape="rect" id="node11" href="list_8c.html#afbd6a9cefc144062bf5e3ac722fe6231" title="append" alt="" coords="125,139,189,168"/><area shape="rect" id="node5" href="list_8c.html#aa03e2734945bc99fc724362223536ed1" title="setnext" alt="" coords="240,5,304,35"/><area shape="rect" id="node7" href="list_8c.html#a6ee619d39f856742aa60a30b935f672c" title="gethead" alt="" coords="239,59,305,88"/><area shape="rect" id="node9" href="list_8c.html#a8f767445cdc4ecd0d420708a2b014729" title="setprev" alt="" coords="240,112,304,141"/><area shape="rect" id="node13" href="list_8c.html#ad7f192fab0de9f5b98c6d7d1cacf7f46" title="gettail" alt="" coords="244,165,300,195"/></map>
+</div>
+</p>
 
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -447,7 +533,7 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="mob_8c_a0f41f8c35df68e0cea8335b114029a36_cgraph.png" border="0" usemap="#mob_8c_a0f41f8c35df68e0cea8335b114029a36_cgraph" alt=""/></div>
 <map name="mob_8c_a0f41f8c35df68e0cea8335b114029a36_cgraph" id="mob_8c_a0f41f8c35df68e0cea8335b114029a36_cgraph">
-<area shape="rect" id="node3" href="level_8c.html#ada2b32c329163f1f38b89dc34fb76e4b" title="build_level" alt="" coords="173,32,256,61"/><area shape="rect" id="node5" href="level_8c.html#a0e04d62babbffb49e3f4682d82cb85b0" title="mine_level" alt="" coords="305,5,388,35"/><area shape="rect" id="node9" href="level_8c.html#a073116bdf0b4b0e82e2ea53990671890" title="add_mob" alt="" coords="309,59,384,88"/><area shape="rect" id="node7" href="level_8c.html#aaaa68e1af555f365504b310f57d3b8b2" title="place_cell" alt="" coords="465,5,545,35"/><area shape="rect" id="node11" href="mob_8c.html#a4e1f704b7be0c4f0ecbc7bd41ace77de" title="simple_enemy_turn" alt="" coords="439,59,572,88"/><area shape="rect" id="node13" href="mob_8c.html#af1fd43535881adae83322576a90a015d" title="can_see_other" alt="" coords="636,5,743,35"/><area shape="rect" id="node17" href="mob_8c.html#a23e360489b32985e54e378a80e447531" title="move_mob_relative" alt="" coords="623,59,756,88"/><area shape="rect" id="node23" href="mob_8c.html#a7ead5d0347250949fcc7a6c5548f50b0" title="damage_mob" alt="" coords="1092,59,1191,88"/><area shape="rect" id="node15" href="mob_8c.html#a9cf3e62246ac7b1471916c2744638a12" title="can_see" alt="" coords="815,5,884,35"/><area shape="rect" id="node19" href="mob_8c.html#a55ca3ba9d41a343311f102b64e1e7f4c" title="move_mob" alt="" coords="807,59,892,88"/><area shape="rect" id="node21" href="effect_8c.html#a8efc8653d207577779ab551e99a28aee" title="effect_poison" alt="" coords="943,5,1041,35"/><area shape="rect" id="node25" href="effect_8c.html#a94aa3d083f9258eaf68081be0a61401e" title="afflict" alt="" coords="965,59,1019,88"/></map>
+<area shape="rect" id="node3" href="level_8c.html#ada2b32c329163f1f38b89dc34fb76e4b" title="build_level" alt="" coords="173,99,256,128"/><area shape="rect" id="node30" href="list_8c.html#a031f75a1ace4b9ec3fde6a075a1909ef" title="insert" alt="" coords="479,163,532,192"/><area shape="rect" id="node37" href="list_8c.html#a599f5b7cce35d2760475b947d36d9303" title="drop" alt="" coords="483,216,528,245"/><area shape="rect" id="node5" href="level_8c.html#a0e04d62babbffb49e3f4682d82cb85b0" title="mine_level" alt="" coords="305,39,388,68"/><area shape="rect" id="node9" href="level_8c.html#a073116bdf0b4b0e82e2ea53990671890" title="add_mob" alt="" coords="309,99,384,128"/><area shape="rect" id="node7" href="level_8c.html#aaaa68e1af555f365504b310f57d3b8b2" title="place_cell" alt="" coords="465,32,545,61"/><area shape="rect" id="node11" href="mob_8c.html#a4e1f704b7be0c4f0ecbc7bd41ace77de" title="simple_enemy_turn" alt="" coords="439,85,572,115"/><area shape="rect" id="node13" href="mob_8c.html#af1fd43535881adae83322576a90a015d" title="can_see_other" alt="" coords="636,5,743,35"/><area shape="rect" id="node19" href="mob_8c.html#a23e360489b32985e54e378a80e447531" title="move_mob_relative" alt="" coords="623,109,756,139"/><area shape="rect" id="node25" href="mob_8c.html#a7ead5d0347250949fcc7a6c5548f50b0" title="damage_mob" alt="" coords="1097,84,1196,113"/><area shape="rect" id="node15" href="mob_8c.html#a9cf3e62246ac7b1471916c2744638a12" title="can_see" alt="" coords="815,5,884,35"/><area shape="rect" id="node17" href="mob_8c.html#a20a2e7ecd12d928a1dd9fb7e90a6987e" title="can_see_point" alt="" coords="941,5,1048,35"/><area shape="rect" id="node21" href="mob_8c.html#a55ca3ba9d41a343311f102b64e1e7f4c" title="move_mob" alt="" coords="807,109,892,139"/><area shape="rect" id="node23" href="effect_8c.html#a8efc8653d207577779ab551e99a28aee" title="effect_poison" alt="" coords="945,109,1044,139"/><area shape="rect" id="node27" href="effect_8c.html#a94aa3d083f9258eaf68081be0a61401e" title="afflict" alt="" coords="968,163,1021,192"/><area shape="rect" id="node32" href="list_8c.html#aa03e2734945bc99fc724362223536ed1" title="setnext" alt="" coords="657,163,721,192"/><area shape="rect" id="node34" href="list_8c.html#a8f767445cdc4ecd0d420708a2b014729" title="setprev" alt="" coords="657,216,721,245"/><area shape="rect" id="node40" href="list_8c.html#a6ee619d39f856742aa60a30b935f672c" title="gethead" alt="" coords="656,269,723,299"/></map>
 </div>
 </p>
 
@@ -546,7 +632,7 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="mob_8c_a4e1f704b7be0c4f0ecbc7bd41ace77de_cgraph.png" border="0" usemap="#mob_8c_a4e1f704b7be0c4f0ecbc7bd41ace77de_cgraph" alt=""/></div>
 <map name="mob_8c_a4e1f704b7be0c4f0ecbc7bd41ace77de_cgraph" id="mob_8c_a4e1f704b7be0c4f0ecbc7bd41ace77de_cgraph">
-<area shape="rect" id="node3" href="mob_8c.html#af1fd43535881adae83322576a90a015d" title="can_see_other" alt="" coords="204,5,311,35"/><area shape="rect" id="node7" href="mob_8c.html#a23e360489b32985e54e378a80e447531" title="move_mob_relative" alt="" coords="191,59,324,88"/><area shape="rect" id="node13" href="mob_8c.html#a7ead5d0347250949fcc7a6c5548f50b0" title="damage_mob" alt="" coords="660,59,759,88"/><area shape="rect" id="node5" href="mob_8c.html#a9cf3e62246ac7b1471916c2744638a12" title="can_see" alt="" coords="383,5,452,35"/><area shape="rect" id="node9" href="mob_8c.html#a55ca3ba9d41a343311f102b64e1e7f4c" title="move_mob" alt="" coords="375,59,460,88"/><area shape="rect" id="node11" href="effect_8c.html#a8efc8653d207577779ab551e99a28aee" title="effect_poison" alt="" coords="511,5,609,35"/><area shape="rect" id="node15" href="effect_8c.html#a94aa3d083f9258eaf68081be0a61401e" title="afflict" alt="" coords="533,59,587,88"/></map>
+<area shape="rect" id="node3" href="mob_8c.html#af1fd43535881adae83322576a90a015d" title="can_see_other" alt="" coords="204,19,311,48"/><area shape="rect" id="node9" href="mob_8c.html#a23e360489b32985e54e378a80e447531" title="move_mob_relative" alt="" coords="191,85,324,115"/><area shape="rect" id="node15" href="mob_8c.html#a7ead5d0347250949fcc7a6c5548f50b0" title="damage_mob" alt="" coords="665,112,764,141"/><area shape="rect" id="node5" href="mob_8c.html#a9cf3e62246ac7b1471916c2744638a12" title="can_see" alt="" coords="383,19,452,48"/><area shape="rect" id="node7" href="mob_8c.html#a20a2e7ecd12d928a1dd9fb7e90a6987e" title="can_see_point" alt="" coords="509,5,616,35"/><area shape="rect" id="node11" href="mob_8c.html#a55ca3ba9d41a343311f102b64e1e7f4c" title="move_mob" alt="" coords="375,85,460,115"/><area shape="rect" id="node13" href="effect_8c.html#a8efc8653d207577779ab551e99a28aee" title="effect_poison" alt="" coords="513,59,612,88"/><area shape="rect" id="node17" href="effect_8c.html#a94aa3d083f9258eaf68081be0a61401e" title="afflict" alt="" coords="536,112,589,141"/></map>
 </div>
 </p>
 
@@ -564,7 +650,7 @@ Here is the caller graph for this function:</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Apr 27 2014 05:06:57 for Ludum Dare 29 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Apr 27 2014 23:51:27 for Ludum Dare 29 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

@@ -1,10 +1,14 @@
 <map id="add_mob" name="add_mob">
-<area shape="rect" id="node3" href="$mob_8c.html#a4e1f704b7be0c4f0ecbc7bd41ace77de" title="simple_enemy_turn" alt="" coords="129,59,263,88"/>
-<area shape="rect" id="node5" href="$mob_8c.html#af1fd43535881adae83322576a90a015d" title="can_see_other" alt="" coords="327,5,433,35"/>
-<area shape="rect" id="node9" href="$mob_8c.html#a23e360489b32985e54e378a80e447531" title="move_mob_relative" alt="" coords="313,59,447,88"/>
-<area shape="rect" id="node15" href="$mob_8c.html#a7ead5d0347250949fcc7a6c5548f50b0" title="damage_mob" alt="" coords="783,59,881,88"/>
-<area shape="rect" id="node7" href="$mob_8c.html#a9cf3e62246ac7b1471916c2744638a12" title="can_see" alt="" coords="505,5,575,35"/>
-<area shape="rect" id="node11" href="$mob_8c.html#a55ca3ba9d41a343311f102b64e1e7f4c" title="move_mob" alt="" coords="497,59,583,88"/>
-<area shape="rect" id="node13" href="$effect_8c.html#a8efc8653d207577779ab551e99a28aee" title="effect_poison" alt="" coords="633,5,732,35"/>
-<area shape="rect" id="node17" href="$effect_8c.html#a94aa3d083f9258eaf68081be0a61401e" title="afflict" alt="" coords="656,59,709,88"/>
+<area shape="rect" id="node3" href="$mob_8c.html#a4e1f704b7be0c4f0ecbc7bd41ace77de" title="simple_enemy_turn" alt="" coords="129,125,263,155"/>
+<area shape="rect" id="node22" href="$list_8c.html#a031f75a1ace4b9ec3fde6a075a1909ef" title="insert" alt="" coords="169,216,223,245"/>
+<area shape="rect" id="node5" href="$mob_8c.html#af1fd43535881adae83322576a90a015d" title="can_see_other" alt="" coords="327,32,433,61"/>
+<area shape="rect" id="node11" href="$mob_8c.html#a23e360489b32985e54e378a80e447531" title="move_mob_relative" alt="" coords="313,112,447,141"/>
+<area shape="rect" id="node17" href="$mob_8c.html#a7ead5d0347250949fcc7a6c5548f50b0" title="damage_mob" alt="" coords="788,112,887,141"/>
+<area shape="rect" id="node7" href="$mob_8c.html#a9cf3e62246ac7b1471916c2744638a12" title="can_see" alt="" coords="505,32,575,61"/>
+<area shape="rect" id="node9" href="$mob_8c.html#a20a2e7ecd12d928a1dd9fb7e90a6987e" title="can_see_point" alt="" coords="632,5,739,35"/>
+<area shape="rect" id="node13" href="$mob_8c.html#a55ca3ba9d41a343311f102b64e1e7f4c" title="move_mob" alt="" coords="497,112,583,141"/>
+<area shape="rect" id="node15" href="$effect_8c.html#a8efc8653d207577779ab551e99a28aee" title="effect_poison" alt="" coords="636,59,735,88"/>
+<area shape="rect" id="node19" href="$effect_8c.html#a94aa3d083f9258eaf68081be0a61401e" title="afflict" alt="" coords="659,112,712,141"/>
+<area shape="rect" id="node24" href="$list_8c.html#aa03e2734945bc99fc724362223536ed1" title="setnext" alt="" coords="348,216,412,245"/>
+<area shape="rect" id="node26" href="$list_8c.html#a8f767445cdc4ecd0d420708a2b014729" title="setprev" alt="" coords="348,269,412,299"/>
 </map>

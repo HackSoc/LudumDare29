@@ -95,17 +95,15 @@ Collaboration diagram for Level:</div>
 <div class="dyncontent">
 <div class="center"><img src="structLevel__coll__graph.png" border="0" usemap="#Level_coll__map" alt="Collaboration graph"/></div>
 <map name="Level_coll__map" id="Level_coll__map">
-<area shape="rect" id="node10" href="structMob.html" title="Mob" alt="" coords="131,227,176,256"/><area shape="rect" id="node2" href="structCell.html" title="Cell" alt="" coords="131,325,176,355"/><area shape="rect" id="node4" href="structItem.html" title="Item" alt="" coords="217,8,265,37"/><area shape="rect" id="node7" href="structEquipment.html" title="Equipment" alt="" coords="136,109,219,139"/></map>
+<area shape="rect" id="node7" href="structMob.html" title="Mob" alt="" coords="93,259,138,288"/><area shape="rect" id="node2" href="structCell.html" title="Cell" alt="" coords="93,355,138,384"/><area shape="rect" id="node4" href="structList.html" title="List" alt="" coords="158,8,201,37"/><area shape="rect" id="node9" href="structItem.html" title="Item" alt="" coords="227,125,275,155"/></map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:a6e14acb28f80e4839dbce6a744489902"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structLevel.html">Level</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLevel.html#a6e14acb28f80e4839dbce6a744489902">next</a></td></tr>
-<tr class="separator:a6e14acb28f80e4839dbce6a744489902"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a885d2f1067467e3ef2eb834a77b53b5a"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structLevel.html">Level</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLevel.html#a885d2f1067467e3ef2eb834a77b53b5a">prev</a></td></tr>
-<tr class="separator:a885d2f1067467e3ef2eb834a77b53b5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2a3b8f537b8bdded21d2007dd8ed16b"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structMob.html">Mob</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLevel.html#aa2a3b8f537b8bdded21d2007dd8ed16b">mobs</a></td></tr>
-<tr class="separator:aa2a3b8f537b8bdded21d2007dd8ed16b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adbf571e2f9e639b82c35a7156fddb27e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structList.html">List</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLevel.html#adbf571e2f9e639b82c35a7156fddb27e">levels</a></td></tr>
+<tr class="separator:adbf571e2f9e639b82c35a7156fddb27e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7dc346b53c9976179ae1bc62e16c9247"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structList.html">List</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLevel.html#a7dc346b53c9976179ae1bc62e16c9247">mobs</a></td></tr>
+<tr class="separator:a7dc346b53c9976179ae1bc62e16c9247"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a94f3b76de30a3f5a9e2bbac2a246cddd"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structMob.html">Mob</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLevel.html#a94f3b76de30a3f5a9e2bbac2a246cddd">player</a></td></tr>
 <tr class="separator:a94f3b76de30a3f5a9e2bbac2a246cddd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a62672681359f0bb8661546b741e9f668"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLevel.html#a62672681359f0bb8661546b741e9f668">depth</a></td></tr>
@@ -175,29 +173,29 @@ Data Fields</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="aa2a3b8f537b8bdded21d2007dd8ed16b"></a>
+<a class="anchor" id="adbf571e2f9e639b82c35a7156fddb27e"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">struct <a class="el" href="structMob.html">Mob</a>* Level::mobs</td>
+          <td class="memname"><a class="el" href="structList.html">List</a> Level::levels</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Doubly-linked list of mobs in the level. </p>
+<p>The list of levels to which this belongs </p>
 
 </div>
 </div>
-<a class="anchor" id="a6e14acb28f80e4839dbce6a744489902"></a>
+<a class="anchor" id="a7dc346b53c9976179ae1bc62e16c9247"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">struct <a class="el" href="structLevel.html">Level</a>* Level::next</td>
+          <td class="memname"><a class="el" href="structList.html">List</a>* Level::mobs</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The level after this one. </p>
+<p>The list of mobs in the level. </p>
 
 </div>
 </div>
@@ -211,19 +209,6 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>The player mob (must also be in mobs). </p>
-
-</div>
-</div>
-<a class="anchor" id="a885d2f1067467e3ef2eb834a77b53b5a"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct <a class="el" href="structLevel.html">Level</a>* Level::prev</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>The level before this one. </p>
 
 </div>
 </div>
@@ -258,7 +243,7 @@ Data Fields</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Apr 27 2014 05:06:58 for Ludum Dare 29 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Apr 27 2014 23:51:29 for Ludum Dare 29 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

@@ -1,7 +1,9 @@
 <map id="mob.c" name="mob.c">
-<area shape="rect" id="node7" href="$mob_8h.html" title="mob.h" alt="" coords="237,160,296,189"/>
-<area shape="rect" id="node13" href="$level_8h.html" title="level.h" alt="" coords="204,237,263,267"/>
-<area shape="rect" id="node19" href="$utils_8h.html" title="utils.h" alt="" coords="288,83,344,112"/>
-<area shape="rect" id="node21" href="$effect_8h.html" title="effect.h" alt="" coords="368,83,435,112"/>
-<area shape="rect" id="node9" href="$item_8h.html" title="item.h" alt="" coords="271,315,329,344"/>
+<area shape="rect" id="node11" href="$mob_8h.html" title="mob.h" alt="" coords="501,160,560,189"/>
+<area shape="rect" id="node20" href="$level_8h.html" title="level.h" alt="" coords="415,237,473,267"/>
+<area shape="rect" id="node26" href="$utils_8h.html" title="utils.h" alt="" coords="623,237,679,267"/>
+<area shape="rect" id="node31" href="$effect_8h.html" title="effect.h" alt="" coords="461,83,528,112"/>
+<area shape="rect" id="node34" href="$player_8h.html" title="player.h" alt="" coords="411,160,477,189"/>
+<area shape="rect" id="node13" href="$item_8h.html" title="item.h" alt="" coords="489,315,548,344"/>
+<area shape="rect" id="node17" href="$list_8h.html" title="list.h" alt="" coords="493,392,544,421"/>
 </map>

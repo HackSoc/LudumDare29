@@ -1,4 +1,6 @@
 <map id="mob.h" name="mob.h">
-<area shape="rect" id="node3" href="$item_8h.html" title="item.h" alt="" coords="5,160,64,189"/>
-<area shape="rect" id="node7" href="$level_8h.html" title="level.h" alt="" coords="72,83,131,112"/>
+<area shape="rect" id="node3" href="$item_8h.html" title="item.h" alt="" coords="115,160,173,189"/>
+<area shape="rect" id="node7" href="$list_8h.html" title="list.h" alt="" coords="119,237,169,267"/>
+<area shape="rect" id="node10" href="$level_8h.html" title="level.h" alt="" coords="40,83,99,112"/>
+<area shape="rect" id="node16" href="$utils_8h.html" title="utils.h" alt="" coords="248,83,304,112"/>
 </map>

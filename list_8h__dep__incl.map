@@ -1,0 +1,14 @@
+<map id="list.h" name="list.h">
+<area shape="rect" id="node3" href="$item_8h.html" title="item.h" alt="" coords="420,83,479,112"/>
+<area shape="rect" id="node5" href="$mob_8h.html" title="mob.h" alt="" coords="315,160,373,189"/>
+<area shape="rect" id="node10" href="$level_8h.html" title="level.h" alt="" coords="381,237,440,267"/>
+<area shape="rect" id="node13" href="$level_8c.html" title="level.c" alt="" coords="385,392,444,421"/>
+<area shape="rect" id="node18" href="$main_8c.html" title="main.c" alt="" coords="607,392,668,421"/>
+<area shape="rect" id="node38" href="$item_8c.html" title="item.c" alt="" coords="499,160,557,189"/>
+<area shape="rect" id="node45" href="$list_8c.html" title="list.c" alt="" coords="776,83,827,112"/>
+<area shape="rect" id="node7" href="$effect_8c.html" title="effect.c" alt="" coords="5,392,72,421"/>
+<area shape="rect" id="node20" href="$mob_8c.html" title="mob.c" alt="" coords="113,392,172,421"/>
+<area shape="rect" id="node22" href="$player_8c.html" title="player.c" alt="" coords="217,392,284,421"/>
+<area shape="rect" id="node27" href="$effect_8h.html" title="effect.h" alt="" coords="88,315,155,344"/>
+<area shape="rect" id="node15" href="$player_8h.html" title="player.h" alt="" coords="381,315,448,344"/>
+</map>

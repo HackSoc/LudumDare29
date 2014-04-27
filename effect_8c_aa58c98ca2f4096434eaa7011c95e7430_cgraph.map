@@ -1,0 +1,4 @@
+<map id="cure_poison" name="cure_poison">
+<area shape="rect" id="node3" href="$effect_8c.html#a8efc8653d207577779ab551e99a28aee" title="effect_poison" alt="" coords="148,5,247,35"/>
+<area shape="rect" id="node5" href="$mob_8c.html#a7ead5d0347250949fcc7a6c5548f50b0" title="damage_mob" alt="" coords="297,5,396,35"/>
+</map>

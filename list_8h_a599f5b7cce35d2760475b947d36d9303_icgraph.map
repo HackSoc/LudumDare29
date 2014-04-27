@@ -1,0 +1,9 @@
+<map id="drop" name="drop">
+<area shape="rect" id="node3" href="$list_8h.html#ab97b35b3813b81a67d6f27da67e8963c" title="dropall" alt="" coords="132,5,191,35"/>
+<area shape="rect" id="node11" href="$mob_8h.html#a326036918a9e17984afc509831849725" title="kill_mob" alt="" coords="279,111,348,140"/>
+<area shape="rect" id="node17" href="$mob_8h.html#a0f41f8c35df68e0cea8335b114029a36" title="move_mob_level" alt="" coords="101,59,221,88"/>
+<area shape="rect" id="node5" href="$player_8h.html#a3829d1675d5789e2531ffcc90fcad6a2" title="player_turn" alt="" coords="271,32,356,61"/>
+<area shape="rect" id="node7" href="$player_8h.html#a168d23f1a7acdbae77883b6edf0af5b3" title="create_player" alt="" coords="407,32,505,61"/>
+<area shape="rect" id="node9" href="$main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="555,84,605,113"/>
+<area shape="rect" id="node13" href="$level_8h.html#afa299a655307d17486c06015c556bab6" title="run_turn" alt="" coords="421,136,491,165"/>
+</map>

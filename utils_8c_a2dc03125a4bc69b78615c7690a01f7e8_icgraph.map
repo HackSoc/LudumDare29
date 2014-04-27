@@ -1,12 +1,13 @@
 <map id="mvaddprintf" name="mvaddprintf">
-<area shape="rect" id="node3" href="$level_8h.html#ad45cdcc4cf6ee2a61993cb4031ef44f3" title="display_level" alt="" coords="145,119,241,148"/>
-<area shape="rect" id="node7" href="$player_8h.html#a168d23f1a7acdbae77883b6edf0af5b3" title="create_player" alt="" coords="615,171,713,200"/>
-<area shape="rect" id="node9" href="$main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="763,81,813,111"/>
-<area shape="rect" id="node12" href="$player_8c.html#a8e9f254ebd37223a823670ac94d335f9" title="design_player" alt="" coords="305,304,407,333"/>
-<area shape="rect" id="node16" href="$player_8h.html#abc728d3e21a1504f9157866c89c3ab89" title="player_death" alt="" coords="469,341,565,371"/>
-<area shape="rect" id="node19" href="$utils_8h.html#a8457ea394e29fe3b49e3b9a6d897ea8f" title="list_choice" alt="" coords="152,197,235,227"/>
-<area shape="rect" id="node5" href="$player_8h.html#a3829d1675d5789e2531ffcc90fcad6a2" title="player_turn" alt="" coords="475,171,560,200"/>
-<area shape="rect" id="node21" href="$item_8h.html#a0bfb620b3fbeb8e01df2d69291b11e94" title="display_inventory" alt="" coords="295,144,417,173"/>
-<area shape="rect" id="node24" href="$item_8h.html#a3cc62d90e9503daa6afa8a7c740260eb" title="choose_items" alt="" coords="305,197,407,227"/>
-<area shape="rect" id="node27" href="$item_8h.html#ac0fef6832dc853f101528233962de779" title="choose_equipment" alt="" coords="291,251,421,280"/>
+<area shape="rect" id="node3" href="$level_8h.html#ad45cdcc4cf6ee2a61993cb4031ef44f3" title="display_level" alt="" coords="145,304,241,333"/>
+<area shape="rect" id="node7" href="$player_8h.html#a168d23f1a7acdbae77883b6edf0af5b3" title="create_player" alt="" coords="633,120,732,149"/>
+<area shape="rect" id="node9" href="$main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="781,120,832,149"/>
+<area shape="rect" id="node12" href="$player_8c.html#a8e9f254ebd37223a823670ac94d335f9" title="design_player" alt="" coords="315,145,416,175"/>
+<area shape="rect" id="node16" href="$player_8h.html#abc728d3e21a1504f9157866c89c3ab89" title="player_death" alt="" coords="488,43,584,72"/>
+<area shape="rect" id="node19" href="$utils_8h.html#a8457ea394e29fe3b49e3b9a6d897ea8f" title="list_choice" alt="" coords="152,199,235,228"/>
+<area shape="rect" id="node31" href="$utils_8h.html#ac29c297ae32acdb2172e926d5f144681" title="show_help" alt="" coords="324,409,407,439"/>
+<area shape="rect" id="node5" href="$player_8h.html#a3829d1675d5789e2531ffcc90fcad6a2" title="player_turn" alt="" coords="493,279,579,308"/>
+<area shape="rect" id="node21" href="$item_8h.html#a4bf531409c042547e167d245bd10690f" title="display_inventory" alt="" coords="304,199,427,228"/>
+<area shape="rect" id="node24" href="$item_8h.html#a9d117255baa216bea18414e78d214e8f" title="choose_items" alt="" coords="315,252,416,281"/>
+<area shape="rect" id="node27" href="$item_8h.html#aceab572299b7675a8aca2595d0686fae" title="choose_item_by_type" alt="" coords="291,305,440,335"/>
 </map>

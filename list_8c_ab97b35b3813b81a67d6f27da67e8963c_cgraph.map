@@ -1,0 +1,6 @@
+<map id="dropall" name="dropall">
+<area shape="rect" id="node3" href="$list_8c.html#a599f5b7cce35d2760475b947d36d9303" title="drop" alt="" coords="116,59,161,88"/>
+<area shape="rect" id="node5" href="$list_8c.html#aa03e2734945bc99fc724362223536ed1" title="setnext" alt="" coords="213,5,277,35"/>
+<area shape="rect" id="node7" href="$list_8c.html#a6ee619d39f856742aa60a30b935f672c" title="gethead" alt="" coords="212,59,279,88"/>
+<area shape="rect" id="node9" href="$list_8c.html#a8f767445cdc4ecd0d420708a2b014729" title="setprev" alt="" coords="213,112,277,141"/>
+</map>

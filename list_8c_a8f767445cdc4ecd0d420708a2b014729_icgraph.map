@@ -1,0 +1,14 @@
+<map id="setprev" name="setprev">
+<area shape="rect" id="node3" href="$list_8h.html#a599f5b7cce35d2760475b947d36d9303" title="drop" alt="" coords="365,202,411,231"/>
+<area shape="rect" id="node22" href="$list_8h.html#a031f75a1ace4b9ec3fde6a075a1909ef" title="insert" alt="" coords="121,97,175,126"/>
+<area shape="rect" id="node5" href="$list_8h.html#ab97b35b3813b81a67d6f27da67e8963c" title="dropall" alt="" coords="508,201,567,230"/>
+<area shape="rect" id="node13" href="$mob_8h.html#a326036918a9e17984afc509831849725" title="kill_mob" alt="" coords="655,251,724,281"/>
+<area shape="rect" id="node19" href="$mob_8h.html#a0f41f8c35df68e0cea8335b114029a36" title="move_mob_level" alt="" coords="477,97,597,126"/>
+<area shape="rect" id="node7" href="$player_8h.html#a3829d1675d5789e2531ffcc90fcad6a2" title="player_turn" alt="" coords="647,97,732,126"/>
+<area shape="rect" id="node9" href="$player_8h.html#a168d23f1a7acdbae77883b6edf0af5b3" title="create_player" alt="" coords="783,97,881,126"/>
+<area shape="rect" id="node11" href="$main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="931,174,981,203"/>
+<area shape="rect" id="node15" href="$level_8h.html#afa299a655307d17486c06015c556bab6" title="run_turn" alt="" coords="797,251,867,281"/>
+<area shape="rect" id="node24" href="$level_8c.html#a073116bdf0b4b0e82e2ea53990671890" title="add_mob" alt="" coords="224,149,299,178"/>
+<area shape="rect" id="node31" href="$list_8h.html#a4266762dae625e714c313be8270ed63b" title="insertall" alt="" coords="228,45,295,74"/>
+<area shape="rect" id="node26" href="$level_8h.html#ada2b32c329163f1f38b89dc34fb76e4b" title="build_level" alt="" coords="347,149,429,178"/>
+</map>

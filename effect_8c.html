@@ -96,7 +96,7 @@ Include dependency graph for effect.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="effect_8c__incl.png" border="0" usemap="#effect_8c" alt=""/></div>
 <map name="effect_8c" id="effect_8c">
-<area shape="rect" id="node7" href="mob_8h.html" title="mob.h" alt="" coords="204,160,263,189"/><area shape="rect" id="node17" href="effect_8h.html" title="effect.h" alt="" coords="200,83,267,112"/><area shape="rect" id="node9" href="item_8h.html" title="item.h" alt="" coords="149,315,208,344"/><area shape="rect" id="node12" href="level_8h.html" title="level.h" alt="" coords="209,237,268,267"/></map>
+<area shape="rect" id="node7" href="mob_8h.html" title="mob.h" alt="" coords="225,160,284,189"/><area shape="rect" id="node24" href="effect_8h.html" title="effect.h" alt="" coords="216,83,283,112"/><area shape="rect" id="node9" href="item_8h.html" title="item.h" alt="" coords="225,315,284,344"/><area shape="rect" id="node12" href="list_8h.html" title="list.h" alt="" coords="347,392,397,421"/><area shape="rect" id="node15" href="level_8h.html" title="level.h" alt="" coords="304,237,363,267"/><area shape="rect" id="node21" href="utils_8h.html" title="utils.h" alt="" coords="149,237,205,267"/></map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -107,6 +107,8 @@ Functions</h2></td></tr>
 <tr class="separator:a94aa3d083f9258eaf68081be0a61401e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8efc8653d207577779ab551e99a28aee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="effect_8c.html#a8efc8653d207577779ab551e99a28aee">effect_poison</a> (<a class="el" href="structMob.html">Mob</a> *mob)</td></tr>
 <tr class="separator:a8efc8653d207577779ab551e99a28aee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa58c98ca2f4096434eaa7011c95e7430"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="effect_8c.html#aa58c98ca2f4096434eaa7011c95e7430">cure_poison</a> (<a class="el" href="structMob.html">Mob</a> *mob)</td></tr>
+<tr class="separator:aa58c98ca2f4096434eaa7011c95e7430"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a class="anchor" id="a94aa3d083f9258eaf68081be0a61401e"></a>
@@ -158,6 +160,46 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a class="anchor" id="aa58c98ca2f4096434eaa7011c95e7430"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void cure_poison </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structMob.html">Mob</a> *&#160;</td>
+          <td class="paramname"><em>mob</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>A cure poison effect </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mob</td><td>The mob which is poisoned </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect_8c_aa58c98ca2f4096434eaa7011c95e7430_cgraph.png" border="0" usemap="#effect_8c_aa58c98ca2f4096434eaa7011c95e7430_cgraph" alt=""/></div>
+<map name="effect_8c_aa58c98ca2f4096434eaa7011c95e7430_cgraph" id="effect_8c_aa58c98ca2f4096434eaa7011c95e7430_cgraph">
+<area shape="rect" id="node3" href="effect_8c.html#a8efc8653d207577779ab551e99a28aee" title="effect_poison" alt="" coords="148,5,247,35"/><area shape="rect" id="node5" href="mob_8c.html#a7ead5d0347250949fcc7a6c5548f50b0" title="damage_mob" alt="" coords="297,5,396,35"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect_8c_aa58c98ca2f4096434eaa7011c95e7430_icgraph.png" border="0" usemap="#effect_8c_aa58c98ca2f4096434eaa7011c95e7430_icgraph" alt=""/></div>
+<map name="effect_8c_aa58c98ca2f4096434eaa7011c95e7430_icgraph" id="effect_8c_aa58c98ca2f4096434eaa7011c95e7430_icgraph">
+<area shape="rect" id="node3" href="player_8h.html#a168d23f1a7acdbae77883b6edf0af5b3" title="create_player" alt="" coords="148,5,247,35"/><area shape="rect" id="node5" href="main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="296,5,347,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
 <a class="anchor" id="a8efc8653d207577779ab551e99a28aee"></a>
 <div class="memitem">
 <div class="memproto">
@@ -192,7 +234,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="effect_8c_a8efc8653d207577779ab551e99a28aee_icgraph.png" border="0" usemap="#effect_8c_a8efc8653d207577779ab551e99a28aee_icgraph" alt=""/></div>
 <map name="effect_8c_a8efc8653d207577779ab551e99a28aee_icgraph" id="effect_8c_a8efc8653d207577779ab551e99a28aee_icgraph">
-<area shape="rect" id="node3" href="mob_8h.html#acb34e33fee99269178a2e5f8e4e066bc" title="move_mob" alt="" coords="156,57,241,87"/><area shape="rect" id="node5" href="mob_8h.html#a1843c3d72d3955258d9c6ff0fefff9ee" title="move_mob_relative" alt="" coords="292,31,425,60"/><area shape="rect" id="node22" href="player_8h.html#adcc566280df07c60c2c5b9394516af1e" title="attackmove" alt="" coords="497,83,588,112"/><area shape="rect" id="node7" href="mob_8h.html#a4e1f704b7be0c4f0ecbc7bd41ace77de" title="simple_enemy_turn" alt="" coords="476,29,609,59"/><area shape="rect" id="node9" href="level_8c.html#a073116bdf0b4b0e82e2ea53990671890" title="add_mob" alt="" coords="691,29,765,59"/><area shape="rect" id="node11" href="level_8h.html#ada2b32c329163f1f38b89dc34fb76e4b" title="build_level" alt="" coords="845,29,928,59"/><area shape="rect" id="node13" href="main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="1429,5,1480,35"/><area shape="rect" id="node15" href="mob_8h.html#a0f41f8c35df68e0cea8335b114029a36" title="move_mob_level" alt="" coords="976,31,1096,60"/><area shape="rect" id="node17" href="player_8h.html#a3829d1675d5789e2531ffcc90fcad6a2" title="player_turn" alt="" coords="1145,31,1231,60"/><area shape="rect" id="node19" href="player_8h.html#a168d23f1a7acdbae77883b6edf0af5b3" title="create_player" alt="" coords="1281,31,1380,60"/><area shape="rect" id="node24" href="player_8h.html#af5d9927a7bbaa6e90f6cfed8445f2467" title="attackmove_relative" alt="" coords="659,83,797,112"/></map>
+<area shape="rect" id="node3" href="effect_8h.html#aa58c98ca2f4096434eaa7011c95e7430" title="cure_poison" alt="" coords="660,5,751,35"/><area shape="rect" id="node9" href="mob_8h.html#acb34e33fee99269178a2e5f8e4e066bc" title="move_mob" alt="" coords="156,57,241,87"/><area shape="rect" id="node5" href="player_8h.html#a168d23f1a7acdbae77883b6edf0af5b3" title="create_player" alt="" coords="1292,83,1391,112"/><area shape="rect" id="node7" href="main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="1440,121,1491,151"/><area shape="rect" id="node11" href="mob_8h.html#a1843c3d72d3955258d9c6ff0fefff9ee" title="move_mob_relative" alt="" coords="292,109,425,139"/><area shape="rect" id="node25" href="player_8h.html#adcc566280df07c60c2c5b9394516af1e" title="attackmove" alt="" coords="497,57,588,87"/><area shape="rect" id="node13" href="mob_8h.html#a4e1f704b7be0c4f0ecbc7bd41ace77de" title="simple_enemy_turn" alt="" coords="476,111,609,140"/><area shape="rect" id="node15" href="level_8c.html#a073116bdf0b4b0e82e2ea53990671890" title="add_mob" alt="" coords="668,111,743,140"/><area shape="rect" id="node17" href="level_8h.html#ada2b32c329163f1f38b89dc34fb76e4b" title="build_level" alt="" coords="828,111,911,140"/><area shape="rect" id="node20" href="mob_8h.html#a0f41f8c35df68e0cea8335b114029a36" title="move_mob_level" alt="" coords="987,108,1107,137"/><area shape="rect" id="node22" href="player_8h.html#a3829d1675d5789e2531ffcc90fcad6a2" title="player_turn" alt="" coords="1156,83,1241,112"/><area shape="rect" id="node27" href="player_8h.html#af5d9927a7bbaa6e90f6cfed8445f2467" title="attackmove_relative" alt="" coords="800,57,939,87"/></map>
 </div>
 </p>
 
@@ -233,7 +275,7 @@ Here is the caller graph for this function:</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Apr 27 2014 05:06:56 for Ludum Dare 29 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Apr 27 2014 23:51:26 for Ludum Dare 29 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

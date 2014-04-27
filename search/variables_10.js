@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['weapon',['weapon',['../structMob.html#a2c7a1f6ea48e34e65de240d0472c6724',1,'Mob']]]
+  ['value',['value',['../structItem.html#abee19400000e69cbd7aecadb6e93fa7b',1,'Item']]]
 ];

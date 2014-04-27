@@ -1,12 +1,7 @@
 var searchData=
 [
-  ['place_5fcell',['place_cell',['../level_8c.html#aaaa68e1af555f365504b310f57d3b8b2',1,'level.c']]],
-  ['player',['player',['../structLevel.html#a94f3b76de30a3f5a9e2bbac2a246cddd',1,'Level']]],
-  ['player_2ec',['player.c',['../player_8c.html',1,'']]],
-  ['player_2eh',['player.h',['../player_8h.html',1,'']]],
-  ['player_5fdeath',['player_death',['../player_8c.html#abc728d3e21a1504f9157866c89c3ab89',1,'player_death(Mob *player):&#160;player.c'],['../player_8h.html#abc728d3e21a1504f9157866c89c3ab89',1,'player_death(Mob *player):&#160;player.c']]],
-  ['player_5fturn',['player_turn',['../player_8c.html#a3829d1675d5789e2531ffcc90fcad6a2',1,'player_turn(Mob *player):&#160;player.c'],['../player_8h.html#a3829d1675d5789e2531ffcc90fcad6a2',1,'player_turn(Mob *player):&#160;player.c']]],
-  ['prev',['prev',['../structItem.html#a2ac541da55afe6a893990a6b47643fe6',1,'Item::prev()'],['../structLevel.html#a885d2f1067467e3ef2eb834a77b53b5a',1,'Level::prev()'],['../structMob.html#a6909c33ed75852772bef6e90f508b44f',1,'Mob::prev()']]],
-  ['profession',['profession',['../structMob.html#afcac08ca6b4442b2708f8ca48d34141e',1,'Mob']]],
-  ['professions',['professions',['../player_8c.html#adf411846d36a8f1757ba4ae91229a204',1,'player.c']]]
+  ['name',['name',['../structItem.html#a06c6faeee0e8202db92886ea8a4472d7',1,'Item::name()'],['../structMob.html#a44fe15f835a9ee08b1dc7933c103b3ac',1,'Mob::name()']]],
+  ['names',['names',['../player_8c.html#a0737f2a8dd8fbaf9c6608f85e2b79778',1,'player.c']]],
+  ['next',['next',['../structList.html#aa395a364263b11a52818d9ab2d1ad768',1,'List']]],
+  ['none',['NONE',['../item_8h.html#a443f647757dde85043b49343f5cbe66bac157bdf0b85a40d2619cbc8bc1ae5fe2',1,'item.h']]]
 ];

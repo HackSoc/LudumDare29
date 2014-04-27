@@ -1,4 +1,6 @@
 <map id="player.h" name="player.h">
-<area shape="rect" id="node3" href="$main_8c.html" title="main.c" alt="" coords="5,83,67,112"/>
-<area shape="rect" id="node5" href="$player_8c.html" title="player.c" alt="" coords="91,83,157,112"/>
+<area shape="rect" id="node3" href="$level_8c.html" title="level.c" alt="" coords="5,83,64,112"/>
+<area shape="rect" id="node5" href="$main_8c.html" title="main.c" alt="" coords="88,83,149,112"/>
+<area shape="rect" id="node7" href="$mob_8c.html" title="mob.c" alt="" coords="173,83,232,112"/>
+<area shape="rect" id="node9" href="$player_8c.html" title="player.c" alt="" coords="256,83,323,112"/>
 </map>

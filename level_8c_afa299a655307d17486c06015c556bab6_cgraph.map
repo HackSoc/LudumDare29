@@ -1,5 +1,11 @@
 <map id="run_turn" name="run_turn">
-<area shape="rect" id="node3" href="$level_8c.html#addc0f2c1d64b7c916fe87cdaa9aa28e3" title="do_affliction" alt="" coords="124,5,215,35"/>
-<area shape="rect" id="node7" href="$mob_8c.html#abeb2923a23965532d5e87ae2cb389202" title="kill_mob" alt="" coords="135,59,204,88"/>
-<area shape="rect" id="node5" href="$effect_8c.html#a6e22581aa928d7cc65e2b9e054ff4346" title="is_afflicted" alt="" coords="264,5,349,35"/>
+<area shape="rect" id="node3" href="$level_8c.html#addc0f2c1d64b7c916fe87cdaa9aa28e3" title="do_affliction" alt="" coords="124,19,215,48"/>
+<area shape="rect" id="node7" href="$mob_8c.html#abeb2923a23965532d5e87ae2cb389202" title="kill_mob" alt="" coords="135,72,204,101"/>
+<area shape="rect" id="node5" href="$effect_8c.html#a6e22581aa928d7cc65e2b9e054ff4346" title="is_afflicted" alt="" coords="264,19,349,48"/>
+<area shape="rect" id="node9" href="$list_8c.html#a599f5b7cce35d2760475b947d36d9303" title="drop" alt="" coords="284,72,329,101"/>
+<area shape="rect" id="node17" href="$list_8c.html#afbd6a9cefc144062bf5e3ac722fe6231" title="append" alt="" coords="275,139,339,168"/>
+<area shape="rect" id="node11" href="$list_8c.html#aa03e2734945bc99fc724362223536ed1" title="setnext" alt="" coords="400,5,464,35"/>
+<area shape="rect" id="node13" href="$list_8c.html#a6ee619d39f856742aa60a30b935f672c" title="gethead" alt="" coords="399,59,465,88"/>
+<area shape="rect" id="node15" href="$list_8c.html#a8f767445cdc4ecd0d420708a2b014729" title="setprev" alt="" coords="400,112,464,141"/>
+<area shape="rect" id="node19" href="$list_8c.html#ad7f192fab0de9f5b98c6d7d1cacf7f46" title="gettail" alt="" coords="404,165,460,195"/>
 </map>
