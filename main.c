@@ -26,6 +26,7 @@ int main() {
 	keypad(stdscr, true);
 	start_color();
 	curs_set(0);
+	init_color(COLOR_BLUE, 250, 250, 250);
 
 	srand(time(NULL));
 

@@ -6,6 +6,7 @@
 #include "utils.h"
 #include "effect.h"
 #include "list.h"
+#include "player.h"
 
 extern bool quit;
 
@@ -323,11 +324,20 @@ void run_turn(Level * level) {
  */
 void display_level(Level * level) {
 	Mob * player = level->player;
+	PlayerData * playerdata = (PlayerData *)player->data;
+
 	for(unsigned int x = 0; x < LEVELWIDTH; x++) {
 		for(unsigned int y = 0; y < LEVELHEIGHT; y++) {
 			if(!can_see(player, x, y)) {
+				mvaddchcol(y, x,
+				           playerdata->terrain->symbols[x][y],
+				           COLOR_BLUE,
+				           COLOR_BLACK,
+				           false);
 				continue;
 			}
+
+			playerdata->terrain->symbols[x][y] = level->cells[x][y]->baseSymbol;
 
 			if(level->cells[x][y]->occupant != NULL &&
 			   level->cells[x][y]->occupant->health > 0) {

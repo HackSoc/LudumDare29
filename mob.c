@@ -1,10 +1,12 @@
 #include <stdlib.h>
 #include <assert.h>
+#include <string.h>
 
 #include "mob.h"
 #include "level.h"
 #include "utils.h"
 #include "effect.h"
+#include "player.h"
 
 /**
  * Move the given mob to the new coordinates.
@@ -273,8 +275,26 @@ bool move_mob_level(Mob * mob, bool toprev) {
 	mob->ypos = newy;
 
 	if (mob == level->player) {
+		PlayerData * playerdata = (PlayerData *)level->player->data;
+		
 		level->player = NULL;
 		newlevel->player = mob;
+
+		if(toprev) {
+			playerdata->terrain = fromlist(Terrain, levels,
+			                               playerdata->terrain->levels.prev);
+		} else {
+			List * next = playerdata->terrain->levels.next;
+			if(next == NULL) {
+				Terrain * nextlevel = xalloc(Terrain);
+				memset(nextlevel->symbols, ' ', LEVELWIDTH * LEVELHEIGHT);
+				playerdata->terrain->levels.next = &nextlevel->levels;
+				nextlevel->levels.prev = &playerdata->terrain->levels;
+				playerdata->terrain = nextlevel;
+			} else {
+				playerdata->terrain = fromlist(Terrain, levels, next);
+			}
+		}
 	}
 
 	return true;

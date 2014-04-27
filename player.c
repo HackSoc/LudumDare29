@@ -1,5 +1,6 @@
 #include <stdbool.h>
 #include <curses.h>
+#include <string.h>
 
 #include "mob.h"
 #include "level.h"
@@ -86,6 +87,12 @@ Mob * create_player() {
 	player->health = 100;
 	player->max_health = 100;
 	player->score = 0;
+
+	/* Initialise the terrain knowledge to nothing */
+	PlayerData * playerdata = xalloc(PlayerData);
+	player->data = (void *)playerdata;
+	playerdata->terrain = xalloc(Terrain);
+	memset(playerdata->terrain->symbols, ' ', LEVELWIDTH * LEVELHEIGHT);
 
 	Item * stone = xalloc(Item);
 	stone->symbol = '*';
