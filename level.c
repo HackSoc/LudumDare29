@@ -140,7 +140,7 @@ static void mine_level(Level * level,
 #define DEF_MOB(sym, n, col, hlth) {.symbol = (sym), .colour = (col), .name = (n), \
 			.is_bold = false, .hostile = true, .health = (hlth), .max_health = (hlth), \
 			.level = NULL, .moblist = {.next = NULL, .prev=NULL}, .turn_action = NULL, \
-		    .xpos = 0, .ypos = 0, .score = 0, .darksight = true, .luminous = false}
+		    .xpos = 0, .ypos = 0, .score = 0, .darksight = true, .luminosity = 0}
 
 static const struct Mob default_mobs[] = {
 	DEF_MOB('H', "Hedgehog", COLOR_YELLOW, 5),
@@ -230,6 +230,7 @@ void build_level(Level * level) {
 		.colour = COLOR_WHITE,
 		.solid = false,
 		.illuminated = false,
+		.luminosity = 0,
 		.occupant = NULL,
 		.items = NULL};
 
@@ -244,6 +245,7 @@ void build_level(Level * level) {
 		.colour = COLOR_GREEN,
 		.solid = false,
 		.illuminated = false,
+		.luminosity = 0,
 		.occupant = NULL,
 		.items = NULL};
 
@@ -335,8 +337,8 @@ static void calculate_illumination(Level * level) {
 	for(unsigned int x = 0; x < LEVELWIDTH; x++) {
 		for(unsigned int y = 0; y < LEVELHEIGHT; y++) {
 			Cell * cell = level->cells[x][y];
-			if(cell->luminous ||
-			   (cell->occupant != NULL && cell->occupant->luminous)) {
+			if(cell->luminosity > 0 ||
+			   (cell->occupant != NULL && cell->occupant->luminosity > 0)) {
 				/* Luminous cells are illuminated */
 				level->cells[x][y]->illuminated = true;
 

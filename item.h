@@ -33,6 +33,8 @@ typedef struct Item {
 	char symbol; /**< The symbol to display when dropped */
 	char * name; /**< The name to display when examined */
 
+	bool luminous; /**< Whether the item is luminous or not */
+
 	List inventory; /**< The inventory to which this item belongs. */
 
 	Equipment * equipment; /**< Pointer to the equipment stats for the

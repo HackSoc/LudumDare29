@@ -49,7 +49,7 @@ typedef struct Mob {
 	unsigned int max_health; /**< The maximum health. */
 
 	bool darksight; /**< Whether the mob can see in the dark or not. */
-	bool luminous; /**< Whether the mob is a light source or not. */
+	unsigned int luminosity; /**< Number of light sources the mob is holding. */
 
 	void * data; /**< Mob type specific data, eg PlayerData */
 } Mob;
