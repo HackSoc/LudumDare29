@@ -71,9 +71,6 @@ int main() {
 			Mob * mob = kill_mob(fromlist(Mob, moblist, level->mobs));
 			level->mobs = (mob == NULL) ? NULL : mob->moblist.next;
 		}
-		do {
-			
-		} while (level->mobs != NULL);
 
 		for (int x = 0; x < LEVELWIDTH; x++) {
 			for (int y = 0; y < LEVELHEIGHT; y++) {
