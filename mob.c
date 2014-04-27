@@ -110,6 +110,9 @@ Mob * kill_mob(Mob * mob) {
 		last->next->prev = last;
 	}
 
+	xfree(mob->name);
+	xfree(mob->profession);
+	xfree(mob->race);
 	xfree(mob);
 
 	return next;
@@ -151,7 +154,7 @@ bool can_see(Mob * mob, unsigned int x, unsigned int y) {
 		}
 
 		int e2 = err << 2;
-		
+
 		if(e2 > -dy) {
 			err -= dy;
 			x0 += sx;

@@ -65,10 +65,7 @@ int main() {
 		while (m != NULL) {
 			Mob * tmp = m;
 			m = m->next;
-			xfree(tmp->name);
-			xfree(tmp->race);
-			xfree(tmp->profession);
-			xfree(tmp);
+			kill_mob(tmp);
 		}
 		for (int x = 0; x < LEVELWIDTH; x++) {
 			for (int y = 0; y < LEVELHEIGHT; y++) {
