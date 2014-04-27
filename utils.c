@@ -74,39 +74,95 @@ void mvaddchcol(unsigned int y, unsigned int x,
 /**
  * Select from a list of things, berate the player if they enter a bad
  * choice. This clears the screen before and after running.
- * @param y The Y coordinate to put the question
- *          (choices are on subsequent lines).
- * @param x The X coordinate.
+ * @param nochoice This isn't a choice, just a list.
  * @param prompt The initial question.
  * @param prompt2 The prompt to use after a bad choice.
- * @param choices NULL-terminated list of choices.
+ * @param multi Allow multiple selections.
+ * @param empty Allow an empty selection.
+ * @param choices NULL-terminated list of choice names.
+ * @param results NULL-terminated list of actual results.
+ * @return The results corresponding to the choices, or NULL.
  */
-const char * list_choice(unsigned int y, unsigned int x,
-						 const char * prompt,
-						 const char * prompt2,
-						 const char * choices[]) {
+const void ** list_choice(bool nochoice,
+						  const char * prompt,
+						  const char * prompt2,
+						  bool multi,
+						  bool empty,
+						  const char * choices[],
+						  const void * results[]) {
 	clear();
-	int num_choices;
+
+	/* Build the list of choices, and count how many there are */
+	unsigned int num_choices;
 	for(num_choices = 0; choices[num_choices] != NULL; num_choices ++) {
-		mvaddprintf(y + 1 + num_choices, x,
-					"%c. %s", 'a' + num_choices, choices[num_choices]);
+		mvaddprintf(2 + num_choices, 1,
+					"%c - %s", 'a' + num_choices, choices[num_choices]);
 	}
 
-	mvaddstr(y, x, prompt);
+	mvaddstr(1, 1, prompt);
 	addch(' ');
 
-	int choice = -1;
-	while(choice < 0 || choice > num_choices) {
-		choice = getch() - 'a';
-		if(choice < 0 || choice > num_choices) {
-			move(y, x);
-			clrtoeol();
-			addstr(prompt2);
-			addch(' ');
+	/* If this is not a choice, end here */
+	if(nochoice) {
+		getch();
+		clear();
+		return NULL;
+	}
+
+	/* Get a list of choices */
+	bool * chosen = xcalloc(num_choices, bool);
+	unsigned int num_chosen = 0;
+
+	while(true) {
+		unsigned int ch = getch();
+		if('a' <= ch && 'a' + num_choices > ch) {
+			/* If multiple choice isn't allowed, and a choice has been
+			   made, just skip this iteration if they tried to choose
+			   another thing */
+			if(!multi && num_chosen != 0 && !chosen[ch - 'a']) {
+				continue;
+			}
+
+			/* Toggle the chosen state of the choice and update the
+			   list */
+			chosen[ch - 'a'] = !chosen[ch - 'a'];
+			if (chosen[ch - 'a']) {
+				num_chosen ++;
+				mvaddprintf(2 + ch - 'a', 3, "+");
+			} else {
+				num_chosen --;
+				mvaddprintf(2 + ch - 'a', 3, "-");
+			}
+		} else {
+			if(num_chosen > 0 || empty) {
+				/* If there are choices, or we allow an empty choice,
+				   terminate */
+				break;
+			} else {
+				/* Otherwise, berate the user */
+				move(1, 1);
+				clrtoeol();
+				addstr(prompt2);
+			}
 		}
 	}
+
+	/* Construct the return list */
+	const void ** selected = xcalloc(num_chosen + 1, void *);
+	unsigned int j = 0;
+	for(unsigned int i = 0; i < num_choices; i++) {
+		if(chosen[i]) {
+			selected[j] = results[i];
+			j++;
+		}
+	}
+	selected[j] = NULL;
+
+	/* Clean up and return */
 	clear();
-	return choices[choice];
+	xfree(chosen);
+
+	return selected;
 }
 
 /**

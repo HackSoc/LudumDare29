@@ -52,15 +52,23 @@ static void design_player(Mob * player) {
 	player->name = strdup(buf);
 	noecho();
 
-	player->race = strdup(list_choice(9, 10,
-									  "What is your race?",
-									  "Don't be silly, choose a proper race.",
-									  races));
+	const void ** race = list_choice(false,
+									 "What is your race?",
+									 "Don't be silly, choose a proper race.",
+									 false,
+									 false,
+									 races,
+									 (const void **)races);
+	player->race = strdup((char *) race[0]);
 
-	player->profession = strdup(list_choice(9, 10,
-											"And finally, what is your profession?",
-											"That's not a real job!",
-											professions));
+	const void ** profession = list_choice(false,
+										   "And finally, what is your profession?",
+										   "That's not a real job!",
+										   false,
+										   false,
+										   professions,
+										   (const void **)professions);
+	player->profession = strdup((char*) profession[0]);
 }
 
 /**
@@ -75,6 +83,7 @@ Mob * create_player() {
 	player->hostile = false;
 	player->turn_action = &player_turn;
 	player->death_action = &player_death;
+	player->health = 5;
 	player->health = 100;
 	player->max_health = 100;
 	player->score = 0;
@@ -151,8 +160,8 @@ bool attackmove_relative(Mob * player, int xdiff, int ydiff) {
  * @param player Player entity.
  */
 void player_turn(Mob * player) {
-	Item * item;
 	Item ** items;
+	Equipment * equipment;
 	Cell * current_cell = player->level->cells[player->xpos][player->ypos];
 
 	display_level(player->level);
@@ -228,11 +237,11 @@ void player_turn(Mob * player) {
 
 		/* Inventory management */
 	case 'i':
-		display_items(player->items, false, "Inventory Contents:");
+		display_inventory(player->items, "Inventory Contents:");
 		break;
 
 	case 'd':
-		items = display_items(player->items, true, "Select items to drop:");
+		items = choose_items(player->items, "Select items to drop:");
 		if(items != NULL) {
 			/* Unequip if necessary */
 			for(unsigned int i = 0; items[i] != NULL; i++) {
@@ -251,8 +260,7 @@ void player_turn(Mob * player) {
 		break;
 
 	case ',':
-		items = display_items(current_cell->items, true,
-							  "Select items to pick up:");
+		items = choose_items(current_cell->items, "Select items to pick up:");
 		if(items != NULL) {
 			current_cell->items = remove_items(current_cell->items, items);
 			player->items = add_items(player->items, items);
@@ -261,20 +269,20 @@ void player_turn(Mob * player) {
 		break;
 
 	case 'w':
-		item = choose_equipment(player->items,
-								WEAPON,
-								"Select a weapon to equip");
-		if(item != NULL) {
-			player->weapon = item->equipment;
+		equipment = choose_equipment(player->items,
+									 WEAPON,
+									 "Select a weapon to equip");
+		if(equipment != NULL) {
+			player->weapon = equipment;
 		}
 		break;
 
 	case 'W':
-		item = choose_equipment(player->items,
-								ARMOUR,
-								"Select some armour to wear");
-		if(item != NULL) {
-			player->armour = item->equipment;
+		equipment = choose_equipment(player->items,
+									 ARMOUR,
+									 "Select some armour to wear");
+		if(equipment != NULL) {
+			player->armour = equipment;
 		}
 		break;
 

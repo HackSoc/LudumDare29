@@ -40,10 +40,11 @@ typedef struct Item {
 							  equipment. */
 } Item;
 
-Item ** display_items(Item * items, bool isChoice, char * prompt);
-Item * choose_equipment(Item * inventory,
-						enum EquipmentType type,
-						const char * prompt);
+void display_inventory(Item * inventory, const char * title);
+Item ** choose_items(Item * inventory, const char * prompt);
+Equipment * choose_equipment(Item * inventory,
+							 enum EquipmentType type,
+							 const char * prompt);
 Item * remove_items(Item * inventory, Item ** items);
 Item * add_items(Item * inventory, Item ** items);
 

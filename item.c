@@ -7,92 +7,82 @@
 #include "utils.h"
 
 /**
- * Display the list of items given, allowing for items to be chosen from the list.
- * @param items The items to display, as a doubly linked list.
- * @param isChoice Determines whether the player is allowed to choose items from the list, which are returned from the function.
- * @param prompt The prompt to be written at the start of the list.
- * @return The list of items chosen, or NULL if isChoice is false or no items were chosen.
+ * Convert an inventory doubly-linked list into an array of pointers
+ * to names of members of the inventory.
+ * @param inventory The inventory to convert
  */
-Item ** display_items(Item * items, bool isChoice, char * prompt) {
-	Item ** item_array;
-	bool * chosen;
-	int num_items = 0;
-	Item * item = NULL;
-	int i, ch;
-	unsigned int num_chosen = 0;
-
-	/* count the items */
-	for (item = items; item != NULL; item = item->next) {
-		num_items++;
+static const char ** inventory_name_array(Item * inventory) {
+	unsigned int num_items = 0;
+	for(Item * item = inventory; item != NULL; item = item->next) {
+		num_items ++;
 	}
 
-	if(num_items == 0) {
-		/* No items, so this is not a choice */
-		isChoice = false;
+	const char ** out = xcalloc(num_items + 1, char *);
+
+	unsigned int i = 0;
+	for(Item * item = inventory; item != NULL; item = item->next) {
+		out[i] = item->name;
+		i ++;
 	}
 
-	item_array = xcalloc(num_items, Item *);
-	chosen = xcalloc(num_items, bool);
+	out[i] = NULL;
 
-	i = 0;
-	for (item = items; item != NULL; item = item->next) {
-		item_array[i] = item;
-		i++;
+	return out;
+}
+
+/**
+ * Convert an inventory doubly-linked list into an array of pointers
+ * to members of the inventory.
+ * @param inventory The inventory to convert
+ */
+static const Item ** inventory_array(Item * inventory) {
+	unsigned int num_items = 0;
+	for(Item * item = inventory; item != NULL; item = item->next) {
+		num_items ++;
 	}
 
-	clear();
-	mvaddprintf(0, 0, "%s", prompt);
-	for (i = 0; i < num_items; i++) {
-		mvaddprintf(i+1, 0, "%c", 'a' + i);
-		addprintf(" - ");
-		addprintf("%s", item_array[i]->name);
+	const Item ** out = xcalloc(num_items + 1, Item *);
+
+	unsigned int i = 0;
+	for(Item * item = inventory; item != NULL; item = item->next) {
+		out[i] = item;
+		i ++;
 	}
 
-	if (!isChoice) {
-		getch();
+	out[i] = NULL;
 
-		xfree(item_array);
-		xfree(chosen);
+	return out;
+}
 
-		return NULL;
-	}
+/**
+ * Display an inventory
+ * @param inventory The inventory to display
+ * @param title The title to display
+ */
+void display_inventory(Item * inventory, const char * title) {
+	const char ** names = inventory_name_array(inventory);
+	list_choice(true,
+				title, NULL,
+				false, false,
+				names, NULL);
+	xfree(names);
+}
 
-	while (true) {
-		ch = getch();
-		
-		if ('a' <= ch && 'a' + num_items > ch) {
-			chosen[ch-'a'] = !chosen[ch-'a'];
-			if (chosen[ch-'a']) {
-				num_chosen ++;
-				mvaddprintf(1 + ch - 'a', 2, "+");
-			} else {
-				num_chosen --;
-				mvaddprintf(1 + ch - 'a', 2, "-");
-			}
-		}
-		if (ch <= 32 || ch >= 126) { 
-			/* if ch is a non-printable ASCII character */
-			break;
-		} 
-	} 
-	
-	/* construct the return list */
-	Item ** selected = xcalloc(num_chosen + 1, Item *);
-	unsigned int j = 0;
-	for(i = 0; i < num_items; i++) {
-		if(chosen[i]) {
-			selected[j] = item_array[i];
-			j++;
-		}
-	}
-	selected[j] = NULL;
-	
-	clear();
-
-	xfree(item_array);
-	xfree(chosen);
-
-	return selected;
+/**
+ * Choose some items from an inventory
+ * @param inventory The inventory to choose from
+ * @param prompt The prompt to display
+ */
+Item ** choose_items(Item * inventory, const char * prompt){
+	const char ** names = inventory_name_array(inventory);
+	const Item ** items = inventory_array(inventory);
+	Item ** out = (Item **)list_choice(false,
+									   prompt, prompt,
+									   true, true,
+									   names, (const void **)items);
+	xfree(names);
+	xfree(items);
+	return out;
 }
 
 /**
@@ -102,9 +92,9 @@ Item ** display_items(Item * items, bool isChoice, char * prompt) {
  * @param prompt The prompt
  * @return NULL if nothing was selected, otherwise a pointer to the choice.
  */
-Item * choose_equipment(Item * inventory,
-						enum EquipmentType type,
-						const char * prompt) {
+Equipment * choose_equipment(Item * inventory,
+							 enum EquipmentType type,
+							 const char * prompt) {
 	unsigned int num_pieces = 0;
 
 	for(Item * item = inventory; item != NULL; item = item->next) {
@@ -117,21 +107,29 @@ Item * choose_equipment(Item * inventory,
 		return NULL;
 	}
 
-	char ** choices = xcalloc(num_pieces, char*);
+	const char ** names = xcalloc(num_pieces, char *);
+	const void ** equipment = xcalloc(num_pieces, void *);
 
 	unsigned int i = 0;
 	for(Item * item = inventory; item != NULL; item = item->next) {
 		if(item->equipment != NULL && item->equipment->type == type) {
-			choices[i] = item->name;
+			names[i] = item->name;
+			equipment[i] = item->equipment;
 			i ++;
 		}
 	}
 
-	char * choice = list_choice(1, 0, prompt, prompt, choices);
-	for(Item * item = inventory; item != NULL; item = item->next) {
-		if(strcmp(choice, item->name) == 0) {
-			return item;
-		}
+	const void ** res = list_choice(false,
+									prompt, prompt,
+									false, true,
+									names, equipment);
+
+	if(res == NULL) {
+		return NULL;
+	} else {
+		Equipment * out = (Equipment *) res[0];
+		xfree(res);
+		return out;
 	}
 }
 

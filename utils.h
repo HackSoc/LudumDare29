@@ -26,10 +26,13 @@ void mvaddchcol(unsigned int y, unsigned int x,
 				char chr,
 				int fg, int bg,
 				bool bold);
-const char * list_choice(unsigned int y, unsigned int x,
-						 const char * prompt,
-						 const char * prompt2,
-						 const char * choices[]);
+const void ** list_choice(bool nochoice,
+						  const char * prompt,
+						  const char * prompt2,
+						  bool multi,
+						  bool empty,
+						  const char * choices[],
+						  const void * results[]);
 const void * random_choice(const void * choices[]);
 void * _xalloc(size_t size);
 void _xfree(void ** ptr);
