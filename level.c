@@ -140,7 +140,7 @@ static void mine_level(Level * level,
 #define DEF_MOB(sym, n, col, hlth) {.symbol = (sym), .colour = (col), .name = (n), \
 			.is_bold = false, .hostile = true, .health = (hlth), .max_health = (hlth), \
 			.level = NULL, .moblist = {.next = NULL, .prev=NULL}, .turn_action = NULL, \
-			.xpos = 0, .ypos = 0, .score = 0}
+			.xpos = 0, .ypos = 0, .score = 0, .darksight = true}
 
 static const struct Mob default_mobs[] = {
 	DEF_MOB('H', "Hedgehog", COLOR_YELLOW, 5),
@@ -229,6 +229,7 @@ void build_level(Level * level) {
 		.baseSymbol = '.',
 		.colour = COLOR_WHITE,
 		.solid = false,
+		.illuminated = false,
 		.occupant = NULL,
 		.items = NULL};
 
@@ -242,6 +243,7 @@ void build_level(Level * level) {
 		.baseSymbol = '~',
 		.colour = COLOR_GREEN,
 		.solid = false,
+		.illuminated = false,
 		.occupant = NULL,
 		.items = NULL};
 

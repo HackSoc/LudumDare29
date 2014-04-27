@@ -87,6 +87,7 @@ Mob * create_player() {
 	player->health = 100;
 	player->max_health = 100;
 	player->score = 0;
+	player->darksight = false;
 
 	/* Initialise the terrain knowledge to nothing */
 	PlayerData * playerdata = xalloc(PlayerData);

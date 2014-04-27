@@ -23,6 +23,7 @@ typedef struct Cell {
 	int colour; /**< The colour to use to render the cell (if unoccupied). */
 
 	bool solid;      /**< Whether the cell is solid (impassible) or not. */
+	bool illuminated; /**< Whether the cell is lit by a light or not. */
 
 	struct Mob * occupant; /**< The occpuant (may be NULL). */
 	struct List * items;   /**< The list of items (may be NULL). */

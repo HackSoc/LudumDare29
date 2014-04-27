@@ -48,6 +48,8 @@ typedef struct Mob {
 	int health; /**< The current health, signed to prevent underflow. */
 	unsigned int max_health; /**< The maximum health. */
 
+	bool darksight; /**< Whether the mob can see int he dark or not. */
+
 	void * data; /**< Mob type specific data, eg PlayerData */
 } Mob;
 

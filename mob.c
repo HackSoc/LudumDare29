@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <string.h>
+#include <math.h>
 
 #include "mob.h"
 #include "level.h"
@@ -172,7 +173,16 @@ bool can_see(Mob * mob, unsigned int x, unsigned int y) {
 		}
 	}
 
-	return true;
+	if(level->cells[x][y]->illuminated || mob->darksight) {
+		/* Cells can be seen if they're illuminated or the mob can see
+		 * in the dark */
+		return true;
+	} else if(sqrt(pow(abs(mob->xpos - x), 2) + pow(abs(mob->ypos - y), 2)) <= 5) {
+		/* Or if they're sufficiently close to the mob */
+		return true;
+	} else { 
+		return false;
+	}
 }
 
 /**
