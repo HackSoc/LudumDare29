@@ -140,7 +140,7 @@ static void mine_level(Level * level,
 #define DEF_MOB(sym, n, col, hlth) {.symbol = (sym), .colour = (col), .name = (n), \
 			.is_bold = false, .hostile = true, .health = (hlth), .max_health = (hlth), \
 			.level = NULL, .moblist = {.next = NULL, .prev=NULL}, .turn_action = NULL, \
-			.xpos = 0, .ypos = 0, .score = 0}
+		    .xpos = 0, .ypos = 0, .score = 0, .darksight = true, .luminosity = 0}
 
 static const struct Mob default_mobs[] = {
 	DEF_MOB('H', "Hedgehog", COLOR_YELLOW, 5),
@@ -229,6 +229,8 @@ void build_level(Level * level) {
 		.baseSymbol = '.',
 		.colour = COLOR_WHITE,
 		.solid = false,
+		.illuminated = false,
+		.luminosity = 0,
 		.occupant = NULL,
 		.items = NULL};
 
@@ -242,6 +244,8 @@ void build_level(Level * level) {
 		.baseSymbol = '~',
 		.colour = COLOR_GREEN,
 		.solid = false,
+		.illuminated = false,
+		.luminosity = 0,
 		.occupant = NULL,
 		.items = NULL};
 
@@ -318,6 +322,43 @@ void run_turn(Level * level) {
 }
 
 /**
+ * Calculate which cells are illuminated or not
+ * @param level The level to check
+ */
+static void calculate_illumination(Level * level) {
+	/* Unset all illumination */
+	for(unsigned int x = 0; x < LEVELWIDTH; x++) {
+		for(unsigned int y = 0; y < LEVELHEIGHT; y++) {
+			level->cells[x][y]->illuminated = false;
+		}
+	}
+
+	/* Calculate illumination */
+	for(unsigned int x = 0; x < LEVELWIDTH; x++) {
+		for(unsigned int y = 0; y < LEVELHEIGHT; y++) {
+			Cell * cell = level->cells[x][y];
+			if(cell->luminosity > 0 ||
+			   (cell->occupant != NULL && cell->occupant->luminosity > 0)) {
+				/* Luminous cells are illuminated */
+				level->cells[x][y]->illuminated = true;
+
+				/* As is every cell they can see */
+				for(unsigned int x2 = 0; x2 < LEVELWIDTH; x2++) {
+					for(unsigned int y2 = 0; y2 < LEVELHEIGHT; y2++) {
+						if(level->cells[x2][y2]->illuminated) {
+							continue;
+						}
+						if(can_see_point(level, x, y, x2, y2)) {
+							level->cells[x2][y2]->illuminated = true;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/**
  * Render the level to the screen. The symbol for a level is picked
  * according to the following priorities: occupant > top item > base.
  * @param level Grid to display.
@@ -325,6 +366,8 @@ void run_turn(Level * level) {
 void display_level(Level * level) {
 	Mob * player = level->player;
 	PlayerData * playerdata = (PlayerData *)player->data;
+
+	calculate_illumination(level);
 
 	for(unsigned int x = 0; x < LEVELWIDTH; x++) {
 		for(unsigned int y = 0; y < LEVELHEIGHT; y++) {

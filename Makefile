@@ -2,7 +2,7 @@ OBJDIR=objs
 
 CC=clang
 CFLAGS=-c -Wall -Wextra -Werror -pedantic -g -std=c99
-LDFLAGS=-lcurses
+LDFLAGS=-lcurses -lm
 SOURCES=$(wildcard *.c)
 
 OBJECTS=$(addprefix $(OBJDIR)/,$(SOURCES:.c=.o))

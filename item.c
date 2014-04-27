@@ -79,42 +79,44 @@ List ** choose_items(List * inventory, const char * prompt){
 }
 
 /**
- * Choose a piece of equipment
+ * Choose an item by type
  * @param inventory The inventory to choose from
- * @param type The type of the equipment
+ * @param type The type of the item
  * @param prompt The prompt
+ * @param no_equipped Don't include equipped things
  * @return NULL if nothing was selected, otherwise a pointer to the choice.
  */
-Equipment * choose_equipment(List * inventory,
-                             enum EquipmentType type,
-                             const char * prompt) {
-
+Item * choose_item_by_type(List * inventory,
+                           enum ItemType type,
+                           const char * prompt,
+                           bool no_equipped) {
 	const char ** names = xcalloc(length(inventory) + 1, char *);
-	const void ** equipment = xcalloc(length(inventory) + 1, void *);
+	const void ** items = xcalloc(length(inventory) + 1, void *);
 
 	unsigned int i = 0;
 	for(List * list = inventory; list != NULL; list = list->next) {
 		Item * item = fromlist(Item, inventory, list);
-		if(item->equipment != NULL && item->equipment->type == type) {
+		if(item->type == type &&
+		   ((no_equipped && !item->equipped) || !no_equipped)) {
 			names[i] = item->name;
-			equipment[i] = item->equipment;
+			items[i] = item;
 			i ++;
 		}
 	}
 	names[i] = NULL;
-	equipment[i] = NULL;
+	items[i] = NULL;
 
 	const void ** res = list_choice(false,
 	                                prompt, prompt,
 	                                false, true,
-	                                names, equipment);
+	                                names, items);
 
 	xfree(names);
-	xfree(equipment);
+	xfree(items);
 	if(res == NULL) {
 		return NULL;
 	} else {
-		Equipment * out = (Equipment *) res[0];
+		Item * out = (Item *) res[0];
 		xfree(res);
 		return out;
 	}

@@ -6,6 +6,7 @@
 #include "level.h"
 #include "utils.h"
 #include "player.h"
+#include "effect.h"
 
 const char * names[] = {"Colin",
                         NULL};
@@ -87,6 +88,7 @@ Mob * create_player() {
 	player->health = 100;
 	player->max_health = 100;
 	player->score = 0;
+	player->darksight = false;
 
 	/* Initialise the terrain knowledge to nothing */
 	PlayerData * playerdata = xalloc(PlayerData);
@@ -105,14 +107,27 @@ Mob * create_player() {
 	Item * sword = xalloc(Item);
 	sword->symbol = '/';
 	sword->name = "A Sword";
-	sword->equipment = xalloc(Equipment);
-	sword->equipment->item = sword;
-	sword->equipment->type = WEAPON;
-	sword->equipment->attack = 10;
+	sword->type = WEAPON;
+	sword->value = 10;
+
+	Item * lantern = xalloc(Item);
+	lantern->symbol = '^';
+	lantern->name = "Lantern";
+	lantern->type = WEAPON;
+	lantern->luminous = true;
+	lantern->value = 1;
+
+	Item * potion = xalloc(Item);
+	potion->symbol = '-';
+	potion->name = "Potion of Cure Poison";
+	potion->type = DRINK;
+	potion->effect = &cure_poison;
 
 	player->inventory = insert(player->inventory, &stone->inventory);
 	player->inventory = insert(player->inventory, &coin->inventory);
 	player->inventory = insert(player->inventory, &sword->inventory);
+	player->inventory = insert(player->inventory, &lantern->inventory);
+	player->inventory = insert(player->inventory, &potion->inventory);
 
 	clear();
 	mvaddprintf(9, 10, "Do you want to randomly generate your player? ");
@@ -169,7 +184,7 @@ bool attackmove_relative(Mob * player, int xdiff, int ydiff) {
  */
 void player_turn(Mob * player) {
 	List ** items;
-	Equipment * equipment;
+	Item * item;
 	Cell * current_cell = player->level->cells[player->xpos][player->ypos];
 
 	display_level(player->level);
@@ -254,12 +269,21 @@ void player_turn(Mob * player) {
 			for(unsigned int i = 0; items[i] != NULL; i++) {
 				Item * item = fromlist(Item, inventory, items[i]);
 				/* Unequip if necessary */
-				if(player->weapon != NULL &&
-				   item == player->weapon->item) {
+				if(item == player->weapon) {
+					if(item->luminous) {
+						player->luminosity --;
+					}
 					player->weapon = NULL;
-				} else if(player->armour != NULL &&
-				          item == player->armour->item) {
+				} else if(item == player->armour) {
+					if(item->luminous) {
+						player->luminosity --;
+					}
 					player->armour = NULL;
+				} else if(item == player->offhand) {
+					if(item->luminous) {
+						player->luminosity --;
+					}
+					player->offhand = NULL;
 				}
 			}
 			/* Remove from the inventory */
@@ -284,20 +308,97 @@ void player_turn(Mob * player) {
 		break;
 
 	case 'w':
-		equipment = choose_equipment(player->inventory,
-		                             WEAPON,
-		                             "Select a weapon to equip");
-		if(equipment != NULL) {
-			player->weapon = equipment;
+		item = choose_item_by_type(player->inventory,
+		                           WEAPON,
+		                           "Select a weapon to equip",
+		                           true);
+		if(item != NULL) {
+			if(player->weapon != NULL) {
+				player->weapon->equipped = false;
+				if(player->weapon->luminous) {
+					player->luminosity --;
+				}
+			}
+
+			player->weapon = item;
+			item->equipped = true;
+
+			if(item->luminous) {
+				player->luminosity ++;
+			}
 		}
 		break;
 
+	case 'x':
+		item = player->weapon;
+		player->weapon = player->offhand;
+		player->offhand = item;
+		break;
+
 	case 'W':
-		equipment = choose_equipment(player->inventory,
-		                             ARMOUR,
-		                             "Select some armour to wear");
-		if(equipment != NULL) {
-			player->armour = equipment;
+		item = choose_item_by_type(player->inventory,
+		                           ARMOUR,
+		                           "Select some armour to wear",
+		                           false);
+		if(item != NULL) {
+			if(player->armour != NULL) {
+				player->armour->equipped = false;
+				if(player->armour->luminous) {
+					player->luminosity --;
+				}
+			}
+
+			player->armour = item;
+			item->equipped = true;
+
+			if(item->luminous) {
+				player->luminosity ++;
+			}
+		}
+		break;
+
+		/* Food and drink */
+	case 'e':
+		item = choose_item_by_type(player->inventory,
+		                           FOOD,
+		                           "Select some food to eat",
+		                           false);
+		if(item != NULL) {
+			/* If the food has an effect, otherwise heal (or hurt) the
+			   player as appropriate */
+			if(item->effect != NULL) {
+				item->effect(player);
+			} else {
+				if(item->value >= 0) {
+					player->health += item->value;
+					if(player->health > (int)player->max_health) {
+						player->health = player->max_health;
+					}
+				} else {
+					damage_mob(player, -item->value);
+				}
+			}
+		}
+		break;
+
+	case 'q':
+		item = choose_item_by_type(player->inventory,
+		                           DRINK,
+		                           "Select a drink",
+		                           false);
+		if(item != NULL) {
+			if(item->effect != NULL) {
+				item->effect(player);
+			} else {
+				if(item->value >= 0) {
+					player->health += item->value;
+					if(player->health > (int)player->max_health) {
+						player->health = player->max_health;
+					}
+				} else {
+					damage_mob(player, -item->value);
+				}
+			}
 		}
 		break;
 
@@ -306,9 +407,6 @@ void player_turn(Mob * player) {
 		show_help();
 		break;
 
-	case 'q':
-		quit = true;
-		break;
 	default:
 		break;
 	}

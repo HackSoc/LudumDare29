@@ -27,8 +27,9 @@ typedef struct Mob {
 	bool is_bold; /**< Whether to render the mob bold. */
 
 	List * inventory; /**< List of items the mob is holding. */
-	Equipment * weapon; /**< The weapon of the mob. */
-	Equipment * armour; /**< The armour of the mob. */
+	struct Item * weapon; /**< The weapon of the mob. */
+	struct Item * offhand; /**< The offhand weapon of the mob. */
+	struct Item * armour; /**< The armour of the mob. */
 
 	void (*turn_action)(struct Mob *);  /**< What to do every turn. */
 	void (*death_action)(struct Mob *); /**< What to do on death. */
@@ -48,6 +49,9 @@ typedef struct Mob {
 	int health; /**< The current health, signed to prevent underflow. */
 	unsigned int max_health; /**< The maximum health. */
 
+	bool darksight; /**< Whether the mob can see in the dark or not. */
+	unsigned int luminosity; /**< Number of light sources the mob is holding. */
+
 	void * data; /**< Mob type specific data, eg PlayerData */
 } Mob;
 
@@ -57,6 +61,9 @@ bool move_mob_level(Mob * mob, bool toprev);
 bool damage_mob(struct Mob * mob, unsigned int amount);
 void attack_mob(Mob * attacker, Mob * defender);
 struct Mob * kill_mob(struct Mob * mob);
+bool can_see_point(struct Level * level,
+                   unsigned int x0, unsigned int y0,
+                   unsigned int x, unsigned int y);
 bool can_see(struct Mob * mob, unsigned int x, unsigned int y);
 bool can_see_other(struct Mob * moba, struct Mob * mobb);
 void simple_enemy_turn(Mob * enemy);

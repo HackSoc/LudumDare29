@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <string.h>
+#include <math.h>
 
 #include "mob.h"
 #include "level.h"
@@ -62,11 +63,11 @@ void attack_mob(Mob * attacker, Mob * defender) {
 	int damage = attacker->attack;
 
 	if(attacker->weapon != NULL) {
-		damage += attacker->weapon->attack;
+		damage += attacker->weapon->value;
 	}
 
 	if(defender->armour != NULL) {
-		damage -= defender->armour->defense;
+		damage -= defender->armour->value;
 	}
 
 	/* Can always do at least 1 damage */
@@ -128,27 +129,18 @@ Mob * kill_mob(Mob * mob) {
 }
 
 /**
- * Determine if a mob can see the given point. All points are visible
+ * Determine if one point can be seen from another. All points are visible
  * unless there is a wall in the way. This uses Bresenham's line
  * algorithm to determine line-of-sight.
- *
- * Note: as this will be primarily used to render the level, a better
- * version might be to operate on a 2d array of three-state variables
- * ("visible", "blocked", and "unknown"), and just iterate the
- * algorithm with different starting points until every point is
- * known. This would avoid the need to check each individual point,
- * possibly duplicating work.
- *
- * @param mob The mob
- * @param x The target X coordinate
- * @param y The target Y coordinate
+ * @param level The level to check
+ * @param x0 The starting X
+ * @param y0 The starting Y
+ * @param x The target X
+ * @param y The target Y
  */
-bool can_see(Mob * mob, unsigned int x, unsigned int y) {
-	Level * level = mob->level;
-
-	unsigned int x0 = mob->xpos;
-	unsigned int y0 = mob->ypos;
-
+bool can_see_point(Level * level,
+                   unsigned int x0, unsigned int y0,
+                   unsigned int x, unsigned int y) {
 	int dx = abs(x0 - x);
 	int dy = abs(y0 - y) ;
 
@@ -176,6 +168,42 @@ bool can_see(Mob * mob, unsigned int x, unsigned int y) {
 	}
 
 	return true;
+}
+
+/**
+ * Determine if a mob can see the given point. 
+ *
+ * Note: as this will be primarily used to render the level, a better
+ * version might be to operate on a 2d array of three-state variables
+ * ("visible", "blocked", and "unknown"), and just iterate the
+ * algorithm with different starting points until every point is
+ * known. This would avoid the need to check each individual point,
+ * possibly duplicating work.
+ *
+ * @param mob The mob
+ * @param x The target X coordinate
+ * @param y The target Y coordinate
+ */
+bool can_see(Mob * mob, unsigned int x, unsigned int y) {
+	Level * level = mob->level;
+
+	unsigned int x0 = mob->xpos;
+	unsigned int y0 = mob->ypos;
+
+	if(!can_see_point(level, x0, y0, x, y)) {
+		return false;
+	}
+
+	if(level->cells[x][y]->illuminated || mob->darksight) {
+		/* Cells can be seen if they're illuminated or the mob can see
+		 * in the dark */
+		return true;
+	} else if(sqrt(pow(abs(mob->xpos - x), 2) + pow(abs(mob->ypos - y), 2)) <= 5) {
+		/* Or if they're sufficiently close to the mob */
+		return true;
+	} else { 
+		return false;
+	}
 }
 
 /**

@@ -31,3 +31,14 @@ void afflict(Mob * mob, void (*effect)(Mob *), int duration) {
 void effect_poison(Mob * mob) {
 	damage_mob(mob, 1);
 }
+
+/**
+ * A cure poison effect
+ * @param mob The mob which is poisoned
+ */
+void cure_poison(Mob * mob) {
+	if(mob->effect_action == &effect_poison) {
+		mob->effect_action = NULL;
+		mob->effect_duration = 0;
+	}
+}
