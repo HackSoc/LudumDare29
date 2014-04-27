@@ -265,39 +265,7 @@ void player_turn(Mob * player) {
 
 	case 'd':
 		items = choose_items(player->inventory, "Select items to drop:");
-		if(items != NULL) {
-			for(unsigned int i = 0; items[i] != NULL; i++) {
-				Item * item = fromlist(Item, inventory, items[i]);
-				/* Unequip if necessary */
-				if(item == player->weapon) {
-					if(item->luminous) {
-						player->luminosity --;
-					}
-					player->weapon = NULL;
-				} else if(item == player->armour) {
-					if(item->luminous) {
-						player->luminosity --;
-					}
-					player->armour = NULL;
-				} else if(item == player->offhand) {
-					if(item->luminous) {
-						player->luminosity --;
-					}
-					player->offhand = NULL;
-				}
-
-				/* Update the cell luminosity */
-				if(item->luminous) {
-					current_cell->luminosity ++;
-				}
-			}
-
-			/* Remove from the inventory */
-			player->inventory = dropall(items);
-
-			/* Add to the cell */
-			current_cell->items = insertall(current_cell->items, items);
-		}
+		drop_items(player, items);
 		xfree(items);
 		break;
 

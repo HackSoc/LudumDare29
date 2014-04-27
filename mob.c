@@ -323,3 +323,56 @@ bool move_mob_level(Mob * mob, bool toprev) {
 
 	return true;
 }
+
+/**
+ * Drop the given item from the mob's inventory to the floor.
+ * @param mob The mob which is doing the dropping
+ * @param item The item to drop
+ */
+void drop_item(Mob * mob, Item * item) {
+	Cell * cell = mob->level->cells[mob->xpos][mob->ypos];
+
+	if(item == mob->weapon) {
+		if(item->luminous) {
+			mob->luminosity --;
+		}
+		mob->weapon = NULL;
+
+	} else if(item == mob->armour) {
+		if(item->luminous) {
+			mob->luminosity --;
+		}
+		mob->armour = NULL;
+
+	} else if(item == mob->offhand) {
+		if(item->luminous) {
+			mob->luminosity --;
+		}
+		mob->offhand = NULL;
+	}
+
+	/* Update the cell luminosity */
+	if(item->luminous) {
+		cell->luminosity ++;
+	}
+
+	/* Update the inventories */
+	mob->inventory = drop(&item->inventory);
+	cell->items = insert(cell->items, &item->inventory);
+}
+
+/**
+ * Drop the given items from the mob's inventory to the floor.
+ * @param mob The mob which is dropping the items
+ * @param items The list of items to drop
+ */
+void drop_items(Mob * mob, List ** items) {
+	if(items == NULL) {
+		return;
+	}
+
+	for(unsigned int i = 0; items[i] != NULL; i++) {
+		Item * item = fromlist(Item, inventory, items[i]);
+		drop_item(mob, item);
+	}
+}
