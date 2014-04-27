@@ -1,4 +1,4 @@
 <map id="level.h" name="level.h">
-<area shape="rect" id="node5" href="$mob_8h.html" title="mob.h" alt="" coords="104,83,163,112"/>
-<area shape="rect" id="node7" href="$item_8h.html" title="item.h" alt="" coords="137,160,196,189"/>
+<area shape="rect" id="node5" href="$mob_8h.html" title="mob.h" alt="" coords="47,83,105,112"/>
+<area shape="rect" id="node7" href="$item_8h.html" title="item.h" alt="" coords="47,160,105,189"/>
 </map>

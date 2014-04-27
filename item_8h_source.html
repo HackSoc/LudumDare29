@@ -88,22 +88,29 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="item_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef ITEM_H</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define ITEM_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
-<div class="line"><a name="l00004"></a><span class="lineno"><a class="line" href="structItem.html">    4</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structItem.html">Item</a> {</div>
-<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="structItem.html#a9a8145b44e8b8d07304e6d4cd40360d1">    5</a></span>&#160;    <span class="keywordtype">char</span> <a class="code" href="structItem.html#a9a8145b44e8b8d07304e6d4cd40360d1">symbol</a>;</div>
-<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="structItem.html#a6805b7d0bb98eb940404897b713986f7">    6</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structItem.html">Item</a> * <a class="code" href="structItem.html#a6805b7d0bb98eb940404897b713986f7">next</a>;</div>
-<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="structItem.html#a2ac541da55afe6a893990a6b47643fe6">    7</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structItem.html">Item</a> * <a class="code" href="structItem.html#a2ac541da55afe6a893990a6b47643fe6">prev</a>;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;} <a class="code" href="item_8h.html#a65e1a907ac9c378deab3f18ed458b6cc">Item</a>;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/*ITEM_H*/</span><span class="preprocessor"></span></div>
-<div class="ttc" id="structItem_html_a9a8145b44e8b8d07304e6d4cd40360d1"><div class="ttname"><a href="structItem.html#a9a8145b44e8b8d07304e6d4cd40360d1">Item::symbol</a></div><div class="ttdeci">char symbol</div><div class="ttdef"><b>Definition:</b> item.h:5</div></div>
-<div class="ttc" id="structItem_html_a2ac541da55afe6a893990a6b47643fe6"><div class="ttname"><a href="structItem.html#a2ac541da55afe6a893990a6b47643fe6">Item::prev</a></div><div class="ttdeci">struct Item * prev</div><div class="ttdef"><b>Definition:</b> item.h:7</div></div>
-<div class="ttc" id="structItem_html"><div class="ttname"><a href="structItem.html">Item</a></div><div class="ttdef"><b>Definition:</b> item.h:4</div></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="structItem.html">    6</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structItem.html">Item</a> {</div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="structItem.html#a9a8145b44e8b8d07304e6d4cd40360d1">    7</a></span>&#160;    <span class="keywordtype">char</span> <a class="code" href="structItem.html#a9a8145b44e8b8d07304e6d4cd40360d1">symbol</a>;</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="structItem.html#a06c6faeee0e8202db92886ea8a4472d7">    8</a></span>&#160;    <span class="keywordtype">char</span> * <a class="code" href="structItem.html#a06c6faeee0e8202db92886ea8a4472d7">name</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="structItem.html#a6805b7d0bb98eb940404897b713986f7">    9</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structItem.html">Item</a> * <a class="code" href="structItem.html#a6805b7d0bb98eb940404897b713986f7">next</a>;</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="structItem.html#a2ac541da55afe6a893990a6b47643fe6">   10</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structItem.html">Item</a> * <a class="code" href="structItem.html#a2ac541da55afe6a893990a6b47643fe6">prev</a>;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;} <a class="code" href="item_8h.html#a65e1a907ac9c378deab3f18ed458b6cc">Item</a>;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<a class="code" href="structItem.html">Item</a> * <a class="code" href="item_8h.html#ab496e4d6b172913597a9f373a6399c53">display_items</a>(<a class="code" href="structItem.html">Item</a> * items, <span class="keywordtype">bool</span> isChoice, <span class="keywordtype">char</span> * prompt);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/*ITEM_H*/</span><span class="preprocessor"></span></div>
+<div class="ttc" id="structItem_html_a9a8145b44e8b8d07304e6d4cd40360d1"><div class="ttname"><a href="structItem.html#a9a8145b44e8b8d07304e6d4cd40360d1">Item::symbol</a></div><div class="ttdeci">char symbol</div><div class="ttdef"><b>Definition:</b> item.h:7</div></div>
+<div class="ttc" id="structItem_html_a06c6faeee0e8202db92886ea8a4472d7"><div class="ttname"><a href="structItem.html#a06c6faeee0e8202db92886ea8a4472d7">Item::name</a></div><div class="ttdeci">char * name</div><div class="ttdef"><b>Definition:</b> item.h:8</div></div>
+<div class="ttc" id="structItem_html_a2ac541da55afe6a893990a6b47643fe6"><div class="ttname"><a href="structItem.html#a2ac541da55afe6a893990a6b47643fe6">Item::prev</a></div><div class="ttdeci">struct Item * prev</div><div class="ttdef"><b>Definition:</b> item.h:10</div></div>
+<div class="ttc" id="structItem_html"><div class="ttname"><a href="structItem.html">Item</a></div><div class="ttdef"><b>Definition:</b> item.h:6</div></div>
 <div class="ttc" id="item_8h_html_a65e1a907ac9c378deab3f18ed458b6cc"><div class="ttname"><a href="item_8h.html#a65e1a907ac9c378deab3f18ed458b6cc">Item</a></div><div class="ttdeci">struct Item Item</div></div>
-<div class="ttc" id="structItem_html_a6805b7d0bb98eb940404897b713986f7"><div class="ttname"><a href="structItem.html#a6805b7d0bb98eb940404897b713986f7">Item::next</a></div><div class="ttdeci">struct Item * next</div><div class="ttdef"><b>Definition:</b> item.h:6</div></div>
+<div class="ttc" id="structItem_html_a6805b7d0bb98eb940404897b713986f7"><div class="ttname"><a href="structItem.html#a6805b7d0bb98eb940404897b713986f7">Item::next</a></div><div class="ttdeci">struct Item * next</div><div class="ttdef"><b>Definition:</b> item.h:9</div></div>
+<div class="ttc" id="item_8h_html_ab496e4d6b172913597a9f373a6399c53"><div class="ttname"><a href="item_8h.html#ab496e4d6b172913597a9f373a6399c53">display_items</a></div><div class="ttdeci">Item * display_items(Item *items, bool isChoice, char *prompt)</div><div class="ttdef"><b>Definition:</b> item.c:15</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Apr 26 2014 18:57:37 for Ludum Dare 29 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Apr 27 2014 01:28:28 for Ludum Dare 29 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

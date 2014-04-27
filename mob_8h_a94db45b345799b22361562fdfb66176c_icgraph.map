@@ -1,0 +1,11 @@
+<map id="can_see" name="can_see">
+<area shape="rect" id="node3" href="$level_8h.html#ad45cdcc4cf6ee2a61993cb4031ef44f3" title="display_level" alt="" coords="300,5,396,35"/>
+<area shape="rect" id="node11" href="$mob_8h.html#a6e31ab5280dea5015ef6f7bf7f9fd18f" title="can_see_other" alt="" coords="125,59,232,88"/>
+<area shape="rect" id="node5" href="$player_8h.html#a3829d1675d5789e2531ffcc90fcad6a2" title="player_turn" alt="" coords="887,57,972,87"/>
+<area shape="rect" id="node7" href="$player_8h.html#a168d23f1a7acdbae77883b6edf0af5b3" title="create_player" alt="" coords="1023,57,1121,87"/>
+<area shape="rect" id="node9" href="$main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="1171,84,1221,113"/>
+<area shape="rect" id="node13" href="$mob_8h.html#a4e1f704b7be0c4f0ecbc7bd41ace77de" title="simple_enemy_turn" alt="" coords="281,59,415,88"/>
+<area shape="rect" id="node15" href="$level_8c.html#a073116bdf0b4b0e82e2ea53990671890" title="add_mob" alt="" coords="464,59,539,88"/>
+<area shape="rect" id="node17" href="$level_8h.html#ada2b32c329163f1f38b89dc34fb76e4b" title="build_level" alt="" coords="587,59,669,88"/>
+<area shape="rect" id="node20" href="$mob_8h.html#a0f41f8c35df68e0cea8335b114029a36" title="move_mob_level" alt="" coords="717,57,837,87"/>
+</map>

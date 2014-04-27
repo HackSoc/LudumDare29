@@ -1,3 +1,5 @@
 <map id="run_turn" name="run_turn">
-<area shape="rect" id="node3" href="$effect_8c.html#a6e22581aa928d7cc65e2b9e054ff4346" title="is_afflicted" alt="" coords="123,5,208,35"/>
+<area shape="rect" id="node3" href="$level_8c.html#addc0f2c1d64b7c916fe87cdaa9aa28e3" title="do_affliction" alt="" coords="124,5,215,35"/>
+<area shape="rect" id="node7" href="$mob_8c.html#abeb2923a23965532d5e87ae2cb389202" title="kill_mob" alt="" coords="135,59,204,88"/>
+<area shape="rect" id="node5" href="$effect_8c.html#a6e22581aa928d7cc65e2b9e054ff4346" title="is_afflicted" alt="" coords="264,5,349,35"/>
 </map>

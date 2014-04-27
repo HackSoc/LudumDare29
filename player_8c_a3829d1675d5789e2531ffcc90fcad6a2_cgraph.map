@@ -1,13 +1,22 @@
 <map id="player_turn" name="player_turn">
-<area shape="rect" id="node3" href="$level_8c.html#ad45cdcc4cf6ee2a61993cb4031ef44f3" title="display_level" alt="" coords="163,56,259,85"/>
-<area shape="rect" id="node5" href="$player_8c.html#a5e0010bccc1ea8cea62e8ca87602d8a6" title="attackmove_relative" alt="" coords="141,109,280,139"/>
-<area shape="rect" id="node18" href="$mob_8c.html#a0f41f8c35df68e0cea8335b114029a36" title="move_mob_level" alt="" coords="151,163,271,192"/>
-<area shape="rect" id="node7" href="$player_8c.html#abb7e876b7e49f4b7c991815e5feea483" title="attackmove" alt="" coords="328,109,419,139"/>
-<area shape="rect" id="node9" href="$mob_8c.html#a55ca3ba9d41a343311f102b64e1e7f4c" title="move_mob" alt="" coords="468,59,553,88"/>
-<area shape="rect" id="node13" href="$mob_8c.html#a7ead5d0347250949fcc7a6c5548f50b0" title="damage_mob" alt="" coords="753,59,852,88"/>
-<area shape="rect" id="node11" href="$effect_8c.html#a8efc8653d207577779ab551e99a28aee" title="effect_poison" alt="" coords="604,5,703,35"/>
-<area shape="rect" id="node15" href="$effect_8c.html#a94aa3d083f9258eaf68081be0a61401e" title="afflict" alt="" coords="627,59,680,88"/>
-<area shape="rect" id="node20" href="$level_8c.html#ada2b32c329163f1f38b89dc34fb76e4b" title="build_level" alt="" coords="332,163,415,192"/>
-<area shape="rect" id="node22" href="$level_8c.html#a70ec2e330210334f74c1104bb8095148" title="mine_level" alt="" coords="469,163,552,192"/>
-<area shape="rect" id="node24" href="$level_8c.html#a38271195df96b41f0dd8ac1a04a5e180" title="place_cell" alt="" coords="613,163,693,192"/>
+<area shape="rect" id="node3" href="$level_8c.html#ad45cdcc4cf6ee2a61993cb4031ef44f3" title="display_level" alt="" coords="153,219,249,248"/>
+<area shape="rect" id="node11" href="$player_8c.html#a5e0010bccc1ea8cea62e8ca87602d8a6" title="attackmove_relative" alt="" coords="451,36,589,66"/>
+<area shape="rect" id="node24" href="$mob_8c.html#a0f41f8c35df68e0cea8335b114029a36" title="move_mob_level" alt="" coords="141,147,261,176"/>
+<area shape="rect" id="node43" href="$item_8c.html#ab496e4d6b172913597a9f373a6399c53" title="display_items" alt="" coords="151,298,252,327"/>
+<area shape="rect" id="node5" href="$mob_8c.html#a9cf3e62246ac7b1471916c2744638a12" title="can_see" alt="" coords="1015,219,1084,248"/>
+<area shape="rect" id="node7" href="$utils_8c.html#a5ef164a50e58d885e2993936a23a7c31" title="mvaddchcol" alt="" coords="311,194,401,223"/>
+<area shape="rect" id="node9" href="$utils_8c.html#a2dc03125a4bc69b78615c7690a01f7e8" title="mvaddprintf" alt="" coords="311,298,401,327"/>
+<area shape="rect" id="node13" href="$player_8c.html#abb7e876b7e49f4b7c991815e5feea483" title="attackmove" alt="" coords="844,36,935,66"/>
+<area shape="rect" id="node15" href="$mob_8c.html#a55ca3ba9d41a343311f102b64e1e7f4c" title="move_mob" alt="" coords="1007,63,1092,92"/>
+<area shape="rect" id="node19" href="$mob_8c.html#a7ead5d0347250949fcc7a6c5548f50b0" title="damage_mob" alt="" coords="1292,90,1391,119"/>
+<area shape="rect" id="node17" href="$effect_8c.html#a8efc8653d207577779ab551e99a28aee" title="effect_poison" alt="" coords="1143,90,1241,119"/>
+<area shape="rect" id="node21" href="$effect_8c.html#a94aa3d083f9258eaf68081be0a61401e" title="afflict" alt="" coords="1165,36,1219,66"/>
+<area shape="rect" id="node26" href="$level_8c.html#ada2b32c329163f1f38b89dc34fb76e4b" title="build_level" alt="" coords="315,140,397,170"/>
+<area shape="rect" id="node28" href="$level_8c.html#a0e04d62babbffb49e3f4682d82cb85b0" title="mine_level" alt="" coords="479,90,561,119"/>
+<area shape="rect" id="node32" href="$level_8c.html#a073116bdf0b4b0e82e2ea53990671890" title="add_mob" alt="" coords="483,143,557,172"/>
+<area shape="rect" id="node30" href="$level_8c.html#aaaa68e1af555f365504b310f57d3b8b2" title="place_cell" alt="" coords="665,90,745,119"/>
+<area shape="rect" id="node34" href="$mob_8c.html#a4e1f704b7be0c4f0ecbc7bd41ace77de" title="simple_enemy_turn" alt="" coords="639,143,772,172"/>
+<area shape="rect" id="node36" href="$mob_8c.html#af1fd43535881adae83322576a90a015d" title="can_see_other" alt="" coords="836,194,943,223"/>
+<area shape="rect" id="node39" href="$mob_8c.html#a23e360489b32985e54e378a80e447531" title="move_mob_relative" alt="" coords="823,90,956,119"/>
+<area shape="rect" id="node46" href="$utils_8c.html#a35ad0e79347a52a03a6853b8cf373707" title="addprintf" alt="" coords="320,351,392,380"/>
 </map>

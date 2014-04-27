@@ -1,3 +1,4 @@
 <map id="player_turn" name="player_turn">
-<area shape="rect" id="node3" href="$main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="141,5,192,35"/>
+<area shape="rect" id="node3" href="$player_8h.html#a168d23f1a7acdbae77883b6edf0af5b3" title="create_player" alt="" coords="143,5,241,35"/>
+<area shape="rect" id="node5" href="$main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="291,5,341,35"/>
 </map>

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['utils_2ec',['utils.c',['../utils_8c.html',1,'']]],
-  ['utils_2eh',['utils.h',['../utils_8h.html',1,'']]]
+  ['todo_20list',['Todo List',['../todo.html',1,'']]],
+  ['turn_5faction',['turn_action',['../structMob.html#ab2d09c4a3deff10f4d0a3a31b9ee54f4',1,'Mob']]]
 ];

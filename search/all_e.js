@@ -1,7 +1,4 @@
 var searchData=
 [
-  ['readme',['README',['../md_README.html',1,'']]],
-  ['race',['race',['../structMob.html#a1eb598d3acedc715bbfca8a5dd57646a',1,'Mob']]],
-  ['readme_2emd',['README.md',['../README_8md.html',1,'']]],
-  ['run_5fturn',['run_turn',['../level_8c.html#afa299a655307d17486c06015c556bab6',1,'run_turn(Level *level):&#160;level.c'],['../level_8h.html#afa299a655307d17486c06015c556bab6',1,'run_turn(Level *level):&#160;level.c']]]
+  ['quit',['quit',['../level_8c.html#ac746fa6ad48d19984a159f14bec028a3',1,'quit():&#160;main.c'],['../main_8c.html#ac746fa6ad48d19984a159f14bec028a3',1,'quit():&#160;main.c'],['../player_8c.html#ac746fa6ad48d19984a159f14bec028a3',1,'quit():&#160;main.c']]]
 ];

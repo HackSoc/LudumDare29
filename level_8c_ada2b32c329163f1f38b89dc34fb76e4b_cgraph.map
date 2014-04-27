@@ -1,4 +1,13 @@
 <map id="build_level" name="build_level">
-<area shape="rect" id="node3" href="$level_8c.html#a70ec2e330210334f74c1104bb8095148" title="mine_level" alt="" coords="137,5,220,35"/>
-<area shape="rect" id="node5" href="$level_8c.html#a38271195df96b41f0dd8ac1a04a5e180" title="place_cell" alt="" coords="269,5,349,35"/>
+<area shape="rect" id="node3" href="$level_8c.html#a0e04d62babbffb49e3f4682d82cb85b0" title="mine_level" alt="" coords="137,5,220,35"/>
+<area shape="rect" id="node7" href="$level_8c.html#a073116bdf0b4b0e82e2ea53990671890" title="add_mob" alt="" coords="141,59,216,88"/>
+<area shape="rect" id="node5" href="$level_8c.html#aaaa68e1af555f365504b310f57d3b8b2" title="place_cell" alt="" coords="297,5,377,35"/>
+<area shape="rect" id="node9" href="$mob_8c.html#a4e1f704b7be0c4f0ecbc7bd41ace77de" title="simple_enemy_turn" alt="" coords="271,59,404,88"/>
+<area shape="rect" id="node11" href="$mob_8c.html#af1fd43535881adae83322576a90a015d" title="can_see_other" alt="" coords="468,5,575,35"/>
+<area shape="rect" id="node15" href="$mob_8c.html#a23e360489b32985e54e378a80e447531" title="move_mob_relative" alt="" coords="455,59,588,88"/>
+<area shape="rect" id="node21" href="$mob_8c.html#a7ead5d0347250949fcc7a6c5548f50b0" title="damage_mob" alt="" coords="924,59,1023,88"/>
+<area shape="rect" id="node13" href="$mob_8c.html#a9cf3e62246ac7b1471916c2744638a12" title="can_see" alt="" coords="647,5,716,35"/>
+<area shape="rect" id="node17" href="$mob_8c.html#a55ca3ba9d41a343311f102b64e1e7f4c" title="move_mob" alt="" coords="639,59,724,88"/>
+<area shape="rect" id="node19" href="$effect_8c.html#a8efc8653d207577779ab551e99a28aee" title="effect_poison" alt="" coords="775,5,873,35"/>
+<area shape="rect" id="node23" href="$effect_8c.html#a94aa3d083f9258eaf68081be0a61401e" title="afflict" alt="" coords="797,59,851,88"/>
 </map>

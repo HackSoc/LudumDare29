@@ -1,3 +1,8 @@
 <map id="simple_enemy_turn" name="simple_enemy_turn">
-<area shape="rect" id="node3" href="$main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="189,5,240,35"/>
+<area shape="rect" id="node3" href="$level_8c.html#a073116bdf0b4b0e82e2ea53990671890" title="add_mob" alt="" coords="189,5,264,35"/>
+<area shape="rect" id="node5" href="$level_8h.html#ada2b32c329163f1f38b89dc34fb76e4b" title="build_level" alt="" coords="312,5,395,35"/>
+<area shape="rect" id="node7" href="$main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="896,5,947,35"/>
+<area shape="rect" id="node9" href="$mob_8h.html#a0f41f8c35df68e0cea8335b114029a36" title="move_mob_level" alt="" coords="443,31,563,60"/>
+<area shape="rect" id="node11" href="$player_8h.html#a3829d1675d5789e2531ffcc90fcad6a2" title="player_turn" alt="" coords="612,31,697,60"/>
+<area shape="rect" id="node13" href="$player_8h.html#a168d23f1a7acdbae77883b6edf0af5b3" title="create_player" alt="" coords="748,31,847,60"/>
 </map>

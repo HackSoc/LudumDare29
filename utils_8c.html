@@ -90,13 +90,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="textblock"><code>#include &lt;curses.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;assert.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="utils_8h_source.html">utils.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for utils.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="utils_8c__incl.png" border="0" usemap="#utils_8c" alt=""/></div>
 <map name="utils_8c" id="utils_8c">
-<area shape="rect" id="node9" href="utils_8h.html" title="utils.h" alt="" coords="283,83,339,112"/></map>
+<area shape="rect" id="node11" href="utils_8h.html" title="utils.h" alt="" coords="371,83,427,112"/></map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -105,6 +106,14 @@ Functions</h2></td></tr>
 <tr class="separator:a2dc03125a4bc69b78615c7690a01f7e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a35ad0e79347a52a03a6853b8cf373707"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8c.html#a35ad0e79347a52a03a6853b8cf373707">addprintf</a> (const char *fmt,...)</td></tr>
 <tr class="separator:a35ad0e79347a52a03a6853b8cf373707"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c4f14c424a31db9c57fd046c3b9f0df"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8c.html#a2c4f14c424a31db9c57fd046c3b9f0df">strdup</a> (const char *str)</td></tr>
+<tr class="separator:a2c4f14c424a31db9c57fd046c3b9f0df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ef164a50e58d885e2993936a23a7c31"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8c.html#a5ef164a50e58d885e2993936a23a7c31">mvaddchcol</a> (unsigned int y, unsigned int x, char chr, int fg, int bg, bool bold)</td></tr>
+<tr class="separator:a5ef164a50e58d885e2993936a23a7c31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf736e66713424b6866a5bc668b9a02f"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8c.html#aaf736e66713424b6866a5bc668b9a02f">list_choice</a> (unsigned int y, unsigned int x, const char *prompt, const char *prompt2, const char *choices[])</td></tr>
+<tr class="separator:aaf736e66713424b6866a5bc668b9a02f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae78912f03cbf0b1925cc33f9c24808c4"><td class="memItemLeft" align="right" valign="top">const void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8c.html#ae78912f03cbf0b1925cc33f9c24808c4">random_choice</a> (const void *choices[])</td></tr>
+<tr class="separator:ae78912f03cbf0b1925cc33f9c24808c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a475fb7505de244db61daf1108e221a14"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8c.html#a475fb7505de244db61daf1108e221a14">_xalloc</a> (size_t size)</td></tr>
 <tr class="separator:a475fb7505de244db61daf1108e221a14"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae1a76bfc4fa8d16e11a93f827a4bfb52"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8c.html#ae1a76bfc4fa8d16e11a93f827a4bfb52">_xfree</a> (void **ptr)</td></tr>
@@ -188,6 +197,157 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="utils_8c_a35ad0e79347a52a03a6853b8cf373707_icgraph.png" border="0" usemap="#utils_8c_a35ad0e79347a52a03a6853b8cf373707_icgraph" alt=""/></div>
+<map name="utils_8c_a35ad0e79347a52a03a6853b8cf373707_icgraph" id="utils_8c_a35ad0e79347a52a03a6853b8cf373707_icgraph">
+<area shape="rect" id="node3" href="item_8h.html#ab496e4d6b172913597a9f373a6399c53" title="display_items" alt="" coords="127,5,228,35"/><area shape="rect" id="node5" href="player_8h.html#a3829d1675d5789e2531ffcc90fcad6a2" title="player_turn" alt="" coords="279,5,364,35"/><area shape="rect" id="node7" href="player_8h.html#a168d23f1a7acdbae77883b6edf0af5b3" title="create_player" alt="" coords="415,5,513,35"/><area shape="rect" id="node9" href="main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="563,5,613,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="aaf736e66713424b6866a5bc668b9a02f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* list_choice </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>prompt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>prompt2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>choices</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Select from a list of things, berate the player if they enter a bad choice. This clears the screen before and after running. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">y</td><td>The Y coordinate to put the question (choices are on subsequent lines). </td></tr>
+    <tr><td class="paramname">x</td><td>The X coordinate. </td></tr>
+    <tr><td class="paramname">prompt</td><td>The initial question. </td></tr>
+    <tr><td class="paramname">prompt2</td><td>The prompt to use after a bad choice. </td></tr>
+    <tr><td class="paramname">choices</td><td>NULL-terminated list of choices. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="utils_8c_aaf736e66713424b6866a5bc668b9a02f_cgraph.png" border="0" usemap="#utils_8c_aaf736e66713424b6866a5bc668b9a02f_cgraph" alt=""/></div>
+<map name="utils_8c_aaf736e66713424b6866a5bc668b9a02f_cgraph" id="utils_8c_aaf736e66713424b6866a5bc668b9a02f_cgraph">
+<area shape="rect" id="node3" href="utils_8c.html#a2dc03125a4bc69b78615c7690a01f7e8" title="mvaddprintf" alt="" coords="139,5,229,35"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="utils_8c_aaf736e66713424b6866a5bc668b9a02f_icgraph.png" border="0" usemap="#utils_8c_aaf736e66713424b6866a5bc668b9a02f_icgraph" alt=""/></div>
+<map name="utils_8c_aaf736e66713424b6866a5bc668b9a02f_icgraph" id="utils_8c_aaf736e66713424b6866a5bc668b9a02f_icgraph">
+<area shape="rect" id="node3" href="player_8c.html#a8e9f254ebd37223a823670ac94d335f9" title="design_player" alt="" coords="140,5,241,35"/><area shape="rect" id="node5" href="player_8h.html#a168d23f1a7acdbae77883b6edf0af5b3" title="create_player" alt="" coords="292,5,391,35"/><area shape="rect" id="node7" href="main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="440,5,491,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a5ef164a50e58d885e2993936a23a7c31"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mvaddchcol </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>chr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>bg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>bold</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Render the given char at the given position with the given colour pair. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">y</td><td>The Y position </td></tr>
+    <tr><td class="paramname">x</td><td>The X position </td></tr>
+    <tr><td class="paramname">chr</td><td>The character to render </td></tr>
+    <tr><td class="paramname">fg</td><td>The foreground colour </td></tr>
+    <tr><td class="paramname">bg</td><td>The background colour </td></tr>
+    <tr><td class="paramname">bold</td><td>Whether to bold or not </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="utils_8c_a5ef164a50e58d885e2993936a23a7c31_icgraph.png" border="0" usemap="#utils_8c_a5ef164a50e58d885e2993936a23a7c31_icgraph" alt=""/></div>
+<map name="utils_8c_a5ef164a50e58d885e2993936a23a7c31_icgraph" id="utils_8c_a5ef164a50e58d885e2993936a23a7c31_icgraph">
+<area shape="rect" id="node3" href="level_8h.html#ad45cdcc4cf6ee2a61993cb4031ef44f3" title="display_level" alt="" coords="148,5,244,35"/><area shape="rect" id="node5" href="player_8h.html#a3829d1675d5789e2531ffcc90fcad6a2" title="player_turn" alt="" coords="295,5,380,35"/><area shape="rect" id="node7" href="player_8h.html#a168d23f1a7acdbae77883b6edf0af5b3" title="create_player" alt="" coords="431,5,529,35"/><area shape="rect" id="node9" href="main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="579,5,629,35"/></map>
+</div>
+</p>
+
 </div>
 </div>
 <a class="anchor" id="a2dc03125a4bc69b78615c7690a01f7e8"></a>
@@ -239,7 +399,69 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="utils_8c_a2dc03125a4bc69b78615c7690a01f7e8_icgraph.png" border="0" usemap="#utils_8c_a2dc03125a4bc69b78615c7690a01f7e8_icgraph" alt=""/></div>
 <map name="utils_8c_a2dc03125a4bc69b78615c7690a01f7e8_icgraph" id="utils_8c_a2dc03125a4bc69b78615c7690a01f7e8_icgraph">
-<area shape="rect" id="node3" href="main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="144,5,195,35"/></map>
+<area shape="rect" id="node3" href="item_8h.html#ab496e4d6b172913597a9f373a6399c53" title="display_items" alt="" coords="145,83,247,113"/><area shape="rect" id="node7" href="player_8h.html#a168d23f1a7acdbae77883b6edf0af5b3" title="create_player" alt="" coords="449,162,548,191"/><area shape="rect" id="node9" href="main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="597,201,648,230"/><area shape="rect" id="node11" href="level_8h.html#ad45cdcc4cf6ee2a61993cb4031ef44f3" title="display_level" alt="" coords="148,137,244,166"/><area shape="rect" id="node15" href="player_8c.html#a8e9f254ebd37223a823670ac94d335f9" title="design_player" alt="" coords="297,30,399,59"/><area shape="rect" id="node19" href="utils_8h.html#aaf736e66713424b6866a5bc668b9a02f" title="list_choice" alt="" coords="155,30,237,59"/><area shape="rect" id="node5" href="player_8h.html#a3829d1675d5789e2531ffcc90fcad6a2" title="player_turn" alt="" coords="305,137,391,166"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ae78912f03cbf0b1925cc33f9c24808c4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const void* random_choice </td>
+          <td>(</td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>choices</em>[]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Select a random value from a list </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">choices</td><td>NULL-terminates list of choices. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="utils_8c_ae78912f03cbf0b1925cc33f9c24808c4_icgraph.png" border="0" usemap="#utils_8c_ae78912f03cbf0b1925cc33f9c24808c4_icgraph" alt=""/></div>
+<map name="utils_8c_ae78912f03cbf0b1925cc33f9c24808c4_icgraph" id="utils_8c_ae78912f03cbf0b1925cc33f9c24808c4_icgraph">
+<area shape="rect" id="node3" href="player_8c.html#af8f3faee5f0c14d9a0832055b9cc2350" title="randomise_player" alt="" coords="167,5,289,35"/><area shape="rect" id="node5" href="player_8h.html#a168d23f1a7acdbae77883b6edf0af5b3" title="create_player" alt="" coords="340,5,439,35"/><area shape="rect" id="node7" href="main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="488,5,539,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a2c4f14c424a31db9c57fd046c3b9f0df"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* strdup </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>str</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Duplicate a string </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>String to duplicate </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="utils_8c_a2c4f14c424a31db9c57fd046c3b9f0df_icgraph.png" border="0" usemap="#utils_8c_a2c4f14c424a31db9c57fd046c3b9f0df_icgraph" alt=""/></div>
+<map name="utils_8c_a2c4f14c424a31db9c57fd046c3b9f0df_icgraph" id="utils_8c_a2c4f14c424a31db9c57fd046c3b9f0df_icgraph">
+<area shape="rect" id="node3" href="player_8c.html#af8f3faee5f0c14d9a0832055b9cc2350" title="randomise_player" alt="" coords="113,5,236,35"/><area shape="rect" id="node9" href="player_8c.html#a8e9f254ebd37223a823670ac94d335f9" title="design_player" alt="" coords="124,59,225,88"/><area shape="rect" id="node5" href="player_8h.html#a168d23f1a7acdbae77883b6edf0af5b3" title="create_player" alt="" coords="287,32,385,61"/><area shape="rect" id="node7" href="main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="435,32,485,61"/></map>
 </div>
 </p>
 
@@ -248,7 +470,7 @@ Here is the caller graph for this function:</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Apr 26 2014 18:57:38 for Ludum Dare 29 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Apr 27 2014 01:28:30 for Ludum Dare 29 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

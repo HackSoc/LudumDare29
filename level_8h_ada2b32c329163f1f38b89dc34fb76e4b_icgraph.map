@@ -1,5 +1,6 @@
 <map id="build_level" name="build_level">
-<area shape="rect" id="node3" href="$main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="440,5,491,35"/>
+<area shape="rect" id="node3" href="$main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="589,5,640,35"/>
 <area shape="rect" id="node5" href="$mob_8h.html#a0f41f8c35df68e0cea8335b114029a36" title="move_mob_level" alt="" coords="136,31,256,60"/>
 <area shape="rect" id="node7" href="$player_8h.html#a3829d1675d5789e2531ffcc90fcad6a2" title="player_turn" alt="" coords="305,31,391,60"/>
+<area shape="rect" id="node9" href="$player_8h.html#a168d23f1a7acdbae77883b6edf0af5b3" title="create_player" alt="" coords="441,31,540,60"/>
 </map>

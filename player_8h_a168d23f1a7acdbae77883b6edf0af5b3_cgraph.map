@@ -1,0 +1,29 @@
+<map id="create_player" name="create_player">
+<area shape="rect" id="node3" href="$player_8c.html#a3829d1675d5789e2531ffcc90fcad6a2" title="player_turn" alt="" coords="175,141,260,170"/>
+<area shape="rect" id="node11" href="$utils_8c.html#a2dc03125a4bc69b78615c7690a01f7e8" title="mvaddprintf" alt="" coords="497,298,588,327"/>
+<area shape="rect" id="node50" href="$player_8c.html#abc728d3e21a1504f9157866c89c3ab89" title="player_death" alt="" coords="169,455,265,485"/>
+<area shape="rect" id="node53" href="$player_8c.html#af8f3faee5f0c14d9a0832055b9cc2350" title="randomise_player" alt="" coords="156,402,279,431"/>
+<area shape="rect" id="node59" href="$player_8c.html#a8e9f254ebd37223a823670ac94d335f9" title="design_player" alt="" coords="167,349,268,378"/>
+<area shape="rect" id="node5" href="$level_8c.html#ad45cdcc4cf6ee2a61993cb4031ef44f3" title="display_level" alt="" coords="340,194,436,223"/>
+<area shape="rect" id="node13" href="$player_8c.html#a5e0010bccc1ea8cea62e8ca87602d8a6" title="attackmove_relative" alt="" coords="637,34,776,63"/>
+<area shape="rect" id="node26" href="$mob_8c.html#a0f41f8c35df68e0cea8335b114029a36" title="move_mob_level" alt="" coords="328,87,448,117"/>
+<area shape="rect" id="node45" href="$item_8c.html#ab496e4d6b172913597a9f373a6399c53" title="display_items" alt="" coords="337,141,439,170"/>
+<area shape="rect" id="node7" href="$mob_8c.html#a9cf3e62246ac7b1471916c2744638a12" title="can_see" alt="" coords="1201,219,1271,249"/>
+<area shape="rect" id="node9" href="$utils_8c.html#a5ef164a50e58d885e2993936a23a7c31" title="mvaddchcol" alt="" coords="497,194,588,223"/>
+<area shape="rect" id="node15" href="$player_8c.html#abb7e876b7e49f4b7c991815e5feea483" title="attackmove" alt="" coords="1031,34,1121,63"/>
+<area shape="rect" id="node17" href="$mob_8c.html#a55ca3ba9d41a343311f102b64e1e7f4c" title="move_mob" alt="" coords="1193,89,1279,118"/>
+<area shape="rect" id="node21" href="$mob_8c.html#a7ead5d0347250949fcc7a6c5548f50b0" title="damage_mob" alt="" coords="1479,90,1577,119"/>
+<area shape="rect" id="node19" href="$effect_8c.html#a8efc8653d207577779ab551e99a28aee" title="effect_poison" alt="" coords="1329,90,1428,119"/>
+<area shape="rect" id="node23" href="$effect_8c.html#a94aa3d083f9258eaf68081be0a61401e" title="afflict" alt="" coords="1352,37,1405,66"/>
+<area shape="rect" id="node28" href="$level_8c.html#ada2b32c329163f1f38b89dc34fb76e4b" title="build_level" alt="" coords="501,87,584,117"/>
+<area shape="rect" id="node30" href="$level_8c.html#a0e04d62babbffb49e3f4682d82cb85b0" title="mine_level" alt="" coords="665,87,748,117"/>
+<area shape="rect" id="node34" href="$level_8c.html#a073116bdf0b4b0e82e2ea53990671890" title="add_mob" alt="" coords="669,141,744,170"/>
+<area shape="rect" id="node32" href="$level_8c.html#aaaa68e1af555f365504b310f57d3b8b2" title="place_cell" alt="" coords="852,87,932,117"/>
+<area shape="rect" id="node36" href="$mob_8c.html#a4e1f704b7be0c4f0ecbc7bd41ace77de" title="simple_enemy_turn" alt="" coords="825,142,959,171"/>
+<area shape="rect" id="node38" href="$mob_8c.html#af1fd43535881adae83322576a90a015d" title="can_see_other" alt="" coords="1023,194,1129,223"/>
+<area shape="rect" id="node41" href="$mob_8c.html#a23e360489b32985e54e378a80e447531" title="move_mob_relative" alt="" coords="1009,89,1143,118"/>
+<area shape="rect" id="node48" href="$utils_8c.html#a35ad0e79347a52a03a6853b8cf373707" title="addprintf" alt="" coords="507,141,579,170"/>
+<area shape="rect" id="node55" href="$utils_8c.html#a2c4f14c424a31db9c57fd046c3b9f0df" title="strdup" alt="" coords="359,402,417,431"/>
+<area shape="rect" id="node57" href="$utils_8c.html#ae78912f03cbf0b1925cc33f9c24808c4" title="random_choice" alt="" coords="333,455,443,485"/>
+<area shape="rect" id="node63" href="$utils_8c.html#aaf736e66713424b6866a5bc668b9a02f" title="list_choice" alt="" coords="347,298,429,327"/>
+</map>

@@ -1,4 +1,5 @@
 <map id="is_afflicted" name="is_afflicted">
-<area shape="rect" id="node3" href="$level_8h.html#afa299a655307d17486c06015c556bab6" title="run_turn" alt="" coords="139,5,208,35"/>
-<area shape="rect" id="node5" href="$main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="256,5,307,35"/>
+<area shape="rect" id="node3" href="$level_8c.html#addc0f2c1d64b7c916fe87cdaa9aa28e3" title="do_affliction" alt="" coords="140,5,231,35"/>
+<area shape="rect" id="node5" href="$level_8h.html#afa299a655307d17486c06015c556bab6" title="run_turn" alt="" coords="280,5,349,35"/>
+<area shape="rect" id="node7" href="$main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="397,5,448,35"/>
 </map>

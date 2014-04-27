@@ -1,7 +1,7 @@
 <map id="mob.c" name="mob.c">
-<area shape="rect" id="node5" href="$mob_8h.html" title="mob.h" alt="" coords="144,160,203,189"/>
-<area shape="rect" id="node9" href="$level_8h.html" title="level.h" alt="" coords="111,237,169,267"/>
-<area shape="rect" id="node16" href="$utils_8h.html" title="utils.h" alt="" coords="195,83,251,112"/>
-<area shape="rect" id="node18" href="$effect_8h.html" title="effect.h" alt="" coords="275,83,341,112"/>
-<area shape="rect" id="node7" href="$item_8h.html" title="item.h" alt="" coords="177,315,236,344"/>
+<area shape="rect" id="node7" href="$mob_8h.html" title="mob.h" alt="" coords="237,160,296,189"/>
+<area shape="rect" id="node13" href="$level_8h.html" title="level.h" alt="" coords="204,237,263,267"/>
+<area shape="rect" id="node19" href="$utils_8h.html" title="utils.h" alt="" coords="288,83,344,112"/>
+<area shape="rect" id="node21" href="$effect_8h.html" title="effect.h" alt="" coords="368,83,435,112"/>
+<area shape="rect" id="node9" href="$item_8h.html" title="item.h" alt="" coords="271,315,329,344"/>
 </map>

@@ -1,6 +1,0 @@
-<map id="mine_level" name="mine_level">
-<area shape="rect" id="node3" href="$level_8h.html#ada2b32c329163f1f38b89dc34fb76e4b" title="build_level" alt="" coords="139,5,221,35"/>
-<area shape="rect" id="node5" href="$main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="573,5,624,35"/>
-<area shape="rect" id="node7" href="$mob_8h.html#a0f41f8c35df68e0cea8335b114029a36" title="move_mob_level" alt="" coords="269,31,389,60"/>
-<area shape="rect" id="node9" href="$player_8h.html#a3829d1675d5789e2531ffcc90fcad6a2" title="player_turn" alt="" coords="439,31,524,60"/>
-</map>

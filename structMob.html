@@ -112,6 +112,10 @@ Data Fields</h2></td></tr>
 <tr class="separator:a2ffd4cebbf6cd680c5e0f4ebf936f7c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7075876c72311ebacbceeea54a01f537"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMob.html#a7075876c72311ebacbceeea54a01f537">symbol</a></td></tr>
 <tr class="separator:a7075876c72311ebacbceeea54a01f537"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07590fed51435f01f07ca07e87fa234c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMob.html#a07590fed51435f01f07ca07e87fa234c">colour</a></td></tr>
+<tr class="separator:a07590fed51435f01f07ca07e87fa234c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18ddb9fb567bfd26a5f700027c25d0ab"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMob.html#a18ddb9fb567bfd26a5f700027c25d0ab">is_bold</a></td></tr>
+<tr class="separator:a18ddb9fb567bfd26a5f700027c25d0ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a58d83f00ba46d15c0c72d7810e904884"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structItem.html">Item</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMob.html#a58d83f00ba46d15c0c72d7810e904884">items</a></td></tr>
 <tr class="separator:a58d83f00ba46d15c0c72d7810e904884"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab2d09c4a3deff10f4d0a3a31b9ee54f4"><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMob.html#ab2d09c4a3deff10f4d0a3a31b9ee54f4">turn_action</a> )(struct <a class="el" href="structMob.html">Mob</a> *)</td></tr>
@@ -138,6 +142,19 @@ Data Fields</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A mob is something which roams around the world, they are tied to a level, and all the mobs in one level form a doubly-linked list. There are a couple of callbacks associated with them to determine what happens in certain situations. </p>
 </div><h2 class="groupheader">Field Documentation</h2>
+<a class="anchor" id="a07590fed51435f01f07ca07e87fa234c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Mob::colour</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The colour to use to render the mob. </p>
+
+</div>
+</div>
 <a class="anchor" id="a97834256736bccdf83a371958d816832"></a>
 <div class="memitem">
 <div class="memproto">
@@ -200,6 +217,19 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>A mob is hostile if the player can damage it. </p>
+
+</div>
+</div>
+<a class="anchor" id="a18ddb9fb567bfd26a5f700027c25d0ab"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Mob::is_bold</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Whether to render the mob bold. </p>
 
 </div>
 </div>
@@ -365,7 +395,7 @@ Data Fields</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Apr 26 2014 18:57:38 for Ludum Dare 29 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Apr 27 2014 01:28:31 for Ludum Dare 29 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

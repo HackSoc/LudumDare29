@@ -1,4 +1,5 @@
 <map id="display_level" name="display_level">
-<area shape="rect" id="node3" href="$main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="288,5,339,35"/>
-<area shape="rect" id="node5" href="$player_8h.html#a3829d1675d5789e2531ffcc90fcad6a2" title="player_turn" alt="" coords="153,31,239,60"/>
+<area shape="rect" id="node3" href="$player_8h.html#a3829d1675d5789e2531ffcc90fcad6a2" title="player_turn" alt="" coords="153,5,239,35"/>
+<area shape="rect" id="node5" href="$player_8h.html#a168d23f1a7acdbae77883b6edf0af5b3" title="create_player" alt="" coords="289,5,388,35"/>
+<area shape="rect" id="node7" href="$main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="437,5,488,35"/>
 </map>

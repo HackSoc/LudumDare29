@@ -1,0 +1,4 @@
+<map id="randomise_player" name="randomise_player">
+<area shape="rect" id="node3" href="$utils_8c.html#a2c4f14c424a31db9c57fd046c3b9f0df" title="strdup" alt="" coords="205,5,264,35"/>
+<area shape="rect" id="node5" href="$utils_8c.html#ae78912f03cbf0b1925cc33f9c24808c4" title="random_choice" alt="" coords="180,59,289,88"/>
+</map>

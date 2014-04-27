@@ -1,3 +1,9 @@
 <map id="mvaddprintf" name="mvaddprintf">
-<area shape="rect" id="node3" href="$main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="144,5,195,35"/>
+<area shape="rect" id="node3" href="$item_8h.html#ab496e4d6b172913597a9f373a6399c53" title="display_items" alt="" coords="145,83,247,113"/>
+<area shape="rect" id="node7" href="$player_8h.html#a168d23f1a7acdbae77883b6edf0af5b3" title="create_player" alt="" coords="449,162,548,191"/>
+<area shape="rect" id="node9" href="$main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="597,201,648,230"/>
+<area shape="rect" id="node11" href="$level_8h.html#ad45cdcc4cf6ee2a61993cb4031ef44f3" title="display_level" alt="" coords="148,137,244,166"/>
+<area shape="rect" id="node15" href="$player_8c.html#a8e9f254ebd37223a823670ac94d335f9" title="design_player" alt="" coords="297,30,399,59"/>
+<area shape="rect" id="node19" href="$utils_8h.html#aaf736e66713424b6866a5bc668b9a02f" title="list_choice" alt="" coords="155,30,237,59"/>
+<area shape="rect" id="node5" href="$player_8h.html#a3829d1675d5789e2531ffcc90fcad6a2" title="player_turn" alt="" coords="305,137,391,166"/>
 </map>

@@ -1,0 +1,5 @@
+<map id="design_player" name="design_player">
+<area shape="rect" id="node3" href="$utils_8c.html#a2dc03125a4bc69b78615c7690a01f7e8" title="mvaddprintf" alt="" coords="291,23,381,52"/>
+<area shape="rect" id="node5" href="$utils_8c.html#a2c4f14c424a31db9c57fd046c3b9f0df" title="strdup" alt="" coords="171,21,229,51"/>
+<area shape="rect" id="node7" href="$utils_8c.html#aaf736e66713424b6866a5bc668b9a02f" title="list_choice" alt="" coords="159,75,241,104"/>
+</map>
