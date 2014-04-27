@@ -2,6 +2,7 @@
 #define ITEM_H
 
 #include <stdbool.h>
+#include "list.h"
 
 struct Equipment;
 struct Item;
@@ -32,20 +33,17 @@ typedef struct Item {
 	char symbol; /**< The symbol to display when dropped */
 	char * name; /**< The name to display when examined */
 
-	struct Item * next; /**< The next item in the inventory */
-	struct Item * prev; /**< The last item in the inventory */
+	List inventory; /**< The inventory to which this item belongs. */
 
 	Equipment * equipment; /**< Pointer to the equipment stats for the
 	                          item, will be NULL if the item is not
 	                          equipment. */
 } Item;
 
-void display_inventory(Item * inventory, const char * title);
-Item ** choose_items(Item * inventory, const char * prompt);
-Equipment * choose_equipment(Item * inventory,
+void display_inventory(List * inventory, const char * title);
+List ** choose_items(List * inventory, const char * prompt);
+Equipment * choose_equipment(List * inventory,
                              enum EquipmentType type,
                              const char * prompt);
-Item * remove_items(Item * inventory, Item ** items);
-Item * add_items(Item * inventory, Item ** items);
 
 #endif /*ITEM_H*/

@@ -8,6 +8,7 @@
 #include "mob.h"
 #include "item.h"
 #include "player.h"
+#include "list.h"
 
 /** Whether to quit the game or not. */
 bool quit = false;
@@ -31,7 +32,7 @@ int main() {
 	Mob * player = create_player();
 
 	Level * level_head = xalloc(Level);
-	level_head->mobs = player;
+	level_head->mobs = &player->moblist;
 	level_head->player = player;
 
 	player->level = level_head;
@@ -64,18 +65,22 @@ int main() {
 	/* Free the things */
 	while (level_head != NULL) {
 		Level * level = level_head;
-		level_head = level_head->next;
+		level_head = (level_head->levels.next == NULL) ? NULL : fromlist(Level, levels, level_head->levels.next);
 
 		while (level->mobs != NULL) {
-			level->mobs = kill_mob(level->mobs);
+			Mob * mob = kill_mob(fromlist(Mob, moblist, level->mobs));
+			level->mobs = (mob == NULL) ? NULL : mob->moblist.next;
 		}
+		do {
+			
+		} while (level->mobs != NULL);
 
 		for (int x = 0; x < LEVELWIDTH; x++) {
 			for (int y = 0; y < LEVELHEIGHT; y++) {
-				Item * item = level->cells[x][y]->items;
-				while (item != NULL) {
-					Item * tmp = item;
-					item = item->next;
+				List * inventory = level->cells[x][y]->items;
+				while (inventory != NULL) {
+					Item * tmp = fromlist(Item, inventory, inventory);
+					inventory = inventory->next;
 					xfree(tmp->equipment);
 					xfree(tmp);
 				}

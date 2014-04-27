@@ -87,23 +87,25 @@ Mob * create_player() {
 	player->max_health = 100;
 	player->score = 0;
 
-	player->items = xalloc(Item);
-	player->items->symbol = '*';
-	player->items->name = "A Stone";
+	Item * stone = xalloc(Item);
+	stone->symbol = '*';
+	stone->name = "A Stone";
 
-	player->items->next = xalloc(Item);
-	player->items->next->prev = player->items;
-	player->items->next->symbol = '$';
-	player->items->next->name = "A Coin";
+	Item * coin = xalloc(Item);
+	coin->symbol = '$';
+	coin->name = "A Coin";
 
-	player->items->next->next = xalloc(Item);
-	player->items->next->next->prev = player->items->next;
-	player->items->next->next->symbol = '/';
-	player->items->next->next->name = "A Sword";
-	player->items->next->next->equipment = xalloc(Equipment);
-	player->items->next->next->equipment->item = player->items->next->next;
-	player->items->next->next->equipment->type = WEAPON;
-	player->items->next->next->equipment->attack = 10;
+	Item * sword = xalloc(Item);
+	sword->symbol = '/';
+	sword->name = "A Sword";
+	sword->equipment = xalloc(Equipment);
+	sword->equipment->item = sword;
+	sword->equipment->type = WEAPON;
+	sword->equipment->attack = 10;
+
+	player->inventory = insert(player->inventory, &stone->inventory);
+	player->inventory = insert(player->inventory, &coin->inventory);
+	player->inventory = insert(player->inventory, &sword->inventory);
 
 	clear();
 	mvaddprintf(9, 10, "Do you want to randomly generate your player? ");
@@ -159,7 +161,7 @@ bool attackmove_relative(Mob * player, int xdiff, int ydiff) {
  * @param player Player entity.
  */
 void player_turn(Mob * player) {
-	Item ** items;
+	List ** items;
 	Equipment * equipment;
 	Cell * current_cell = player->level->cells[player->xpos][player->ypos];
 
@@ -236,24 +238,28 @@ void player_turn(Mob * player) {
 
 		/* Inventory management */
 	case 'i':
-		display_inventory(player->items, "Inventory Contents:");
+		display_inventory(player->inventory, "Inventory Contents:");
 		break;
 
 	case 'd':
-		items = choose_items(player->items, "Select items to drop:");
+		items = choose_items(player->inventory, "Select items to drop:");
 		if(items != NULL) {
-			/* Unequip if necessary */
 			for(unsigned int i = 0; items[i] != NULL; i++) {
+				Item * item = fromlist(Item, inventory, items[i]);
+				/* Unequip if necessary */
 				if(player->weapon != NULL &&
-				   items[i] == player->weapon->item) {
+				   item == player->weapon->item) {
 					player->weapon = NULL;
 				} else if(player->armour != NULL &&
-				          items[i] == player->armour->item) {
+				          item == player->armour->item) {
 					player->armour = NULL;
 				}
 			}
-			player->items = remove_items(player->items, items);
-			current_cell->items = add_items(current_cell->items, items);
+			/* Remove from the inventory */
+			player->inventory = dropall(items);
+
+			/* Add to the cell */
+			current_cell->items = insertall(current_cell->items, items);
 		}
 		xfree(items);
 		break;
@@ -261,14 +267,17 @@ void player_turn(Mob * player) {
 	case ',':
 		items = choose_items(current_cell->items, "Select items to pick up:");
 		if(items != NULL) {
-			current_cell->items = remove_items(current_cell->items, items);
-			player->items = add_items(player->items, items);
+			/* Remove from the cell */
+			current_cell->items = dropall(items);
+
+			/* Add to the player */
+			player->inventory = insertall(player->inventory, items);
 		}
 		xfree(items);
 		break;
 
 	case 'w':
-		equipment = choose_equipment(player->items,
+		equipment = choose_equipment(player->inventory,
 		                             WEAPON,
 		                             "Select a weapon to equip");
 		if(equipment != NULL) {
@@ -277,7 +286,7 @@ void player_turn(Mob * player) {
 		break;
 
 	case 'W':
-		equipment = choose_equipment(player->items,
+		equipment = choose_equipment(player->inventory,
 		                             ARMOUR,
 		                             "Select some armour to wear");
 		if(equipment != NULL) {

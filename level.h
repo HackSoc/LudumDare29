@@ -5,6 +5,7 @@
 
 #include "mob.h"
 #include "item.h"
+#include "list.h"
 
 /** The width of a level in characters. */
 #define LEVELWIDTH  80
@@ -24,7 +25,7 @@ typedef struct Cell {
 	bool solid;      /**< Whether the cell is solid (impassible) or not. */
 
 	struct Mob * occupant; /**< The occpuant (may be NULL). */
-	struct Item * items;   /**< The list of items (may be NULL). */
+	struct List * items;   /**< The list of items (may be NULL). */
 } Cell;
 
 /**
@@ -33,10 +34,9 @@ typedef struct Cell {
  * Levels form a doubly-linked list.
  */
 typedef struct Level {
-	struct Level * next; /**< The level after this one. */
-	struct Level * prev; /**< The level before this one. */
+	List levels; /**< The list of levels to which this belongs */
 
-	struct Mob * mobs;   /**< Doubly-linked list of mobs in the level. */
+	List * mobs; /**< The list of mobs in the level. */
 	struct Mob * player; /**< The player mob (must also be in mobs). */
 
 	int depth; /**< The depth of the level.*/

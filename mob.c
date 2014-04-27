@@ -100,36 +100,16 @@ Mob * kill_mob(Mob * mob) {
 
 	Level * level = mob->level;
 	Cell * cell = level->cells[mob->xpos][mob->ypos];
-	Mob * prev = mob->prev;
-	Mob * next = mob->next;
+	Mob * next = fromlist(Mob, moblist, mob->moblist.next);
 
 	/* Remove it from the cell */
 	cell->occupant = NULL;
 
-	/* Special case: head of the mobs list */
-	if(level->mobs == mob) {
-		assert(prev == NULL);
-		level->mobs = next;
-	}
-
-	/* Remove from the doubly-linked list */
-	if(prev != NULL) {
-		prev->next = next;
-	}
-
-	if(next != NULL) {
-		next->prev = prev;
-	}
+	/* Remove from the mob list */
+	level->mobs = drop(&mob->moblist);
 
 	/* Drop its items */
-	if(cell->items == NULL) {
-		cell->items = mob->items;
-	} else {
-		Item * last;
-		for(last = cell->items; last->next != NULL; last = last->next) {}
-		last->next = mob->items;
-		last->next->prev = last;
-	}
+	cell->items = append(cell->items, mob->inventory);
 
 	/* Only the player needs to have its strings free'd */
 	if (mob->level->player == mob) {
@@ -257,51 +237,38 @@ bool move_mob_level(Mob * mob, bool toprev) {
 	Level * newlevel;
 
 	if (toprev) {
-		if (level->prev == NULL) {
+		if (level->levels.prev == NULL) {
 			/* top of the cave so no previous level */
 			return false;
 		}
-		newlevel = level->prev;
+		newlevel = fromlist(Level, levels, level->levels.prev);
 		newx = newlevel->endx;
 		newy = newlevel->endy;
 	} else {
-		if (level->next == NULL) {
+		if (level->levels.next == NULL) {
 			/* no next level so make one */
-			level->next = xalloc(Level);
-			build_level(level->next);
-			level->next->prev = level;
-			level->next->depth = level->depth + 1;
+			Level * nextlevel = xalloc(Level);
+			build_level(nextlevel);
+			nextlevel->levels.prev = &level->levels;
+			nextlevel->depth = level->depth + 1;
+			level->levels.next = &nextlevel->levels;
 			/* Assumes only the player can create levels */
 			mob->score += 25; // arbitrary value
 		}
-		newlevel = level->next;
+		newlevel = fromlist(Level, levels, level->levels.next);
 		newx = newlevel->startx;
 		newy = newlevel->starty;
 	}
 
 	/* remove the mob from the current level */
-	if(mob->level->mobs == mob) {
-		mob->level->mobs = mob->next;
-	}
-
-	if (mob->prev != NULL) {
-		mob->prev->next = mob->next;
-	}
-	if (mob->next != NULL) {
-		mob->next->prev = mob->prev;
-	}
+	mob->level->mobs = drop(&mob->moblist);
 	level->cells[mob->xpos][mob->ypos]->occupant = NULL;
 
 	/* Puts the mob in the new level, inserting
 	   it at the front of the list of mobs */
 	mob->level = newlevel;
-	mob->prev = NULL;
-	mob->next = newlevel->mobs;
-	newlevel->mobs = mob;
+	newlevel->mobs = insert(newlevel->mobs, &mob->moblist);
 	newlevel->cells[newx][newy]->occupant = mob;
-	if (mob->next != NULL) {
-		mob->next->prev = mob;
-	}
 	mob->xpos = newx;
 	mob->ypos = newy;
 
