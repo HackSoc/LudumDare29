@@ -71,8 +71,8 @@ List * drop(List * list) {
  */
 List * dropall(List ** items) {
 	List * head;
-	for(List * item = items[0]; item != NULL; item ++) {
-		head = drop(item);
+	for(unsigned int i = 0; items[i] != NULL; i++) {
+		head = drop(items[i]);
 	}
 	return head;
 }
@@ -101,8 +101,8 @@ List * insert(List * list, List * insert) {
  */
 List * insertall(List * list, List ** items) {
 	List * head;
-	for(List * item = items[0]; item != NULL; item ++) {
-		head = insert(list, item);
+	for(unsigned int i = 0; items[i] != NULL; i ++) {
+		head = insert(list, items[i]);
 	}
 	return head;
 }

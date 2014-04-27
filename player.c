@@ -285,7 +285,13 @@ void player_turn(Mob * player) {
 					}
 					player->offhand = NULL;
 				}
+
+				/* Update the cell luminosity */
+				if(item->luminous) {
+					current_cell->luminosity ++;
+				}
 			}
+
 			/* Remove from the inventory */
 			player->inventory = dropall(items);
 
@@ -298,6 +304,14 @@ void player_turn(Mob * player) {
 	case ',':
 		items = choose_items(current_cell->items, "Select items to pick up:");
 		if(items != NULL) {
+			/* Update the cell luminosity */
+			for(unsigned int i = 0; items[i] != NULL; i++) {
+				Item * item = fromlist(Item, inventory, items[i]);
+				if(item->luminous) {
+					current_cell->luminosity --;
+				}
+			}
+
 			/* Remove from the cell */
 			current_cell->items = dropall(items);
 
