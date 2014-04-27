@@ -88,6 +88,15 @@ Mob * create_player() {
 	player->items->next->symbol = '$';
 	player->items->next->name = "A Coin";
 
+	player->items->next->next = xalloc(Item);
+	player->items->next->next->prev = player->items->next;
+	player->items->next->next->symbol = '/';
+	player->items->next->next->name = "A Sword";
+	player->items->next->next->equipment = xalloc(Equipment);
+	player->items->next->next->equipment->item = player->items->next->next;
+	player->items->next->next->equipment->type = WEAPON;
+	player->items->next->next->equipment->attack = 10;
+
 	clear();
 	mvaddprintf(9, 10, "Do you want to randomly generate your player? ");
 	while(true) {
@@ -111,15 +120,13 @@ Mob * create_player() {
  * @param player Entity representing the player.
  * @param x x-coordinate to move to.
  * @param y y-coordinate to move to.
- * @param damage Amount of damage to inflict on any mobs, if present.
  * @return If the player damaged a mob.
  */
-bool attackmove(Mob * player, unsigned int x, unsigned int y,
-				unsigned int damage) {
+bool attackmove(Mob * player, unsigned int x, unsigned int y) {
 	Mob * mob = player->level->cells[x][y]->occupant;
 
 	if(!move_mob(player, x, y) && mob != NULL && mob->hostile) {
-		damage_mob(mob, damage);
+		attack_mob(player, mob);
 		return true;
 	}
 	return false;
@@ -130,15 +137,13 @@ bool attackmove(Mob * player, unsigned int x, unsigned int y,
  * @param player Entity representing the player.
  * @param xdiff Difference in the x-axis to move.
  * @param ydiff Difference in the y-axis to move.
- * @param damage Damage to do to any mobs, if present.
  * @return If the player damaged a mob.
  */
-bool attackmove_relative(Mob * player, int xdiff, int ydiff,
-						 unsigned int damage) {
+bool attackmove_relative(Mob * player, int xdiff, int ydiff) {
 	unsigned int x = player->xpos + xdiff;
 	unsigned int y = player->ypos + ydiff;
 
-	return attackmove(player, x, y, damage);
+	return attackmove(player, x, y);
 }
 
 /**
@@ -146,6 +151,7 @@ bool attackmove_relative(Mob * player, int xdiff, int ydiff,
  * @param player Player entity.
  */
 void player_turn(Mob * player) {
+	Item * item;
 	Item ** items;
 	Cell * current_cell = player->level->cells[player->xpos][player->ypos];
 
@@ -254,6 +260,24 @@ void player_turn(Mob * player) {
 		xfree(items);
 		break;
 
+	case 'w':
+		item = choose_equipment(player->items,
+								WEAPON,
+								"Select a weapon to equip");
+		if(item != NULL) {
+			player->weapon = item->equipment;
+		}
+		break;
+
+	case 'W':
+		item = choose_equipment(player->items,
+								ARMOUR,
+								"Select some armour to wear");
+		if(item != NULL) {
+			player->armour = item->equipment;
+		}
+		break;
+
 		/* Misc */
 	case 'q':
 		quit = true;
@@ -262,7 +286,7 @@ void player_turn(Mob * player) {
 		break;
 	}
 
-	if (move && attackmove_relative(player, xdiff, ydiff, 5)) {
+	if (move && attackmove_relative(player, xdiff, ydiff)) {
 		player->score += 5;
 	}
 }

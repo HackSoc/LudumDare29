@@ -41,6 +41,9 @@ typedef struct Item {
 } Item;
 
 Item ** display_items(Item * items, bool isChoice, char * prompt);
+Item * choose_equipment(Item * inventory,
+						enum EquipmentType type,
+						const char * prompt);
 Item * remove_items(Item * inventory, Item ** items);
 Item * add_items(Item * inventory, Item ** items);
 

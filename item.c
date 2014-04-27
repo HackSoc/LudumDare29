@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <curses.h>
+#include <string.h>
 
 #include "item.h"
 #include "utils.h"
@@ -92,6 +93,46 @@ Item ** display_items(Item * items, bool isChoice, char * prompt) {
 	xfree(chosen);
 
 	return selected;
+}
+
+/**
+ * Choose a piece of equipment
+ * @param inventory The inventory to choose from
+ * @param type The type of the equipment
+ * @param prompt The prompt
+ * @return NULL if nothing was selected, otherwise a pointer to the choice.
+ */
+Item * choose_equipment(Item * inventory,
+						enum EquipmentType type,
+						const char * prompt) {
+	unsigned int num_pieces = 0;
+
+	for(Item * item = inventory; item != NULL; item = item->next) {
+		if(item->equipment != NULL && item->equipment->type == type) {
+			num_pieces ++;
+		}
+	}
+
+	if(num_pieces == 0) {
+		return NULL;
+	}
+
+	char ** choices = xcalloc(num_pieces, char*);
+
+	unsigned int i = 0;
+	for(Item * item = inventory; item != NULL; item = item->next) {
+		if(item->equipment != NULL && item->equipment->type == type) {
+			choices[i] = item->name;
+			i ++;
+		}
+	}
+
+	char * choice = list_choice(1, 0, prompt, prompt, choices);
+	for(Item * item = inventory; item != NULL; item = item->next) {
+		if(strcmp(choice, item->name) == 0) {
+			return item;
+		}
+	}
 }
 
 /**
