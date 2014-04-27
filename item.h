@@ -10,6 +10,8 @@ typedef struct Item {
 	struct Item * prev;
 } Item;
 
-Item * display_items(Item * items, bool isChoice, char * prompt);
+Item ** display_items(Item * items, bool isChoice, char * prompt);
+Item * remove_items(Item * inventory, Item ** items);
+Item * add_items(Item * inventory, Item ** items);
 
 #endif /*ITEM_H*/

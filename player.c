@@ -146,6 +146,9 @@ bool attackmove_relative(Mob * player, int xdiff, int ydiff,
  * @param player Player entity.
  */
 void player_turn(Mob * player) {
+	Item ** items;
+	Cell * current_cell = player->level->cells[player->xpos][player->ypos];
+
 	display_level(player->level);
 
 	bool move = false;
@@ -153,6 +156,7 @@ void player_turn(Mob * player) {
 	int ydiff = 0;
 	int ch = getch();
 	switch (ch) {
+	/* Movement in a level */
 	case 'k':
 	case '8':
 	case KEY_UP:
@@ -171,45 +175,76 @@ void player_turn(Mob * player) {
 		move = true;
 		xdiff = -1; ydiff =  0;
 		break;
+
 	case 'l':
 	case '6':
 	case KEY_RIGHT:
 		move = true;
 		xdiff =  1; ydiff =  0;
 		break;
+
 	case 'y':
 	case '7':
 		move = true;
 		xdiff = -1; ydiff = -1;
 		break;
+
 	case 'u':
 	case '9':
 		move = true;
 		xdiff =  1; ydiff = -1;
 		break;
+
 	case 'n':
 	case '3':
 		move = true;
 		xdiff =  1; ydiff =  1;
 		break;
+
 	case 'b':
 	case '1':
 		move = true;
 		xdiff = -1; ydiff =  1;
 		break;
+
+		/* Movement between levels */
 	case '>':
 		if (player->level->cells[player->xpos][player->ypos]->baseSymbol == '>'){
 			move_mob_level(player, false);
 		}
 		break;
+
 	case '<':
 		if (player->level->cells[player->xpos][player->ypos]->baseSymbol == '<'){
 			move_mob_level(player, true);
 		}
 		break;
+
+		/* Inventory management */
 	case 'i':
 		display_items(player->items, false, "Inventory Contents:");
 		break;
+
+	case 'd':
+		items = display_items(player->items, true, "Select items to drop:");
+		if(items != NULL) {
+			player->items = remove_items(player->items, items);
+			current_cell->items = add_items(current_cell->items, items);
+		}
+		xfree(items);
+		break;
+
+	case ',':
+		items = display_items(current_cell->items, true,
+							  "Select items to pick up:");
+		if(items != NULL) {
+			current_cell->items = remove_items(current_cell->items, items);
+			player->items = add_items(player->items, items);
+		}
+		xfree(items);
+		break;
+
+		/* Misc */
 	case 'q':
 		quit = true;
 		break;
