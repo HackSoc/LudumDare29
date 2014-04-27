@@ -54,9 +54,9 @@ char * strdup(const char * str) {
  * @param bold Whether to bold or not
  */
 void mvaddchcol(unsigned int y, unsigned int x,
-				char chr,
-				int fg, int bg,
-				bool bold) {
+                char chr,
+                int fg, int bg,
+                bool bold) {
 	init_pair(fg << 3 | bg, fg, bg);
 	attron(COLOR_PAIR(fg << 3 | bg));
 	if(bold) {
@@ -84,19 +84,19 @@ void mvaddchcol(unsigned int y, unsigned int x,
  * @return The results corresponding to the choices, or NULL.
  */
 const void ** list_choice(bool nochoice,
-						  const char * prompt,
-						  const char * prompt2,
-						  bool multi,
-						  bool empty,
-						  const char * choices[],
-						  const void * results[]) {
+                          const char * prompt,
+                          const char * prompt2,
+                          bool multi,
+                          bool empty,
+                          const char * choices[],
+                          const void * results[]) {
 	clear();
 
 	/* Build the list of choices, and count how many there are */
 	unsigned int num_choices;
 	for(num_choices = 0; choices[num_choices] != NULL; num_choices ++) {
 		mvaddprintf(2 + num_choices, 1,
-					"%c - %s", 'a' + num_choices, choices[num_choices]);
+		            "%c - %s", 'a' + num_choices, choices[num_choices]);
 	}
 
 	mvaddstr(1, 1, prompt);

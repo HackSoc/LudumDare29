@@ -17,7 +17,7 @@ enum EquipmentType { NONE, WEAPON, ARMOUR };
  */
 typedef struct Equipment {
 	struct Item * item; /**< The item with which this equipment is
-						   associated */
+	                       associated */
 
 	enum EquipmentType type; /**< The type of the equiment. */
 	unsigned int attack; /**< The attack damage of the item. */
@@ -36,15 +36,15 @@ typedef struct Item {
 	struct Item * prev; /**< The last item in the inventory */
 
 	Equipment * equipment; /**< Pointer to the equipment stats for the
-							  item, will be NULL if the item is not
-							  equipment. */
+	                          item, will be NULL if the item is not
+	                          equipment. */
 } Item;
 
 void display_inventory(Item * inventory, const char * title);
 Item ** choose_items(Item * inventory, const char * prompt);
 Equipment * choose_equipment(Item * inventory,
-							 enum EquipmentType type,
-							 const char * prompt);
+                             enum EquipmentType type,
+                             const char * prompt);
 Item * remove_items(Item * inventory, Item ** items);
 Item * add_items(Item * inventory, Item ** items);
 

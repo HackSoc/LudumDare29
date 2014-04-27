@@ -18,10 +18,10 @@ extern bool quit;
  * @param careful Only place if the space is occuped by a wall or floor.
  */
 static void place_cell(Level * level,
-					   unsigned int x,
-					   unsigned int y,
-					   Cell * to_place,
-					   bool careful) {
+                       unsigned int x,
+                       unsigned int y,
+                       Cell * to_place,
+                       bool careful) {
 
 	if(careful) {
 		switch(level->cells[x][y]->baseSymbol) {
@@ -54,12 +54,12 @@ static void place_cell(Level * level,
  * @param make_stairs If true, place the stairs at one of the miners randomly.
  */
 static void mine_level(Level * level,
-					   unsigned int num_miners,
-					   unsigned int spread,
-					   unsigned int iterations,
-					   unsigned int startx, unsigned int starty,
-					   Cell * to_place,
-					   bool make_stairs) {
+                       unsigned int num_miners,
+                       unsigned int spread,
+                       unsigned int iterations,
+                       unsigned int startx, unsigned int starty,
+                       Cell * to_place,
+                       bool make_stairs) {
 	unsigned int minersx[num_miners], minersy[num_miners];
 	unsigned int i, m;
 
@@ -135,9 +135,9 @@ static void mine_level(Level * level,
 	}
 }
 
-#define DEF_MOB(sym, n, col, hlth) {.symbol = (sym), .colour = (col), .name = (n),\
-	.is_bold = false, .hostile = true, .health = (hlth), .max_health = (hlth),\
-	.level = NULL, .prev = NULL, .turn_action = NULL, .xpos = 0, .ypos = 0, .score = 0}
+#define DEF_MOB(sym, n, col, hlth) {.symbol = (sym), .colour = (col), .name = (n), \
+			.is_bold = false, .hostile = true, .health = (hlth), .max_health = (hlth), \
+			.level = NULL, .prev = NULL, .turn_action = NULL, .xpos = 0, .ypos = 0, .score = 0}
 
 static const struct Mob default_mobs[] = {
 	DEF_MOB('H', "Hedgehog", COLOR_YELLOW, 5),
@@ -167,8 +167,8 @@ static void add_mob(Level * level) {
 
 	Mob * tail;
 	for (tail = level->mobs;
-		 tail != NULL && tail->next != NULL;
-		 tail = tail->next);
+	     tail != NULL && tail->next != NULL;
+	     tail = tail->next);
 
 	Mob * new = xalloc(Mob);
 	*new = default_mobs[rand() % lengthof(default_mobs)];
@@ -241,9 +241,9 @@ void build_level(Level * level) {
 		.items = NULL};
 
 	mine_level(level,
-			   NMINERS, SPREAD, ITERATIONS,
-			   level->startx, level->starty,
-			   &floor, true);
+	           NMINERS, SPREAD, ITERATIONS,
+	           level->startx, level->starty,
+	           &floor, true);
 
 	/* Mine out lakes */
 	Cell poison_lake = {
@@ -259,9 +259,9 @@ void build_level(Level * level) {
 		int ly = rand() % LEVELHEIGHT;
 
 		mine_level(level,
-				   NLAKEMINERS, LAKESPREAD, LAKEITERATIONS,
-				   lx, ly,
-				   &poison_lake, false);
+		           NLAKEMINERS, LAKESPREAD, LAKEITERATIONS,
+		           lx, ly,
+		           &poison_lake, false);
 	}
 
 	/* Place the stairs */
@@ -338,16 +338,16 @@ void display_level(Level * level) {
 			if(level->cells[x][y]->occupant != NULL &&
 			   level->cells[x][y]->occupant->health > 0) {
 				mvaddchcol(y, x,
-						   level->cells[x][y]->occupant->symbol,
-						   level->cells[x][y]->occupant->colour, COLOR_BLACK,
-						   level->cells[x][y]->occupant->is_bold);
+				           level->cells[x][y]->occupant->symbol,
+				           level->cells[x][y]->occupant->colour, COLOR_BLACK,
+				           level->cells[x][y]->occupant->is_bold);
 			} else if(level->cells[x][y]->items != NULL) {
 				mvaddch(y, x, level->cells[x][y]->items->symbol);
 			} else {
 				mvaddchcol(y, x,
-						   level->cells[x][y]->baseSymbol,
-						   level->cells[x][y]->colour, COLOR_BLACK,
-						   false);
+				           level->cells[x][y]->baseSymbol,
+				           level->cells[x][y]->colour, COLOR_BLACK,
+				           false);
 			}
 		}
 	}
