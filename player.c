@@ -147,59 +147,106 @@ bool attackmove_relative(Mob * player, int xdiff, int ydiff,
  */
 void player_turn(Mob * player) {
 	int ch;
+	Item * item;
+	Cell * current_cell = player->level->cells[player->xpos][player->ypos];
 
 	display_level(player->level);
 	ch = getch();
 	switch (ch) {
+		/* Movement in a level */
 	case 'k':
 	case '8':
 	case KEY_UP:
 			attackmove_relative(player, 0, -1, 5);
 			break;
+
 	case 'j':
 	case '2':
 	case KEY_DOWN:
 			attackmove_relative(player, 0, 1, 5);
 			break;
+
 	case 'h':
 	case '4':
 	case KEY_LEFT:
 		attackmove_relative(player, -1, 0, 5);
 		break;
+
 	case 'l':
 	case '6':
 	case KEY_RIGHT:
 			attackmove_relative(player, 1, 0, 5);
 			break;
+
 	case 'y':
 	case '7':
 		attackmove_relative(player, -1, -1, 5);
 		break;
+
 	case 'u':
 	case '9':
 		attackmove_relative(player, 1, -1, 5);
 		break;
+
 	case 'n':
 	case '3':
 		attackmove_relative(player, 1, 1, 5);
 		break;
+
 	case 'b':
 	case '1':
 		attackmove_relative(player, -1, 1, 5);
 		break;
+
+		/* Movement between levels */
 	case '>':
 		if (player->level->cells[player->xpos][player->ypos]->baseSymbol == '>'){
 			move_mob_level(player, false);
 		}
 		break;
+
 	case '<':
 		if (player->level->cells[player->xpos][player->ypos]->baseSymbol == '<'){
 			move_mob_level(player, true);
 		}
 		break;
+
+		/* Inventory management */
 	case 'i':
 		display_items(player->items, false, "Inventory Contents:");
 		break;
+
+	case 'd':
+		item = display_items(player->items, true, "Select items to drop:");
+		if(item != NULL) {
+			Item * last;
+			for(last = item; last->next != NULL; last = last->next);
+
+			if(current_cell->items != NULL) {
+				current_cell->items->prev = last;
+			}
+			last->next = current_cell->items;
+			current_cell->items = item;
+		}
+		break;
+
+	case ',':
+		item = display_items(current_cell->items, true,
+							 "Select items to pick up:");
+		if(item != NULL) {
+			Item * last;
+			for(last = item; last->next != NULL; last = last->next);
+
+			last->next = player->items;
+			if(player->items != NULL) {
+				player->items->prev = last;
+			}
+			last->next = player->items;
+			player->items = item;
+		}
+		break;
+
+		/* Misc */
 	case 'q':
 		quit = true;
 	}

@@ -47,6 +47,7 @@ int main() {
 	mvaddprintf(11, 10, "It's beneath the surface.");
 	mvaddprintf(19, 44, "A game for Ludum Dare 29 by HackSoc.");
 	getch();
+	clear();
 
 	/* Game loop */
 	while(!quit) {

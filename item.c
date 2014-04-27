@@ -16,7 +16,8 @@ Item * display_items(Item * items, bool isChoice, char * prompt) {
 	Item ** item_array;
 	bool * chosen;
 	int num_items = 0;
-	Item *item, *chosen_items;
+	Item * item = NULL;
+	Item * chosen_items = NULL;
 	int i, ch;
 	bool done;
 
@@ -25,8 +26,13 @@ Item * display_items(Item * items, bool isChoice, char * prompt) {
 		num_items++;
 	}
 
-	item_array = malloc(num_items*sizeof(Item*));
-	chosen = calloc(num_items, sizeof(bool));
+	if(num_items == 0) {
+		/* No items, so this is not a choice */
+		isChoice = false;
+	}
+
+	item_array = xcalloc(num_items, Item*);
+	chosen = xcalloc(num_items, bool);
 
 	i = 0;
 	for (item = items; item != NULL; item = item->next) {
@@ -44,40 +50,52 @@ Item * display_items(Item * items, bool isChoice, char * prompt) {
 
 	if (!isChoice) {
 		getch();
+
+		xfree(item_array);
+		xfree(chosen);
+
 		return NULL;
 	}
 
-	done = false;
-	while (!done) {
+	while (true) {
 		ch = getch();
 		
-		if ('a' <= ch || 'a' + num_items >= ch) {
+		if ('a' <= ch && 'a' + num_items > ch) {
 			chosen[ch-'a'] = !chosen[ch-'a'];
 			if (chosen[ch-'a']) {
-				mvaddprintf(ch-'a', 2, "+");
+				mvaddprintf(1 + ch - 'a', 2, "+");
 			} else {
-				mvaddprintf(ch-'a', 2, "-");
+				mvaddprintf(1 + ch - 'a', 2, "-");
 			}
 		}
 		if (ch <= 32 || ch >= 126) { 
 			/* if ch is a non-printable ASCII character */
-			done = true;
+			break;
 		} 
 	} 
 	
 	/* construct the return list */
 	for (i = 0; i < num_items; i++) {
 		if (chosen[i]) {
-			item_array[i]->next->prev = item_array[i]->prev;
-			item_array[i]->prev->next = item_array[i]->next;
+			if(item_array[i]->next != NULL) {
+				item_array[i]->next->prev = item_array[i]->prev;
+			}
+			if(item_array[i]->prev != NULL) {
+				item_array[i]->prev->next = item_array[i]->next;
+			}
 			
 			item_array[i]->next = chosen_items;
-			chosen_items->prev = item_array[i];
+			if(chosen_items != NULL) {
+				chosen_items->prev = item_array[i];
+			}
 			chosen_items = item_array[i];
 		}
 	}
 	
 	clear();
+
+	xfree(item_array);
+	xfree(chosen);
 
 	return chosen_items;
 }
