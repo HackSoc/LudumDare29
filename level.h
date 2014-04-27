@@ -3,9 +3,6 @@
 
 #include <stdbool.h>
 
-struct Mob;
-struct Item;
-
 #include "mob.h"
 #include "item.h"
 

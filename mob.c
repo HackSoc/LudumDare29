@@ -86,10 +86,6 @@ bool damage_mob(Mob * mob, unsigned int damage) {
 	mob->health -= damage;
 
 	return (mob->health <= 0);
-	if(mob->health <= 0) {
-		return true;
-	}
-	return false;
 }
 
 /**
@@ -130,7 +126,7 @@ Mob * kill_mob(Mob * mob) {
 		cell->items = mob->items;
 	} else {
 		Item * last;
-		for(last = cell->items; last != NULL; last = last->next) {}
+		for(last = cell->items; last->next != NULL; last = last->next) {}
 		last->next = mob->items;
 		last->next->prev = last;
 	}
@@ -294,12 +290,12 @@ bool move_mob_level(Mob * mob, bool toprev) {
 	if (mob->next != NULL) {
 		mob->next->prev = mob->prev;
 	}
-	mob->next = NULL;
-	mob->prev = NULL;
 	level->cells[mob->xpos][mob->ypos]->occupant = NULL;
 
-	/*put the mob in the new level */
+	/* Puts the mob in the new level, inserting
+	   it at the front of the list of mobs */
 	mob->level = newlevel;
+	mob->prev = NULL;
 	mob->next = newlevel->mobs;
 	newlevel->mobs = mob;
 	newlevel->cells[newx][newy]->occupant = mob;

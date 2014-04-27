@@ -21,19 +21,6 @@ void mvaddprintf(unsigned int y, unsigned int x, const char * fmt, ...) {
 }
 
 /**
- * printf the given string at the current position of the cursor.
- * @param fmt Format of the string.
- */
-void addprintf(const char * fmt, ...) {
-	char buf[SCREENWIDTH];
-	va_list ap;
-	va_start(ap, fmt);
-	vsnprintf(buf, SCREENWIDTH, fmt, ap);
-	va_end(ap);
-	addstr(buf);
-}
-
-/**
  * Duplicate a string
  * @param str String to duplicate
  */
@@ -109,6 +96,7 @@ const void ** list_choice(bool nochoice,
 		return NULL;
 	}
 
+	assert(num_choices != 0);
 	/* Get a list of choices */
 	bool * chosen = xcalloc(num_choices, bool);
 	unsigned int num_chosen = 0;
@@ -172,7 +160,7 @@ const void ** list_choice(bool nochoice,
 const void * random_choice(const void * choices[]) {
 	int num_choices;
 	for(num_choices = 0; choices[num_choices] != NULL; num_choices ++);
-
+	assert(num_choices != 0);
 	return choices[rand() % num_choices];
 }
 
@@ -183,6 +171,7 @@ const void * random_choice(const void * choices[]) {
  * @note Do not use this directly, use the xalloc macro instead.
  */
 void * _xalloc(size_t size) {
+	if (size == 0) return NULL;
 	void * mem = calloc(1, size);
 	assert(mem != NULL);
 	return mem;

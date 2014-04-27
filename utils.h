@@ -20,7 +20,6 @@
 #define lengthof(x) (sizeof(x) / sizeof(x[0]))
 
 void mvaddprintf(unsigned int y, unsigned int x, const char * fmt, ...);
-void addprintf(const char * fmt, ...);
 char * strdup(const char * str);
 void mvaddchcol(unsigned int y, unsigned int x,
                 char chr,
