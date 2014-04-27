@@ -107,18 +107,14 @@ Mob * create_player() {
 	sword->symbol = '/';
 	sword->name = "A Sword";
 	sword->type = WEAPON;
-	sword->equipment = xalloc(Equipment);
-	sword->equipment->item = sword;
-	sword->equipment->attack = 10;
+	sword->value = 10;
 
 	Item * lantern = xalloc(Item);
 	lantern->symbol = '^';
 	lantern->name = "Lantern";
 	lantern->type = WEAPON;
 	lantern->luminous = true;
-	lantern->equipment = xalloc(Equipment);
-	lantern->equipment->item = lantern;
-	lantern->equipment->attack = 1;
+	lantern->value = 1;
 
 	player->inventory = insert(player->inventory, &stone->inventory);
 	player->inventory = insert(player->inventory, &coin->inventory);
@@ -180,7 +176,7 @@ bool attackmove_relative(Mob * player, int xdiff, int ydiff) {
  */
 void player_turn(Mob * player) {
 	List ** items;
-	Equipment * equipment;
+	Item * item;
 	Cell * current_cell = player->level->cells[player->xpos][player->ypos];
 
 	display_level(player->level);
@@ -265,20 +261,17 @@ void player_turn(Mob * player) {
 			for(unsigned int i = 0; items[i] != NULL; i++) {
 				Item * item = fromlist(Item, inventory, items[i]);
 				/* Unequip if necessary */
-				if(player->weapon != NULL &&
-				   item == player->weapon->item) {
+				if(item == player->weapon) {
 					if(item->luminous) {
 						player->luminosity --;
 					}
 					player->weapon = NULL;
-				} else if(player->armour != NULL &&
-				          item == player->armour->item) {
+				} else if(item == player->armour) {
 					if(item->luminous) {
 						player->luminosity --;
 					}
 					player->armour = NULL;
-				} else if(player->offhand != NULL &&
-				          item == player->offhand->item) {
+				} else if(item == player->offhand) {
 					if(item->luminous) {
 						player->luminosity --;
 					}
@@ -307,48 +300,50 @@ void player_turn(Mob * player) {
 		break;
 
 	case 'w':
-		equipment = choose_equipment(player->inventory,
-		                             WEAPON,
-		                             "Select a weapon to equip");
-		if(equipment != NULL) {
+		item = choose_item_by_type(player->inventory,
+		                           WEAPON,
+		                           "Select a weapon to equip",
+		                           true);
+		if(item != NULL) {
 			if(player->weapon != NULL) {
 				player->weapon->equipped = false;
-				if(player->weapon->item->luminous) {
+				if(player->weapon->luminous) {
 					player->luminosity --;
 				}
 			}
 
-			player->weapon = equipment;
-			equipment->equipped = true;
+			player->weapon = item;
+			item->equipped = true;
 
-			if(equipment->item->luminous) {
+			if(item->luminous) {
 				player->luminosity ++;
 			}
 		}
 		break;
 
 	case 'x':
-		equipment = player->weapon;
+		item = player->weapon;
 		player->weapon = player->offhand;
-		player->offhand = equipment;
+		player->offhand = item;
 		break;
 
 	case 'W':
-		equipment = choose_equipment(player->inventory,
-		                             ARMOUR,
-		                             "Select some armour to wear");
-		if(equipment != NULL) {
+		item = choose_item_by_type(player->inventory,
+		                           ARMOUR,
+		                           "Select some armour to wear",
+		                           false);
+		if(item != NULL) {
 			if(player->armour != NULL) {
 				player->armour->equipped = false;
-				if(player->armour->item->luminous) {
+				if(player->armour->luminous) {
 					player->luminosity --;
 				}
 			}
 
-			player->armour = equipment;
-			equipment->equipped = true;
+			player->armour = item;
+			item->equipped = true;
 
-			if(equipment->item->luminous) {
+			if(item->luminous) {
 				player->luminosity ++;
 			}
 		}

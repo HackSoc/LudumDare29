@@ -79,7 +79,6 @@ int main() {
 				while (inventory != NULL) {
 					Item * tmp = fromlist(Item, inventory, inventory);
 					inventory = inventory->next;
-					xfree(tmp->equipment);
 					xfree(tmp);
 				}
 				xfree(level->cells[x][y]);

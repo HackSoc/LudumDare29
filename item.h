@@ -1,25 +1,11 @@
 #ifndef ITEM_H
 #define ITEM_H
 
+struct Mob;
+
 #include <stdbool.h>
 #include "list.h"
-
-struct Equipment;
-struct Item;
-
-/**
- * Some items are equipment, and so have a pointer to an equipment
- * struct, which defines its stats.
- */
-typedef struct Equipment {
-	struct Item * item; /**< The item with which this equipment is
-	                       associated */
-
-	unsigned int attack; /**< The attack damage of the item. */
-	unsigned int defense; /**< The defense value of the item. */
-
-	bool equipped; /**< Whether the equipment is equipped or not. */
-} Equipment;
+#include "mob.h"
 
 /**
  * Used to determine the type of an item
@@ -42,15 +28,17 @@ typedef struct Item {
 
 	List inventory; /**< The inventory to which this item belongs. */
 
-	Equipment * equipment; /**< Pointer to the equipment stats for the
-	                          item, will be NULL if the item is not
-	                          equipment. */
+	bool equipped; /**< Whether the item is equipped or not */
+	
+	int value; /**< Some type-dependent value */
+	void (*effect)(struct Mob *); /**< Some type-dependent effect */
 } Item;
 
 void display_inventory(List * inventory, const char * title);
 List ** choose_items(List * inventory, const char * prompt);
-Equipment * choose_equipment(List * inventory,
-                             enum ItemType type,
-                             const char * prompt);
+Item * choose_item_by_type(List * inventory,
+                           enum ItemType type,
+                           const char * prompt,
+                           bool no_equipped);
 
 #endif /*ITEM_H*/
