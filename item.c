@@ -1,3 +1,4 @@
+#include <assert.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include <curses.h>
@@ -107,8 +108,8 @@ Equipment * choose_equipment(Item * inventory,
 		return NULL;
 	}
 
-	const char ** names = xcalloc(num_pieces, char *);
-	const void ** equipment = xcalloc(num_pieces, void *);
+	const char ** names = xcalloc(num_pieces + 1, char *);
+	const void ** equipment = xcalloc(num_pieces + 1, void *);
 
 	unsigned int i = 0;
 	for(Item * item = inventory; item != NULL; item = item->next) {
@@ -118,6 +119,9 @@ Equipment * choose_equipment(Item * inventory,
 			i ++;
 		}
 	}
+	assert(i == num_pieces);
+	names[i] = NULL;
+	equipment[i] = NULL;
 
 	const void ** res = list_choice(false,
 	                                prompt, prompt,
