@@ -48,7 +48,10 @@ static void place_cell(Level * level,
  * @param num_miners The number of miners to place.
  * @param spread The maximum distance to spread out the miners.
  * @param iterations The number of steps to mine.
+ * @param startx The X coordinate to position the miners (before spreading).
+ * @param starty The Y coordinate to position the miners (before spreading).
  * @param to_place The cell to place.
+ * @param make_stairs If true, place the stairs at one of the miners randomly.
  */
 static void mine_level(Level * level,
 					   unsigned int num_miners,
@@ -328,6 +331,10 @@ void display_level(Level * level) {
 	Mob * player = level->player;
 	for(unsigned int x = 0; x < LEVELWIDTH; x++) {
 		for(unsigned int y = 0; y < LEVELHEIGHT; y++) {
+			if(!can_see(player, x, y)) {
+				continue;
+			}
+
 			if(level->cells[x][y]->occupant != NULL &&
 			   level->cells[x][y]->occupant->health > 0) {
 				mvaddchcol(y, x,

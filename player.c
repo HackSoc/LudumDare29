@@ -77,6 +77,15 @@ Mob * create_player() {
 	player->death_action = &player_death;
 	player->health = 100;
 	player->max_health = 100;
+	
+	player->items = xalloc(Item);
+	player->items->symbol = '*';
+	player->items->name = "A Stone";
+
+	player->items->next = xalloc(Item);
+	player->items->next->prev = player->items;
+	player->items->next->symbol = '$';
+	player->items->next->name = "A Coin";
 
 	clear();
 	mvaddprintf(9, 10, "Do you want to randomly generate your player? ");
@@ -187,6 +196,9 @@ void player_turn(Mob * player) {
 		if (player->level->cells[player->xpos][player->ypos]->baseSymbol == '<'){
 			move_mob_level(player, true);
 		}
+		break;
+	case 'i':
+		display_items(player->items, false, "Inventory Contents:");
 		break;
 	case 'q':
 		quit = true;

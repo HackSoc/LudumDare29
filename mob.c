@@ -116,11 +116,81 @@ Mob * kill_mob(Mob * mob) {
 }
 
 /**
+ * Determine if a mob can see the given point. All points are visible
+ * unless there is a wall in the way. This uses Bresenham's line
+ * algorithm to determine line-of-sight.
+ *
+ * Note: as this will be primarily used to render the level, a better
+ * version might be to operate on a 2d array of three-state variables
+ * ("visible", "blocked", and "unknown"), and just iterate the
+ * algorithm with different starting points until every point is
+ * known. This would avoid the need to check each individual point,
+ * possibly duplicating work.
+ *
+ * @param mob The mob
+ * @param x The target X coordinate
+ * @param y The target Y coordinate
+ */
+bool can_see(Mob * mob, unsigned int x, unsigned int y) {
+	Level * level = mob->level;
+
+	unsigned int x0 = mob->xpos;
+	unsigned int y0 = mob->ypos;
+
+	int dx = abs(x0 - x);
+	int dy = abs(y0 - y) ;
+
+	int sx = (x0 < x) ? 1 : -1;
+	int sy = (y0 < y) ? 1 : -1;
+
+	int err = dx - dy;
+
+	while(x0 != x || y0 != y) {
+		if(level->cells[x0][y0]->baseSymbol == '#') {
+			return false;
+		}
+
+		int e2 = err << 2;
+		
+		if(e2 > -dy) {
+			err -= dy;
+			x0 += sx;
+		}
+
+		if(e2 < dx) {
+			err += dx;
+			y0 += sy;
+		}
+	}
+
+	return true;
+}
+
+/**
+ * Wrapper for can_see, to determine if a mob can see another mob.
+ * @param moba One of the mobs
+ * @param mobb The other. It really doesn't matter which way around they are.
+ */
+bool can_see_other(Mob * moba, Mob * mobb) {
+	return can_see(moba, mobb->xpos, mobb->ypos);
+}
+
+/**
  * A very simple enemy: move towards the player, and damage them if adjacent.
  * @param enemy Entity to move.
  */
 void simple_enemy_turn(Mob * enemy) {
 	Mob * player = enemy->level->player;
+
+	/* If we can't see the player, move randomly */
+	if(!can_see_other(enemy, player)) {
+		if(rand() % 2 == 0) {
+			move_mob_relative(enemy, (rand() % 2 == 0) ? 1 : -1, 0);
+		} else {
+			move_mob_relative(enemy, 0, (rand() % 2 == 0) ? 1 : -1);
+		}
+		return;
+	}
 
 	int xdiff = enemy->xpos - player->xpos;
 	int ydiff = enemy->ypos - player->ypos;

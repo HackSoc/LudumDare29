@@ -48,6 +48,8 @@ bool move_mob_relative(struct Mob * mob, int xdiff, int ydiff);
 bool move_mob_level(Mob * mob, bool toprev);
 bool damage_mob(struct Mob * mob, unsigned int amount);
 struct Mob * kill_mob(struct Mob * mob);
+bool can_see(struct Mob * mob, unsigned int x, unsigned int y);
+bool can_see_other(struct Mob * moba, struct Mob * mobb);
 void simple_enemy_turn(Mob * enemy);
 
 #endif /*MOB_H*/
