@@ -228,6 +228,16 @@ void player_turn(Mob * player) {
 	case 'd':
 		items = display_items(player->items, true, "Select items to drop:");
 		if(items != NULL) {
+			/* Unequip if necessary */
+			for(unsigned int i = 0; items[i] != NULL; i++) {
+				if(player->weapon != NULL &&
+				   items[i] == player->weapon->item) {
+					player->weapon = NULL;
+				} else if(player->armour != NULL &&
+						  items[i] == player->armour->item) {
+					player->armour = NULL;
+				}
+			}
 			player->items = remove_items(player->items, items);
 			current_cell->items = add_items(current_cell->items, items);
 		}
