@@ -70,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -84,6 +84,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">item.h File Reference</div>  </div>
@@ -109,20 +110,53 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structEquipment.html">Equipment</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structItem.html">Item</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
+<tr class="memitem:a11cfdc48bc810ca16296bef31f45b4cf"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structEquipment.html">Equipment</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="item_8h.html#a11cfdc48bc810ca16296bef31f45b4cf">Equipment</a></td></tr>
+<tr class="separator:a11cfdc48bc810ca16296bef31f45b4cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a65e1a907ac9c378deab3f18ed458b6cc"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structItem.html">Item</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="item_8h.html#a65e1a907ac9c378deab3f18ed458b6cc">Item</a></td></tr>
 <tr class="separator:a65e1a907ac9c378deab3f18ed458b6cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a043f37c213c3e00687c1bbfabd5e7599"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="item_8h.html#a043f37c213c3e00687c1bbfabd5e7599">EquipmentType</a> { <a class="el" href="item_8h.html#a043f37c213c3e00687c1bbfabd5e7599ac157bdf0b85a40d2619cbc8bc1ae5fe2">NONE</a>, 
+<a class="el" href="item_8h.html#a043f37c213c3e00687c1bbfabd5e7599aabb6de3c5dc7e2f70051d23bb1e5e613">WEAPON</a>, 
+<a class="el" href="item_8h.html#a043f37c213c3e00687c1bbfabd5e7599ae4915fac45f39bac2931876b337f41e3">ARMOUR</a>
+ }</td></tr>
+<tr class="separator:a043f37c213c3e00687c1bbfabd5e7599"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ab496e4d6b172913597a9f373a6399c53"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structItem.html">Item</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="item_8h.html#ab496e4d6b172913597a9f373a6399c53">display_items</a> (<a class="el" href="structItem.html">Item</a> *items, bool isChoice, char *prompt)</td></tr>
-<tr class="separator:ab496e4d6b172913597a9f373a6399c53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0bfb620b3fbeb8e01df2d69291b11e94"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="item_8h.html#a0bfb620b3fbeb8e01df2d69291b11e94">display_inventory</a> (<a class="el" href="structItem.html">Item</a> *inventory, const char *title)</td></tr>
+<tr class="separator:a0bfb620b3fbeb8e01df2d69291b11e94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3cc62d90e9503daa6afa8a7c740260eb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structItem.html">Item</a> **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="item_8h.html#a3cc62d90e9503daa6afa8a7c740260eb">choose_items</a> (<a class="el" href="structItem.html">Item</a> *inventory, const char *prompt)</td></tr>
+<tr class="separator:a3cc62d90e9503daa6afa8a7c740260eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0fef6832dc853f101528233962de779"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structEquipment.html">Equipment</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="item_8h.html#ac0fef6832dc853f101528233962de779">choose_equipment</a> (<a class="el" href="structItem.html">Item</a> *inventory, enum <a class="el" href="item_8h.html#a043f37c213c3e00687c1bbfabd5e7599">EquipmentType</a> type, const char *prompt)</td></tr>
+<tr class="separator:ac0fef6832dc853f101528233962de779"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c6918844d3f444af84c7cbee425e5cf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structItem.html">Item</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="item_8h.html#a9c6918844d3f444af84c7cbee425e5cf">remove_items</a> (<a class="el" href="structItem.html">Item</a> *inventory, <a class="el" href="structItem.html">Item</a> **items)</td></tr>
+<tr class="separator:a9c6918844d3f444af84c7cbee425e5cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a910745632255ee16f4e48716225e0d03"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structItem.html">Item</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="item_8h.html#a910745632255ee16f4e48716225e0d03">add_items</a> (<a class="el" href="structItem.html">Item</a> *inventory, <a class="el" href="structItem.html">Item</a> **items)</td></tr>
+<tr class="separator:a910745632255ee16f4e48716225e0d03"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
+<a class="anchor" id="a11cfdc48bc810ca16296bef31f45b4cf"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structEquipment.html">Equipment</a>  <a class="el" href="structEquipment.html">Equipment</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Some items are equipment, and so have a pointer to an equipment struct, which defines its stats. </p>
+
+</div>
+</div>
 <a class="anchor" id="a65e1a907ac9c378deab3f18ed458b6cc"></a>
 <div class="memitem">
 <div class="memproto">
@@ -132,30 +166,95 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Items are things that mobs can carry around, and possibly equip. They live in inventories. </p>
 
 </div>
 </div>
-<h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="ab496e4d6b172913597a9f373a6399c53"></a>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a class="anchor" id="a043f37c213c3e00687c1bbfabd5e7599"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structItem.html">Item</a>* display_items </td>
+          <td class="memname">enum <a class="el" href="item_8h.html#a043f37c213c3e00687c1bbfabd5e7599">EquipmentType</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Used to determine the type of some equipment. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="a043f37c213c3e00687c1bbfabd5e7599ac157bdf0b85a40d2619cbc8bc1ae5fe2"></a>NONE&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a043f37c213c3e00687c1bbfabd5e7599aabb6de3c5dc7e2f70051d23bb1e5e613"></a>WEAPON&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a043f37c213c3e00687c1bbfabd5e7599ae4915fac45f39bac2931876b337f41e3"></a>ARMOUR&#160;</td><td class="fielddoc">
+</td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="a910745632255ee16f4e48716225e0d03"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structItem.html">Item</a>* add_items </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structItem.html">Item</a> *&#160;</td>
-          <td class="paramname"><em>items</em>, </td>
+          <td class="paramname"><em>inventory</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>isChoice</em>, </td>
+          <td class="paramtype"><a class="el" href="structItem.html">Item</a> **&#160;</td>
+          <td class="paramname"><em>items</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Add a list of items to an inventory. Returns the head of the inventory. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inventory</td><td>The inventory </td></tr>
+    <tr><td class="paramname">items</td><td>The items to add </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="item_8h_a910745632255ee16f4e48716225e0d03_icgraph.png" border="0" usemap="#item_8h_a910745632255ee16f4e48716225e0d03_icgraph" alt=""/></div>
+<map name="item_8h_a910745632255ee16f4e48716225e0d03_icgraph" id="item_8h_a910745632255ee16f4e48716225e0d03_icgraph">
+<area shape="rect" id="node3" href="player_8h.html#a3829d1675d5789e2531ffcc90fcad6a2" title="player_turn" alt="" coords="137,5,223,35"/><area shape="rect" id="node5" href="player_8h.html#a168d23f1a7acdbae77883b6edf0af5b3" title="create_player" alt="" coords="273,5,372,35"/><area shape="rect" id="node7" href="main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="421,5,472,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ac0fef6832dc853f101528233962de779"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structEquipment.html">Equipment</a>* choose_equipment </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structItem.html">Item</a> *&#160;</td>
+          <td class="paramname"><em>inventory</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *&#160;</td>
+          <td class="paramtype">enum <a class="el" href="item_8h.html#a043f37c213c3e00687c1bbfabd5e7599">EquipmentType</a>&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>prompt</em>&#160;</td>
         </tr>
         <tr>
@@ -165,30 +264,174 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Display the list of items given, allowing for items to be chosen from the list. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Choose a piece of equipment </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">items</td><td>The items to display, as a doubly linked list. </td></tr>
-    <tr><td class="paramname">isChoice</td><td>Determines whether the player is allowed to choose items from the list, which are returned from the function. </td></tr>
-    <tr><td class="paramname">prompt</td><td>The prompt to be written at the start of the list. </td></tr>
+    <tr><td class="paramname">inventory</td><td>The inventory to choose from </td></tr>
+    <tr><td class="paramname">type</td><td>The type of the equipment </td></tr>
+    <tr><td class="paramname">prompt</td><td>The prompt </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The list of items chosen, or NULL if isChoice is false or no items were chosen. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>NULL if nothing was selected, otherwise a pointer to the choice. </dd></dl>
 
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="item_8h_ab496e4d6b172913597a9f373a6399c53_cgraph.png" border="0" usemap="#item_8h_ab496e4d6b172913597a9f373a6399c53_cgraph" alt=""/></div>
-<map name="item_8h_ab496e4d6b172913597a9f373a6399c53_cgraph" id="item_8h_ab496e4d6b172913597a9f373a6399c53_cgraph">
-<area shape="rect" id="node3" href="utils_8c.html#a2dc03125a4bc69b78615c7690a01f7e8" title="mvaddprintf" alt="" coords="157,5,248,35"/><area shape="rect" id="node5" href="utils_8c.html#a35ad0e79347a52a03a6853b8cf373707" title="addprintf" alt="" coords="167,59,239,88"/></map>
+<div class="center"><img src="item_8h_ac0fef6832dc853f101528233962de779_cgraph.png" border="0" usemap="#item_8h_ac0fef6832dc853f101528233962de779_cgraph" alt=""/></div>
+<map name="item_8h_ac0fef6832dc853f101528233962de779_cgraph" id="item_8h_ac0fef6832dc853f101528233962de779_cgraph">
+<area shape="rect" id="node3" href="utils_8c.html#a8457ea394e29fe3b49e3b9a6d897ea8f" title="list_choice" alt="" coords="185,5,268,35"/><area shape="rect" id="node5" href="utils_8c.html#a2dc03125a4bc69b78615c7690a01f7e8" title="mvaddprintf" alt="" coords="317,5,408,35"/></map>
 </div>
 </p>
 
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="item_8h_ab496e4d6b172913597a9f373a6399c53_icgraph.png" border="0" usemap="#item_8h_ab496e4d6b172913597a9f373a6399c53_icgraph" alt=""/></div>
-<map name="item_8h_ab496e4d6b172913597a9f373a6399c53_icgraph" id="item_8h_ab496e4d6b172913597a9f373a6399c53_icgraph">
+<div class="center"><img src="item_8h_ac0fef6832dc853f101528233962de779_icgraph.png" border="0" usemap="#item_8h_ac0fef6832dc853f101528233962de779_icgraph" alt=""/></div>
+<map name="item_8h_ac0fef6832dc853f101528233962de779_icgraph" id="item_8h_ac0fef6832dc853f101528233962de779_icgraph">
+<area shape="rect" id="node3" href="player_8h.html#a3829d1675d5789e2531ffcc90fcad6a2" title="player_turn" alt="" coords="185,5,271,35"/><area shape="rect" id="node5" href="player_8h.html#a168d23f1a7acdbae77883b6edf0af5b3" title="create_player" alt="" coords="321,5,420,35"/><area shape="rect" id="node7" href="main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="469,5,520,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a3cc62d90e9503daa6afa8a7c740260eb"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structItem.html">Item</a>** choose_items </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structItem.html">Item</a> *&#160;</td>
+          <td class="paramname"><em>inventory</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>prompt</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Choose some items from an inventory </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inventory</td><td>The inventory to choose from </td></tr>
+    <tr><td class="paramname">prompt</td><td>The prompt to display </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="item_8h_a3cc62d90e9503daa6afa8a7c740260eb_cgraph.png" border="0" usemap="#item_8h_a3cc62d90e9503daa6afa8a7c740260eb_cgraph" alt=""/></div>
+<map name="item_8h_a3cc62d90e9503daa6afa8a7c740260eb_cgraph" id="item_8h_a3cc62d90e9503daa6afa8a7c740260eb_cgraph">
+<area shape="rect" id="node3" href="item_8c.html#a978830d9a1e817a1c511bdbb34755104" title="inventory_name_array" alt="" coords="159,5,308,35"/><area shape="rect" id="node5" href="item_8c.html#afb3e724583d4c70cd215b057e599d399" title="inventory_array" alt="" coords="179,59,288,88"/><area shape="rect" id="node7" href="utils_8c.html#a8457ea394e29fe3b49e3b9a6d897ea8f" title="list_choice" alt="" coords="192,112,275,141"/><area shape="rect" id="node9" href="utils_8c.html#a2dc03125a4bc69b78615c7690a01f7e8" title="mvaddprintf" alt="" coords="357,112,448,141"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="item_8h_a3cc62d90e9503daa6afa8a7c740260eb_icgraph.png" border="0" usemap="#item_8h_a3cc62d90e9503daa6afa8a7c740260eb_icgraph" alt=""/></div>
+<map name="item_8h_a3cc62d90e9503daa6afa8a7c740260eb_icgraph" id="item_8h_a3cc62d90e9503daa6afa8a7c740260eb_icgraph">
+<area shape="rect" id="node3" href="player_8h.html#a3829d1675d5789e2531ffcc90fcad6a2" title="player_turn" alt="" coords="159,5,244,35"/><area shape="rect" id="node5" href="player_8h.html#a168d23f1a7acdbae77883b6edf0af5b3" title="create_player" alt="" coords="295,5,393,35"/><area shape="rect" id="node7" href="main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="443,5,493,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a0bfb620b3fbeb8e01df2d69291b11e94"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void display_inventory </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structItem.html">Item</a> *&#160;</td>
+          <td class="paramname"><em>inventory</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>title</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Display an inventory </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inventory</td><td>The inventory to display </td></tr>
+    <tr><td class="paramname">title</td><td>The title to display </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="item_8h_a0bfb620b3fbeb8e01df2d69291b11e94_cgraph.png" border="0" usemap="#item_8h_a0bfb620b3fbeb8e01df2d69291b11e94_cgraph" alt=""/></div>
+<map name="item_8h_a0bfb620b3fbeb8e01df2d69291b11e94_cgraph" id="item_8h_a0bfb620b3fbeb8e01df2d69291b11e94_cgraph">
+<area shape="rect" id="node3" href="item_8c.html#a978830d9a1e817a1c511bdbb34755104" title="inventory_name_array" alt="" coords="177,5,327,35"/><area shape="rect" id="node5" href="utils_8c.html#a8457ea394e29fe3b49e3b9a6d897ea8f" title="list_choice" alt="" coords="211,59,293,88"/><area shape="rect" id="node7" href="utils_8c.html#a2dc03125a4bc69b78615c7690a01f7e8" title="mvaddprintf" alt="" coords="376,59,467,88"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="item_8h_a0bfb620b3fbeb8e01df2d69291b11e94_icgraph.png" border="0" usemap="#item_8h_a0bfb620b3fbeb8e01df2d69291b11e94_icgraph" alt=""/></div>
+<map name="item_8h_a0bfb620b3fbeb8e01df2d69291b11e94_icgraph" id="item_8h_a0bfb620b3fbeb8e01df2d69291b11e94_icgraph">
+<area shape="rect" id="node3" href="player_8h.html#a3829d1675d5789e2531ffcc90fcad6a2" title="player_turn" alt="" coords="177,5,263,35"/><area shape="rect" id="node5" href="player_8h.html#a168d23f1a7acdbae77883b6edf0af5b3" title="create_player" alt="" coords="313,5,412,35"/><area shape="rect" id="node7" href="main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="461,5,512,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a9c6918844d3f444af84c7cbee425e5cf"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structItem.html">Item</a>* remove_items </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structItem.html">Item</a> *&#160;</td>
+          <td class="paramname"><em>inventory</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structItem.html">Item</a> **&#160;</td>
+          <td class="paramname"><em>items</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Remove a list of items from an inventory. Returns the (possibly new) head of the inventory. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inventory</td><td>The inentory </td></tr>
+    <tr><td class="paramname">items</td><td>The items to remove </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="item_8h_a9c6918844d3f444af84c7cbee425e5cf_icgraph.png" border="0" usemap="#item_8h_a9c6918844d3f444af84c7cbee425e5cf_icgraph" alt=""/></div>
+<map name="item_8h_a9c6918844d3f444af84c7cbee425e5cf_icgraph" id="item_8h_a9c6918844d3f444af84c7cbee425e5cf_icgraph">
 <area shape="rect" id="node3" href="player_8h.html#a3829d1675d5789e2531ffcc90fcad6a2" title="player_turn" alt="" coords="159,5,244,35"/><area shape="rect" id="node5" href="player_8h.html#a168d23f1a7acdbae77883b6edf0af5b3" title="create_player" alt="" coords="295,5,393,35"/><area shape="rect" id="node7" href="main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="443,5,493,35"/></map>
 </div>
 </p>
@@ -198,7 +441,7 @@ Here is the caller graph for this function:</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Apr 27 2014 01:28:29 for Ludum Dare 29 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Apr 27 2014 05:06:56 for Ludum Dare 29 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

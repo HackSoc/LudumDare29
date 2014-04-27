@@ -1,14 +1,15 @@
 <map id="damage_mob" name="damage_mob">
-<area shape="rect" id="node3" href="$effect_8h.html#a8efc8653d207577779ab551e99a28aee" title="effect_poison" alt="" coords="156,32,255,61"/>
-<area shape="rect" id="node9" href="$mob_8h.html#a4e1f704b7be0c4f0ecbc7bd41ace77de" title="simple_enemy_turn" alt="" coords="625,5,759,35"/>
-<area shape="rect" id="node24" href="$player_8h.html#a02161c22295cced9c43b0ca34e33fc20" title="attackmove" alt="" coords="463,84,553,113"/>
-<area shape="rect" id="node5" href="$mob_8h.html#acb34e33fee99269178a2e5f8e4e066bc" title="move_mob" alt="" coords="305,32,391,61"/>
-<area shape="rect" id="node7" href="$mob_8h.html#a1843c3d72d3955258d9c6ff0fefff9ee" title="move_mob_relative" alt="" coords="441,31,575,60"/>
-<area shape="rect" id="node11" href="$level_8c.html#a073116bdf0b4b0e82e2ea53990671890" title="add_mob" alt="" coords="840,5,915,35"/>
-<area shape="rect" id="node13" href="$level_8h.html#ada2b32c329163f1f38b89dc34fb76e4b" title="build_level" alt="" coords="995,5,1077,35"/>
-<area shape="rect" id="node15" href="$main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="1579,7,1629,36"/>
-<area shape="rect" id="node17" href="$mob_8h.html#a0f41f8c35df68e0cea8335b114029a36" title="move_mob_level" alt="" coords="1125,32,1245,61"/>
-<area shape="rect" id="node19" href="$player_8h.html#a3829d1675d5789e2531ffcc90fcad6a2" title="player_turn" alt="" coords="1295,32,1380,61"/>
-<area shape="rect" id="node21" href="$player_8h.html#a168d23f1a7acdbae77883b6edf0af5b3" title="create_player" alt="" coords="1431,32,1529,61"/>
-<area shape="rect" id="node26" href="$player_8h.html#aea872e7b1d97b5eadb9835927315e597" title="attackmove_relative" alt="" coords="808,84,947,113"/>
+<area shape="rect" id="node3" href="$effect_8h.html#a8efc8653d207577779ab551e99a28aee" title="effect_poison" alt="" coords="156,35,255,64"/>
+<area shape="rect" id="node9" href="$mob_8h.html#a4e1f704b7be0c4f0ecbc7bd41ace77de" title="simple_enemy_turn" alt="" coords="628,35,761,64"/>
+<area shape="rect" id="node29" href="$mob_8h.html#ac510cded63a3d6cb2e5a7077019c708e" title="attack_mob" alt="" coords="304,88,395,117"/>
+<area shape="rect" id="node5" href="$mob_8h.html#acb34e33fee99269178a2e5f8e4e066bc" title="move_mob" alt="" coords="307,35,392,64"/>
+<area shape="rect" id="node7" href="$mob_8h.html#a1843c3d72d3955258d9c6ff0fefff9ee" title="move_mob_relative" alt="" coords="444,35,577,64"/>
+<area shape="rect" id="node24" href="$player_8h.html#adcc566280df07c60c2c5b9394516af1e" title="attackmove" alt="" coords="465,88,556,117"/>
+<area shape="rect" id="node11" href="$level_8c.html#a073116bdf0b4b0e82e2ea53990671890" title="add_mob" alt="" coords="843,35,917,64"/>
+<area shape="rect" id="node13" href="$level_8h.html#ada2b32c329163f1f38b89dc34fb76e4b" title="build_level" alt="" coords="997,35,1080,64"/>
+<area shape="rect" id="node15" href="$main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="1581,11,1632,40"/>
+<area shape="rect" id="node17" href="$mob_8h.html#a0f41f8c35df68e0cea8335b114029a36" title="move_mob_level" alt="" coords="1128,36,1248,65"/>
+<area shape="rect" id="node19" href="$player_8h.html#a3829d1675d5789e2531ffcc90fcad6a2" title="player_turn" alt="" coords="1297,36,1383,65"/>
+<area shape="rect" id="node21" href="$player_8h.html#a168d23f1a7acdbae77883b6edf0af5b3" title="create_player" alt="" coords="1433,36,1532,65"/>
+<area shape="rect" id="node26" href="$player_8h.html#af5d9927a7bbaa6e90f6cfed8445f2467" title="attackmove_relative" alt="" coords="811,88,949,117"/>
 </map>

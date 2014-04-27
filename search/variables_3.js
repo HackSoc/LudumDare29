@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['effect_5faction',['effect_action',['../structMob.html#aab9d3b92b0b0bfe04ed6cffa81cc0345',1,'Mob']]],
-  ['effect_5fduration',['effect_duration',['../structMob.html#a34cf33b80b1da6d4183e82a4de262c3e',1,'Mob']]],
-  ['endx',['endx',['../structLevel.html#aee89e27142ddb872c8e51a99a88833c0',1,'Level']]],
-  ['endy',['endy',['../structLevel.html#a7873a5608228576dc6946bf1c6ddd84a',1,'Level']]]
+  ['death_5faction',['death_action',['../structMob.html#a97834256736bccdf83a371958d816832',1,'Mob']]],
+  ['default_5fmobs',['default_mobs',['../level_8c.html#a647f43221319c7a88c036dd8f727aab3',1,'level.c']]],
+  ['defense',['defense',['../structEquipment.html#a9a9cfac38073c53662df42ee17f1a649',1,'Equipment']]],
+  ['depth',['depth',['../structLevel.html#a62672681359f0bb8661546b741e9f668',1,'Level']]]
 ];

@@ -71,7 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -95,7 +95,7 @@ Collaboration diagram for Item:</div>
 <div class="dyncontent">
 <div class="center"><img src="structItem__coll__graph.png" border="0" usemap="#Item_coll__map" alt="Collaboration graph"/></div>
 <map name="Item_coll__map" id="Item_coll__map">
-</map>
+<area shape="rect" id="node3" href="structEquipment.html" title="Equipment" alt="" coords="5,107,88,136"/></map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -108,8 +108,25 @@ Data Fields</h2></td></tr>
 <tr class="separator:a6805b7d0bb98eb940404897b713986f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ac541da55afe6a893990a6b47643fe6"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structItem.html">Item</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structItem.html#a2ac541da55afe6a893990a6b47643fe6">prev</a></td></tr>
 <tr class="separator:a2ac541da55afe6a893990a6b47643fe6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac75e639e8902fe784fe162776936cd1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structEquipment.html">Equipment</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structItem.html#aac75e639e8902fe784fe162776936cd1">equipment</a></td></tr>
+<tr class="separator:aac75e639e8902fe784fe162776936cd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Field Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Items are things that mobs can carry around, and possibly equip. They live in inventories. </p>
+</div><h2 class="groupheader">Field Documentation</h2>
+<a class="anchor" id="aac75e639e8902fe784fe162776936cd1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structEquipment.html">Equipment</a>* Item::equipment</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Pointer to the equipment stats for the item, will be NULL if the item is not equipment. </p>
+
+</div>
+</div>
 <a class="anchor" id="a06c6faeee0e8202db92886ea8a4472d7"></a>
 <div class="memitem">
 <div class="memproto">
@@ -119,6 +136,7 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The name to display when examined </p>
 
 </div>
 </div>
@@ -131,6 +149,7 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The next item in the inventory </p>
 
 </div>
 </div>
@@ -143,6 +162,7 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The last item in the inventory </p>
 
 </div>
 </div>
@@ -155,6 +175,7 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The symbol to display when dropped </p>
 
 </div>
 </div>
@@ -164,7 +185,7 @@ Data Fields</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Apr 27 2014 01:28:31 for Ludum Dare 29 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Apr 27 2014 05:06:58 for Ludum Dare 29 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

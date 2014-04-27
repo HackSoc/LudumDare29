@@ -70,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -82,6 +82,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
@@ -102,6 +103,11 @@ Include dependency graph for level.c:</div>
 <area shape="rect" id="node7" href="level_8h.html" title="level.h" alt="" coords="189,83,248,112"/><area shape="rect" id="node11" href="mob_8h.html" title="mob.h" alt="" coords="256,160,315,189"/><area shape="rect" id="node19" href="utils_8h.html" title="utils.h" alt="" coords="323,83,379,112"/><area shape="rect" id="node21" href="effect_8h.html" title="effect.h" alt="" coords="403,83,469,112"/><area shape="rect" id="node13" href="item_8h.html" title="item.h" alt="" coords="205,237,264,267"/></map>
 </div>
 </div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a44386aef054067f775220b421d0c4c18"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="level_8c.html#a44386aef054067f775220b421d0c4c18">DEF_MOB</a>(sym, n, col, hlth)</td></tr>
+<tr class="separator:a44386aef054067f775220b421d0c4c18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:aaaa68e1af555f365504b310f57d3b8b2"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="level_8c.html#aaaa68e1af555f365504b310f57d3b8b2">place_cell</a> (<a class="el" href="structLevel.html">Level</a> *level, unsigned int x, unsigned int y, <a class="el" href="structCell.html">Cell</a> *to_place, bool careful)</td></tr>
@@ -123,7 +129,61 @@ Functions</h2></td></tr>
 Variables</h2></td></tr>
 <tr class="memitem:ac746fa6ad48d19984a159f14bec028a3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="level_8c.html#ac746fa6ad48d19984a159f14bec028a3">quit</a></td></tr>
 <tr class="separator:ac746fa6ad48d19984a159f14bec028a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a647f43221319c7a88c036dd8f727aab3"><td class="memItemLeft" align="right" valign="top">static const struct <a class="el" href="structMob.html">Mob</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="level_8c.html#a647f43221319c7a88c036dd8f727aab3">default_mobs</a> []</td></tr>
+<tr class="separator:a647f43221319c7a88c036dd8f727aab3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a class="anchor" id="a44386aef054067f775220b421d0c4c18"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DEF_MOB</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">sym, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">n, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">col, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">hlth&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">{.symbol = (sym), .<a class="code" href="structMob.html#a07590fed51435f01f07ca07e87fa234c">colour</a> = (col), .name = (n), \</div>
+<div class="line">            .<a class="code" href="structMob.html#a18ddb9fb567bfd26a5f700027c25d0ab">is_bold</a> = <span class="keyword">false</span>, .<a class="code" href="structMob.html#a5000ead0272726436e56677ec8c12ac8">hostile</a> = <span class="keyword">true</span>, .<a class="code" href="structMob.html#a0b2e551d56cd94bdf277ef7ffcde6c9a">health</a> = (hlth), .max_health = (hlth), \</div>
+<div class="line">            .<a class="code" href="structMob.html#af906189f04ac20cd90bc818d0e813490">level</a> = NULL, .<a class="code" href="structMob.html#a6909c33ed75852772bef6e90f508b44f">prev</a> = NULL, .<a class="code" href="structMob.html#ab2d09c4a3deff10f4d0a3a31b9ee54f4">turn_action</a> = NULL, .<a class="code" href="structMob.html#a421f0172aba05ca736689195c76c9da7">xpos</a> = 0, .<a class="code" href="structMob.html#a2ffd4cebbf6cd680c5e0f4ebf936f7c9">ypos</a> = 0, .<a class="code" href="structMob.html#a45d52ac2384cc7611820151a1ce48a04">score</a> = 0}</div>
+<div class="ttc" id="structMob_html_ab2d09c4a3deff10f4d0a3a31b9ee54f4"><div class="ttname"><a href="structMob.html#ab2d09c4a3deff10f4d0a3a31b9ee54f4">Mob::turn_action</a></div><div class="ttdeci">void(* turn_action)(struct Mob *)</div><div class="ttdef"><b>Definition:</b> mob.h:32</div></div>
+<div class="ttc" id="structMob_html_a0b2e551d56cd94bdf277ef7ffcde6c9a"><div class="ttname"><a href="structMob.html#a0b2e551d56cd94bdf277ef7ffcde6c9a">Mob::health</a></div><div class="ttdeci">int health</div><div class="ttdef"><b>Definition:</b> mob.h:47</div></div>
+<div class="ttc" id="structMob_html_a5000ead0272726436e56677ec8c12ac8"><div class="ttname"><a href="structMob.html#a5000ead0272726436e56677ec8c12ac8">Mob::hostile</a></div><div class="ttdeci">bool hostile</div><div class="ttdef"><b>Definition:</b> mob.h:38</div></div>
+<div class="ttc" id="structMob_html_a2ffd4cebbf6cd680c5e0f4ebf936f7c9"><div class="ttname"><a href="structMob.html#a2ffd4cebbf6cd680c5e0f4ebf936f7c9">Mob::ypos</a></div><div class="ttdeci">unsigned int ypos</div><div class="ttdef"><b>Definition:</b> mob.h:22</div></div>
+<div class="ttc" id="structMob_html_a45d52ac2384cc7611820151a1ce48a04"><div class="ttname"><a href="structMob.html#a45d52ac2384cc7611820151a1ce48a04">Mob::score</a></div><div class="ttdeci">int score</div><div class="ttdef"><b>Definition:</b> mob.h:43</div></div>
+<div class="ttc" id="structMob_html_af906189f04ac20cd90bc818d0e813490"><div class="ttname"><a href="structMob.html#af906189f04ac20cd90bc818d0e813490">Mob::level</a></div><div class="ttdeci">struct Level * level</div><div class="ttdef"><b>Definition:</b> mob.h:20</div></div>
+<div class="ttc" id="structMob_html_a6909c33ed75852772bef6e90f508b44f"><div class="ttname"><a href="structMob.html#a6909c33ed75852772bef6e90f508b44f">Mob::prev</a></div><div class="ttdeci">struct Mob * prev</div><div class="ttdef"><b>Definition:</b> mob.h:18</div></div>
+<div class="ttc" id="structMob_html_a18ddb9fb567bfd26a5f700027c25d0ab"><div class="ttname"><a href="structMob.html#a18ddb9fb567bfd26a5f700027c25d0ab">Mob::is_bold</a></div><div class="ttdeci">bool is_bold</div><div class="ttdef"><b>Definition:</b> mob.h:26</div></div>
+<div class="ttc" id="structMob_html_a421f0172aba05ca736689195c76c9da7"><div class="ttname"><a href="structMob.html#a421f0172aba05ca736689195c76c9da7">Mob::xpos</a></div><div class="ttdeci">unsigned int xpos</div><div class="ttdef"><b>Definition:</b> mob.h:21</div></div>
+<div class="ttc" id="structMob_html_a07590fed51435f01f07ca07e87fa234c"><div class="ttname"><a href="structMob.html#a07590fed51435f01f07ca07e87fa234c">Mob::colour</a></div><div class="ttdeci">int colour</div><div class="ttdef"><b>Definition:</b> mob.h:25</div></div>
+</div><!-- fragment -->
+</div>
+</div>
 <h2 class="groupheader">Function Documentation</h2>
 <a class="anchor" id="a073116bdf0b4b0e82e2ea53990671890"></a>
 <div class="memitem">
@@ -506,6 +566,31 @@ Here is the caller graph for this function:</div>
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
+<a class="anchor" id="a647f43221319c7a88c036dd8f727aab3"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const struct <a class="el" href="structMob.html">Mob</a> default_mobs[]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    <a class="code" href="level_8c.html#a44386aef054067f775220b421d0c4c18">DEF_MOB</a>(<span class="charliteral">&#39;H&#39;</span>, <span class="stringliteral">&quot;Hedgehog&quot;</span>, COLOR_YELLOW, 5),</div>
+<div class="line"></div>
+<div class="line">}</div>
+<div class="ttc" id="level_8c_html_a44386aef054067f775220b421d0c4c18"><div class="ttname"><a href="level_8c.html#a44386aef054067f775220b421d0c4c18">DEF_MOB</a></div><div class="ttdeci">#define DEF_MOB(sym, n, col, hlth)</div><div class="ttdef"><b>Definition:</b> level.c:138</div></div>
+</div><!-- fragment -->
+</div>
+</div>
 <a class="anchor" id="ac746fa6ad48d19984a159f14bec028a3"></a>
 <div class="memitem">
 <div class="memproto">
@@ -522,7 +607,7 @@ Here is the caller graph for this function:</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Apr 27 2014 01:28:29 for Ludum Dare 29 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Apr 27 2014 05:06:56 for Ludum Dare 29 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

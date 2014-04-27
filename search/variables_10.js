@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ypos',['ypos',['../structMob.html#a2ffd4cebbf6cd680c5e0f4ebf936f7c9',1,'Mob']]]
+  ['weapon',['weapon',['../structMob.html#a2c7a1f6ea48e34e65de240d0472c6724',1,'Mob']]]
 ];

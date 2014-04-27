@@ -1,6 +1,6 @@
 <map id="move_mob" name="move_mob">
 <area shape="rect" id="node3" href="$mob_8h.html#a1843c3d72d3955258d9c6ff0fefff9ee" title="move_mob_relative" alt="" coords="143,31,276,60"/>
-<area shape="rect" id="node20" href="$player_8h.html#a02161c22295cced9c43b0ca34e33fc20" title="attackmove" alt="" coords="348,83,439,112"/>
+<area shape="rect" id="node20" href="$player_8h.html#adcc566280df07c60c2c5b9394516af1e" title="attackmove" alt="" coords="348,83,439,112"/>
 <area shape="rect" id="node5" href="$mob_8h.html#a4e1f704b7be0c4f0ecbc7bd41ace77de" title="simple_enemy_turn" alt="" coords="327,29,460,59"/>
 <area shape="rect" id="node7" href="$level_8c.html#a073116bdf0b4b0e82e2ea53990671890" title="add_mob" alt="" coords="541,29,616,59"/>
 <area shape="rect" id="node9" href="$level_8h.html#ada2b32c329163f1f38b89dc34fb76e4b" title="build_level" alt="" coords="696,29,779,59"/>
@@ -8,5 +8,5 @@
 <area shape="rect" id="node13" href="$mob_8h.html#a0f41f8c35df68e0cea8335b114029a36" title="move_mob_level" alt="" coords="827,31,947,60"/>
 <area shape="rect" id="node15" href="$player_8h.html#a3829d1675d5789e2531ffcc90fcad6a2" title="player_turn" alt="" coords="996,31,1081,60"/>
 <area shape="rect" id="node17" href="$player_8h.html#a168d23f1a7acdbae77883b6edf0af5b3" title="create_player" alt="" coords="1132,31,1231,60"/>
-<area shape="rect" id="node22" href="$player_8h.html#aea872e7b1d97b5eadb9835927315e597" title="attackmove_relative" alt="" coords="509,83,648,112"/>
+<area shape="rect" id="node22" href="$player_8h.html#af5d9927a7bbaa6e90f6cfed8445f2467" title="attackmove_relative" alt="" coords="509,83,648,112"/>
 </map>

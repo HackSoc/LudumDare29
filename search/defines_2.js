@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['xalloc',['xalloc',['../utils_8h.html#a10286155e8feb514efc6c2551ccb5c36',1,'utils.h']]],
-  ['xcalloc',['xcalloc',['../utils_8h.html#ac4a1aa89678d06d3b66f2c74397703f2',1,'utils.h']]],
-  ['xfree',['xfree',['../utils_8h.html#a41a18869d83fe43068ee8b0531ea98aa',1,'utils.h']]]
+  ['screenheight',['SCREENHEIGHT',['../utils_8h.html#ae189e98d0ef9263c37869ce1ff3710a5',1,'utils.h']]],
+  ['screenwidth',['SCREENWIDTH',['../utils_8h.html#ada0cc738d27aad251151e69cb8d250e1',1,'utils.h']]]
 ];

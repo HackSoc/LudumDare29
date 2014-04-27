@@ -4,6 +4,8 @@ var searchData=
   ['can_5fsee_5fother',['can_see_other',['../mob_8c.html#af1fd43535881adae83322576a90a015d',1,'can_see_other(Mob *moba, Mob *mobb):&#160;mob.c'],['../mob_8h.html#a6e31ab5280dea5015ef6f7bf7f9fd18f',1,'can_see_other(struct Mob *moba, struct Mob *mobb):&#160;mob.c']]],
   ['cell',['Cell',['../structCell.html',1,'Cell'],['../level_8h.html#a208ce62cb3a7fe4518d722235d9d656d',1,'Cell():&#160;level.h']]],
   ['cells',['cells',['../structLevel.html#a2790b5dbfaff2c0d753c5a4588cf8c7e',1,'Level']]],
+  ['choose_5fequipment',['choose_equipment',['../item_8c.html#ac0fef6832dc853f101528233962de779',1,'choose_equipment(Item *inventory, enum EquipmentType type, const char *prompt):&#160;item.c'],['../item_8h.html#ac0fef6832dc853f101528233962de779',1,'choose_equipment(Item *inventory, enum EquipmentType type, const char *prompt):&#160;item.c']]],
+  ['choose_5fitems',['choose_items',['../item_8c.html#a3cc62d90e9503daa6afa8a7c740260eb',1,'choose_items(Item *inventory, const char *prompt):&#160;item.c'],['../item_8h.html#a3cc62d90e9503daa6afa8a7c740260eb',1,'choose_items(Item *inventory, const char *prompt):&#160;item.c']]],
   ['colour',['colour',['../structCell.html#a3a62f75d92e0a0225554c963e543f428',1,'Cell::colour()'],['../structMob.html#a07590fed51435f01f07ca07e87fa234c',1,'Mob::colour()']]],
   ['create_5fplayer',['create_player',['../player_8c.html#a5d1e5ec2dc8d368bc99ddd8afbf1ad0a',1,'create_player():&#160;player.c'],['../player_8h.html#a168d23f1a7acdbae77883b6edf0af5b3',1,'create_player(void):&#160;player.c']]]
 ];

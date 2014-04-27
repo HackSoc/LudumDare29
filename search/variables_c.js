@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['race',['race',['../structMob.html#a1eb598d3acedc715bbfca8a5dd57646a',1,'Mob']]],
-  ['races',['races',['../player_8c.html#a842ba7c686fa313b4f8d86034dd52423',1,'player.c']]]
+  ['quit',['quit',['../level_8c.html#ac746fa6ad48d19984a159f14bec028a3',1,'quit():&#160;main.c'],['../main_8c.html#ac746fa6ad48d19984a159f14bec028a3',1,'quit():&#160;main.c'],['../player_8c.html#ac746fa6ad48d19984a159f14bec028a3',1,'quit():&#160;main.c']]]
 ];

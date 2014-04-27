@@ -1,0 +1,6 @@
+<map id="choose_items" name="choose_items">
+<area shape="rect" id="node3" href="$item_8c.html#a978830d9a1e817a1c511bdbb34755104" title="inventory_name_array" alt="" coords="159,5,308,35"/>
+<area shape="rect" id="node5" href="$item_8c.html#afb3e724583d4c70cd215b057e599d399" title="inventory_array" alt="" coords="179,59,288,88"/>
+<area shape="rect" id="node7" href="$utils_8c.html#a8457ea394e29fe3b49e3b9a6d897ea8f" title="list_choice" alt="" coords="192,112,275,141"/>
+<area shape="rect" id="node9" href="$utils_8c.html#a2dc03125a4bc69b78615c7690a01f7e8" title="mvaddprintf" alt="" coords="357,112,448,141"/>
+</map>

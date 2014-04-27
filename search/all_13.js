@@ -1,7 +1,4 @@
 var searchData=
 [
-  ['xalloc',['xalloc',['../utils_8h.html#a10286155e8feb514efc6c2551ccb5c36',1,'utils.h']]],
-  ['xcalloc',['xcalloc',['../utils_8h.html#ac4a1aa89678d06d3b66f2c74397703f2',1,'utils.h']]],
-  ['xfree',['xfree',['../utils_8h.html#a41a18869d83fe43068ee8b0531ea98aa',1,'utils.h']]],
-  ['xpos',['xpos',['../structMob.html#a421f0172aba05ca736689195c76c9da7',1,'Mob']]]
+  ['weapon',['weapon',['../structMob.html#a2c7a1f6ea48e34e65de240d0472c6724',1,'Mob::weapon()'],['../item_8h.html#a043f37c213c3e00687c1bbfabd5e7599aabb6de3c5dc7e2f70051d23bb1e5e613',1,'WEAPON():&#160;item.h']]]
 ];
