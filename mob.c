@@ -177,7 +177,7 @@ bool can_see(Mob * mob, unsigned int x, unsigned int y) {
 			return false;
 		}
 
-		int e2 = err << 2;
+		int e2 = err * 2;
 
 		if(e2 > -dy) {
 			err -= dy;
