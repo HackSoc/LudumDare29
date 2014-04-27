@@ -33,6 +33,7 @@ const void ** list_choice(bool nochoice,
                           const char * choices[],
                           const void * results[]);
 const void * random_choice(const void * choices[]);
+void show_help();
 void * _xalloc(size_t size);
 void _xfree(void ** ptr);
 

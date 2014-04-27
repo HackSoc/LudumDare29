@@ -43,10 +43,14 @@ int main() {
 	level_head->cells[player->xpos][player->ypos]->occupant = player;
 
 	/* Intro text */
+	mvaddprintf( 5, 60, "Press '?' for help");
 	mvaddprintf(10, 10, "You enter a cave.");
 	mvaddprintf(11, 10, "It's beneath the surface.");
 	mvaddprintf(19, 44, "A game for Ludum Dare 29 by HackSoc.");
-	getch();
+
+	if (getch() == '?') {
+		show_help();
+	}
 	clear();
 
 	/* Game loop */

@@ -165,6 +165,25 @@ const void * random_choice(const void * choices[]) {
 }
 
 /**
+ * Show some help text to the player.
+ */
+void show_help() {
+	clear();
+
+	mvaddprintf( 5, 5, "You lost?");
+
+	mvaddprintf( 7, 5, "You are @");
+	mvaddprintf( 8, 5, "S and H are bad");
+	mvaddprintf( 9, 5, "Use > to go further down into the deep");
+	mvaddprintf(10, 5, "Use < to reach the light, if you can");
+
+	mvaddprintf(20, 5, "Good luck.");
+
+	getch();
+	clear();
+}
+
+/**
  * Allocate (and zero) memory and immediately bail out if it fails.
  * @param size Amount of memory to allocate (in bytes).
  * @return Allocated memory.

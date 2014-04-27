@@ -286,6 +286,10 @@ void player_turn(Mob * player) {
 		break;
 
 		/* Misc */
+	case '?':
+		show_help();
+		break;
+
 	case 'q':
 		quit = true;
 		break;
