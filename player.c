@@ -7,24 +7,24 @@
 #include "player.h"
 
 const char * names[] = {"Colin",
-						NULL};
+                        NULL};
 
 const char * races[] = {"Human",
-						"Dutch",
-						"Elf",
-						"Dwarf",
-						"Halfling",
-						"Quarterling",
-						NULL};
+                        "Dutch",
+                        "Elf",
+                        "Dwarf",
+                        "Halfling",
+                        "Quarterling",
+                        NULL};
 
 const char * professions[] = {"Miner",
-							  "Attorney",
-							  "Clog Maker",
-							  "Huntsman",
-							  "Chef",
-							  "Tourist",
-							  "Dog",
-							  NULL};
+                              "Attorney",
+                              "Clog Maker",
+                              "Huntsman",
+                              "Chef",
+                              "Tourist",
+                              "Dog",
+                              NULL};
 
 extern bool quit;
 
@@ -53,21 +53,21 @@ static void design_player(Mob * player) {
 	noecho();
 
 	const void ** race = list_choice(false,
-									 "What is your race?",
-									 "Don't be silly, choose a proper race.",
-									 false,
-									 false,
-									 races,
-									 (const void **)races);
+	                                 "What is your race?",
+	                                 "Don't be silly, choose a proper race.",
+	                                 false,
+	                                 false,
+	                                 races,
+	                                 (const void **)races);
 	player->race = strdup((char *) race[0]);
 
 	const void ** profession = list_choice(false,
-										   "And finally, what is your profession?",
-										   "That's not a real job!",
-										   false,
-										   false,
-										   professions,
-										   (const void **)professions);
+	                                       "And finally, what is your profession?",
+	                                       "That's not a real job!",
+	                                       false,
+	                                       false,
+	                                       professions,
+	                                       (const void **)professions);
 	player->profession = strdup((char*) profession[0]);
 }
 
@@ -171,7 +171,7 @@ void player_turn(Mob * player) {
 	int ydiff = 0;
 	int ch = getch();
 	switch (ch) {
-	/* Movement in a level */
+		/* Movement in a level */
 	case 'k':
 	case '8':
 	case KEY_UP:
@@ -249,7 +249,7 @@ void player_turn(Mob * player) {
 				   items[i] == player->weapon->item) {
 					player->weapon = NULL;
 				} else if(player->armour != NULL &&
-						  items[i] == player->armour->item) {
+				          items[i] == player->armour->item) {
 					player->armour = NULL;
 				}
 			}
@@ -270,8 +270,8 @@ void player_turn(Mob * player) {
 
 	case 'w':
 		equipment = choose_equipment(player->items,
-									 WEAPON,
-									 "Select a weapon to equip");
+		                             WEAPON,
+		                             "Select a weapon to equip");
 		if(equipment != NULL) {
 			player->weapon = equipment;
 		}
@@ -279,8 +279,8 @@ void player_turn(Mob * player) {
 
 	case 'W':
 		equipment = choose_equipment(player->items,
-									 ARMOUR,
-									 "Select some armour to wear");
+		                             ARMOUR,
+		                             "Select some armour to wear");
 		if(equipment != NULL) {
 			player->armour = equipment;
 		}

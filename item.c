@@ -62,9 +62,9 @@ static const Item ** inventory_array(Item * inventory) {
 void display_inventory(Item * inventory, const char * title) {
 	const char ** names = inventory_name_array(inventory);
 	list_choice(true,
-				title, NULL,
-				false, false,
-				names, NULL);
+	            title, NULL,
+	            false, false,
+	            names, NULL);
 	xfree(names);
 }
 
@@ -77,9 +77,9 @@ Item ** choose_items(Item * inventory, const char * prompt){
 	const char ** names = inventory_name_array(inventory);
 	const Item ** items = inventory_array(inventory);
 	Item ** out = (Item **)list_choice(false,
-									   prompt, prompt,
-									   true, true,
-									   names, (const void **)items);
+	                                   prompt, prompt,
+	                                   true, true,
+	                                   names, (const void **)items);
 	xfree(names);
 	xfree(items);
 	return out;
@@ -93,8 +93,8 @@ Item ** choose_items(Item * inventory, const char * prompt){
  * @return NULL if nothing was selected, otherwise a pointer to the choice.
  */
 Equipment * choose_equipment(Item * inventory,
-							 enum EquipmentType type,
-							 const char * prompt) {
+                             enum EquipmentType type,
+                             const char * prompt) {
 	unsigned int num_pieces = 0;
 
 	for(Item * item = inventory; item != NULL; item = item->next) {
@@ -120,9 +120,9 @@ Equipment * choose_equipment(Item * inventory,
 	}
 
 	const void ** res = list_choice(false,
-									prompt, prompt,
-									false, true,
-									names, equipment);
+	                                prompt, prompt,
+	                                false, true,
+	                                names, equipment);
 
 	if(res == NULL) {
 		return NULL;
