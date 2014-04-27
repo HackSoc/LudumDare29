@@ -23,6 +23,8 @@ typedef struct Equipment {
 	enum EquipmentType type; /**< The type of the equiment. */
 	unsigned int attack; /**< The attack damage of the item. */
 	unsigned int defense; /**< The defense value of the item. */
+
+	bool equipped; /**< Whether the equipment is equipped or not. */
 } Equipment;
 
 /**

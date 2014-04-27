@@ -95,7 +95,9 @@ Equipment * choose_equipment(List * inventory,
 	unsigned int i = 0;
 	for(List * list = inventory; list != NULL; list = list->next) {
 		Item * item = fromlist(Item, inventory, list);
-		if(item->equipment != NULL && item->equipment->type == type) {
+		if(item->equipment != NULL
+		   && !item->equipment->equipped
+		   && item->equipment->type == type) {
 			names[i] = item->name;
 			equipment[i] = item->equipment;
 			i ++;

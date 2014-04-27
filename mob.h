@@ -28,6 +28,7 @@ typedef struct Mob {
 
 	List * inventory; /**< List of items the mob is holding. */
 	Equipment * weapon; /**< The weapon of the mob. */
+	Equipment * offhand; /**< The offhand weapon of the mob. */
 	Equipment * armour; /**< The armour of the mob. */
 
 	void (*turn_action)(struct Mob *);  /**< What to do every turn. */

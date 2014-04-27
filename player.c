@@ -111,9 +111,19 @@ Mob * create_player() {
 	sword->equipment->type = WEAPON;
 	sword->equipment->attack = 10;
 
+	Item * lantern = xalloc(Item);
+	lantern->symbol = '^';
+	lantern->name = "Lantern";
+	lantern->luminous = true;
+	lantern->equipment = xalloc(Equipment);
+	lantern->equipment->item = lantern;
+	lantern->equipment->type = WEAPON;
+	lantern->equipment->attack = 1;
+
 	player->inventory = insert(player->inventory, &stone->inventory);
 	player->inventory = insert(player->inventory, &coin->inventory);
 	player->inventory = insert(player->inventory, &sword->inventory);
+	player->inventory = insert(player->inventory, &lantern->inventory);
 
 	clear();
 	mvaddprintf(9, 10, "Do you want to randomly generate your player? ");
@@ -257,10 +267,22 @@ void player_turn(Mob * player) {
 				/* Unequip if necessary */
 				if(player->weapon != NULL &&
 				   item == player->weapon->item) {
+					if(item->luminous) {
+						player->luminosity --;
+					}
 					player->weapon = NULL;
 				} else if(player->armour != NULL &&
 				          item == player->armour->item) {
+					if(item->luminous) {
+						player->luminosity --;
+					}
 					player->armour = NULL;
+				} else if(player->offhand != NULL &&
+				          item == player->offhand->item) {
+					if(item->luminous) {
+						player->luminosity --;
+					}
+					player->offhand = NULL;
 				}
 			}
 			/* Remove from the inventory */
@@ -289,8 +311,26 @@ void player_turn(Mob * player) {
 		                             WEAPON,
 		                             "Select a weapon to equip");
 		if(equipment != NULL) {
+			if(player->weapon != NULL) {
+				player->weapon->equipped = false;
+				if(player->weapon->item->luminous) {
+					player->luminosity --;
+				}
+			}
+
 			player->weapon = equipment;
+			equipment->equipped = true;
+
+			if(equipment->item->luminous) {
+				player->luminosity ++;
+			}
 		}
+		break;
+
+	case 'x':
+		equipment = player->weapon;
+		player->weapon = player->offhand;
+		player->offhand = equipment;
 		break;
 
 	case 'W':
@@ -298,7 +338,19 @@ void player_turn(Mob * player) {
 		                             ARMOUR,
 		                             "Select some armour to wear");
 		if(equipment != NULL) {
+			if(player->armour != NULL) {
+				player->armour->equipped = false;
+				if(player->armour->item->luminous) {
+					player->luminosity --;
+				}
+			}
+
 			player->armour = equipment;
+			equipment->equipped = true;
+
+			if(equipment->item->luminous) {
+				player->luminosity ++;
+			}
 		}
 		break;
 
