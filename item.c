@@ -128,6 +128,8 @@ Equipment * choose_equipment(Item * inventory,
 	                                false, true,
 	                                names, equipment);
 
+	xfree(names);
+	xfree(equipment);
 	if(res == NULL) {
 		return NULL;
 	} else {
