@@ -6,6 +6,7 @@
 #include "level.h"
 #include "utils.h"
 #include "player.h"
+#include "effect.h"
 
 const char * names[] = {"Colin",
                         NULL};
@@ -116,10 +117,17 @@ Mob * create_player() {
 	lantern->luminous = true;
 	lantern->value = 1;
 
+	Item * potion = xalloc(Item);
+	potion->symbol = '-';
+	potion->name = "Potion of Cure Poison";
+	potion->type = DRINK;
+	potion->effect = &cure_poison;
+
 	player->inventory = insert(player->inventory, &stone->inventory);
 	player->inventory = insert(player->inventory, &coin->inventory);
 	player->inventory = insert(player->inventory, &sword->inventory);
 	player->inventory = insert(player->inventory, &lantern->inventory);
+	player->inventory = insert(player->inventory, &potion->inventory);
 
 	clear();
 	mvaddprintf(9, 10, "Do you want to randomly generate your player? ");
@@ -349,12 +357,57 @@ void player_turn(Mob * player) {
 		}
 		break;
 
+		/* Food and drink */
+	case 'e':
+		item = choose_item_by_type(player->inventory,
+		                           FOOD,
+		                           "Select some food to eat",
+		                           false);
+		if(item != NULL) {
+			/* If the food has an effect, otherwise heal (or hurt) the
+			   player as appropriate */
+			if(item->effect != NULL) {
+				item->effect(player);
+			} else {
+				if(item->value >= 0) {
+					player->health += item->value;
+					if(player->health > (int)player->max_health) {
+						player->health = player->max_health;
+					}
+				} else {
+					damage_mob(player, -item->value);
+				}
+			}
+		}
+		break;
+
+	case 'q':
+		item = choose_item_by_type(player->inventory,
+		                           DRINK,
+		                           "Select a drink",
+		                           false);
+		if(item != NULL) {
+			if(item->effect != NULL) {
+				item->effect(player);
+			} else {
+				if(item->value >= 0) {
+					player->health += item->value;
+					if(player->health > (int)player->max_health) {
+						player->health = player->max_health;
+					}
+				} else {
+					damage_mob(player, -item->value);
+				}
+			}
+		}
+		break;
+
 		/* Misc */
 	case '?':
 		show_help();
 		break;
 
-	case 'q':
+	case '!':
 		quit = true;
 		break;
 	default:
