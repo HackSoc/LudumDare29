@@ -24,6 +24,7 @@ typedef struct Cell {
 
 	bool solid;      /**< Whether the cell is solid (impassible) or not. */
 	bool illuminated; /**< Whether the cell is lit by a light or not. */
+	bool luminous; /**< Whether the cell is a light source or not. */
 
 	struct Mob * occupant; /**< The occpuant (may be NULL). */
 	struct List * items;   /**< The list of items (may be NULL). */

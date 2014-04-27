@@ -48,7 +48,8 @@ typedef struct Mob {
 	int health; /**< The current health, signed to prevent underflow. */
 	unsigned int max_health; /**< The maximum health. */
 
-	bool darksight; /**< Whether the mob can see int he dark or not. */
+	bool darksight; /**< Whether the mob can see in the dark or not. */
+	bool luminous; /**< Whether the mob is a light source or not. */
 
 	void * data; /**< Mob type specific data, eg PlayerData */
 } Mob;
@@ -59,6 +60,9 @@ bool move_mob_level(Mob * mob, bool toprev);
 bool damage_mob(struct Mob * mob, unsigned int amount);
 void attack_mob(Mob * attacker, Mob * defender);
 struct Mob * kill_mob(struct Mob * mob);
+bool can_see_point(struct Level * level,
+                   unsigned int x0, unsigned int y0,
+                   unsigned int x, unsigned int y);
 bool can_see(struct Mob * mob, unsigned int x, unsigned int y);
 bool can_see_other(struct Mob * moba, struct Mob * mobb);
 void simple_enemy_turn(Mob * enemy);
