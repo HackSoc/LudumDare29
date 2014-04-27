@@ -1,7 +1,7 @@
 OBJDIR=objs
 
 CC=clang
-CFLAGS=-c -Wall -Wextra -pedantic -g -std=c99
+CFLAGS=-c -Wall -Wextra -Werror -pedantic -g -std=c99
 LDFLAGS=-lcurses
 SOURCES=$(wildcard *.c)
 

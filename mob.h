@@ -6,6 +6,8 @@ struct Level;
 
 #include "item.h"
 #include "level.h"
+#include "utils.h"
+#include "list.h"
 
 /**
  * A mob is something which roams around the world, they are tied to a
@@ -14,8 +16,7 @@ struct Level;
  * determine what happens in certain situations.
  */
 typedef struct Mob {
-	struct Mob * next; /**< The next mob in the list. */
-	struct Mob * prev; /**< The prior mob in the list. */
+	List moblist; /**< The list of mobs to which this belongs */
 
 	struct Level * level; /**< The level the mob is in. */
 	unsigned int xpos;    /**< The X position. */
@@ -25,7 +26,7 @@ typedef struct Mob {
 	int colour;   /**< The colour to use to render the mob. */
 	bool is_bold; /**< Whether to render the mob bold. */
 
-	struct Item * items; /**< List of items the mob is holding. */
+	List * inventory; /**< List of items the mob is holding. */
 	Equipment * weapon; /**< The weapon of the mob. */
 	Equipment * armour; /**< The armour of the mob. */
 

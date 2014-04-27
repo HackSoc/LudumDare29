@@ -90,7 +90,7 @@ const void ** list_choice(bool nochoice,
 	addch(' ');
 
 	/* If this is not a choice, end here */
-	if(nochoice) {
+	if(nochoice || num_choices == 0) {
 		getch();
 		clear();
 		return NULL;

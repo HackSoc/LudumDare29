@@ -5,6 +5,7 @@
 #include "mob.h"
 #include "utils.h"
 #include "effect.h"
+#include "list.h"
 
 extern bool quit;
 
@@ -137,7 +138,8 @@ static void mine_level(Level * level,
 
 #define DEF_MOB(sym, n, col, hlth) {.symbol = (sym), .colour = (col), .name = (n), \
 			.is_bold = false, .hostile = true, .health = (hlth), .max_health = (hlth), \
-			.level = NULL, .prev = NULL, .turn_action = NULL, .xpos = 0, .ypos = 0, .score = 0}
+			.level = NULL, .moblist = {.next = NULL, .prev=NULL}, .turn_action = NULL, \
+			.xpos = 0, .ypos = 0, .score = 0}
 
 static const struct Mob default_mobs[] = {
 	DEF_MOB('H', "Hedgehog", COLOR_YELLOW, 5),
@@ -165,24 +167,13 @@ static void add_mob(Level * level) {
 	}
 	if (!found) return;
 
-	Mob * tail;
-	for (tail = level->mobs;
-	     tail != NULL && tail->next != NULL;
-	     tail = tail->next);
-
 	Mob * new = xalloc(Mob);
 	*new = default_mobs[rand() % lengthof(default_mobs)];
 	new->level = level;
-	new->prev = tail;
 	new->turn_action = &simple_enemy_turn;
 	new->xpos = x;
 	new->ypos = y;
-
-	if(tail == NULL) {
-		level->mobs = new;
-	} else {
-		tail->next = new;
-	}
+	level->mobs = insert(level->mobs, &new->moblist);
 	level->cells[x][y]->occupant = new;
 }
 
@@ -300,7 +291,8 @@ void do_affliction(Mob * mob) {
  */
 void run_turn(Level * level) {
 	/* Process each mob's turn */
-	for(Mob * mob = level->mobs; mob != NULL && !quit; mob = mob->next) {
+	for(List * moblist = level->mobs; moblist != NULL && !quit; moblist = moblist->next) {
+		Mob * mob = fromlist(Mob, moblist, moblist);
 		if(mob->health <= 0) {
 			continue;
 		}
@@ -312,12 +304,14 @@ void run_turn(Level * level) {
 	}
 
 	/* Free dead mobs */
-	Mob * mob = level->mobs;
-	while(mob != NULL) {
+	List * moblist = level->mobs;
+	while(moblist != NULL) {
+		Mob * mob = fromlist(Mob, moblist, moblist);
 		if(mob->health <= 0) {
-			mob = kill_mob(mob);
+			Mob * nextmob = kill_mob(mob);
+			moblist = (nextmob == NULL) ? NULL : &nextmob->moblist;
 		} else {
-			mob = mob->next;
+			moblist = moblist->next;
 		}
 	}
 }
@@ -342,7 +336,8 @@ void display_level(Level * level) {
 				           level->cells[x][y]->occupant->colour, COLOR_BLACK,
 				           level->cells[x][y]->occupant->is_bold);
 			} else if(level->cells[x][y]->items != NULL) {
-				mvaddch(y, x, level->cells[x][y]->items->symbol);
+				Item * item = fromlist(Item, inventory, level->cells[x][y]->items);
+				mvaddch(y, x, item->symbol);
 			} else {
 				mvaddchcol(y, x,
 				           level->cells[x][y]->baseSymbol,
