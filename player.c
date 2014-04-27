@@ -147,7 +147,7 @@ bool attackmove_relative(Mob * player, int xdiff, int ydiff,
  */
 void player_turn(Mob * player) {
 	int ch;
-	Item * item;
+	Item ** items;
 	Cell * current_cell = player->level->cells[player->xpos][player->ypos];
 
 	display_level(player->level);
@@ -217,33 +217,22 @@ void player_turn(Mob * player) {
 		break;
 
 	case 'd':
-		item = display_items(player->items, true, "Select items to drop:");
-		if(item != NULL) {
-			Item * last;
-			for(last = item; last->next != NULL; last = last->next);
-
-			if(current_cell->items != NULL) {
-				current_cell->items->prev = last;
-			}
-			last->next = current_cell->items;
-			current_cell->items = item;
+		items = display_items(player->items, true, "Select items to drop:");
+		if(items != NULL) {
+			player->items = remove_items(player->items, items);
+			current_cell->items = add_items(current_cell->items, items);
 		}
+		xfree(items);
 		break;
 
 	case ',':
-		item = display_items(current_cell->items, true,
-							 "Select items to pick up:");
-		if(item != NULL) {
-			Item * last;
-			for(last = item; last->next != NULL; last = last->next);
-
-			last->next = player->items;
-			if(player->items != NULL) {
-				player->items->prev = last;
-			}
-			last->next = player->items;
-			player->items = item;
+		items = display_items(current_cell->items, true,
+							  "Select items to pick up:");
+		if(items != NULL) {
+			current_cell->items = remove_items(current_cell->items, items);
+			player->items = add_items(player->items, items);
 		}
+		xfree(items);
 		break;
 
 		/* Misc */

@@ -12,14 +12,13 @@
  * @param prompt The prompt to be written at the start of the list.
  * @return The list of items chosen, or NULL if isChoice is false or no items were chosen.
  */
-Item * display_items(Item * items, bool isChoice, char * prompt) {
+Item ** display_items(Item * items, bool isChoice, char * prompt) {
 	Item ** item_array;
 	bool * chosen;
 	int num_items = 0;
 	Item * item = NULL;
-	Item * chosen_items = NULL;
 	int i, ch;
-	bool done;
+	unsigned int num_chosen = 0;
 
 	/* count the items */
 	for (item = items; item != NULL; item = item->next) {
@@ -31,7 +30,7 @@ Item * display_items(Item * items, bool isChoice, char * prompt) {
 		isChoice = false;
 	}
 
-	item_array = xcalloc(num_items, Item*);
+	item_array = xcalloc(num_items, Item *);
 	chosen = xcalloc(num_items, bool);
 
 	i = 0;
@@ -63,8 +62,10 @@ Item * display_items(Item * items, bool isChoice, char * prompt) {
 		if ('a' <= ch && 'a' + num_items > ch) {
 			chosen[ch-'a'] = !chosen[ch-'a'];
 			if (chosen[ch-'a']) {
+				num_chosen ++;
 				mvaddprintf(1 + ch - 'a', 2, "+");
 			} else {
+				num_chosen --;
 				mvaddprintf(1 + ch - 'a', 2, "-");
 			}
 		}
@@ -75,27 +76,95 @@ Item * display_items(Item * items, bool isChoice, char * prompt) {
 	} 
 	
 	/* construct the return list */
-	for (i = 0; i < num_items; i++) {
-		if (chosen[i]) {
-			if(item_array[i]->next != NULL) {
-				item_array[i]->next->prev = item_array[i]->prev;
-			}
-			if(item_array[i]->prev != NULL) {
-				item_array[i]->prev->next = item_array[i]->next;
-			}
-			
-			item_array[i]->next = chosen_items;
-			if(chosen_items != NULL) {
-				chosen_items->prev = item_array[i];
-			}
-			chosen_items = item_array[i];
+	Item ** selected = xcalloc(num_chosen + 1, Item *);
+	unsigned int j = 0;
+	for(i = 0; i < num_items; i++) {
+		if(chosen[i]) {
+			selected[j] = item_array[i];
+			j++;
 		}
 	}
+	selected[j] = NULL;
 	
 	clear();
 
 	xfree(item_array);
 	xfree(chosen);
 
-	return chosen_items;
+	return selected;
+}
+
+/**
+ * Remove a list of items from an inventory. Returns the (possibly
+ * new) head of the inventory.
+ * @param inventory The inentory
+ * @param items The items to remove
+ */
+Item * remove_items(Item * inventory, Item ** items) {
+	Item * head = inventory;
+	Item * cur = head;
+
+	while(cur != NULL) {
+		for(unsigned int i = 0; items[i] != NULL; i++) {
+			if(cur == items[i]) {
+				if(cur == head) {
+					head = head->next;
+					if(head != NULL) {
+						head->prev = NULL;
+					}
+				}
+
+				if(cur->next != NULL) {
+					cur->next->prev = cur->prev;
+				}
+				if(cur->prev != NULL) {
+					cur->prev->next = cur->next;
+				}
+
+				cur = cur->next;
+				break;
+			}
+		}
+		if(cur != NULL) {
+			cur = cur->next;
+		}
+	}
+
+	return head;
+}
+
+/**
+ * Add a list of items to an inventory. Returns the head of the inventory.
+ * @param inventory The inventory
+ * @param items The items to add
+ */
+Item * add_items(Item * inventory, Item ** items) {
+	Item * head = NULL;
+	Item * cur = NULL;
+
+	for(unsigned int i = 0; items[i] != NULL; i ++) {
+		items[i]->prev = cur;
+
+		if(cur != NULL) {
+			cur->next = items[i];
+		}
+
+		cur = items[i];
+
+		if(head == NULL) {
+			head = cur;
+		}
+	}
+
+	if(head == NULL) {
+		return inventory;
+	} else {
+		cur->next = inventory;
+
+		if(inventory != NULL) {
+			inventory->prev = cur;
+		}
+
+		return head;
+	}
 }
