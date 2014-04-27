@@ -167,11 +167,30 @@ bool can_see(Mob * mob, unsigned int x, unsigned int y) {
 }
 
 /**
+ * Wrapper for can_see, to determine if a mob can see another mob.
+ * @param moba One of the mobs
+ * @param mobb The other. It really doesn't matter which way around they are.
+ */
+bool can_see_other(Mob * moba, Mob * mobb) {
+	return can_see(moba, mobb->xpos, mobb->ypos);
+}
+
+/**
  * A very simple enemy: move towards the player, and damage them if adjacent.
  * @param enemy Entity to move.
  */
 void simple_enemy_turn(Mob * enemy) {
 	Mob * player = enemy->level->player;
+
+	/* If we can't see the player, move randomly */
+	if(!can_see_other(enemy, player)) {
+		if(rand() % 2 == 0) {
+			move_mob_relative(enemy, (rand() % 2 == 0) ? 1 : -1, 0);
+		} else {
+			move_mob_relative(enemy, 0, (rand() % 2 == 0) ? 1 : -1);
+		}
+		return;
+	}
 
 	int xdiff = enemy->xpos - player->xpos;
 	int ydiff = enemy->ypos - player->ypos;
