@@ -51,6 +51,31 @@ bool move_mob_relative(Mob * mob, int xdiff, int ydiff) {
 }
 
 /**
+ * Attack a mob, modified by the weapon of the attacker and the armour
+ * of the defender.
+ * @param attacker The mob doing the attacking.
+ * @param defender The mob being attacked.
+ */
+void attack_mob(Mob * attacker, Mob * defender) {
+	int damage = attacker->attack;
+
+	if(attacker->weapon != NULL) {
+		damage += attacker->weapon->attack;
+	}
+
+	if(defender->armour != NULL) {
+		damage -= defender->armour->defense;
+	}
+
+	/* Can always do at least 1 damage */
+	if(damage < 1) {
+		damage = 1;
+	}
+
+	damage_mob(defender, (unsigned int) damage);
+}
+
+/**
  * Damage a mob.
  * @param mob Entity to damage.
  * @param damage Amount of damage to apply to the mob.

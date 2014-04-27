@@ -26,6 +26,8 @@ typedef struct Mob {
 	bool is_bold; /**< Whether to render the mob bold. */
 
 	struct Item * items; /**< List of items the mob is holding. */
+	Equipment * weapon; /**< The weapon of the mob. */
+	Equipment * armour; /**< The armour of the mob. */
 
 	void (*turn_action)(struct Mob *);  /**< What to do every turn. */
 	void (*death_action)(struct Mob *); /**< What to do on death. */
@@ -39,6 +41,8 @@ typedef struct Mob {
 	char* race;       /**< The race of the mob (may be NULL for NPC). */
 	char* profession; /**< The job of the mob (may be NULL for NPC). */
 	int score;        /**< The score of the mob (ignored for NPCs). */
+
+	unsigned int attack; /**< The unarmed attack strength of the mob. */
 
 	int health; /**< The current health, signed to prevent underflow. */
 	unsigned int max_health; /**< The maximum health. */
