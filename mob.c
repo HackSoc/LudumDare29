@@ -54,7 +54,7 @@ bool move_mob_relative(Mob * mob, int xdiff, int ydiff) {
  * Damage a mob.
  * @param mob Entity to damage.
  * @param damage Amount of damage to apply to the mob.
- * @return true if this killed the mob, a mob is dead if its health
+ * @return If this killed the mob, a mob is dead if its health
  * drops to zero or below.
  */
 bool damage_mob(Mob * mob, unsigned int damage) {
@@ -110,9 +110,12 @@ Mob * kill_mob(Mob * mob) {
 		last->next->prev = last;
 	}
 
-	xfree(mob->name);
-	xfree(mob->profession);
-	xfree(mob->race);
+	/* Only the player needs to have its strings free'd */
+	if (mob->level->player == mob) {
+		xfree(mob->name);
+		xfree(mob->profession);
+		xfree(mob->race);
+	}
 	xfree(mob);
 
 	return next;
@@ -247,6 +250,8 @@ bool move_mob_level(Mob * mob, bool toprev) {
 			build_level(level->next);
 			level->next->prev = level;
 			level->next->depth = level->depth + 1;
+			/* Assumes only the player can create levels */
+			mob->score += 25; // arbitrary value
 		}
 		newlevel = level->next;
 		newx = newlevel->startx;

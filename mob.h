@@ -21,8 +21,8 @@ typedef struct Mob {
 	unsigned int xpos;    /**< The X position. */
 	unsigned int ypos;    /**< The Y position. */
 
-	char symbol; /**< The symbol to use to render the mob. */
-	int colour; /**< The colour to use to render the mob. */
+	char symbol;  /**< The symbol to use to render the mob. */
+	int colour;   /**< The colour to use to render the mob. */
 	bool is_bold; /**< Whether to render the mob bold. */
 
 	struct Item * items; /**< List of items the mob is holding. */
@@ -35,9 +35,10 @@ typedef struct Mob {
 
 	bool hostile; /**< A mob is hostile if the player can damage it. */
 
-	char* name; /**< The name of the mob (may be NULL for NPC). */
-	char* race; /**< The race of the mob (may be NULL for NPC). */
+	char* name;       /**< The name of the mob (may be NULL for NPC). */
+	char* race;       /**< The race of the mob (may be NULL for NPC). */
 	char* profession; /**< The job of the mob (may be NULL for NPC). */
+	int score;        /**< The score of the mob (ignored for NPCs). */
 
 	int health; /**< The current health, signed to prevent underflow. */
 	unsigned int max_health; /**< The maximum health. */

@@ -77,7 +77,8 @@ Mob * create_player() {
 	player->death_action = &player_death;
 	player->health = 100;
 	player->max_health = 100;
-	
+	player->score = 0;
+
 	player->items = xalloc(Item);
 	player->items->symbol = '*';
 	player->items->name = "A Stone";
@@ -111,18 +112,17 @@ Mob * create_player() {
  * @param x x-coordinate to move to.
  * @param y y-coordinate to move to.
  * @param damage Amount of damage to inflict on any mobs, if present.
- * @return If the player moved (no damage done).
+ * @return If the player damaged a mob.
  */
 bool attackmove(Mob * player, unsigned int x, unsigned int y,
 				unsigned int damage) {
 	Mob * mob = player->level->cells[x][y]->occupant;
-	bool unoccupied = move_mob(player, x, y);
 
-	if(!unoccupied && mob != NULL && mob->hostile) {
+	if(!move_mob(player, x, y) && mob != NULL && mob->hostile) {
 		damage_mob(mob, damage);
+		return true;
 	}
-
-	return unoccupied;
+	return false;
 }
 
 /**
@@ -131,7 +131,7 @@ bool attackmove(Mob * player, unsigned int x, unsigned int y,
  * @param xdiff Difference in the x-axis to move.
  * @param ydiff Difference in the y-axis to move.
  * @param damage Damage to do to any mobs, if present.
- * @return If the player moved (no damage done).
+ * @return If the player damaged a mob.
  */
 bool attackmove_relative(Mob * player, int xdiff, int ydiff,
 						 unsigned int damage) {
@@ -146,46 +146,56 @@ bool attackmove_relative(Mob * player, int xdiff, int ydiff,
  * @param player Player entity.
  */
 void player_turn(Mob * player) {
-	int ch;
-
 	display_level(player->level);
-	ch = getch();
+
+	bool move = false;
+	int xdiff = 0;
+	int ydiff = 0;
+	int ch = getch();
 	switch (ch) {
 	case 'k':
 	case '8':
 	case KEY_UP:
-			attackmove_relative(player, 0, -1, 5);
-			break;
+		move = true;
+		xdiff =  0; ydiff = -1;
+		break;
 	case 'j':
 	case '2':
 	case KEY_DOWN:
-			attackmove_relative(player, 0, 1, 5);
-			break;
+		move = true;
+		xdiff =  0; ydiff =  1;
+		break;
 	case 'h':
 	case '4':
 	case KEY_LEFT:
-		attackmove_relative(player, -1, 0, 5);
+		move = true;
+		xdiff = -1; ydiff =  0;
 		break;
 	case 'l':
 	case '6':
 	case KEY_RIGHT:
-			attackmove_relative(player, 1, 0, 5);
-			break;
+		move = true;
+		xdiff =  1; ydiff =  0;
+		break;
 	case 'y':
 	case '7':
-		attackmove_relative(player, -1, -1, 5);
+		move = true;
+		xdiff = -1; ydiff = -1;
 		break;
 	case 'u':
 	case '9':
-		attackmove_relative(player, 1, -1, 5);
+		move = true;
+		xdiff =  1; ydiff = -1;
 		break;
 	case 'n':
 	case '3':
-		attackmove_relative(player, 1, 1, 5);
+		move = true;
+		xdiff =  1; ydiff =  1;
 		break;
 	case 'b':
 	case '1':
-		attackmove_relative(player, -1, 1, 5);
+		move = true;
+		xdiff = -1; ydiff =  1;
 		break;
 	case '>':
 		if (player->level->cells[player->xpos][player->ypos]->baseSymbol == '>'){
@@ -202,15 +212,28 @@ void player_turn(Mob * player) {
 		break;
 	case 'q':
 		quit = true;
+		break;
+	default:
+		break;
+	}
+
+	if (move && attackmove_relative(player, xdiff, ydiff, 5)) {
+		player->score += 5;
 	}
 }
 
 /**
  * Say that the player is dead, and do stuff.
  * @param player Player that died.
- * @todo Implement properly.
  */
 void player_death(Mob * player) {
-	// Just quit
+	clear();
+
+	mvaddprintf(9, 10, "Oh dear, you died. :(");
+	mvaddprintf(10, 10, "Score: %i", player->score);
+	mvaddprintf(20, 10, "Press any key to exit");
+
 	quit = true;
+
+	getch();
 }

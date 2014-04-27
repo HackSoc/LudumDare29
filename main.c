@@ -61,12 +61,10 @@ int main() {
 		Level * level = level_head;
 		level_head = level_head->next;
 
-		Mob * m = level->mobs;
-		while (m != NULL) {
-			Mob * tmp = m;
-			m = m->next;
-			kill_mob(tmp);
-		}
+		do {
+			level->mobs = kill_mob(level->mobs);
+		} while (level->mobs != NULL);
+
 		for (int x = 0; x < LEVELWIDTH; x++) {
 			for (int y = 0; y < LEVELHEIGHT; y++) {
 				xfree(level->cells[x][y]);
