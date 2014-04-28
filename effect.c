@@ -57,7 +57,16 @@ void cure_poison(Mob * mob) {
  */
 void corpse_effect(Mob * mob){
 	if (rand() % 2) {
-		afflict(mob, effect_poison, 7);
+		if(mob == mob->level->player) {
+			status_push("The corpse was rotten! You are poisoned!");
+		}
+
+		int duration = 7;
+		if(mob->con != 0) {
+			duration -= rand() % mob->con;
+		}
+		duration = (duration < 2) ? 2 : duration;
+		afflict(mob, effect_poison, duration);
 	}
 	heal_mob(mob, 4);
 }

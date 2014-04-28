@@ -11,15 +11,20 @@
 #include "player.h"
 #include "status.h"
 
-#define DEF_MOB(sym, n, col, hlth, atk) {.symbol = (sym), .colour = (col), .name = (n), \
-			.is_bold = false, .hostile = true, .health = (hlth), .max_health = (hlth), \
-			.level = NULL, .moblist = {.next = NULL, .prev=NULL}, .turn_action = NULL, \
-																	   .xpos = 0, .ypos = 0, .score = 0, .darksight = true, .luminosity = 0, .attack = atk}
+#define DEF_MOB(sym, n, col, hlth, atk, cn) {\
+		.symbol = (sym), .colour = (col), .name = (n), .is_bold = false,\
+		.hostile = true,\
+		.health = (hlth), .max_health = (hlth), .con = (cn), .attack = atk, \
+		.level = NULL, .xpos = 0, .ypos = 0,\
+        .moblist = {.next = NULL, .prev=NULL},\
+        .turn_action = NULL,\
+		.score = 0,\
+        .darksight = true, .luminosity = 0}
 /* should keep the same structure as MobType in mob.h */
 static const struct Mob default_mobs[] = {
-	DEF_MOB('H', "Hedgehog", COLOR_YELLOW, 5, 1),
-	DEF_MOB('S', "Squirrel", COLOR_YELLOW, 10, 2),
-	DEF_MOB('o', "Orc", COLOR_YELLOW, 15, 2)
+	DEF_MOB('H', "Hedgehog", COLOR_YELLOW, 5, 1, 0),
+	DEF_MOB('S', "Squirrel", COLOR_YELLOW, 10, 2, 0),
+	DEF_MOB('o', "Orc", COLOR_YELLOW, 15, 2, 7)
 };
 
 #undef DEF_MOB
@@ -97,7 +102,13 @@ bool move_mob(Mob * mob, unsigned int x, unsigned int y) {
 		if(mob == mob->level->player) {
 			status_push("You have been poisoned!");
 		}
-		afflict(mob, &effect_poison, 5);
+
+		int duration = 5;
+		if(mob->con != 0) {
+			duration -= rand() % mob->con;
+		}
+		duration = (duration < 1) ? 1 : duration;
+		afflict(mob, &effect_poison, duration);
 	}
 
 	return true;

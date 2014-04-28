@@ -88,6 +88,7 @@ Mob * create_player() {
 	player->death_action = &player_death;
 	player->health = 100;
 	player->max_health = 100;
+	player->con = 3;
 	player->score = 0;
 	player->darksight = false;
 
