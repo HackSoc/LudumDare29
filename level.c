@@ -287,6 +287,14 @@ void build_level(Level * level) {
 			mob->data = hunterstate[mobtype];
 			mob2->data = hunterstate[mobtype];
 		}
+
+		/* chasers are like hunters, but they don't share the state - so
+		 * it's just a memory of the player. */
+		if(mobtype == FALLEN_ANGEL /* || mobtype == ... */) {
+			HunterState * state = xalloc(HunterState);
+			state->refcount = 1;
+			mob->data = state;
+		}
 	}
 	xfree(hunterstate);
 
@@ -540,10 +548,15 @@ void display_level(Level * level) {
 
 	/* Display player stats */
 	mvaddprintf(21, 5, "%s, the %s %s", player->name, player->race, player->profession);
-	mvaddprintf(22, 5, "HP: %d/%d", player->health, player->max_health);
+	mvaddprintf(22, 5, "HP: %d/%d, Atk: %d (+%d)",
+	            player->health, player->max_health,
+	            player->attack, (player->weapon == NULL) ? 0 : player->weapon->value);
+	mvaddprintf(23, 5, "Def: %d (+%d), Con: %d",
+	            player->defense, (player->armour == NULL) ? 0 : player->armour->value,
+	            player->con);
 
 	/* Display what level we are on */
-	mvaddprintf(23, 5, "Depth: %d", level->depth);
+	mvaddprintf(24, 5, "Depth: %d", level->depth);
 
 	/* Display the status */
 	display_status();

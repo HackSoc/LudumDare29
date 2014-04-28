@@ -87,6 +87,8 @@ Mob * create_player() {
 	player->hostile = false;
 	player->turn_action = &player_turn;
 	player->death_action = &player_death;
+	player->attack = 3;
+	player->defense = 2;
 	player->health = 100;
 	player->max_health = 100;
 	player->con = 3;

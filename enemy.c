@@ -8,10 +8,11 @@
 /**
  * Definitions of enemies
  */
-#define ENEMY(sym, n, col, hlth, atk, cn, dep) {	  \
+#define ENEMY(sym, n, col, hlth, atk, def, cn, dep) {	  \
 		.symbol = (sym), .colour = (col), .name = (n), .is_bold = false,\
 		.hostile = true,\
-		.health = (hlth), .max_health = (hlth), .con = (cn), .attack = atk, \
+		.health = (hlth), .max_health = (hlth),\
+		.attack = (atk), .defense = (def), .con = (cn),\
 		.level = NULL, .xpos = 0, .ypos = 0,\
         .moblist = {.next = NULL, .prev=NULL},\
         .turn_action = NULL,\
@@ -22,11 +23,11 @@
 /* should keep the same structure as EnemyType in enemy.h.
  * should also be ordered by dep. */
 const struct Mob default_enemies[] = {
-	ENEMY('H', "Hedgehog", COLOR_YELLOW, 5, 1, 0, 0),
-	ENEMY('S', "Squirrel", COLOR_YELLOW, 10, 2, 0, 0),
-	ENEMY('o', "Orc", COLOR_YELLOW, 15, 2, 7, 2),
-	ENEMY('W', "Wolfman", COLOR_YELLOW, 25, 10, 10, 10),
-	ENEMY('A', "Fallen Angel", COLOR_YELLOW, 50, 7, 100, 25)
+	ENEMY('H', "Hedgehog",     COLOR_YELLOW, 5,  1,  0,   0,  0),
+	ENEMY('S', "Squirrel",     COLOR_YELLOW, 10, 2,  0,   0,  0),
+	ENEMY('o', "Orc",          COLOR_YELLOW, 15, 3,  2,   7,  2),
+	ENEMY('W', "Wolfman",      COLOR_YELLOW, 25, 10, 3,   10, 10),
+	ENEMY('A', "Fallen Angel", COLOR_YELLOW, 50, 12, 10,  100, 25)
 };
 
 #undef ENEMY
