@@ -10,7 +10,7 @@ struct Level;
 #include "list.h"
 
 /* should keep the same structure as default_mobs in mob.c */
-enum MobType { HEDGEHOG, SQUIRREL, ORC, NUM_MOB_TYPES };
+enum MobType { HEDGEHOG, SQUIRREL, ORC, WOLFMAN, NUM_MOB_TYPES };
 
 /**
  * A mob is something which roams around the world, they are tied to a
@@ -55,6 +55,9 @@ typedef struct Mob {
 
 	bool darksight; /**< Whether the mob can see in the dark or not. */
 	unsigned int luminosity; /**< Number of light sources the mob is holding. */
+
+	unsigned int min_depth; /**< The minimum depth for the mob to appear at,
+	                         * ignored for the player */
 
 	void * data; /**< Mob type specific data, eg PlayerData */
 } Mob;
