@@ -66,18 +66,6 @@ List * drop(List * list) {
 }
 
 /**
- * Remove all the given list items. Returns the new head
- * @param items List of list items to remove
- */
-List * dropall(List ** items) {
-	List * head;
-	for(unsigned int i = 0; items[i] != NULL; i++) {
-		head = drop(items[i]);
-	}
-	return head;
-}
-
-/**
  * Insert an item to a list. Returns the head.
  * @param list The list to mutate
  * @param insert The list item to insert
@@ -92,19 +80,6 @@ List * insert(List * list, List * insert) {
 	}
 
 	return insert;
-}
-
-/**
- * Insert all the given items to the list. Returns the new head.
- * @param list The list to mutate
- * @param items List of list items to insert
- */
-List * insertall(List * list, List ** items) {
-	List * head;
-	for(unsigned int i = 0; items[i] != NULL; i ++) {
-		head = insert(list, items[i]);
-	}
-	return head;
 }
 
 /**

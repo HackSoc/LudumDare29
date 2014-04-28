@@ -20,9 +20,7 @@ void setprev(List * list, List * prev);
 List * gethead(List * list);
 List * gettail(List * list);
 List * drop(List * list);
-List * dropall(List ** items);
 List * insert(List * list, List * insert);
-List * insertall(List * list, List ** items);
 List * append(List * target, List * source);
 unsigned int length(List * list);
 
