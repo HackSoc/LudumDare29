@@ -223,6 +223,24 @@ void _xfree(void ** ptr) {
  * @param max Maximum random value
  */
 int biased_rand(int max) {
-	int x = rand() % max;
-	return (int)(sqrt(x) * sqrt(max));
+	if(max == 0) {
+		return 0;
+	}
+
+	/* Midpoint (rounded up) */
+	int midpoint = (max / 2) + (max % 2);
+	int out;
+
+	if(rand() % 4 == 0) {
+		/* Choose from first half */
+		out = rand() % midpoint;
+	} else if(rand() % 5 < 2) {
+		/* Choose from the third quarter */
+		out = (rand() % midpoint) + (midpoint / 2);
+	} else {
+		/* Choose from the final quarter */
+		out = (rand() % midpoint) + midpoint;
+	}
+
+	return (out > max) ? max : out;
 }
