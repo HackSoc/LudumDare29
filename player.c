@@ -132,8 +132,9 @@ static void apply_profession(Mob * player) {
 		weapon->can_dig = true;
 		weapon->value = 5;
 
-		armour->symbol = 'n';
-		armour->name   = "Mining Helmet";
+		armour->symbol   = 'n';
+		armour->name     = "Mining Helmet";
+		armour->luminous = true;
 	} else if(strcmp(player->profession, "Attorney") == 0) {
 		weapon->symbol = 'v';
 		weapon->name   = "Book of Tax Code";
