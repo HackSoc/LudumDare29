@@ -44,6 +44,7 @@ static void place_cell(Level * level,
 	level->cells[x][y]->solid      = to_place->solid;
 	level->cells[x][y]->occupant   = to_place->occupant;
 	level->cells[x][y]->items      = to_place->items;
+	level->cells[x][y]->luminosity = to_place->luminosity;
 }
 
 /**
@@ -212,6 +213,11 @@ void build_level(Level * level) {
 				} else {
 					level->cells[x][y]->baseSymbol = '#';
 					level->cells[x][y]->solid = true;
+
+					if(rand() % 200 == 0) {
+						level->cells[x][y]->colour = COLOR_YELLOW;
+						level->cells[x][y]->luminosity = 1;
+					}
 				}
 			}
 		}

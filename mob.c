@@ -44,6 +44,8 @@ bool move_mob(Mob * mob, unsigned int x, unsigned int y) {
 			}
 			target->solid = false;
 			target->baseSymbol = '.';
+			target->colour = COLOR_WHITE;
+			target->luminosity = 0;
 		}
 	}
 
@@ -230,8 +232,11 @@ Mob * kill_mob(Mob * mob) {
 bool can_see_point(Level * level,
                    unsigned int x0, unsigned int y0,
                    unsigned int x, unsigned int y) {
+	unsigned int startx = x0;
+	unsigned int starty = y0;
+
 	int dx = abs(x0 - x);
-	int dy = abs(y0 - y) ;
+	int dy = abs(y0 - y);
 
 	int sx = (x0 < x) ? 1 : -1;
 	int sy = (y0 < y) ? 1 : -1;
@@ -239,7 +244,8 @@ bool can_see_point(Level * level,
 	int err = dx - dy;
 
 	while(x0 != x || y0 != y) {
-		if(level->cells[x0][y0]->baseSymbol == '#') {
+		if((x0 != startx || y0 != starty) &&
+		   level->cells[x0][y0]->baseSymbol == '#') {
 			return false;
 		}
 
