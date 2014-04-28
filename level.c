@@ -342,6 +342,7 @@ void build_level(Level * level) {
 	/* possibly add a special item, level dependent */
 	{
 		Item * item = xalloc(Item);
+		item->count = 1;
 		int x = 1 + (rand() % (LEVELWIDTH-2));
 		int y = 1 + (rand() % (LEVELHEIGHT-2));
 
