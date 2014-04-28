@@ -20,6 +20,7 @@ enum ItemType { NONE, WEAPON, ARMOUR, FOOD, DRINK, VALUABLE };
  */
 typedef struct Item {
 	enum ItemType type; /**< The type of the item. */
+	int count; /**< The number of that item currently held. */
 
 	char symbol; /**< The symbol to display when dropped */
 	char * name; /**< The name to display when examined */
@@ -30,7 +31,7 @@ typedef struct Item {
 	List inventory; /**< The inventory to which this item belongs. */
 
 	bool equipped; /**< Whether the item is equipped or not */
-	
+
 	int value; /**< Some type-dependent value */
 	void (*effect)(struct Mob *); /**< Some type-dependent effect */
 } Item;

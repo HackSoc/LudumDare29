@@ -100,12 +100,14 @@ Mob * create_player() {
 	memset(playerdata->terrain->symbols, ' ', LEVELWIDTH * LEVELHEIGHT);
 
 	Item * sword = xalloc(Item);
+	sword->count = 1;
 	sword->symbol = '/';
 	sword->name = "Sword";
 	sword->type = WEAPON;
 	sword->value = 10;
 
 	Item * lantern = xalloc(Item);
+	lantern->count = 1;
 	lantern->symbol = '^';
 	lantern->name = "Lantern";
 	lantern->type = WEAPON;
@@ -113,12 +115,14 @@ Mob * create_player() {
 	lantern->value = 1;
 
 	Item * potion = xalloc(Item);
+	potion->count = 1;
 	potion->symbol = '-';
 	potion->name = "Potion of Cure Poison";
 	potion->type = DRINK;
 	potion->effect = &cure_poison;
-   
+
 	Item * pickaxe = xalloc(Item);
+	pickaxe->count = 1;
 	pickaxe->symbol = '/';
 	pickaxe->name = "Pickaxe";
 	pickaxe->type = WEAPON;
@@ -287,7 +291,7 @@ void player_turn(Mob * player) {
 			/* Update the status */
 			for(unsigned int i = 0; items[i] != NULL; i++) {
 				Item * item = fromlist(Item, inventory, items[i]);
-				status_push("You drop the %s.", item->name);
+				status_push("You drop a %s.", item->name);
 			}
 
 			drop_items(player, items);
@@ -299,7 +303,7 @@ void player_turn(Mob * player) {
 
 			for(unsigned int i = 0; items[i] != NULL; i++) {
 				Item * item = fromlist(Item, inventory, items[i]);
-				status_push("You pick up the %s.", item->name);
+				status_push("You pick up a %s.", item->name);
 			}
 
 			pickup_items(player, items);
@@ -312,7 +316,7 @@ void player_turn(Mob * player) {
 			                           "Select a weapon to equip",
 			                           true);
 			if(item != NULL) {
-				status_push("You wield the %s.", item->name);
+				status_push("You wield a %s.", item->name);
 				wield_item(player, item);
 			}
 			break;
@@ -354,7 +358,7 @@ void player_turn(Mob * player) {
 			                           "Select some food to eat",
 			                           false);
 			if(item != NULL) {
-				status_push("You eat the %s.", item->name);
+				status_push("You eat a %s.", item->name);
 				consume_item(player, item);
 			}
 			break;
@@ -365,7 +369,7 @@ void player_turn(Mob * player) {
 			                           "Select a drink",
 			                           false);
 			if(item != NULL) {
-				status_push("You quaff the %s.", item->name);
+				status_push("You quaff a %s.", item->name);
 				consume_item(player, item);
 			}
 			break;
