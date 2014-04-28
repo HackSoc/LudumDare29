@@ -4,17 +4,17 @@
 /**
  * The top of the status box
  */
-#define STATUS_TOP 21
+#define STATUS_TOP 25
 
 /**
  * The number of lines in the status box
  */
-#define STATUS_LINES 4
+#define STATUS_LINES 7
 
 /**
  * The X coordinate of the status box
  */
-#define STATUS_X 40
+#define STATUS_X 5
 
 /**
  * Print the status box
