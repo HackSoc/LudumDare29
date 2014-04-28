@@ -9,10 +9,9 @@
 static char status_box[STATUS_LINES][SCREENWIDTH - STATUS_X];
 
 /**
- * The indices into the status buffer
+ * The index into the status buffer
  */
-static unsigned int status_tail = 0;
-static unsigned int status_head = 0;
+static unsigned int head = 0;
 
 /**
  * Whether the buffer is full or not
@@ -25,13 +24,12 @@ static bool full = false;
 void status_push(const char * fmt, ...) {
 	va_list ap;
 	va_start(ap, fmt);
-	vsnprintf(status_box[status_head], SCREENWIDTH - STATUS_X, fmt, ap);
+	vsnprintf(status_box[head], SCREENWIDTH - STATUS_X, fmt, ap);
 	va_end(ap);
 
-	status_head = (status_head + 1) % STATUS_LINES;
+	head = (head + 1) % STATUS_LINES;
 	
-	if(status_head == status_tail) {
-		status_tail = (status_tail + 1) % STATUS_LINES;
+	if(head == 0) {
 		full = true;
 	}
 }
@@ -40,12 +38,17 @@ void status_push(const char * fmt, ...) {
  * Print the status box
  */
 void display_status() {
-	for(unsigned int i = 0; (i + status_tail) % STATUS_LINES != status_head; i ++){
-		mvaddstr(STATUS_TOP + i, STATUS_X, status_box[(i + status_tail) % STATUS_LINES]);
-	}
-
-	/* If the buffer is full, print the last line */
 	if(full) {
-		mvaddstr(STATUS_TOP + STATUS_LINES - 1, STATUS_X, status_box[status_head]);
+		unsigned int i = head;
+		unsigned int j = 0;
+		do {
+			mvaddstr(STATUS_TOP + j, STATUS_X, status_box[i]);
+			i = (i + 1) % STATUS_LINES;
+			j++;
+		} while(i != head);
+	} else {
+		for(unsigned int i = 0; i < head; i++) {
+			mvaddstr(STATUS_TOP + i, STATUS_X, status_box[i]);
+		}
 	}
 }
