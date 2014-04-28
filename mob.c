@@ -33,9 +33,11 @@ Mob * create_mob(enum MobType mobtype){
 	Mob * new = xalloc(Mob);
 	*new = default_mobs[mobtype];
 	new->turn_action = &simple_enemy_turn;
+	new->death_action = &drop_corpse;
 	
 	if (mobtype == ORC){
 		Item * sword = xalloc(Item);
+		
 		sword->symbol = '/';
 		sword->name = "An Orcish Sword";
 		sword->type = WEAPON;
@@ -303,6 +305,24 @@ void simple_enemy_turn(Mob * enemy) {
 			move_mob_relative(enemy, (xdiff < 0) ? 1 : -1, 0);
 		}
 	}
+}
+
+/**
+ * Drops a mobs corpse, intended to be run at the mob's death.
+ * @param mob The mob whose corpse should be dropped
+ */
+void drop_corpse(struct Mob * mob) {
+	Item * corpse = xalloc(Item);
+	Cell * cell = mob->level->cells[mob->xpos][mob->ypos];
+	corpse->type = FOOD;
+	corpse->value = 4;
+	corpse->symbol = '%';
+	corpse->name = xalloc(strlen(mob->name)*sizeof(char) + 8*sizeof(char));
+	strcpy(corpse->name, mob->name);
+	strcat(corpse->name, " Corpse");
+	corpse->effect = &corpse_effect;
+
+	cell->items = insert(cell->items, &corpse->inventory);
 }
 
 /**

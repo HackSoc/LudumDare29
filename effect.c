@@ -1,5 +1,6 @@
 #include <stddef.h>
 #include <stdbool.h>
+#include <stdlib.h>
 
 #include "mob.h"
 #include "effect.h"
@@ -48,4 +49,15 @@ void cure_poison(Mob * mob) {
 		mob->effect_action = NULL;
 		mob->effect_duration = 0;
 	}
+}
+
+/**
+ * An effect for corpses, which poisons 50% of the time
+ * @param mob The mob which is affected
+ */
+void corpse_effect(Mob * mob){
+	if (rand() % 2) {
+		afflict(mob, effect_poison, 7);
+	}
+	heal_mob(mob, 4);
 }
