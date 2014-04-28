@@ -37,13 +37,23 @@ Mob * create_mob(enum MobType mobtype){
 	
 	if (mobtype == ORC){
 		Item * sword = xalloc(Item);
-		
+
 		sword->symbol = '/';
 		sword->name = "An Orcish Sword";
 		sword->type = WEAPON;
 		sword->value = 5;
 		new->inventory = insert(new->inventory, &sword->inventory);
 		wield_item(new, sword);
+		
+		if (rand() % 2) {
+			Item * food = xalloc(Item);
+
+			food->symbol = '%';
+			food->name = "Food Ration";
+			food->type = FOOD;
+			food->value = 5;
+			new->inventory = insert(new->inventory, &food->inventory);
+		}
 	}
 
 	return new;
