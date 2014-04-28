@@ -30,9 +30,21 @@ bool move_mob(Mob * mob, unsigned int x, unsigned int y) {
 	/* allow for digging through rock */
 	if (mob->weapon != NULL && mob->weapon->can_dig == true &&
 		target->occupant == NULL &&
-		target->solid == true && target->baseSymbol == '#') {
-		target->solid = false;
-		target->baseSymbol = '.';
+		target->solid == true &&
+	    target->baseSymbol == '#') {
+		if((rand() % mob->weapon->value) < 2) {
+			if(mob == mob->level->player) {
+				status_push("Your %s bounces off the rock.",
+				            mob->weapon->name);
+			}
+		} else {
+			if(mob == mob->level->player) {
+				status_push("Your %s easily crushes the rock.",
+				            mob->weapon->name);
+			}
+			target->solid = false;
+			target->baseSymbol = '.';
+		}
 	}
 
 	if(target->solid == true || target->occupant != NULL) {
