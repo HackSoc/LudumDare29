@@ -1,7 +1,7 @@
 OBJDIR=objs
 
-CC=clang
-CFLAGS=-c -Wall -Wextra -Werror -pedantic -g -std=c99
+CC=clang -fsanitize=memory -fno-omit-frame-pointer
+CFLAGS=-c -Wall -Wextra -Werror -pedantic -g -O1 -std=c99
 LDFLAGS=-lcurses -lm
 SOURCES=$(wildcard *.c)
 

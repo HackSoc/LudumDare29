@@ -393,24 +393,7 @@ bool move_mob_level(Mob * mob, bool toprev) {
 void drop_item(Mob * mob, Item * item) {
 	Cell * cell = mob->level->cells[mob->xpos][mob->ypos];
 
-	if(item == mob->weapon) {
-		if(item->luminous) {
-			mob->luminosity --;
-		}
-		mob->weapon = NULL;
-
-	} else if(item == mob->armour) {
-		if(item->luminous) {
-			mob->luminosity --;
-		}
-		mob->armour = NULL;
-
-	} else if(item == mob->offhand) {
-		if(item->luminous) {
-			mob->luminosity --;
-		}
-		mob->offhand = NULL;
-	}
+	unwield_item(mob, item);
 
 	/* Update the cell luminosity */
 	if(item->luminous) {
@@ -418,8 +401,17 @@ void drop_item(Mob * mob, Item * item) {
 	}
 
 	/* Update the inventories */
-	mob->inventory = drop(&item->inventory);
-	cell->items = insert(cell->items, &item->inventory);
+	if (item->count > 1) {
+		item->count--;
+		Item * cpy = xalloc(Item);
+		memcpy(cpy, item, sizeof(Item));
+		cpy->inventory.prev = NULL;
+		cpy->inventory.next = NULL;
+		cell->items = insert(cell->items, &cpy->inventory);
+	} else {
+		mob->inventory = drop(&item->inventory);
+		cell->items = insert(cell->items, &item->inventory);
+	}
 }
 
 /**
@@ -453,6 +445,14 @@ void pickup_item(Mob * mob, Item * item) {
 
 	/* Update inventories */
 	cell->items = drop(&item->inventory);
+	for (List * it = mob->inventory; it != NULL; it = it->next) {
+		Item * tmp = fromlist(Item, inventory, it);
+		if (strcmp(tmp->name, item->name) == 0) {
+			tmp->count++;
+			xfree(item);
+			return;
+		}
+	}
 	mob->inventory = insert(mob->inventory, &item->inventory);
 }
 
@@ -563,6 +563,10 @@ void consume_item(Mob * mob, Item * item) {
 		}
 	}
 
-	mob->inventory = drop(&item->inventory);
-	xfree(item);
+	if (item->count > 1) {
+		item->count--;
+	} else {
+		mob->inventory = drop(&item->inventory);
+		xfree(item);
+	}
 }

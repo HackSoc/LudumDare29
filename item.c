@@ -14,18 +14,20 @@
  * @param inventory The inventory to convert
  */
 static const char ** inventory_name_array(List * inventory) {
-	const char ** out = xcalloc(length(inventory) + 1, char *);
+	char ** out = xcalloc(length(inventory) + 1, char *);
 
 	unsigned int i = 0;
 	for(List * list = inventory; list != NULL; list = list->next) {
 		Item * theitem = fromlist(Item, inventory, list);
-		out[i] = theitem->name;
+		out[i] = xalloc(strlen(theitem->name) + 7 + 1);
+		snprintf(out[i], strlen(theitem->name) + 7 + 1,
+		         "%s [x%03i]", theitem->name, theitem->count);
 		i ++;
 	}
 
 	out[i] = NULL;
 
-	return out;
+	return (const char**)out;
 }
 
 /**
@@ -73,6 +75,9 @@ List ** choose_items(List * inventory, const char * prompt){
 	                                   prompt, prompt,
 	                                   true, true,
 	                                   names, (const void **)items);
+	for (char * name = (char *)names; name != NULL; name++) {
+		xfree(name);
+	}
 	xfree(names);
 	xfree(items);
 	return out;
