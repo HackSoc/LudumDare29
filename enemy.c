@@ -1,8 +1,80 @@
 #include <assert.h>
 #include <stdlib.h>
 #include <stddef.h>
+#include <curses.h>
 #include "enemy.h"
 #include "mob.h"
+
+/**
+ * Definitions of enemies
+ */
+#define ENEMY(sym, n, col, hlth, atk, cn, dep) {	  \
+		.symbol = (sym), .colour = (col), .name = (n), .is_bold = false,\
+		.hostile = true,\
+		.health = (hlth), .max_health = (hlth), .con = (cn), .attack = atk, \
+		.level = NULL, .xpos = 0, .ypos = 0,\
+        .moblist = {.next = NULL, .prev=NULL},\
+        .turn_action = NULL,\
+		.score = 0,\
+	    .darksight = true, .luminosity = 0,\
+	    .min_depth = (dep)}
+
+/* should keep the same structure as MobType in mob.h.
+ * should also be ordered by dep. */
+const struct Mob default_enemies[] = {
+	ENEMY('H', "Hedgehog", COLOR_YELLOW, 5, 1, 0, 0),
+	ENEMY('S', "Squirrel", COLOR_YELLOW, 10, 2, 0, 0),
+	ENEMY('o', "Orc", COLOR_YELLOW, 15, 2, 7, 2),
+	ENEMY('W', "Wolfman", COLOR_YELLOW, 25, 10, 10, 10),
+};
+
+#undef ENEMY
+
+/**
+ * Create and return an enemy of the specified type.
+ * @param mobtype The type of mob to make.
+ * @return The mob created.
+ */
+Mob * create_enemy(enum EnemyType mobtype){
+	Mob * new = xalloc(Mob);
+	*new = default_enemies[mobtype];
+	new->turn_action = &simple_enemy_turn;
+	new->death_action = &drop_corpse;
+	
+	if (mobtype == ORC){
+		Item * sword = xalloc(Item);
+
+		sword->symbol = '/';
+		sword->name = "Orcish Sword";
+		sword->type = WEAPON;
+		sword->value = 5;
+		new->inventory = insert(new->inventory, &sword->inventory);
+		wield_item(new, sword);
+		
+		if (rand() % 2) {
+			Item * food = xalloc(Item);
+
+			food->symbol = '%';
+			food->name = "Food Ration";
+			food->type = FOOD;
+			food->value = 5;
+			new->inventory = insert(new->inventory, &food->inventory);
+		}
+	} else if(mobtype == WOLFMAN) {
+		new->turn_action = &hunter_turn;
+		new->death_action = &hunter_death;
+
+		Item * food = xalloc(Item);
+
+		food->symbol = '%';
+		food->name = "Nourishing Food Ration";
+		food->type = FOOD;
+		food->value = 7;
+		new->inventory = insert(new->inventory, &food->inventory);
+	}
+
+	return new;
+}
 
 /**
  * Move an enemy randomly, not including diagonals.

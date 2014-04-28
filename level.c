@@ -11,7 +11,7 @@
 #include "enemy.h"
 
 extern bool quit;
-extern const struct Mob default_mobs[];
+extern const struct Mob default_enemies[];
 
 /**
  * (Shallow) Clone a cell and place it in the given position.
@@ -264,20 +264,20 @@ void build_level(Level * level) {
 	/* Arbitrary number of mobs */
 	unsigned int available_mobs;
 	for(available_mobs = 0;
-	    default_mobs[available_mobs].min_depth <= level->depth;
+	    default_enemies[available_mobs].min_depth <= level->depth;
 	    available_mobs ++);
 	
 	Target * hunterstate = NULL;
 	for (int i = 0; i < 5; i++) {
-		enum MobType mobtype = (enum MobType) (rand() % available_mobs);
-		Mob * mob = create_mob(mobtype);
+		enum EnemyType mobtype = (enum EnemyType) (rand() % available_mobs);
+		Mob * mob = create_enemy(mobtype);
 		
 		add_mob_random(level, mob);
 
 		/* 1. share hunter state
 		   2. hunters always appear in 2s, (giving up to 10 enemies!) */
 		if(mobtype == WOLFMAN) {
-			Mob * mob2 = create_mob(mobtype);
+			Mob * mob2 = create_enemy(mobtype);
 			add_mob_random(level, mob2);
 			if(hunterstate == NULL) {
 				hunterstate = xalloc(Target);
