@@ -137,6 +137,17 @@ Mob * kill_mob(Mob * mob) {
 	Cell * cell = level->cells[mob->xpos][mob->ypos];
 	Mob * next = fromlist(Mob, moblist, mob->moblist.next);
 
+	/* Unwield its stuff */
+	if(mob->weapon != NULL) {
+		unwield_item(mob, mob->weapon);
+	}
+	if(mob->offhand != NULL) {
+		unwield_item(mob, mob->offhand);
+	}
+	if(mob->armour != NULL) {
+		unwield_item(mob, mob->armour);
+	}
+
 	/* Remove it from the cell */
 	cell->occupant = NULL;
 
@@ -440,10 +451,7 @@ void wield_item(Mob * mob, Item * item) {
 	}
 
 	if(*pos != NULL) {
-		(*pos)->equipped = false;
-		if((*pos)->luminous) {
-			mob->luminosity --;
-		}
+		unwield_item(mob, *pos);
 	}
 
 	*pos = item;
@@ -452,6 +460,34 @@ void wield_item(Mob * mob, Item * item) {
 	if(item->luminous) {
 		mob->luminosity ++;
 	}
+}
+
+/**
+ * Stop wielding an item
+ * @param mob The mob which is doing the wielding
+ * @param item The item to not wield
+ */
+void unwield_item(Mob * mob, Item * item) {
+	Item ** pos;
+
+	switch(item->type) {
+	case WEAPON:
+		pos = (mob->weapon == item) ? &mob->weapon : &mob->offhand;
+		break;
+	case ARMOUR:
+		pos = &mob->armour;
+		break;
+	default:
+		assert(false);
+	}
+
+	assert(*pos == item);
+
+	item->equipped = false;
+	if(item->luminous) {
+		mob->luminosity --;
+	}
+	*pos = NULL;
 }
 
 /**
