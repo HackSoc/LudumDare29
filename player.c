@@ -360,6 +360,11 @@ void player_turn(Mob * player) {
 			xdiff = -1; ydiff =  1;
 			break;
 
+		case '5':
+		case '.':
+			done = true;
+			break;
+
 		/* Movement between levels */
 		case '>':
 			if (current_cell->baseSymbol == '>'){
