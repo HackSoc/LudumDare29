@@ -28,8 +28,8 @@ bool move_mob(Mob * mob, unsigned int x, unsigned int y) {
 		return true;
 
 	/* allow for digging through rock */
-	if (mob->weapon != NULL && mob->weapon->can_dig == true && 
-		target->occupant == NULL && 
+	if (mob->weapon != NULL && mob->weapon->can_dig == true &&
+		target->occupant == NULL &&
 		target->solid == true && target->baseSymbol == '#') {
 		target->solid = false;
 		target->baseSymbol = '.';
@@ -197,7 +197,7 @@ bool can_see_point(Level * level,
 }
 
 /**
- * Determine if a mob can see the given point. 
+ * Determine if a mob can see the given point.
  *
  * Note: as this will be primarily used to render the level, a better
  * version might be to operate on a 2d array of three-state variables
@@ -227,7 +227,7 @@ bool can_see(Mob * mob, unsigned int x, unsigned int y) {
 	} else if(sqrt(pow(abs(mob->xpos - x), 2) + pow(abs(mob->ypos - y), 2)) <= 5) {
 		/* Or if they're sufficiently close to the mob */
 		return true;
-	} else { 
+	} else {
 		return false;
 	}
 }
@@ -251,9 +251,9 @@ void drop_corpse(struct Mob * mob) {
 	corpse->type = FOOD;
 	corpse->value = 4;
 	corpse->symbol = '%';
-	corpse->name = xalloc(strlen(mob->name)*sizeof(char) + 8*sizeof(char));
-	strcpy(corpse->name, mob->name);
-	strcat(corpse->name, " Corpse");
+	size_t len = strlen(mob->name) + strlen(" Corpse") + 1;
+	corpse->name = xalloc(len);
+	snprintf(corpse->name, len, "%s%s", mob->name, " Corpse");
 	corpse->effect = &corpse_effect;
 
 	cell->items = insert(cell->items, &corpse->inventory);
