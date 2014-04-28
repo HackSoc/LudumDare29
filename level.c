@@ -287,6 +287,45 @@ void build_level(Level * level) {
 			mob2->data = hunterstate;
 		}
 	}
+
+	/* add 5 gold for the player to find */
+	for (int i = 0; i < 5; i++) {
+		Item * item = xalloc(Item);
+		int x = 1 + (rand() % (LEVELWIDTH-2));
+		int y = 1 + (rand() % (LEVELHEIGHT-2));
+			
+		item->symbol = '$';
+		item->name = "Gold";
+		item->type = VALUABLE;
+		item->value = 5;
+		level->cells[x][y]->items = insert(level->cells[x][y]->items, &item->inventory);
+	}
+
+	/* add a regular item for the player to find */
+	{
+		Item * item = xalloc(Item);
+		int x = 1 + (rand() % (LEVELWIDTH-2));
+		int y = 1 + (rand() % (LEVELHEIGHT-2));
+		switch (rand() % 10) {
+		case 0: case 1: case 2: case 3: case 4:
+			item->symbol = '%';
+			item->name = "Food Ration";
+			item->type = FOOD;
+			item->value = 5;
+			break;
+		case 5: case 6: case 7: case 8:
+			item->symbol = '-';
+			item->name = "Potion of Cure Poison";
+			item->type = DRINK;
+			item->effect = &cure_poison;
+			break;
+		case 9:
+			item->symbol = '*';
+			item->name = "Stone";
+			break;
+		}
+		level->cells[x][y]->items = insert(level->cells[x][y]->items, &item->inventory);
+	}
 }
 
 /**

@@ -99,16 +99,6 @@ Mob * create_player() {
 	playerdata->terrain = xalloc(Terrain);
 	memset(playerdata->terrain->symbols, ' ', LEVELWIDTH * LEVELHEIGHT);
 
-	Item * stone = xalloc(Item);
-	stone->symbol = '*';
-	stone->name = "Stone";
-
-	Item * coin = xalloc(Item);
-	coin->symbol = '$';
-	coin->name = "Coin";
-	coin->type = VALUABLE;
-	coin->value = 10;
-
 	Item * sword = xalloc(Item);
 	sword->symbol = '/';
 	sword->name = "Sword";
@@ -135,8 +125,6 @@ Mob * create_player() {
 	pickaxe->can_dig = true;
 	pickaxe->value = 5;
 
-	player->inventory = insert(player->inventory, &stone->inventory);
-	player->inventory = insert(player->inventory, &coin->inventory);
 	player->inventory = insert(player->inventory, &sword->inventory);
 	player->inventory = insert(player->inventory, &lantern->inventory);
 	player->inventory = insert(player->inventory, &potion->inventory);
