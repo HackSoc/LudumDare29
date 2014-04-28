@@ -25,6 +25,7 @@ typedef struct Item {
 	char * name; /**< The name to display when examined */
 
 	bool luminous; /**< Whether the item is luminous or not */
+	bool can_dig; /**< Whether the item is capable of digging through rock */
 
 	List inventory; /**< The inventory to which this item belongs. */
 

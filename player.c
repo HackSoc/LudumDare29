@@ -123,12 +123,20 @@ Mob * create_player() {
 	potion->name = "Potion of Cure Poison";
 	potion->type = DRINK;
 	potion->effect = &cure_poison;
+   
+	Item * pickaxe = xalloc(Item);
+	pickaxe->symbol = '/';
+	pickaxe->name = "Pickaxe";
+	pickaxe->type = WEAPON;
+	pickaxe->can_dig = true;
+	pickaxe->value = 5;
 
 	player->inventory = insert(player->inventory, &stone->inventory);
 	player->inventory = insert(player->inventory, &coin->inventory);
 	player->inventory = insert(player->inventory, &sword->inventory);
 	player->inventory = insert(player->inventory, &lantern->inventory);
 	player->inventory = insert(player->inventory, &potion->inventory);
+	player->inventory = insert(player->inventory, &pickaxe->inventory);
 
 	clear();
 	mvaddprintf(9, 10, "Do you want to randomly generate your player? ");

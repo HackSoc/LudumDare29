@@ -74,6 +74,14 @@ bool move_mob(Mob * mob, unsigned int x, unsigned int y) {
 	if(source == target)
 		return true;
 
+	/* allow for digging through rock */
+	if (mob->weapon != NULL && mob->weapon->can_dig == true && 
+		target->occupant == NULL && 
+		target->solid == true && target->baseSymbol == '#') {
+		target->solid = false;
+		target->baseSymbol = '.';
+	}
+
 	if(target->solid == true || target->occupant != NULL) {
 		return false;
 	}
