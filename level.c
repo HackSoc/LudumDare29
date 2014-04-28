@@ -8,6 +8,7 @@
 #include "list.h"
 #include "player.h"
 #include "status.h"
+#include "enemy.h"
 
 extern bool quit;
 
@@ -264,8 +265,25 @@ void build_level(Level * level) {
 	level->cells[level->startx][level->starty]->colour = COLOR_WHITE;
 
 	/* Arbitrary number of mobs */
+	Target * hunterstate = NULL;
 	for (int i = 0; i < 5; i++) {
-		add_mob_random(level, create_mob(rand() % NUM_MOB_TYPES));
+		enum MobType mobtype = (enum MobType) (rand() % NUM_MOB_TYPES);
+		Mob * mob = create_mob(mobtype);
+		
+		add_mob_random(level, mob);
+
+		/* 1. share hunter state
+		   2. hunters always appear in 2s, (giving up to 10 enemies!) */
+		if(mobtype == WOLFMAN) {
+			Mob * mob2 = create_mob(mobtype);
+			add_mob_random(level, mob2);
+			if(hunterstate == NULL) {
+				hunterstate = xalloc(Target);
+			}
+			hunterstate->refcount += 2;
+			mob->data = hunterstate;
+			mob2->data = hunterstate;
+		}
 	}
 }
 

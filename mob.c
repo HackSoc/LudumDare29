@@ -10,6 +10,7 @@
 #include "effect.h"
 #include "player.h"
 #include "status.h"
+#include "enemy.h"
 
 #define DEF_MOB(sym, n, col, hlth, atk, cn) {\
 		.symbol = (sym), .colour = (col), .name = (n), .is_bold = false,\
@@ -24,7 +25,9 @@
 static const struct Mob default_mobs[] = {
 	DEF_MOB('H', "Hedgehog", COLOR_YELLOW, 5, 1, 0),
 	DEF_MOB('S', "Squirrel", COLOR_YELLOW, 10, 2, 0),
-	DEF_MOB('o', "Orc", COLOR_YELLOW, 15, 2, 7)
+	DEF_MOB('o', "Orc", COLOR_YELLOW, 15, 2, 7),
+	/* pack mobs come after here */
+	DEF_MOB('W', "Wolfman", COLOR_YELLOW, 25, 10, 10),
 };
 
 #undef DEF_MOB
@@ -59,6 +62,17 @@ Mob * create_mob(enum MobType mobtype){
 			food->value = 5;
 			new->inventory = insert(new->inventory, &food->inventory);
 		}
+	} else if(mobtype == WOLFMAN) {
+		new->turn_action = &hunter_turn;
+		new->death_action = &hunter_death;
+
+		Item * food = xalloc(Item);
+
+		food->symbol = '%';
+		food->name = "Nourishing Food Ration";
+		food->type = FOOD;
+		food->value = 7;
+		new->inventory = insert(new->inventory, &food->inventory);
 	}
 
 	return new;
@@ -291,49 +305,6 @@ bool can_see(Mob * mob, unsigned int x, unsigned int y) {
  */
 bool can_see_other(Mob * moba, Mob * mobb) {
 	return can_see(moba, mobb->xpos, mobb->ypos);
-}
-
-/**
- * A very simple enemy: move towards the player, and damage them if adjacent.
- * @param enemy Entity to move.
- */
-void simple_enemy_turn(Mob * enemy) {
-	Mob * player = enemy->level->player;
-
-	/* If we can't see the player, move randomly */
-	if(!can_see_other(enemy, player)) {
-		if(rand() % 2 == 0) {
-			move_mob_relative(enemy, (rand() % 2 == 0) ? 1 : -1, 0);
-		} else {
-			move_mob_relative(enemy, 0, (rand() % 2 == 0) ? 1 : -1);
-		}
-		return;
-	}
-
-	int xdiff = enemy->xpos - player->xpos;
-	int ydiff = enemy->ypos - player->ypos;
-
-	/* If adjacent to the player, damage them */
-	if((abs(xdiff) == 1 && ydiff == 0) || (xdiff == 0 && abs(ydiff) == 1)) {
-		attack_mob(enemy, player);
-		return;
-	}
-
-	/* Move along the axis furthest away from the player */
-	if(abs(xdiff) > abs(ydiff)) {
-		bool res = move_mob_relative(enemy, (xdiff < 0) ? 1 : -1, 0);
-
-		/* If there was something solid in the way, try moving y */
-		if(!res) {
-			move_mob_relative(enemy, 0, (ydiff < 0) ? 1 : -1);
-		}
-	} else {
-		bool res = move_mob_relative(enemy, 0, (ydiff < 0) ? 1 : -1);
-
-		if(!res) {
-			move_mob_relative(enemy, (xdiff < 0) ? 1 : -1, 0);
-		}
-	}
 }
 
 /**
