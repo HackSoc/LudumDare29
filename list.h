@@ -9,6 +9,10 @@ typedef struct List {
 	struct List * prev;
 } List;
 
+#ifndef offsetof
+	#define offsetof(st, m) __builtin_offsetof(st, m)
+#endif
+
 /**
  * Convert to and from structures and linked lists
  * T - type, LF - list field name, LP - list pointer
