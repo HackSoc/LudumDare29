@@ -7,6 +7,7 @@
 #include "effect.h"
 #include "list.h"
 #include "player.h"
+#include "status.h"
 
 extern bool quit;
 
@@ -405,5 +406,8 @@ void display_level(Level * level) {
 	mvaddprintf(22, 5, "HP: %d/%d", player->health, player->max_health);
 
 	/* Display what level we are on */
-	mvaddprintf(21, 67, "Depth: %d", level->depth);
+	mvaddprintf(23, 5, "Depth: %d", level->depth);
+
+	/* Display the status */
+	display_status();
 }

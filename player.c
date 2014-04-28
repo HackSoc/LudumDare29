@@ -7,6 +7,7 @@
 #include "utils.h"
 #include "player.h"
 #include "effect.h"
+#include "status.h"
 
 const char * names[] = {"Colin",
                         NULL};
@@ -261,6 +262,7 @@ void player_turn(Mob * player) {
 		/* Movement between levels */
 		case '>':
 			if (current_cell->baseSymbol == '>'){
+				status_push("You descend deeper into the caves.");
 				move_mob_level(player, false);
 			}
 			done = true;
@@ -268,6 +270,7 @@ void player_turn(Mob * player) {
 
 		case '<':
 			if (current_cell->baseSymbol == '<'){
+				status_push("You ascend towards the fresh air.");
 				move_mob_level(player, true);
 			}
 			done = true;
