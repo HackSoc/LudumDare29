@@ -473,10 +473,15 @@ void display_level(Level * level) {
 
 	/* Display player stats */
 	mvaddprintf(21, 5, "%s, the %s %s", player->name, player->race, player->profession);
-	mvaddprintf(22, 5, "HP: %d/%d", player->health, player->max_health);
+	mvaddprintf(22, 5, "HP: %d/%d, Atk: %d (+%d)",
+	            player->health, player->max_health,
+	            player->attack, (player->weapon == NULL) ? 0 : player->weapon->value);
+	mvaddprintf(23, 5, "Def: %d (+%d), Con: %d",
+	            player->defense, (player->armour == NULL) ? 0 : player->armour->value,
+	            player->con);
 
 	/* Display what level we are on */
-	mvaddprintf(23, 5, "Depth: %d", level->depth);
+	mvaddprintf(24, 5, "Depth: %d", level->depth);
 
 	/* Display the status */
 	display_status();
