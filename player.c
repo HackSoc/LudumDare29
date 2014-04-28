@@ -87,11 +87,6 @@ Mob * create_player() {
 	player->hostile = false;
 	player->turn_action = &player_turn;
 	player->death_action = &player_death;
-	player->attack = 3;
-	player->defense = 2;
-	player->health = 100;
-	player->max_health = 100;
-	player->con = 3;
 	player->score = 0;
 	player->darksight = false;
 
@@ -144,6 +139,41 @@ Mob * create_player() {
 			break;
 		}
 	}
+
+	/* Assign race stats */
+	if(strcmp(player->race, "Human") == 0) {
+		player->attack     = 3;
+		player->defense    = 2;
+		player->max_health = 100;
+		player->con        = 3;
+	} else if(strcmp(player->race, "Dutch") == 0) {
+		player->attack     = 2;
+		player->defense    = 3;
+		player->max_health = 100;
+		player->con        = 3;
+	} else if(strcmp(player->race, "Elf") == 0) {
+		player->attack     = 5;
+		player->defense    = 1;
+		player->max_health = 125;
+		player->con        = 5;
+	} else if(strcmp(player->race, "Dwarf") == 0) {
+		player->attack     = 3;
+		player->defense    = 5;
+		player->max_health = 100;
+		player->con        = 2;
+	} else if(strcmp(player->race, "Halfling") == 0) {
+		player->attack     = 2;
+		player->defense    = 2;
+		player->max_health = 150;
+		player->con        = 2;
+	} else if(strcmp(player->race, "Quarterling") == 0) {
+		player->attack     = 1;
+		player->defense    = 1;
+		player->max_health = 175;
+		player->con        = 1;
+	}
+
+	player->health = player->max_health;
 
 	clear();
 	return player;
