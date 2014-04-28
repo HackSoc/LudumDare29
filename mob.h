@@ -72,5 +72,7 @@ void drop_items(struct Mob * mob, struct List ** items);
 void pickup_item(struct Mob * mob, struct Item * item);
 void pickup_items(struct Mob * mob, struct List ** items);
 void wield_item(struct Mob * mob, struct Item * item);
+void heal_mob(struct Mob * mob, unsigned int amount);
+void consume_item(struct Mob * mob, struct Item * item);
 
 #endif /*MOB_H*/

@@ -308,22 +308,7 @@ void player_turn(Mob * player) {
 		                           "Select some food to eat",
 		                           false);
 		if(item != NULL) {
-			/* If the food has an effect, otherwise heal (or hurt) the
-			   player as appropriate */
-			if(item->effect != NULL) {
-				item->effect(player);
-			} else {
-				if(item->value >= 0) {
-					player->health += item->value;
-					if(player->health > (int)player->max_health) {
-						player->health = player->max_health;
-					}
-				} else {
-					damage_mob(player, -item->value);
-				}
-			}
-			player->inventory = drop(&item->inventory);
-			xfree(item);
+			consume_item(player, item);
 		}
 		break;
 
@@ -333,20 +318,7 @@ void player_turn(Mob * player) {
 		                           "Select a drink",
 		                           false);
 		if(item != NULL) {
-			if(item->effect != NULL) {
-				item->effect(player);
-			} else {
-				if(item->value >= 0) {
-					player->health += item->value;
-					if(player->health > (int)player->max_health) {
-						player->health = player->max_health;
-					}
-				} else {
-					damage_mob(player, -item->value);
-				}
-			}
-			player->inventory = drop(&item->inventory);
-			xfree(item);
+			consume_item(player, item);
 		}
 		break;
 

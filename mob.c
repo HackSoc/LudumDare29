@@ -445,3 +445,38 @@ void wield_item(Mob * mob, Item * item) {
 		mob->luminosity ++;
 	}
 }
+
+/**
+ * Heal a mob, up to a maximum of mob->max_health.
+ * @param mob Mob to heal
+ * @param amount Amount to heal by
+ */
+void heal_mob(Mob * mob, unsigned int amount) {
+	mob->health += amount;
+
+	if((unsigned int)mob->health > mob->max_health) {
+		mob->health = mob->max_health;
+	}
+}
+
+/**
+ * Consume an edible item. This removes it from the inventory and frees it.
+ * @param mob The mob which is consuming
+ * @param item The item to consume.
+ */
+void consume_item(Mob * mob, Item * item) {
+	if(item->effect != NULL) {
+		/* Apply the effect if the item has one */
+		item->effect(mob);
+	} else {
+		/* Otherwise, heal or damage the mob */
+		if(item->value >= 0) {
+			heal_mob(mob, item->value);
+		} else {
+			damage_mob(mob, -item->value);
+		}
+	}
+
+	mob->inventory = drop(&item->inventory);
+	xfree(item);
+}
