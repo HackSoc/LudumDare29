@@ -9,6 +9,9 @@ struct Level;
 #include "utils.h"
 #include "list.h"
 
+/* should keep the same structure as default_mobs in mob.c */
+enum MobType { HEDGEHOG, SQUIRREL, NMOBTYPES };
+
 /**
  * A mob is something which roams around the world, they are tied to a
  * level, and all the mobs in one level form a doubly-linked
@@ -55,6 +58,7 @@ typedef struct Mob {
 	void * data; /**< Mob type specific data, eg PlayerData */
 } Mob;
 
+Mob * create_mob(enum MobType mobtype);
 bool move_mob(struct Mob * mob, unsigned int x, unsigned int y);
 bool move_mob_relative(struct Mob * mob, int xdiff, int ydiff);
 bool move_mob_level(Mob * mob, bool toprev);

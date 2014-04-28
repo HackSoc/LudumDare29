@@ -137,23 +137,27 @@ static void mine_level(Level * level,
 	}
 }
 
-#define DEF_MOB(sym, n, col, hlth) {.symbol = (sym), .colour = (col), .name = (n), \
-			.is_bold = false, .hostile = true, .health = (hlth), .max_health = (hlth), \
-			.level = NULL, .moblist = {.next = NULL, .prev=NULL}, .turn_action = NULL, \
-		    .xpos = 0, .ypos = 0, .score = 0, .darksight = true, .luminosity = 0}
-
-static const struct Mob default_mobs[] = {
-	DEF_MOB('H', "Hedgehog", COLOR_YELLOW, 5),
-	DEF_MOB('S', "Squirrel", COLOR_YELLOW, 10)
-};
-
-#undef DEF_MOB
+/**
+ * Add a mob to a level at the specified location.
+ * @param level The level to add to.
+ * @param mob The mob to add.
+ * @param x The x coordinate to add the mob at.
+ * @param y The y coordinate to add the mob at.
+ */
+static void add_mob(Level * level, Mob * mob, int x, int y) {
+	mob->level = level;
+	mob->xpos = x;
+	mob->ypos = y;
+	level->mobs = insert(level->mobs, &mob->moblist);
+	level->cells[x][y]->occupant = mob;
+}
 
 /**
- * Add a mob to a level.
+ * Add a mob to a level at a random location.
  * @param level The level to add to.
+ * @param mob The mob to add.
  */
-static void add_mob(Level * level) {
+static void add_mob_random(Level * level, Mob * mob) {
 	/* Try 20 times to get a random clear tile. */
 	int x, y;
 	bool found = false;
@@ -168,14 +172,7 @@ static void add_mob(Level * level) {
 	}
 	if (!found) return;
 
-	Mob * new = xalloc(Mob);
-	*new = default_mobs[rand() % lengthof(default_mobs)];
-	new->level = level;
-	new->turn_action = &simple_enemy_turn;
-	new->xpos = x;
-	new->ypos = y;
-	level->mobs = insert(level->mobs, &new->moblist);
-	level->cells[x][y]->occupant = new;
+	add_mob(level, mob, x, y);
 }
 
 /**
@@ -267,7 +264,7 @@ void build_level(Level * level) {
 
 	/* Arbitrary number of mobs */
 	for (int i = 0; i < 5; i++) {
-		add_mob(level);
+		add_mob_random(level, create_mob(rand() % NMOBTYPES));
 	}
 }
 

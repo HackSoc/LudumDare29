@@ -2,12 +2,37 @@
 #include <assert.h>
 #include <string.h>
 #include <math.h>
+#include <curses.h>
 
 #include "mob.h"
 #include "level.h"
 #include "utils.h"
 #include "effect.h"
 #include "player.h"
+
+#define DEF_MOB(sym, n, col, hlth, atk) {.symbol = (sym), .colour = (col), .name = (n), \
+			.is_bold = false, .hostile = true, .health = (hlth), .max_health = (hlth), \
+			.level = NULL, .moblist = {.next = NULL, .prev=NULL}, .turn_action = NULL, \
+																	   .xpos = 0, .ypos = 0, .score = 0, .darksight = true, .luminosity = 0, .attack = atk}
+/* should keep the same structure as MobType in mob.h */
+static const struct Mob default_mobs[] = {
+	DEF_MOB('H', "Hedgehog", COLOR_YELLOW, 5, 1),
+	DEF_MOB('S', "Squirrel", COLOR_YELLOW, 10, 2)
+};
+
+#undef DEF_MOB
+
+/**
+ * Create and return a mob of the specified type.
+ * @param mobtype The type of mob to make.
+ * @return The mob created.
+ */
+Mob * create_mob(enum MobType mobtype){
+	Mob * new = xalloc(Mob);
+	*new = default_mobs[mobtype];
+	new->turn_action = &simple_enemy_turn;
+	return new;
+}
 
 /**
  * Move the given mob to the new coordinates.
