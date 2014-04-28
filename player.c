@@ -120,14 +120,68 @@ static void apply_race(Mob * player) {
  * @param player The player
  */
 static void apply_profession(Mob * player) {
+	Item * weapon = xalloc(Item);
+	Item * armour = xalloc(Item);
+
+	weapon->type = WEAPON;
+	armour->type = ARMOUR;
+
 	if(strcmp(player->profession, "Miner") == 0) {
+		weapon->symbol = '/';
+		weapon->name = "Pickaxe";
+		weapon->can_dig = true;
+		weapon->value = 5;
+
+		armour->symbol = 'n';
+		armour->name   = "Mining Helmet";
 	} else if(strcmp(player->profession, "Attorney") == 0) {
+		weapon->symbol = 'v';
+		weapon->name   = "Book of Tax Code";
+		weapon->value  = 2;
+
+		armour->symbol = 'r';
+		armour->name   = "Law Suit";
 	} else if(strcmp(player->profession, "Clog Maker") == 0) {
+		weapon->symbol = 'c';
+		weapon->name   = "Clog";
+		weapon->value  = 2;
+
+		armour->symbol = 'y';
+		armour->name   = "Clogging Apron";
 	} else if(strcmp(player->profession, "Huntsman") == 0) {
+		weapon->symbol = '\'';
+		weapon->name   = "Hunting Knife";
+		weapon->value  = 8;
+
+		armour->symbol = 'h';
+		armour->name   = "Cloak";
 	} else if(strcmp(player->profession, "Chef") == 0) {
+		weapon->symbol = 'q';
+		weapon->name   = "Frying Pan";
+		weapon->value  = 6;
+
+		armour->symbol = 'y';
+		armour->name   = "Apron";
 	} else if(strcmp(player->profession, "Tourist") == 0) {
+		weapon->symbol = 'k';
+		weapon->name   = "Camera";
+		weapon->value  = 1;
+
+		armour->symbol = 't';
+		armour->name   = "Hawaiian Shirt";
 	} else if(strcmp(player->profession, "Dog") == 0) {
+		weapon->symbol = 'l';
+		weapon->name   = "Bone";
+		weapon->value  = 3;
+
+		armour->symbol = 'd';
+		armour->name   = "Fursuit";
 	}
+
+	armour->value  = 10 - weapon->value;
+
+	player->inventory = insert(player->inventory, &weapon->inventory);
+	player->inventory = insert(player->inventory, &armour->inventory);
 }
 
 /**
