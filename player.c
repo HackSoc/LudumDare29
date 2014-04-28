@@ -142,6 +142,7 @@ static void apply_profession(Mob * player) {
 
 		armour->symbol = 'r';
 		armour->name   = "Law Suit";
+		armour->fight_effect = &reflect_damage;
 	} else if(strcmp(player->profession, "Clog Maker") == 0) {
 		weapon->symbol = 'c';
 		weapon->name   = "Clog";

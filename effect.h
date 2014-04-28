@@ -8,5 +8,7 @@ void afflict(Mob * mob, void (*effect)(Mob *), int duration);
 void effect_poison(Mob * mob);
 void cure_poison(Mob * mob);
 void corpse_effect(Mob * mob);
-
+void reflect_damage(Mob * owner, Item * self,
+                    Mob * attacker, Mob * defender,
+                    unsigned int damage);
 #endif

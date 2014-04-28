@@ -33,6 +33,7 @@ typedef struct Item {
 	
 	int value; /**< Some type-dependent value */
 	void (*effect)(struct Mob *); /**< Some type-dependent effect */
+	void (*fight_effect)(struct Mob *, struct Item *, struct Mob *, struct Mob *, unsigned int); /**< Called if the item is an equipped weapon or piece of armour in a fight */
 } Item;
 
 void display_inventory(List * inventory, const char * title);

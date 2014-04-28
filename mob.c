@@ -106,7 +106,37 @@ void attack_mob(Mob * attacker, Mob * defender) {
 		            damage);
 	}
 
+	/* Damage the defender */
 	damage_mob(defender, (unsigned int) damage);
+
+	/* Call weapon/armour effects */
+	if(attacker->weapon != NULL &&
+	   attacker->weapon->fight_effect != NULL) {
+		attacker->weapon->fight_effect(attacker, attacker->weapon,
+		                               attacker, defender,
+		                               damage);
+	}
+
+	if(attacker->offhand != NULL &&
+	   attacker->offhand->fight_effect != NULL) {
+		attacker->offhand->fight_effect(attacker, attacker->offhand,
+		                                attacker, defender,
+		                                damage);
+	}
+
+	if(defender->armour != NULL &&
+	   defender->armour->fight_effect != NULL) {
+		defender->armour->fight_effect(defender, defender->armour,
+		                               attacker, defender,
+		                               damage);
+	}
+
+	if(defender->offhand != NULL &&
+	   defender->offhand->fight_effect != NULL) {
+		defender->offhand->fight_effect(defender, defender->offhand,
+		                                attacker, defender,
+		                                damage);
+	}
 }
 
 /**

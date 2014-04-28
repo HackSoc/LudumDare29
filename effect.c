@@ -1,3 +1,4 @@
+#include <assert.h>
 #include <stddef.h>
 #include <stdbool.h>
 #include <stdlib.h>
@@ -69,4 +70,36 @@ void corpse_effect(Mob * mob){
 		afflict(mob, effect_poison, duration);
 	}
 	heal_mob(mob, 4);
+}
+
+/**
+ * Armour which reflects damage. The defender is the owner of this
+ * item.
+ * @param owner The owner of this item (one of attacker or defender)
+ * @param self The item
+ * @param attacker The attacker
+ * @param defender The defender
+ * @param damage The damage inflicted upon the defender
+ */
+void reflect_damage(Mob * owner, Item * self,
+                    Mob * attacker, Mob * defender,
+                    unsigned int damage) {
+	assert(owner == defender);
+
+	unsigned int reflected = damage / 2;
+
+	if(reflected == 0) {
+		return;
+	}
+
+	damage_mob(attacker, reflected);
+
+	if(owner == attacker->level->player) {
+		status_push("Your %s reflected %d of the damage back!",
+		            self->name,
+		            reflected);
+	} else {
+		status_push("You got hit with %d reflected damage!",
+		            reflected);
+	}
 }
