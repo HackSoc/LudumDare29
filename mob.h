@@ -45,6 +45,7 @@ typedef struct Mob {
 	int score;        /**< The score of the mob (ignored for NPCs). */
 
 	unsigned int attack; /**< The unarmed attack strength of the mob. */
+	unsigned int defense; /**< The unarmoured defense strength of the mob. */
 
 	int health; /**< The current health, signed to prevent underflow. */
 	unsigned int max_health; /**< The maximum health. */

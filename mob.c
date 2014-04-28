@@ -80,7 +80,7 @@ bool move_mob_relative(Mob * mob, int xdiff, int ydiff) {
  * @param defender The mob being attacked.
  */
 void attack_mob(Mob * attacker, Mob * defender) {
-	int damage = attacker->attack;
+	int damage = attacker->attack - defender->defense;
 
 	if(attacker->weapon != NULL) {
 		damage += 1 + rand() % attacker->weapon->value;
