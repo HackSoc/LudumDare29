@@ -265,7 +265,7 @@ void build_level(Level * level) {
 
 	/* Arbitrary number of mobs */
 	for (int i = 0; i < 5; i++) {
-		add_mob_random(level, create_mob(rand() % NMOBTYPES));
+		add_mob_random(level, create_mob(rand() % NUM_MOB_TYPES));
 	}
 }
 

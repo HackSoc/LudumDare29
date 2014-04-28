@@ -10,7 +10,7 @@ struct Level;
 #include "list.h"
 
 /* should keep the same structure as default_mobs in mob.c */
-enum MobType { HEDGEHOG, SQUIRREL, NMOBTYPES };
+enum MobType { HEDGEHOG, SQUIRREL, ORC, NUM_MOB_TYPES };
 
 /**
  * A mob is something which roams around the world, they are tied to a

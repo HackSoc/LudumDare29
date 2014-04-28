@@ -17,7 +17,8 @@
 /* should keep the same structure as MobType in mob.h */
 static const struct Mob default_mobs[] = {
 	DEF_MOB('H', "Hedgehog", COLOR_YELLOW, 5, 1),
-	DEF_MOB('S', "Squirrel", COLOR_YELLOW, 10, 2)
+	DEF_MOB('S', "Squirrel", COLOR_YELLOW, 10, 2),
+	DEF_MOB('o', "Orc", COLOR_YELLOW, 15, 2)
 };
 
 #undef DEF_MOB
@@ -31,6 +32,17 @@ Mob * create_mob(enum MobType mobtype){
 	Mob * new = xalloc(Mob);
 	*new = default_mobs[mobtype];
 	new->turn_action = &simple_enemy_turn;
+	
+	if (mobtype == ORC){
+		Item * sword = xalloc(Item);
+		sword->symbol = '/';
+		sword->name = "An Orcish Sword";
+		sword->type = WEAPON;
+		sword->value = 5;
+		new->inventory = insert(new->inventory, &sword->inventory);
+		wield_item(new, sword);
+	}
+
 	return new;
 }
 
@@ -255,7 +267,7 @@ void simple_enemy_turn(Mob * enemy) {
 
 	/* If adjacent to the player, damage them */
 	if((abs(xdiff) == 1 && ydiff == 0) || (xdiff == 0 && abs(ydiff) == 1)) {
-		damage_mob(player, 2);
+		attack_mob(enemy, player);
 		return;
 	}
 
