@@ -19,7 +19,7 @@ static const char ** inventory_name_array(List * inventory) {
 	unsigned int i = 0;
 	for(List * list = inventory; list != NULL; list = list->next) {
 		Item * theitem = fromlist(Item, inventory, list);
-		out[i] = xalloc(strlen(theitem->name) + 7 + 1);
+		out[i] = xcalloc(strlen(theitem->name) + 7 + 1, char);
 		snprintf(out[i], strlen(theitem->name) + 7 + 1,
 		         "%s [x%03i]", theitem->name, theitem->count);
 		i ++;
