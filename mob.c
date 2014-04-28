@@ -39,7 +39,7 @@ Mob * create_mob(enum MobType mobtype){
 		Item * sword = xalloc(Item);
 
 		sword->symbol = '/';
-		sword->name = "An Orcish Sword";
+		sword->name = "Orcish Sword";
 		sword->type = WEAPON;
 		sword->value = 5;
 		new->inventory = insert(new->inventory, &sword->inventory);

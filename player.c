@@ -99,15 +99,15 @@ Mob * create_player() {
 
 	Item * stone = xalloc(Item);
 	stone->symbol = '*';
-	stone->name = "A Stone";
+	stone->name = "Stone";
 
 	Item * coin = xalloc(Item);
 	coin->symbol = '$';
-	coin->name = "A Coin";
+	coin->name = "Coin";
 
 	Item * sword = xalloc(Item);
 	sword->symbol = '/';
-	sword->name = "A Sword";
+	sword->name = "Sword";
 	sword->type = WEAPON;
 	sword->value = 10;
 
