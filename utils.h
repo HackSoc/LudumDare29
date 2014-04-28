@@ -36,5 +36,6 @@ const void * random_choice(const void * choices[]);
 void show_help();
 void * _xalloc(size_t size);
 void _xfree(void ** ptr);
+int biased_rand(int max);
 
 #endif

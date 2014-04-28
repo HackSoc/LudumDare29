@@ -270,7 +270,7 @@ void build_level(Level * level) {
 
 	HunterState ** hunterstate = xcalloc(available_mobs, HunterState *);
 	for (int i = 0; i < 5; i++) {
-		enum EnemyType mobtype = (enum EnemyType) (rand() % available_mobs);
+		enum EnemyType mobtype = (enum EnemyType) biased_rand(available_mobs);
 		Mob * mob = create_enemy(mobtype);
 
 		add_mob_random(level, mob);
