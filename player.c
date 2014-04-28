@@ -186,149 +186,165 @@ void player_turn(Mob * player) {
 	List ** items;
 	Item * item;
 	Cell * current_cell = player->level->cells[player->xpos][player->ypos];
-
-	display_level(player->level);
+	bool done = false;
 
 	bool move = false;
 	int xdiff = 0;
 	int ydiff = 0;
-	int ch = getch();
-	switch (ch) {
-		/* Movement in a level */
-	case 'k':
-	case '8':
-	case KEY_UP:
-		move = true;
-		xdiff =  0; ydiff = -1;
-		break;
-	case 'j':
-	case '2':
-	case KEY_DOWN:
-		move = true;
-		xdiff =  0; ydiff =  1;
-		break;
-	case 'h':
-	case '4':
-	case KEY_LEFT:
-		move = true;
-		xdiff = -1; ydiff =  0;
-		break;
 
-	case 'l':
-	case '6':
-	case KEY_RIGHT:
-		move = true;
-		xdiff =  1; ydiff =  0;
-		break;
+	while(!done && !quit) {
+		display_level(player->level);
 
-	case 'y':
-	case '7':
-		move = true;
-		xdiff = -1; ydiff = -1;
-		break;
+		int ch = getch();
+		switch (ch) {
+			/* Movement in a level */
+		case 'k':
+		case '8':
+		case KEY_UP:
+			move = true;
+			done = true;
+			xdiff =  0; ydiff = -1;
+			break;
 
-	case 'u':
-	case '9':
-		move = true;
-		xdiff =  1; ydiff = -1;
-		break;
+		case 'j':
+		case '2':
+		case KEY_DOWN:
+			move = true;
+			done = true;
+			xdiff =  0; ydiff =  1;
+			break;
 
-	case 'n':
-	case '3':
-		move = true;
-		xdiff =  1; ydiff =  1;
-		break;
+		case 'h':
+		case '4':
+		case KEY_LEFT:
+			move = true;
+			done = true;
+			xdiff = -1; ydiff =  0;
+			break;
 
-	case 'b':
-	case '1':
-		move = true;
-		xdiff = -1; ydiff =  1;
-		break;
+		case 'l':
+		case '6':
+		case KEY_RIGHT:
+			move = true;
+			done = true;
+			xdiff =  1; ydiff =  0;
+			break;
+
+		case 'y':
+		case '7':
+			move = true;
+			done = true;
+			xdiff = -1; ydiff = -1;
+			break;
+
+		case 'u':
+		case '9':
+			move = true;
+			done = true;
+			xdiff =  1; ydiff = -1;
+			break;
+
+		case 'n':
+		case '3':
+			move = true;
+			done = true;
+			xdiff =  1; ydiff =  1;
+			break;
+
+		case 'b':
+		case '1':
+			move = true;
+			done = true;
+			xdiff = -1; ydiff =  1;
+			break;
 
 		/* Movement between levels */
-	case '>':
-		if (player->level->cells[player->xpos][player->ypos]->baseSymbol == '>'){
-			move_mob_level(player, false);
-		}
-		break;
+		case '>':
+			if (current_cell->baseSymbol == '>'){
+				move_mob_level(player, false);
+			}
+			done = true;
+			break;
 
-	case '<':
-		if (player->level->cells[player->xpos][player->ypos]->baseSymbol == '<'){
-			move_mob_level(player, true);
-		}
-		break;
+		case '<':
+			if (current_cell->baseSymbol == '<'){
+				move_mob_level(player, true);
+			}
+			done = true;
+			break;
 
-		/* Inventory management */
-	case 'i':
-		display_inventory(player->inventory, "Inventory Contents:");
-		break;
+			/* Inventory management */
+		case 'i':
+			display_inventory(player->inventory, "Inventory Contents:");
+			break;
 
-	case 'd':
-		items = choose_items(player->inventory, "Select items to drop:");
-		drop_items(player, items);
-		xfree(items);
-		break;
+		case 'd':
+			items = choose_items(player->inventory, "Select items to drop:");
+			drop_items(player, items);
+			xfree(items);
+			break;
 
-	case ',':
-		items = choose_items(current_cell->items, "Select items to pick up:");
-		pickup_items(player, items);
-		xfree(items);
-		break;
+		case ',':
+			items = choose_items(current_cell->items, "Select items to pick up:");
+			pickup_items(player, items);
+			xfree(items);
+			break;
 
-	case 'w':
-		item = choose_item_by_type(player->inventory,
-		                           WEAPON,
-		                           "Select a weapon to equip",
-		                           true);
-		if(item != NULL) {
-			wield_item(player, item);
-		}
-		break;
+		case 'w':
+			item = choose_item_by_type(player->inventory,
+			                           WEAPON,
+			                           "Select a weapon to equip",
+			                           true);
+			if(item != NULL) {
+				wield_item(player, item);
+			}
+			break;
 
-	case 'x':
-		item = player->weapon;
-		player->weapon = player->offhand;
-		player->offhand = item;
-		break;
+		case 'x':
+			item = player->weapon;
+			player->weapon = player->offhand;
+			player->offhand = item;
+			break;
 
-	case 'W':
-		item = choose_item_by_type(player->inventory,
-		                           ARMOUR,
-		                           "Select some armour to wear",
-		                           false);
-		if(item != NULL) {
-			wield_item(player, item);
-		}
-		break;
+		case 'W':
+			item = choose_item_by_type(player->inventory,
+			                           ARMOUR,
+			                           "Select some armour to wear",
+			                           false);
+			if(item != NULL) {
+				wield_item(player, item);
+			}
+			break;
 
 		/* Food and drink */
-	case 'e':
-		item = choose_item_by_type(player->inventory,
-		                           FOOD,
-		                           "Select some food to eat",
-		                           false);
-		if(item != NULL) {
-			consume_item(player, item);
-		}
-		break;
+		case 'e':
+			item = choose_item_by_type(player->inventory,
+			                           FOOD,
+			                           "Select some food to eat",
+			                           false);
+			if(item != NULL) {
+				consume_item(player, item);
+			}
+			break;
 
-	case 'q':
-		item = choose_item_by_type(player->inventory,
-		                           DRINK,
-		                           "Select a drink",
-		                           false);
-		if(item != NULL) {
-			consume_item(player, item);
-		}
-		break;
+		case 'q':
+			item = choose_item_by_type(player->inventory,
+			                           DRINK,
+			                           "Select a drink",
+			                           false);
+			if(item != NULL) {
+				consume_item(player, item);
+			}
+			break;
 
 		/* Misc */
-	case '?':
-		show_help();
-		break;
+		case '?':
+			show_help();
+			break;
 
-	default:
-		break;
+		default:
+			break;
+		}
 	}
 
 	if (move && attackmove_relative(player, xdiff, ydiff)) {
