@@ -56,6 +56,9 @@ typedef struct Mob {
 	bool darksight; /**< Whether the mob can see in the dark or not. */
 	unsigned int luminosity; /**< Number of light sources the mob is holding. */
 
+	unsigned int min_depth; /**< The minimum depth for the mob to appear at,
+	                         * ignored for the player */
+
 	void * data; /**< Mob type specific data, eg PlayerData */
 } Mob;
 

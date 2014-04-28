@@ -12,7 +12,7 @@
 #include "status.h"
 #include "enemy.h"
 
-#define DEF_MOB(sym, n, col, hlth, atk, cn) {\
+#define DEF_MOB(sym, n, col, hlth, atk, cn, dep) {	  \
 		.symbol = (sym), .colour = (col), .name = (n), .is_bold = false,\
 		.hostile = true,\
 		.health = (hlth), .max_health = (hlth), .con = (cn), .attack = atk, \
@@ -20,14 +20,16 @@
         .moblist = {.next = NULL, .prev=NULL},\
         .turn_action = NULL,\
 		.score = 0,\
-        .darksight = true, .luminosity = 0}
-/* should keep the same structure as MobType in mob.h */
-static const struct Mob default_mobs[] = {
-	DEF_MOB('H', "Hedgehog", COLOR_YELLOW, 5, 1, 0),
-	DEF_MOB('S', "Squirrel", COLOR_YELLOW, 10, 2, 0),
-	DEF_MOB('o', "Orc", COLOR_YELLOW, 15, 2, 7),
-	/* pack mobs come after here */
-	DEF_MOB('W', "Wolfman", COLOR_YELLOW, 25, 10, 10),
+	    .darksight = true, .luminosity = 0,\
+	    .min_depth = (dep)}
+
+/* should keep the same structure as MobType in mob.h.
+ * should also be ordered by dep. */
+const struct Mob default_mobs[] = {
+	DEF_MOB('H', "Hedgehog", COLOR_YELLOW, 5, 1, 0, 0),
+	DEF_MOB('S', "Squirrel", COLOR_YELLOW, 10, 2, 0, 0),
+	DEF_MOB('o', "Orc", COLOR_YELLOW, 15, 2, 7, 2),
+	DEF_MOB('W', "Wolfman", COLOR_YELLOW, 25, 10, 10, 10),
 };
 
 #undef DEF_MOB
@@ -348,9 +350,9 @@ bool move_mob_level(Mob * mob, bool toprev) {
 		if (level->levels.next == NULL) {
 			/* no next level so make one */
 			Level * nextlevel = xalloc(Level);
+			nextlevel->depth = level->depth + 1;
 			build_level(nextlevel);
 			nextlevel->levels.prev = &level->levels;
-			nextlevel->depth = level->depth + 1;
 			level->levels.next = &nextlevel->levels;
 			/* Assumes only the player can create levels */
 			mob->score += 25; // arbitrary value
