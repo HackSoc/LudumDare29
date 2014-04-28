@@ -101,11 +101,11 @@ void attack_mob(Mob * attacker, Mob * defender) {
 	int damage = attacker->attack;
 
 	if(attacker->weapon != NULL) {
-		damage += attacker->weapon->value;
+		damage += rand() % attacker->weapon->value;
 	}
 
 	if(defender->armour != NULL) {
-		damage -= defender->armour->value;
+		damage -= rand() % defender->armour->value;
 	}
 
 	/* Can always do at least 1 damage */
