@@ -287,6 +287,14 @@ void build_level(Level * level) {
 			mob->data = hunterstate[mobtype];
 			mob2->data = hunterstate[mobtype];
 		}
+
+		/* chasers are like hunters, but they don't share the state - so
+		 * it's just a memory of the player. */
+		if(mobtype == FALLEN_ANGEL /* || mobtype == ... */) {
+			HunterState * state = xalloc(HunterState);
+			state->refcount = 1;
+			mob->data = state;
+		}
 	}
 	xfree(hunterstate);
 
