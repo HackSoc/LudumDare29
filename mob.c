@@ -74,6 +74,9 @@ bool move_mob(Mob * mob, unsigned int x, unsigned int y) {
 	/* Check for poison water - this should not be in move, but it
 	   works for now. */
 	if(target->baseSymbol == '~' && mob->effect_action != &effect_poison) {
+		if(mob == mob->level->player) {
+			status_push("You have been poisoned!");
+		}
 		afflict(mob, &effect_poison, 5);
 	}
 

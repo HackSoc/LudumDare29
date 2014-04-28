@@ -277,6 +277,10 @@ void do_affliction(Mob * mob) {
 	if(!is_afflicted(mob)) return;
 
 	if(mob->effect_duration == 0) {
+		if(mob == mob->level->player) {
+			status_push("The effect wears off.");
+		}
+
 		mob->effect_action = NULL;
 		return;
 	} else if(mob->effect_duration > 0) {

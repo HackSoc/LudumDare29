@@ -3,6 +3,7 @@
 
 #include "mob.h"
 #include "effect.h"
+#include "status.h"
 
 /**
  * Check if a mob is suffering from an effect or not
@@ -29,6 +30,9 @@ void afflict(Mob * mob, void (*effect)(Mob *), int duration) {
  * @param mob The mob which is poisoned.
  */
 void effect_poison(Mob * mob) {
+	if(mob == mob->level->player) {
+		status_push("The poison damages you!");
+	}
 	damage_mob(mob, 1);
 }
 
@@ -38,6 +42,9 @@ void effect_poison(Mob * mob) {
  */
 void cure_poison(Mob * mob) {
 	if(mob->effect_action == &effect_poison) {
+		if(mob == mob->level->player) {
+			status_push("You have been cured of poison.");
+		}
 		mob->effect_action = NULL;
 		mob->effect_duration = 0;
 	}
