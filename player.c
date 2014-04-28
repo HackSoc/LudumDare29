@@ -76,71 +76,10 @@ static void design_player(Mob * player) {
 }
 
 /**
- * Create and return a new player. This prompts the user for stuff,
- * and clears the screen when it is done.
+ * Apply race stats to the player.
+ * @param player The player
  */
-Mob * create_player() {
-	Mob * player = xalloc(Mob);
-	player->symbol = '@';
-	player->colour = COLOR_WHITE;
-	player->is_bold = true;
-	player->hostile = false;
-	player->turn_action = &player_turn;
-	player->death_action = &player_death;
-	player->score = 0;
-	player->darksight = false;
-
-	/* Initialise the terrain knowledge to nothing */
-	PlayerData * playerdata = xalloc(PlayerData);
-	player->data = (void *)playerdata;
-	playerdata->terrain = xalloc(Terrain);
-	memset(playerdata->terrain->symbols, ' ', LEVELWIDTH * LEVELHEIGHT);
-
-	Item * sword = xalloc(Item);
-	sword->symbol = '/';
-	sword->name = "Sword";
-	sword->type = WEAPON;
-	sword->value = 10;
-
-	Item * lantern = xalloc(Item);
-	lantern->symbol = '^';
-	lantern->name = "Lantern";
-	lantern->type = WEAPON;
-	lantern->luminous = true;
-	lantern->value = 1;
-
-	Item * potion = xalloc(Item);
-	potion->symbol = '-';
-	potion->name = "Potion of Cure Poison";
-	potion->type = DRINK;
-	potion->effect = &cure_poison;
-   
-	Item * pickaxe = xalloc(Item);
-	pickaxe->symbol = '/';
-	pickaxe->name = "Pickaxe";
-	pickaxe->type = WEAPON;
-	pickaxe->can_dig = true;
-	pickaxe->value = 5;
-
-	player->inventory = insert(player->inventory, &sword->inventory);
-	player->inventory = insert(player->inventory, &lantern->inventory);
-	player->inventory = insert(player->inventory, &potion->inventory);
-	player->inventory = insert(player->inventory, &pickaxe->inventory);
-
-	clear();
-	mvaddprintf(9, 10, "Do you want to randomly generate your player? ");
-	while(true) {
-		int choice = getch();
-		if(choice == 'y' || choice == 'Y') {
-			randomise_player(player);
-			break;
-		} else if(choice == 'n' || choice == 'N') {
-			design_player(player);
-			break;
-		}
-	}
-
-	/* Assign race stats */
+static void apply_race(Mob * player) {
 	if(strcmp(player->race, "Human") == 0) {
 		player->attack     = 3;
 		player->defense    = 2;
@@ -174,6 +113,74 @@ Mob * create_player() {
 	}
 
 	player->health = player->max_health;
+}
+
+/**
+ * Apply profession stats to the player.
+ * @param player The player
+ */
+static void apply_profession(Mob * player) {
+	if(strcmp(player->profession, "Miner") == 0) {
+	} else if(strcmp(player->profession, "Attorney") == 0) {
+	} else if(strcmp(player->profession, "Clog Maker") == 0) {
+	} else if(strcmp(player->profession, "Huntsman") == 0) {
+	} else if(strcmp(player->profession, "Chef") == 0) {
+	} else if(strcmp(player->profession, "Tourist") == 0) {
+	} else if(strcmp(player->profession, "Dog") == 0) {
+	}
+}
+
+/**
+ * Create and return a new player. This prompts the user for stuff,
+ * and clears the screen when it is done.
+ */
+Mob * create_player() {
+	Mob * player = xalloc(Mob);
+	player->symbol = '@';
+	player->colour = COLOR_WHITE;
+	player->is_bold = true;
+	player->turn_action = &player_turn;
+	player->death_action = &player_death;
+
+	/* Initialise the terrain knowledge to nothing */
+	PlayerData * playerdata = xalloc(PlayerData);
+	player->data = (void *)playerdata;
+	playerdata->terrain = xalloc(Terrain);
+	memset(playerdata->terrain->symbols, ' ', LEVELWIDTH * LEVELHEIGHT);
+
+	/* Starting items for all races/professions */
+	Item * lantern = xalloc(Item);
+	lantern->symbol = '^';
+	lantern->name = "Lantern";
+	lantern->type = WEAPON;
+	lantern->luminous = true;
+	lantern->value = 1;
+
+	Item * potion = xalloc(Item);
+	potion->symbol = '-';
+	potion->name = "Potion of Cure Poison";
+	potion->type = DRINK;
+	potion->effect = &cure_poison;
+
+	player->inventory = insert(player->inventory, &lantern->inventory);
+	player->inventory = insert(player->inventory, &potion->inventory);
+
+	/* Pick the name, race, and profession */
+	clear();
+	mvaddprintf(9, 10, "Do you want to randomly generate your player? ");
+	while(true) {
+		int choice = getch();
+		if(choice == 'y' || choice == 'Y') {
+			randomise_player(player);
+			break;
+		} else if(choice == 'n' || choice == 'N') {
+			design_player(player);
+			break;
+		}
+	}
+
+	apply_race(player);
+	apply_profession(player);
 
 	clear();
 	return player;
