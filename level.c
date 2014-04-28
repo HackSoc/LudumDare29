@@ -267,12 +267,12 @@ void build_level(Level * level) {
 	    default_enemies[available_mobs].min_depth <= level->depth &&
 		    available_mobs < NUM_ENEMY_TYPES;
 	    available_mobs ++);
-	
+
 	HunterState ** hunterstate = xcalloc(available_mobs, HunterState *);
 	for (int i = 0; i < 5; i++) {
 		enum EnemyType mobtype = (enum EnemyType) (rand() % available_mobs);
 		Mob * mob = create_enemy(mobtype);
-		
+
 		add_mob_random(level, mob);
 
 		/* 1. share hunter state
@@ -303,7 +303,8 @@ void build_level(Level * level) {
 		Item * item = xalloc(Item);
 		int x = 1 + (rand() % (LEVELWIDTH-2));
 		int y = 1 + (rand() % (LEVELHEIGHT-2));
-			
+
+		item->count = 1;
 		item->symbol = '$';
 		item->name = "Gold";
 		item->type = VALUABLE;
@@ -314,6 +315,7 @@ void build_level(Level * level) {
 	/* add a regular item for the player to find */
 	{
 		Item * item = xalloc(Item);
+		item->count = 1;
 		int x = 1 + (rand() % (LEVELWIDTH-2));
 		int y = 1 + (rand() % (LEVELHEIGHT-2));
 		switch (rand() % 10) {
@@ -342,7 +344,7 @@ void build_level(Level * level) {
 		Item * item = xalloc(Item);
 		int x = 1 + (rand() % (LEVELWIDTH-2));
 		int y = 1 + (rand() % (LEVELHEIGHT-2));
-	   
+
 		switch (rand() % 10) {
 		case 0: case 1: case 2:
 			item->symbol = '/';
@@ -380,7 +382,7 @@ void build_level(Level * level) {
 					item->value = 10;
 				}
 				break;
-			case 5: case 6: case 7: 
+			case 5: case 6: case 7:
 				if (level->depth > 5) {
 					item->symbol = ']';
 					item->name = "Chain Mail";

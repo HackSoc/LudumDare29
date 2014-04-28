@@ -60,6 +60,9 @@ void display_inventory(List * inventory, const char * title) {
 	            title, NULL,
 	            false, false,
 	            names, NULL);
+	for (int i = 0; names[i] != NULL; i++) {
+		xfree(names[i]);
+	}
 	xfree(names);
 }
 
@@ -75,8 +78,8 @@ List ** choose_items(List * inventory, const char * prompt){
 	                                   prompt, prompt,
 	                                   true, true,
 	                                   names, (const void **)items);
-	for (char * name = (char *)names; name != NULL; name++) {
-		xfree(name);
+	for (int i = 0; names[i] != NULL; i++) {
+		xfree(names[i]);
 	}
 	xfree(names);
 	xfree(items);

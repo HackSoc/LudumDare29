@@ -43,20 +43,22 @@ Mob * create_enemy(enum EnemyType mobtype){
 	*new = default_enemies[mobtype];
 	new->turn_action = &simple_enemy_turn;
 	new->death_action = &drop_corpse;
-	
+
 	if (mobtype == ORC){
 		Item * sword = xalloc(Item);
 
+		sword->count = 1;
 		sword->symbol = '/';
 		sword->name = "Orcish Sword";
 		sword->type = WEAPON;
 		sword->value = 5;
 		new->inventory = insert(new->inventory, &sword->inventory);
 		wield_item(new, sword);
-		
+
 		if (rand() % 2) {
 			Item * food = xalloc(Item);
 
+			food->count =1;
 			food->symbol = '%';
 			food->name = "Food Ration";
 			food->type = FOOD;
@@ -69,6 +71,7 @@ Mob * create_enemy(enum EnemyType mobtype){
 
 		Item * food = xalloc(Item);
 
+		food->count = 1;
 		food->symbol = '%';
 		food->name = "Nourishing Food Ration";
 		food->type = FOOD;
@@ -77,6 +80,7 @@ Mob * create_enemy(enum EnemyType mobtype){
 	} else if(mobtype == FALLEN_ANGEL) {
 		Item * sword = xalloc(Item);
 
+		sword->count = 1;
 		sword->symbol = '/';
 		sword->name = "Flaming Sword of Fire";
 		sword->type = WEAPON;
@@ -87,6 +91,7 @@ Mob * create_enemy(enum EnemyType mobtype){
 
 		Item * food = xalloc(Item);
 
+		food->count = 1;
 		food->symbol = '%';
 		food->name = "Manna";
 		food->type = FOOD;
@@ -211,7 +216,7 @@ void hunter_turn(Mob * enemy) {
 
 	int xdiff = enemy->xpos - player->xpos;
 	int ydiff = enemy->ypos - player->ypos;
-   
+
 	/* If (diagonally) adjacent to the player, damage them */
 	if((abs(xdiff) == 1 && ydiff == 0)
 	   || (xdiff == 0 && abs(ydiff) == 1)

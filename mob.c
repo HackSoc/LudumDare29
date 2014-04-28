@@ -299,13 +299,22 @@ bool can_see_other(Mob * moba, Mob * mobb) {
  * @param mob The mob whose corpse should be dropped
  */
 void drop_corpse(struct Mob * mob) {
-	Item * corpse = xalloc(Item);
 	Cell * cell = mob->level->cells[mob->xpos][mob->ypos];
+	/* Make sure we actually need to create a new corpse */
+	for (List * it = cell->items; it != NULL; it = it->next) {
+		Item * tmp = fromlist(Item, inventory, it);
+		if (tmp->value == 4) {
+			tmp->count++;
+			return;
+		}
+	}
+	Item * corpse = xalloc(Item);
 	corpse->type = FOOD;
 	corpse->value = 4;
 	corpse->symbol = '%';
+	corpse->count = 1;
 	size_t len = strlen(mob->name) + strlen(" Corpse") + 1;
-	corpse->name = xalloc(len);
+	corpse->name = xcalloc(len, char);
 	snprintf(corpse->name, len, "%s%s", mob->name, " Corpse");
 	corpse->effect = &corpse_effect;
 
@@ -448,7 +457,7 @@ void pickup_item(Mob * mob, Item * item) {
 	for (List * it = mob->inventory; it != NULL; it = it->next) {
 		Item * tmp = fromlist(Item, inventory, it);
 		if (strcmp(tmp->name, item->name) == 0) {
-			tmp->count++;
+			tmp->count += item->count;
 			xfree(item);
 			return;
 		}
