@@ -165,7 +165,9 @@ Mob * kill_mob(Mob * mob) {
 	level->mobs = drop(&mob->moblist);
 
 	/* Drop its items */
-	cell->items = append(cell->items, mob->inventory);
+	if(mob->inventory != NULL) {
+		cell->items = append(cell->items, mob->inventory);
+	}
 
 	/* Free it */
 	xfree(mob);
