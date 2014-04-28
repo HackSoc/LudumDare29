@@ -109,7 +109,17 @@ void attack_mob(Mob * attacker, Mob * defender) {
 
 	/* Update the status */
 	if(attacker == attacker->level->player) {
-		status_push("You attack the %s for %d damage.",
+		const char * messages[] = {
+			"You attack the %s for %d damage.",
+			"You attack the %s for %d damage.",
+			"You attack the %s for %d damage.",
+			"You hit the %s for %d damage.",
+			"You hit the %s for %d damage.",
+			"You cleave the %s in twain for %d damage.",
+			NULL
+		};
+			
+		status_push((const char *)random_choice((const void **)messages),
 		            defender->name,
 		            damage);
 	} else {
