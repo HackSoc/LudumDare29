@@ -283,12 +283,25 @@ void player_turn(Mob * player) {
 
 		case 'd':
 			items = choose_items(player->inventory, "Select items to drop:");
+
+			/* Update the status */
+			for(unsigned int i = 0; items[i] != NULL; i++) {
+				Item * item = fromlist(Item, inventory, items[i]);
+				status_push("You drop the %s.", item->name);
+			}
+
 			drop_items(player, items);
 			xfree(items);
 			break;
 
 		case ',':
 			items = choose_items(current_cell->items, "Select items to pick up:");
+
+			for(unsigned int i = 0; items[i] != NULL; i++) {
+				Item * item = fromlist(Item, inventory, items[i]);
+				status_push("You pick up the %s.", item->name);
+			}
+
 			pickup_items(player, items);
 			xfree(items);
 			break;
@@ -299,6 +312,7 @@ void player_turn(Mob * player) {
 			                           "Select a weapon to equip",
 			                           true);
 			if(item != NULL) {
+				status_push("You wield the %s.", item->name);
 				wield_item(player, item);
 			}
 			break;
@@ -307,6 +321,19 @@ void player_turn(Mob * player) {
 			item = player->weapon;
 			player->weapon = player->offhand;
 			player->offhand = item;
+
+			if(player->weapon != NULL && player->offhand != NULL) {
+				status_push("You hold a %s and a %s.",
+				            player->weapon->name,
+				            player->offhand->name);
+			} else if(player->weapon != NULL) {
+				status_push("You hold a %s.",
+				            player->weapon->name);
+			} else if(player->offhand != NULL) {
+				status_push("You hold a %s in your off-hand.",
+				            player->offhand->name);
+			}
+
 			break;
 
 		case 'W':
@@ -315,6 +342,7 @@ void player_turn(Mob * player) {
 			                           "Select some armour to wear",
 			                           false);
 			if(item != NULL) {
+				status_push("You put on the %s.", item->name);
 				wield_item(player, item);
 			}
 			break;
@@ -326,6 +354,7 @@ void player_turn(Mob * player) {
 			                           "Select some food to eat",
 			                           false);
 			if(item != NULL) {
+				status_push("You eat the %s.", item->name);
 				consume_item(player, item);
 			}
 			break;
@@ -336,6 +365,7 @@ void player_turn(Mob * player) {
 			                           "Select a drink",
 			                           false);
 			if(item != NULL) {
+				status_push("You quaff the %s.", item->name);
 				consume_item(player, item);
 			}
 			break;
