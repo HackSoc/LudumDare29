@@ -8,6 +8,7 @@
 #include "player.h"
 #include "effect.h"
 #include "status.h"
+#include "list.h"
 
 const char * names[] = {"Colin",
                         NULL};
@@ -105,6 +106,8 @@ Mob * create_player() {
 	Item * coin = xalloc(Item);
 	coin->symbol = '$';
 	coin->name = "Coin";
+	coin->type = VALUABLE;
+	coin->value = 10;
 
 	Item * sword = xalloc(Item);
 	sword->symbol = '/';
@@ -400,6 +403,13 @@ void player_turn(Mob * player) {
  */
 void player_death(Mob * player) {
 	clear();
+
+	for(List * list = player->inventory; list != NULL; list = list->next) {
+		Item * item = fromlist(Item, inventory, list);
+		if (item->type == VALUABLE) {
+			player->score += item->value;
+		}
+	}
 
 	/* Free ALL the things! */
 	PlayerData * playerdata = (PlayerData *)player->data;

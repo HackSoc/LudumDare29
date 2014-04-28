@@ -10,7 +10,7 @@ struct Mob;
 /**
  * Used to determine the type of an item
  */
-enum ItemType { NONE, WEAPON, ARMOUR, FOOD, DRINK };
+enum ItemType { NONE, WEAPON, ARMOUR, FOOD, DRINK, VALUABLE };
 
 /**
  * Items are things that mobs can carry around, and possibly
