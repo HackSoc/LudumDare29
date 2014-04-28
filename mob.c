@@ -9,6 +9,7 @@
 #include "utils.h"
 #include "effect.h"
 #include "player.h"
+#include "status.h"
 
 #define DEF_MOB(sym, n, col, hlth, atk) {.symbol = (sym), .colour = (col), .name = (n), \
 			.is_bold = false, .hostile = true, .health = (hlth), .max_health = (hlth), \
@@ -110,6 +111,17 @@ void attack_mob(Mob * attacker, Mob * defender) {
 	/* Can always do at least 1 damage */
 	if(damage < 1) {
 		damage = 1;
+	}
+
+	/* Update the status */
+	if(attacker == attacker->level->player) {
+		status_push("You attack the %s for %d damage.",
+		            defender->name,
+		            damage);
+	} else {
+		status_push("The %s attacks you for %d damage!",
+		            attacker->name,
+		            damage);
 	}
 
 	damage_mob(defender, (unsigned int) damage);
