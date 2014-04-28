@@ -12,74 +12,6 @@
 #include "status.h"
 #include "enemy.h"
 
-#define DEF_MOB(sym, n, col, hlth, atk, cn, dep) {	  \
-		.symbol = (sym), .colour = (col), .name = (n), .is_bold = false,\
-		.hostile = true,\
-		.health = (hlth), .max_health = (hlth), .con = (cn), .attack = atk, \
-		.level = NULL, .xpos = 0, .ypos = 0,\
-        .moblist = {.next = NULL, .prev=NULL},\
-        .turn_action = NULL,\
-		.score = 0,\
-	    .darksight = true, .luminosity = 0,\
-	    .min_depth = (dep)}
-
-/* should keep the same structure as MobType in mob.h.
- * should also be ordered by dep. */
-const struct Mob default_mobs[] = {
-	DEF_MOB('H', "Hedgehog", COLOR_YELLOW, 5, 1, 0, 0),
-	DEF_MOB('S', "Squirrel", COLOR_YELLOW, 10, 2, 0, 0),
-	DEF_MOB('o', "Orc", COLOR_YELLOW, 15, 2, 7, 2),
-	DEF_MOB('W', "Wolfman", COLOR_YELLOW, 25, 10, 10, 10),
-};
-
-#undef DEF_MOB
-
-/**
- * Create and return a mob of the specified type.
- * @param mobtype The type of mob to make.
- * @return The mob created.
- */
-Mob * create_mob(enum MobType mobtype){
-	Mob * new = xalloc(Mob);
-	*new = default_mobs[mobtype];
-	new->turn_action = &simple_enemy_turn;
-	new->death_action = &drop_corpse;
-	
-	if (mobtype == ORC){
-		Item * sword = xalloc(Item);
-
-		sword->symbol = '/';
-		sword->name = "Orcish Sword";
-		sword->type = WEAPON;
-		sword->value = 5;
-		new->inventory = insert(new->inventory, &sword->inventory);
-		wield_item(new, sword);
-		
-		if (rand() % 2) {
-			Item * food = xalloc(Item);
-
-			food->symbol = '%';
-			food->name = "Food Ration";
-			food->type = FOOD;
-			food->value = 5;
-			new->inventory = insert(new->inventory, &food->inventory);
-		}
-	} else if(mobtype == WOLFMAN) {
-		new->turn_action = &hunter_turn;
-		new->death_action = &hunter_death;
-
-		Item * food = xalloc(Item);
-
-		food->symbol = '%';
-		food->name = "Nourishing Food Ration";
-		food->type = FOOD;
-		food->value = 7;
-		new->inventory = insert(new->inventory, &food->inventory);
-	}
-
-	return new;
-}
-
 /**
  * Move the given mob to the new coordinates.
  * @param mob Entity to move.
@@ -96,8 +28,8 @@ bool move_mob(Mob * mob, unsigned int x, unsigned int y) {
 		return true;
 
 	/* allow for digging through rock */
-	if (mob->weapon != NULL && mob->weapon->can_dig == true && 
-		target->occupant == NULL && 
+	if (mob->weapon != NULL && mob->weapon->can_dig == true &&
+		target->occupant == NULL &&
 		target->solid == true && target->baseSymbol == '#') {
 		target->solid = false;
 		target->baseSymbol = '.';
@@ -265,7 +197,7 @@ bool can_see_point(Level * level,
 }
 
 /**
- * Determine if a mob can see the given point. 
+ * Determine if a mob can see the given point.
  *
  * Note: as this will be primarily used to render the level, a better
  * version might be to operate on a 2d array of three-state variables
@@ -295,7 +227,7 @@ bool can_see(Mob * mob, unsigned int x, unsigned int y) {
 	} else if(sqrt(pow(abs(mob->xpos - x), 2) + pow(abs(mob->ypos - y), 2)) <= 5) {
 		/* Or if they're sufficiently close to the mob */
 		return true;
-	} else { 
+	} else {
 		return false;
 	}
 }
@@ -319,9 +251,9 @@ void drop_corpse(struct Mob * mob) {
 	corpse->type = FOOD;
 	corpse->value = 4;
 	corpse->symbol = '%';
-	corpse->name = xalloc(strlen(mob->name)*sizeof(char) + 8*sizeof(char));
-	strcpy(corpse->name, mob->name);
-	strcat(corpse->name, " Corpse");
+	size_t len = strlen(mob->name) + strlen(" Corpse") + 1;
+	corpse->name = xalloc(len);
+	snprintf(corpse->name, len, "%s%s", mob->name, " Corpse");
 	corpse->effect = &corpse_effect;
 
 	cell->items = insert(cell->items, &corpse->inventory);
