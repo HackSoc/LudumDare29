@@ -411,3 +411,37 @@ void pickup_items(Mob * mob, List ** items) {
 		pickup_item(mob, item);
 	}
 }
+
+/**
+ * Wield an item
+ * @param mob The mob which is doing the wielding
+ * @param item The item to wield
+ */
+void wield_item(Mob * mob, Item * item) {
+	Item ** pos;
+
+	switch(item->type) {
+	case WEAPON:
+		pos = &mob->weapon;
+		break;
+	case ARMOUR:
+		pos = &mob->armour;
+		break;
+	default:
+		assert(false);
+	}
+
+	if(*pos != NULL) {
+		(*pos)->equipped = false;
+		if((*pos)->luminous) {
+			mob->luminosity --;
+		}
+	}
+
+	*pos = item;
+	item->equipped = true;
+
+	if(item->luminous) {
+		mob->luminosity ++;
+	}
+}

@@ -281,19 +281,7 @@ void player_turn(Mob * player) {
 		                           "Select a weapon to equip",
 		                           true);
 		if(item != NULL) {
-			if(player->weapon != NULL) {
-				player->weapon->equipped = false;
-				if(player->weapon->luminous) {
-					player->luminosity --;
-				}
-			}
-
-			player->weapon = item;
-			item->equipped = true;
-
-			if(item->luminous) {
-				player->luminosity ++;
-			}
+			wield_item(player, item);
 		}
 		break;
 
@@ -309,19 +297,7 @@ void player_turn(Mob * player) {
 		                           "Select some armour to wear",
 		                           false);
 		if(item != NULL) {
-			if(player->armour != NULL) {
-				player->armour->equipped = false;
-				if(player->armour->luminous) {
-					player->luminosity --;
-				}
-			}
-
-			player->armour = item;
-			item->equipped = true;
-
-			if(item->luminous) {
-				player->luminosity ++;
-			}
+			wield_item(player, item);
 		}
 		break;
 
