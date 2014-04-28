@@ -328,6 +328,81 @@ void build_level(Level * level) {
 		}
 		level->cells[x][y]->items = insert(level->cells[x][y]->items, &item->inventory);
 	}
+
+	/* possibly add a special item, level dependent */
+	{
+		Item * item = xalloc(Item);
+		int x = 1 + (rand() % (LEVELWIDTH-2));
+		int y = 1 + (rand() % (LEVELHEIGHT-2));
+	   
+		switch (rand() % 10) {
+		case 0: case 1: case 2:
+			item->symbol = '/';
+			item->name = "Pickaxe";
+			item->type = WEAPON;
+			item->can_dig = true;
+			item->value = 5;
+			break;
+		case 3: case 4: case 5:
+			item->symbol = '^';
+			item->name = "Lantern";
+			item->type = WEAPON;
+			item->luminous = true;
+			item->value = 1;
+			break;
+		case 6:
+			item->symbol = '/';
+			item->name = "Orcish Sword";
+			item->type = WEAPON;
+			item->value = 5;
+			break;
+		case 7: case 8:
+			item->symbol = ']';
+			item->name = "Helmet";
+			item->type = ARMOUR;
+			item->value = 3;
+			break;
+		case 9:
+			switch (rand() % 10) {
+			case 0: case 1: case 2: case 3: case 4:
+				if (level->depth > 5) {
+					item->symbol = '/';
+					item->name = "Sword";
+					item->type = WEAPON;
+					item->value = 10;
+				}
+				break;
+			case 5: case 6: case 7: 
+				if (level->depth > 5) {
+					item->symbol = ']';
+					item->name = "Chain Mail";
+					item->type = ARMOUR;
+					item->value = 7;
+				}
+				break;
+			case 8:
+				if (level->depth > 10) {
+					item->symbol = ']';
+					item->name = "Dragon Scale Mail";
+					item->type = ARMOUR;
+					item->value = 15;
+				}
+				break;
+			case 9:
+				if (level->depth > 20) {
+					item->symbol = '/';
+					item->name = "Flaming Sword of Fire";
+					item->type = WEAPON;
+					item->value = 10;
+					item->luminous = true;
+				}
+				break;
+			}
+		}
+		if (item->symbol != 0) {
+			level->cells[x][y]->items = insert(level->cells[x][y]->items, &item->inventory);
+		}
+	}
 }
 
 /**
