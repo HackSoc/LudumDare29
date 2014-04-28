@@ -31,7 +31,7 @@ const char * professions[] = {"Miner",
                               NULL};
 
 extern bool quit;
-extern Item special_items[];
+extern Item default_items[];
 
 /**
  * Randomise a player's name, race, and profession.
@@ -130,7 +130,7 @@ static void apply_profession(Mob * player) {
 	armour->count = 1;
 
 	if(strcmp(player->profession, "Miner") == 0) {
-		*weapon = special_items[PICKAXE];
+		*weapon = default_items[PICKAXE];
 
 		armour->symbol   = 'n';
 		armour->name     = "Mining Helmet";
@@ -208,7 +208,7 @@ Mob * create_player() {
 
 
 	Item * lantern = xalloc(Item);
-	*lantern = special_items[LANTURN];
+	*lantern = default_items[LANTURN];
 
 	Item * potion = xalloc(Item);
 	potion->count = 1;

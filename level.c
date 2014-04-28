@@ -12,7 +12,7 @@
 
 extern bool quit;
 extern const struct Mob default_enemies[];
-extern const struct Item special_items[];
+extern const struct Item default_items[];
 
 /**
  * (Shallow) Clone a cell and place it in the given position.
@@ -355,37 +355,37 @@ void build_level(Level * level) {
 
 		switch (rand() % 10) {
 		case 0: case 1: case 2:
-			*item = special_items[PICKAXE];
+			*item = default_items[PICKAXE];
 			break;
 		case 3: case 4: case 5:
-			*item = special_items[LANTURN];
+			*item = default_items[LANTURN];
 			break;
 		case 6:
-			*item = special_items[O_SWORD];
+			*item = default_items[O_SWORD];
 			break;
 		case 7: case 8:
-			*item = special_items[HELMET];
+			*item = default_items[HELMET];
 			break;
 		case 9:
 			switch (rand() % 10) {
 			case 0: case 1: case 2: case 3: case 4:
 				if (level->depth > 5) {
-					*item = special_items[SWORD];
+					*item = default_items[SWORD];
 				}
 				break;
 			case 5: case 6: case 7:
 				if (level->depth > 5) {
-					*item = special_items[C_MAIL];
+					*item = default_items[C_MAIL];
 				}
 				break;
 			case 8:
 				if (level->depth > 10) {
-					*item = special_items[D_MAIL];
+					*item = default_items[D_MAIL];
 				}
 				break;
 			case 9:
 				if (level->depth > 20) {
-					*item = special_items[F_SWORD];
+					*item = default_items[F_SWORD];
 				}
 				break;
 			}

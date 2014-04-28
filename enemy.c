@@ -6,7 +6,7 @@
 #include "mob.h"
 #include "effect.h"
 
-extern Item special_items[];
+extern Item default_items[];
 
 /**
  * Definitions of enemies
@@ -49,7 +49,7 @@ Mob * create_enemy(enum EnemyType mobtype){
 
 	if (mobtype == ORC){
 		Item * sword = xalloc(Item);
-		*sword = special_items[O_SWORD];
+		*sword = default_items[O_SWORD];
 		new->inventory = insert(new->inventory, &sword->inventory);
 		wield_item(new, sword);
 
@@ -77,7 +77,7 @@ Mob * create_enemy(enum EnemyType mobtype){
 		new->inventory = insert(new->inventory, &food->inventory);
 	} else if(mobtype == FALLEN_ANGEL) {
 		Item * sword = xalloc(Item);
-		*sword = special_items[F_SWORD];
+		*sword = default_items[F_SWORD];
 		new->inventory = insert(new->inventory, &sword->inventory);
 		wield_item(new, sword);
 

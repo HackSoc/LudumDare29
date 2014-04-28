@@ -12,7 +12,7 @@ struct Mob;
  */
 enum ItemType { NONE, WEAPON, ARMOUR, FOOD, DRINK, VALUABLE };
 
-enum SpecialItem {
+enum DefaultItem {
 	PICKAXE,
 	LANTURN,
 	O_SWORD,

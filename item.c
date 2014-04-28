@@ -19,8 +19,8 @@
 #define ITEM_N(sym, n, t, val) ITEM(sym, n, t, val, false, false, NULL)
 #define ITEM_E(sym, n, t, val, atkeff) ITEM(sym, n, t, val, false, false, atkeff)
 
-/* Should keep the same structure as SpecialItem in item.h. */
-const struct Item special_items[] = {
+/* Should keep the same structure as DefaultItem in item.h. */
+const struct Item default_items[] = {
 	ITEM_D('/', "Pickaxe",               WEAPON,  5),
 	ITEM_L('^', "Lanturn",               WEAPON,  1),
 	ITEM_N('/', "Orcish Sword",          WEAPON,  5),
