@@ -19,7 +19,7 @@
 	    .darksight = true, .luminosity = 0,\
 	    .min_depth = (dep)}
 
-/* should keep the same structure as MobType in mob.h.
+/* should keep the same structure as EnemyType in enemy.h.
  * should also be ordered by dep. */
 const struct Mob default_enemies[] = {
 	ENEMY('H', "Hedgehog", COLOR_YELLOW, 5, 1, 0, 0),
@@ -183,7 +183,7 @@ void hunter_turn(Mob * enemy) {
 	assert(enemy->data != NULL);
 
 	Mob * player = enemy->level->player;
-	Target * data = (Target *) enemy->data;
+	HunterState * data = (HunterState *) enemy->data;
 
 	int xdiff = enemy->xpos - player->xpos;
 	int ydiff = enemy->ypos - player->ypos;
@@ -226,7 +226,7 @@ void hunter_turn(Mob * enemy) {
  * @param enemy The enemy to kill/free
  */
 void hunter_death(Mob * enemy) {
-	Target * data = (Target *) enemy->data;
+	HunterState * data = (HunterState *) enemy->data;
 
 	if(data->refcount == 1) {
 		xfree(data);

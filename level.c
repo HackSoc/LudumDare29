@@ -264,10 +264,11 @@ void build_level(Level * level) {
 	/* Arbitrary number of mobs */
 	unsigned int available_mobs;
 	for(available_mobs = 0;
-	    default_enemies[available_mobs].min_depth <= level->depth;
+	    default_enemies[available_mobs].min_depth <= level->depth &&
+		    available_mobs < NUM_ENEMY_TYPES;
 	    available_mobs ++);
 	
-	Target * hunterstate = NULL;
+	HunterState ** hunterstate = xcalloc(available_mobs, HunterState *);
 	for (int i = 0; i < 5; i++) {
 		enum EnemyType mobtype = (enum EnemyType) (rand() % available_mobs);
 		Mob * mob = create_enemy(mobtype);
@@ -276,17 +277,18 @@ void build_level(Level * level) {
 
 		/* 1. share hunter state
 		   2. hunters always appear in 2s, (giving up to 10 enemies!) */
-		if(mobtype == WOLFMAN) {
+		if(mobtype == WOLFMAN /* || mobtype == ... */) {
 			Mob * mob2 = create_enemy(mobtype);
 			add_mob_random(level, mob2);
-			if(hunterstate == NULL) {
-				hunterstate = xalloc(Target);
+			if(hunterstate[mobtype] == NULL) {
+				hunterstate[mobtype] = xalloc(HunterState);
 			}
-			hunterstate->refcount += 2;
-			mob->data = hunterstate;
-			mob2->data = hunterstate;
+			hunterstate[mobtype]->refcount += 2;
+			mob->data = hunterstate[mobtype];
+			mob2->data = hunterstate[mobtype];
 		}
 	}
+	xfree(hunterstate);
 }
 
 /**

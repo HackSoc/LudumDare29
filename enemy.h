@@ -5,17 +5,17 @@
 #include "mob.h"
 
 /* should keep the same structure as default_mobs in enemy.c */
-enum EnemyType { HEDGEHOG, SQUIRREL, ORC, WOLFMAN, NUM_MOB_TYPES };
+enum EnemyType { HEDGEHOG, SQUIRREL, ORC, WOLFMAN, NUM_ENEMY_TYPES };
 
 /**
  * Shared state for hunter enemies
  */
-typedef struct Target {
+typedef struct HunterState {
 	unsigned int x; /**< The target X, not valid unless chasing */
 	unsigned int y; /**< The target Y, not valid unless chasing */
 	bool chase; /**< Whether the target has been sighted or not */
 	unsigned int refcount; /**< Number of hunters sharing this state */
-} Target;
+} HunterState;
 
 Mob * create_enemy(enum EnemyType mobtype);
 
