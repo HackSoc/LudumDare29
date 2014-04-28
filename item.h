@@ -12,6 +12,17 @@ struct Mob;
  */
 enum ItemType { NONE, WEAPON, ARMOUR, FOOD, DRINK, VALUABLE };
 
+enum SpecialItem {
+	PICKAXE,
+	LANTURN,
+	O_SWORD,
+	HELMET,
+	SWORD,
+	C_MAIL,
+	D_MAIL,
+	F_SWORD
+};
+
 /**
  * Items are things that mobs can carry around, and possibly
  * equip. They live in inventories.

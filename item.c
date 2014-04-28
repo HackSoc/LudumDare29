@@ -8,6 +8,31 @@
 #include "utils.h"
 #include "list.h"
 
+/** Definitions of special items. */
+#define ITEM(sym, n, t, val, dig, lit) {\
+		.count = 1, .symbol = (sym), .name = (n), .type = (t),\
+		.value = (val), .can_dig = (dig), .luminous = (lit)}
+#define ITEM_D(sym, n, t, val) ITEM(sym, n, t, val, true, false)
+#define ITEM_L(sym, n, t, val) ITEM(sym, n, t, val, false, true)
+#define ITEM_N(sym, n, t, val) ITEM(sym, n, t, val, false, false)
+
+/* Should keep the same structure as SpecialItem in item.h. */
+const struct Item special_items[] = {
+	ITEM_D('/', "Pickaxe",               WEAPON,  5),
+	ITEM_L('^', "Lanturn",               WEAPON,  1),
+	ITEM_N('/', "Orcish Sword",          WEAPON,  5),
+	ITEM_N(']', "Helmet",                ARMOUR,  3),
+	ITEM_N('/', "Sword",                 WEAPON, 10),
+	ITEM_N(']', "Chain Mail",            ARMOUR,  7),
+	ITEM_N(']', "Dragon Scale Mail",     ARMOUR, 15),
+	ITEM_N('/', "Flaming Sword of Fire", WEAPON, 10),
+};
+
+#undef ITEM_N
+#undef ITEM_L
+#undef ITEM_D
+#undef ITEM
+
 /**
  * Convert an inventory doubly-linked list into an array of pointers
  * to names of members of the inventory.
