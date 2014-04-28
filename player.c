@@ -226,6 +226,13 @@ Mob * create_player() {
 		int choice = getch();
 		if(choice == 'y' || choice == 'Y') {
 			randomise_player(player);
+
+			/* Yay, special case jokes */
+			if(strcmp(player->race, "Human") == 0 &&
+			   strcmp(player->profession, "Attorney") == 0) {
+				xfree(player->name);
+				player->name = strdup("Javert");
+			}
 			break;
 		} else if(choice == 'n' || choice == 'N') {
 			design_player(player);
