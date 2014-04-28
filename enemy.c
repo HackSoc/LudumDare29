@@ -26,6 +26,7 @@ const struct Mob default_enemies[] = {
 	ENEMY('S', "Squirrel", COLOR_YELLOW, 10, 2, 0, 0),
 	ENEMY('o', "Orc", COLOR_YELLOW, 15, 2, 7, 2),
 	ENEMY('W', "Wolfman", COLOR_YELLOW, 25, 10, 10, 10),
+	ENEMY('A', "Fallen Angel", COLOR_YELLOW, 50, 7, 100, 25)
 };
 
 #undef ENEMY
@@ -71,6 +72,27 @@ Mob * create_enemy(enum EnemyType mobtype){
 		food->type = FOOD;
 		food->value = 7;
 		new->inventory = insert(new->inventory, &food->inventory);
+	} else if(mobtype == FALLEN_ANGEL) {
+		Item * sword = xalloc(Item);
+
+		sword->symbol = '/';
+		sword->name = "Flaming Sword of Fire";
+		sword->type = WEAPON;
+		sword->value = 10;
+		sword->luminous = true;
+		new->inventory = insert(new->inventory, &sword->inventory);
+		wield_item(new, sword);
+
+		Item * food = xalloc(Item);
+
+		food->symbol = '%';
+		food->name = "Manna";
+		food->type = FOOD;
+		food->value = 50;
+		new->inventory = insert(new->inventory, &food->inventory);
+
+		new->is_bold = true;
+		new->luminosity = 1;
 	}
 
 	return new;
