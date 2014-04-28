@@ -90,14 +90,23 @@ const void ** list_choice(bool nochoice,
 	addch(' ');
 
 	/* If this is not a choice, end here */
-	if(nochoice || num_choices == 0) {
+	if(nochoice) {
 		getch();
 		clear();
 		return NULL;
 	}
 
-	assert(num_choices != 0);
+	/* If there are no items, return an empty list - but this is still a 'choice',
+	   so don't return nothing. */
+	if(num_choices == 0) {
+		getch();
+		clear();
+		const void ** out = xcalloc(1, void *);
+		return out;
+	}
+
 	/* Get a list of choices */
+	assert(num_choices != 0);
 	bool * chosen = xcalloc(num_choices, bool);
 	unsigned int num_chosen = 0;
 
