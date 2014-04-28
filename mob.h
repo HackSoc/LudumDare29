@@ -69,5 +69,7 @@ bool can_see_other(struct Mob * moba, struct Mob * mobb);
 void simple_enemy_turn(struct Mob * enemy);
 void drop_item(struct Mob * mob, struct Item * item);
 void drop_items(struct Mob * mob, struct List ** items);
+void pickup_item(struct Mob * mob, struct Item * item);
+void pickup_items(struct Mob * mob, struct List ** items);
 
 #endif /*MOB_H*/

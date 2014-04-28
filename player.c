@@ -271,21 +271,7 @@ void player_turn(Mob * player) {
 
 	case ',':
 		items = choose_items(current_cell->items, "Select items to pick up:");
-		if(items != NULL) {
-			/* Update the cell luminosity */
-			for(unsigned int i = 0; items[i] != NULL; i++) {
-				Item * item = fromlist(Item, inventory, items[i]);
-				if(item->luminous) {
-					current_cell->luminosity --;
-				}
-			}
-
-			/* Remove from the cell */
-			current_cell->items = dropall(items);
-
-			/* Add to the player */
-			player->inventory = insertall(player->inventory, items);
-		}
+		pickup_items(player, items);
 		xfree(items);
 		break;
 

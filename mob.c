@@ -376,3 +376,38 @@ void drop_items(Mob * mob, List ** items) {
 		drop_item(mob, item);
 	}
 }
+
+/**
+ * Pick up an item from the floor
+ * @param mob The mob which is getting the item
+ * @param item The item to get
+ */
+void pickup_item(Mob * mob, Item * item) {
+	Cell * cell = mob->level->cells[mob->xpos][mob->ypos];
+
+	/* Update luminosity */
+	if(item->luminous) {
+		cell->luminosity --;
+	}
+
+	/* Update inventories */
+	cell->items = drop(&item->inventory);
+	mob->inventory = insert(mob->inventory, &item->inventory);
+}
+
+/**
+ * Pick up the given items from the floor into the mob's inventory.
+ * @param mob The mob which is getting the items
+ * @param items The list of items to get
+ */
+void pickup_items(Mob * mob, List ** items) {
+	if(items == NULL) {
+		return;
+	}
+
+	/* Update the cell luminosity */
+	for(unsigned int i = 0; items[i] != NULL; i++) {
+		Item * item = fromlist(Item, inventory, items[i]);
+		pickup_item(mob, item);
+	}
+}
