@@ -59,6 +59,9 @@ const struct Item default_items[] = {
 	ITEM_F('!', "Dragon Fire",            WEAPON, 20, &inflict_fire),
 };
 
+#undef ITEM_E
+#undef ITEM_R
+#undef ITEM_F
 #undef ITEM_N
 #undef ITEM_L
 #undef ITEM_D
