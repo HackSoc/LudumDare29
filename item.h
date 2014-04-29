@@ -40,7 +40,10 @@ enum DefaultItem {
 	C_POISON_POTION,
 	GOLD,
 	STONE,
-	CORPSE
+	CORPSE,
+	A_PICKAXE,
+	FLESHBOOK,
+	W_BOOT
 };
 
 /**

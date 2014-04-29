@@ -23,7 +23,7 @@
 /* Should keep the same structure as DefaultItem in item.h. */
 const struct Item default_items[] = {
 	ITEM_D('/', "Pickaxe",                WEAPON,  5),
-	ITEM_L('^', "Lanturn",                WEAPON,  1),
+	ITEM_L('^', "Lantern",                WEAPON,  1),
 	ITEM_N('/', "Orcish Sword",           WEAPON,  5),
 	ITEM_N(']', "Helmet",                 ARMOUR,  3),
 	ITEM_N('/', "Sword",                  WEAPON, 10),
@@ -50,6 +50,10 @@ const struct Item default_items[] = {
 	ITEM_N('$', "Gold",                  VALUABLE, 5),
 	ITEM_N('*', "Stone",                  NONE,    0),
 	ITEM_N('%', "Corpse",                 FOOD,    4),
+	ITEM_N('/', "Advanced Mining Pickaxe", WEAPON, 18),
+	ITEM_N('v', "Book of Tax Code Bound in Human Flesh", WEAPON, 15),
+	ITEM_R('c', "Wooden Boot",            WEAPON, 15),
+	
 };
 
 #undef ITEM_N

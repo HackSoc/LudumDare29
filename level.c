@@ -356,7 +356,7 @@ void build_level(Level * level) {
 			*item = default_items[HELMET];
 			break;
 		case 9:
-			switch (rand() % 10) {
+			switch (rand() % 13) {
 			case 0: case 1: case 2: case 3: case 4:
 				if (level->depth > 5) {
 					*item = default_items[SWORD];
@@ -372,9 +372,19 @@ void build_level(Level * level) {
 					*item = default_items[D_MAIL];
 				}
 				break;
-			case 9:
+			case 10:
 				if (level->depth > 20) {
-					*item = default_items[F_SWORD];
+					*item = default_items[A_PICKAXE];
+				}
+				break;
+			case 11:
+				if (level->depth > 20) {
+					*item = default_items[FLESHBOOK];
+				}
+				break;
+			case 12:
+				if (level->depth > 20) {
+					*item = default_items[W_BOOT];
 				}
 				break;
 			}
