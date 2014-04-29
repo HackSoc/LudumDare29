@@ -274,7 +274,6 @@ void build_level(Level * level) {
 		    available_mobs < NUM_ENEMY_TYPES;
 	    available_mobs ++);
 
-	HunterState ** hunterstate = xcalloc(available_mobs, HunterState *);
 	for (int i = 0; i < 5; i++) {
 		enum EnemyType mobtype = (enum EnemyType) biased_rand(available_mobs);
 		Mob * mob = create_enemy(mobtype);
@@ -286,12 +285,11 @@ void build_level(Level * level) {
 		if(mobtype == WOLFMAN  || mobtype == CAVE_PIRATE/* || mobtype == ... */) {
 			Mob * mob2 = create_enemy(mobtype);
 			add_mob_random(level, mob2);
-			if(hunterstate[mobtype] == NULL) {
-				hunterstate[mobtype] = xalloc(HunterState);
-			}
-			hunterstate[mobtype]->refcount += 2;
-			mob->data = hunterstate[mobtype];
-			mob2->data = hunterstate[mobtype];
+
+			HunterState * state = xalloc(HunterState);
+			state->refcount += 2;
+			mob->data = state;
+			mob2->data = state;
 		}
 
 		/* chasers are like hunters, but they don't share the state - so
@@ -302,7 +300,6 @@ void build_level(Level * level) {
 			mob->data = state;
 		}
 	}
-	xfree(hunterstate);
 
 	/* add 5 gold for the player to find */
 	for (int i = 0; i < 5; i++) {
