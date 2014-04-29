@@ -170,7 +170,7 @@ Mob * create_player() {
 	memset(playerdata->terrain->symbols, ' ', LEVELWIDTH * LEVELHEIGHT);
 
 
-	Item * lantern = clone_item(LANTURN);
+	Item * lantern = clone_item(LANTERN);
 
 	Item * potion = clone_item(C_POISON_POTION);
 

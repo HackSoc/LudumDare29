@@ -14,7 +14,7 @@ enum ItemType { NONE, WEAPON, ARMOUR, FOOD, DRINK, VALUABLE };
 
 enum DefaultItem {
 	PICKAXE,
-	LANTURN,
+	LANTERN,
 	O_SWORD,
 	HELMET,
 	SWORD,

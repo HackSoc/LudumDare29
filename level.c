@@ -343,7 +343,7 @@ void build_level(Level * level) {
 			item = clone_item(PICKAXE);
 			break;
 		case 3: case 4: case 5:
-			item = clone_item(LANTURN);
+			item = clone_item(LANTERN);
 			break;
 		case 6:
 			item = clone_item(O_SWORD);
