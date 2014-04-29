@@ -1,6 +1,7 @@
 #include <assert.h>
 #include <stdlib.h>
 #include <stddef.h>
+#include <string.h>
 #include <curses.h>
 #include "enemy.h"
 #include "mob.h"
@@ -44,7 +45,7 @@ const struct Mob default_enemies[] = {
  */
 Mob * create_enemy(enum EnemyType mobtype){
 	Mob * new = xalloc(Mob);
-	*new = default_enemies[mobtype];
+	memcpy(new, &default_enemies[mobtype], sizeof(Mob));
 	new->turn_action = &simple_enemy_turn;
 	new->death_action = &drop_corpse;
 
