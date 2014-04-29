@@ -130,7 +130,6 @@ static void apply_profession(Mob * player) {
 	} else if(strcmp(player->profession, "Attorney") == 0) {
 		*weapon = default_items[BOOK_TAX];
 		*armour = default_items[LAW_SUIT];
-		armour->fight_effect = &reflect_damage;
 	} else if(strcmp(player->profession, "Clog Maker") == 0) {
 		*weapon = default_items[CLOG];
 		*armour = default_items[CLOG_APRON];

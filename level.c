@@ -324,7 +324,6 @@ void build_level(Level * level) {
 				break;
 			case 5: case 6: case 7: case 8:
 				*item = default_items[C_POISON_POTION];
-				item->effect = &cure_poison;
 				break;
 			case 9:
 				*item = default_items[STONE];

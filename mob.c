@@ -331,7 +331,6 @@ void drop_corpse(struct Mob * mob) {
 	size_t len = strlen(mob->name) + strlen(" Corpse") + 1;
 	corpse->name = xcalloc(len, char);
 	snprintf(corpse->name, len, "%s%s", mob->name, " Corpse");
-	corpse->effect = &corpse_effect;
 
 	cell->items = insert(cell->items, &corpse->inventory);
 }

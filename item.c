@@ -10,15 +10,16 @@
 #include "effect.h"
 
 /** Definitions of special items. */
-#define ITEM(sym, n, t, val, dig, lit, range, atkeff) {	  \
+#define ITEM(sym, n, t, val, dig, lit, range, eff, atkeff) {	  \
 		.count = 1, .symbol = (sym), .name = (n), .type = (t),\
         .value = (val), .can_dig = (dig), .luminous = (lit),\
-		.ranged = (range), .fight_effect = (atkeff)}
-#define ITEM_D(sym, n, t, val) ITEM(sym, n, t, val, true, false, false, NULL)
-#define ITEM_L(sym, n, t, val) ITEM(sym, n, t, val, false, true, false, NULL)
-#define ITEM_N(sym, n, t, val) ITEM(sym, n, t, val, false, false, false, NULL)
-#define ITEM_E(sym, n, t, val, atkeff) ITEM(sym, n, t, val, false, false, false, atkeff)
-#define ITEM_R(sym, n, t, val) ITEM(sym, n, t, val, false, false, true, NULL),
+		.ranged = (range), .effect = (eff), .fight_effect = (atkeff)}
+#define ITEM_D(sym, n, t, val) ITEM(sym, n, t, val, true, false, false, NULL, NULL)
+#define ITEM_L(sym, n, t, val) ITEM(sym, n, t, val, false, true, false, NULL, NULL)
+#define ITEM_N(sym, n, t, val) ITEM(sym, n, t, val, false, false, false, NULL, NULL)
+#define ITEM_F(sym, n, t, val, atkeff) ITEM(sym, n, t, val, false, false, false, NULL, atkeff)
+#define ITEM_R(sym, n, t, val) ITEM(sym, n, t, val, false, false, true, NULL, NULL)
+#define ITEM_E(sym, n, t, val, eff) ITEM(sym, n, t, val, false, false, false, eff, NULL)
 
 /* Should keep the same structure as DefaultItem in item.h. */
 const struct Item default_items[] = {
@@ -29,14 +30,14 @@ const struct Item default_items[] = {
 	ITEM_N('/', "Sword",                  WEAPON, 10),
 	ITEM_N(']', "Chain Mail",             ARMOUR,  7),
 	ITEM_N(']', "Dragon Scale Mail",      ARMOUR, 15),
-	ITEM_E('/', "Flaming Sword of Fire", WEAPON, 10, &inflict_fire),
+	ITEM_F('/', "Flaming Sword of Fire", WEAPON, 10, &inflict_fire),
 	ITEM_N('%', "Food Ration",            FOOD,    5),
 	ITEM_N('%', "Nourishing Food Ration", FOOD,    7),
 	ITEM_N('%', "Manna",                  FOOD,   50),
 	ITEM_L('n', "Mining Helmet",          ARMOUR,  5),
 	ITEM_N('v', "Book of Tax Code",       WEAPON,  2),
-	ITEM_N('r', "Law Suit",               ARMOUR,  8),
-	ITEM_N('c', "Clog",                   WEAPON,  2),
+	ITEM_F('r', "Law Suit",               ARMOUR,  8, &reflect_damage),
+	ITEM_R('c', "Clog",                   WEAPON,  2),
 	ITEM_N('y', "Clogging Apron",         ARMOUR,  8),
 	ITEM_N('\'', "Hunting Knife",         WEAPON,  8),
 	ITEM_N('h', "Cloak",                  ARMOUR,  2),
@@ -46,14 +47,13 @@ const struct Item default_items[] = {
 	ITEM_N('t', "Hawaiian Shirt",         ARMOUR,  9),
 	ITEM_N('l', "Bone",                   WEAPON,  3),
 	ITEM_N('d', "Fursuit",                ARMOUR,  7),
-	ITEM_N('-', "Potion of Cure Poison",  DRINK,   0),
+	ITEM_E('-', "Potion of Cure Poison",  DRINK,   0, &cure_poison),
 	ITEM_N('$', "Gold",                  VALUABLE, 5),
 	ITEM_N('*', "Stone",                  NONE,    0),
-	ITEM_N('%', "Corpse",                 FOOD,    4),
+	ITEM_E('%', "Corpse",                 FOOD,    4, &corpse_effect),
 	ITEM_N('/', "Advanced Mining Pickaxe", WEAPON, 18),
 	ITEM_N('v', "Book of Tax Code Bound in Human Flesh", WEAPON, 15),
 	ITEM_R('c', "Wooden Boot",            WEAPON, 15),
-	
 };
 
 #undef ITEM_N
