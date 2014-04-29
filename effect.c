@@ -53,6 +53,17 @@ void cure_poison(Mob * mob) {
 }
 
 /**
+ * Damage a mob every turn
+ * @mob The mob which is burning
+ */
+void effect_burn(Mob * mob) {
+	if(mob == mob->level->player) {
+		status_push("The fire burns you!");
+	}
+	damage_mob(mob, 2);
+}
+
+/**
  * An effect for corpses, which poisons 50% of the time
  * @param mob The mob which is affected
  */
@@ -101,5 +112,26 @@ void reflect_damage(Mob * owner, Item * self,
 	} else {
 		status_push("You got hit with %d reflected damage!",
 		            reflected);
+	}
+}
+
+/**
+ * Equipment which sets the other on fire.
+ * @param owner The owner of this item (one of attacker or defender)
+ * @param self The item
+ * @param attacker The attacker
+ * @param defender The defender
+ * @param damage The damage inflicted upon the defender
+ */
+void inflict_fire(Mob * owner, Item * self,
+                  Mob * attacker, Mob * defender,
+                  unsigned int damage) {
+	(void) self;
+	(void) damage;
+
+	if(owner == attacker) {
+		afflict(defender, effect_burn, 3);
+	} else {
+		afflict(attacker, effect_burn, 3);
 	}
 }

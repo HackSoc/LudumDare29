@@ -7,14 +7,17 @@
 #include "item.h"
 #include "utils.h"
 #include "list.h"
+#include "effect.h"
 
 /** Definitions of special items. */
-#define ITEM(sym, n, t, val, dig, lit) {\
+#define ITEM(sym, n, t, val, dig, lit, atkeff) {	  \
 		.count = 1, .symbol = (sym), .name = (n), .type = (t),\
-		.value = (val), .can_dig = (dig), .luminous = (lit)}
-#define ITEM_D(sym, n, t, val) ITEM(sym, n, t, val, true, false)
-#define ITEM_L(sym, n, t, val) ITEM(sym, n, t, val, false, true)
-#define ITEM_N(sym, n, t, val) ITEM(sym, n, t, val, false, false)
+        .value = (val), .can_dig = (dig), .luminous = (lit),\
+		.fight_effect = (atkeff)}
+#define ITEM_D(sym, n, t, val) ITEM(sym, n, t, val, true, false, NULL)
+#define ITEM_L(sym, n, t, val) ITEM(sym, n, t, val, false, true, NULL)
+#define ITEM_N(sym, n, t, val) ITEM(sym, n, t, val, false, false, NULL)
+#define ITEM_E(sym, n, t, val, atkeff) ITEM(sym, n, t, val, false, false, atkeff)
 
 /* Should keep the same structure as SpecialItem in item.h. */
 const struct Item special_items[] = {
@@ -25,7 +28,7 @@ const struct Item special_items[] = {
 	ITEM_N('/', "Sword",                 WEAPON, 10),
 	ITEM_N(']', "Chain Mail",            ARMOUR,  7),
 	ITEM_N(']', "Dragon Scale Mail",     ARMOUR, 15),
-	ITEM_N('/', "Flaming Sword of Fire", WEAPON, 10),
+	ITEM_E('/', "Flaming Sword of Fire", WEAPON, 10, &inflict_fire),
 };
 
 #undef ITEM_N
