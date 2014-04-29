@@ -31,7 +31,6 @@ const char * professions[] = {"Miner",
                               NULL};
 
 extern bool quit;
-extern Item default_items[];
 
 /**
  * Randomise a player's name, race, and profession.
@@ -121,31 +120,31 @@ static void apply_race(Mob * player) {
  * @param player The player
  */
 static void apply_profession(Mob * player) {
-	Item * weapon = xalloc(Item);
-	Item * armour = xalloc(Item);
+	Item * weapon = NULL;
+	Item * armour = NULL;
 
 	if(strcmp(player->profession, "Miner") == 0) {
-		*weapon = default_items[PICKAXE];
-		*armour = default_items[M_HELMET];
+		weapon = clone_item(PICKAXE);
+		armour = clone_item(M_HELMET);
 	} else if(strcmp(player->profession, "Attorney") == 0) {
-		*weapon = default_items[BOOK_TAX];
-		*armour = default_items[LAW_SUIT];
+		weapon = clone_item(BOOK_TAX);
+		armour = clone_item(LAW_SUIT);
 	} else if(strcmp(player->profession, "Clog Maker") == 0) {
-		*weapon = default_items[CLOG];
+		weapon = clone_item(CLOG);
 		weapon->count = 4;
-		*armour = default_items[CLOG_APRON];
+		armour = clone_item(CLOG_APRON);
 	} else if(strcmp(player->profession, "Huntsman") == 0) {
-		*weapon = default_items[HUNT_KNIFE];
-		*armour = default_items[CLOAK];
+		weapon = clone_item(HUNT_KNIFE);
+		armour = clone_item(CLOAK);
 	} else if(strcmp(player->profession, "Chef") == 0) {
-		*weapon = default_items[FRY_PAN];
-		*armour = default_items[APRON];
+		weapon = clone_item(FRY_PAN);
+		armour = clone_item(APRON);
 	} else if(strcmp(player->profession, "Tourist") == 0) {
-		*weapon = default_items[CAMERA];
-		*armour = default_items[HAWAII];
+		weapon = clone_item(CAMERA);
+		armour = clone_item(HAWAII);
 	} else if(strcmp(player->profession, "Dog") == 0) {
-		*weapon = default_items[BONE];
-		*armour = default_items[FURSUIT];
+		weapon = clone_item(BONE);
+		armour = clone_item(FURSUIT);
 	}
 
 	player->inventory = insert(player->inventory, &weapon->inventory);
@@ -171,12 +170,9 @@ Mob * create_player() {
 	memset(playerdata->terrain->symbols, ' ', LEVELWIDTH * LEVELHEIGHT);
 
 
-	Item * lantern = xalloc(Item);
-	*lantern = default_items[LANTURN];
+	Item * lantern = clone_item(LANTURN);
 
-	Item * potion = xalloc(Item);
-	*potion = default_items[C_POISON_POTION];
-	potion->effect = &cure_poison;
+	Item * potion = clone_item(C_POISON_POTION);
 
 	player->inventory = insert(player->inventory, &lantern->inventory);
 	player->inventory = insert(player->inventory, &potion->inventory);

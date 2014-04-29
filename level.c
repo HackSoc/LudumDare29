@@ -12,7 +12,6 @@
 
 extern bool quit;
 extern const struct Mob default_enemies[];
-extern const struct Item default_items[];
 
 /**
  * (Shallow) Clone a cell and place it in the given position.
@@ -307,8 +306,7 @@ void build_level(Level * level) {
 
 	/* add 5 gold for the player to find */
 	for (int i = 0; i < 5; i++) {
-		Item * item = xalloc(Item);
-		*item = default_items[GOLD];
+		Item * item = clone_item(GOLD);
 		int x = 1 + (rand() % (LEVELWIDTH-2));
 		int y = 1 + (rand() % (LEVELHEIGHT-2));
 
@@ -317,16 +315,16 @@ void build_level(Level * level) {
 
 	/* add a regular item for the player to find */
 	{
-		Item * item = xalloc(Item);
+		Item * item;
 		switch (rand() % 10) {
 			case 0: case 1: case 2: case 3: case 4:
-				*item = default_items[FOOD_RATION];
+				item = clone_item(FOOD_RATION);
 				break;
 			case 5: case 6: case 7: case 8:
-				*item = default_items[C_POISON_POTION];
+				item = clone_item(C_POISON_POTION);
 				break;
 			case 9:
-				*item = default_items[STONE];
+				item = clone_item(STONE);
 				break;
 		}
 		int x = 1 + (rand() % (LEVELWIDTH-2));
@@ -336,54 +334,53 @@ void build_level(Level * level) {
 
 	/* possibly add a special item, level dependent */
 	{
-		Item * item = xalloc(Item);
-		item->count = 1;
+		Item * item = NULL;
 		int x = 1 + (rand() % (LEVELWIDTH-2));
 		int y = 1 + (rand() % (LEVELHEIGHT-2));
 
 		switch (rand() % 10) {
 		case 0: case 1: case 2:
-			*item = default_items[PICKAXE];
+			item = clone_item(PICKAXE);
 			break;
 		case 3: case 4: case 5:
-			*item = default_items[LANTURN];
+			item = clone_item(LANTURN);
 			break;
 		case 6:
-			*item = default_items[O_SWORD];
+			item = clone_item(O_SWORD);
 			break;
 		case 7: case 8:
-			*item = default_items[HELMET];
+			item = clone_item(HELMET);
 			break;
 		case 9:
 			switch (rand() % 13) {
 			case 0: case 1: case 2: case 3: case 4:
 				if (level->depth > 5) {
-					*item = default_items[SWORD];
+					item = clone_item(SWORD);
 				}
 				break;
 			case 5: case 6: case 7:
 				if (level->depth > 5) {
-					*item = default_items[C_MAIL];
+					item = clone_item(C_MAIL);
 				}
 				break;
 			case 8:
 				if (level->depth > 10) {
-					*item = default_items[D_MAIL];
+					item = clone_item(D_MAIL);
 				}
 				break;
 			case 10:
 				if (level->depth > 20) {
-					*item = default_items[A_PICKAXE];
+					item = clone_item(A_PICKAXE);
 				}
 				break;
 			case 11:
 				if (level->depth > 20) {
-					*item = default_items[FLESHBOOK];
+					item = clone_item(FLESHBOOK);
 				}
 				break;
 			case 12:
 				if (level->depth > 20) {
-					*item = default_items[W_BOOT];
+					item = clone_item(W_BOOT);
 				}
 				break;
 			}

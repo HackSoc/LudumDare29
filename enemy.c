@@ -6,8 +6,6 @@
 #include "mob.h"
 #include "effect.h"
 
-extern Item default_items[];
-
 /**
  * Definitions of enemies
  */
@@ -51,55 +49,46 @@ Mob * create_enemy(enum EnemyType mobtype){
 	new->death_action = &drop_corpse;
 
 	if (mobtype == ORC){
-		Item * sword = xalloc(Item);
-		*sword = default_items[O_SWORD];
+		Item * sword = clone_item(O_SWORD);
 		new->inventory = insert(new->inventory, &sword->inventory);
 		wield_item(new, sword);
 
 		if (rand() % 2) {
-			Item * food = xalloc(Item);
-			*food = default_items[FOOD_RATION];
+			Item * food = clone_item(FOOD_RATION);
 			new->inventory = insert(new->inventory, &food->inventory);
 		}
 	} else if(mobtype == CAVE_PIRATE) {
 		new->turn_action = &hunter_turn;
 		new->death_action = &hunter_death;
 
-		Item * food = xalloc(Item);
-		*food = default_items[HARD_TACK];
+		Item * food = clone_item(HARD_TACK);
 		new->inventory = insert(new->inventory, &food->inventory);
 
-		Item * cutlass = xalloc(Item);
-		*cutlass = default_items[CUTLASS];
+		Item * cutlass = clone_item(CUTLASS);
 		new->inventory = insert(new->inventory, &cutlass->inventory);
 		wield_item(new,cutlass);
 	} else if(mobtype == WOLFMAN) {
 		new->turn_action = &hunter_turn;
 		new->death_action = &hunter_death;
 
-		Item * food = xalloc(Item);
-		*food = default_items[N_FOOD_RATION];
+		Item * food = clone_item(N_FOOD_RATION);
 		new->inventory = insert(new->inventory, &food->inventory);
 	} else if(mobtype == FALLEN_ANGEL) {
-		Item * sword = xalloc(Item);
-		*sword = default_items[F_SWORD];
+		Item * sword = clone_item(F_SWORD);
 		new->inventory = insert(new->inventory, &sword->inventory);
 		wield_item(new, sword);
 
-		Item * food = xalloc(Item);
-		*food = default_items[MANNA];
+		Item * food = clone_item(MANNA);
 		new->inventory = insert(new->inventory, &food->inventory);
 
 		new->is_bold = true;
 		new->luminosity = 1;
 	} else if(mobtype == DRAGON) {
-		Item * weapon = xalloc(Item);
-		*weapon = default_items[DRAG_FIRE];
+		Item * weapon = clone_item(DRAG_FIRE);
 		new->weapon = weapon;
 		wield_item(new, weapon);
 
-		Item * armour = xalloc(Item);
-		*armour = default_items[D_MAIL];
+		Item * armour = clone_item(D_MAIL);
 		new->inventory = insert(new->inventory, &armour->inventory);
 		new->armour = armour;
 	}

@@ -49,6 +49,7 @@ enum DefaultItem {
 	DRAG_FIRE
 };
 
+
 /**
  * Items are things that mobs can carry around, and possibly
  * equip. They live in inventories.
@@ -74,6 +75,8 @@ typedef struct Item {
 	void (*effect)(struct Mob *); /**< Some type-dependent effect */
 	void (*fight_effect)(struct Mob *, struct Item *, struct Mob *, struct Mob *, unsigned int); /**< Called if the item is an equipped weapon or piece of armour in a fight */
 } Item;
+
+Item * clone_item(enum DefaultItem type);
 
 void display_inventory(List * inventory, const char * title);
 List ** choose_items(List * inventory, const char * prompt);

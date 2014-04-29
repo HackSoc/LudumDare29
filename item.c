@@ -68,6 +68,17 @@ const struct Item default_items[] = {
 #undef ITEM
 
 /**
+ * Clone an item.
+ * @param type ItemType to clone.
+ * @return memcpy'd item.
+ */
+Item * clone_item(enum DefaultItem type) {
+	Item * item = xalloc(Item);
+	memcpy(item, &default_items[type], sizeof(Item));
+	return item;
+}
+
+/**
  * Convert an inventory doubly-linked list into an array of pointers
  * to names of members of the inventory.
  * @param inventory The inventory to convert

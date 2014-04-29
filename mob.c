@@ -12,8 +12,6 @@
 #include "status.h"
 #include "enemy.h"
 
-extern Item default_items[];
-
 /**
  * Move the given mob to the new coordinates.
  * @param mob Entity to move.
@@ -326,8 +324,7 @@ void drop_corpse(struct Mob * mob) {
 			return;
 		}
 	}
-	Item * corpse = xalloc(Item);
-	*corpse = default_items[CORPSE];
+	Item * corpse = clone_item(CORPSE);
 	size_t len = strlen(mob->name) + strlen(" Corpse") + 1;
 	corpse->name = xcalloc(len, char);
 	snprintf(corpse->name, len, "%s%s", mob->name, " Corpse");
