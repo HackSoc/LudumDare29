@@ -12,6 +12,7 @@
 
 extern bool quit;
 extern const struct Mob default_enemies[];
+extern const struct Item special_items[];
 
 /**
  * (Shallow) Clone a cell and place it in the given position.
@@ -43,6 +44,7 @@ static void place_cell(Level * level,
 	level->cells[x][y]->solid      = to_place->solid;
 	level->cells[x][y]->occupant   = to_place->occupant;
 	level->cells[x][y]->items      = to_place->items;
+	level->cells[x][y]->luminosity = to_place->luminosity;
 }
 
 /**
@@ -211,6 +213,11 @@ void build_level(Level * level) {
 				} else {
 					level->cells[x][y]->baseSymbol = '#';
 					level->cells[x][y]->solid = true;
+
+					if(rand() % 200 == 0) {
+						level->cells[x][y]->colour = COLOR_YELLOW;
+						level->cells[x][y]->luminosity = 1;
+					}
 				}
 			}
 		}
@@ -270,7 +277,7 @@ void build_level(Level * level) {
 
 	HunterState ** hunterstate = xcalloc(available_mobs, HunterState *);
 	for (int i = 0; i < 5; i++) {
-		enum EnemyType mobtype = (enum EnemyType) (rand() % available_mobs);
+		enum EnemyType mobtype = (enum EnemyType) biased_rand(available_mobs);
 		Mob * mob = create_enemy(mobtype);
 
 		add_mob_random(level, mob);
@@ -348,64 +355,37 @@ void build_level(Level * level) {
 
 		switch (rand() % 10) {
 		case 0: case 1: case 2:
-			item->symbol = '/';
-			item->name = "Pickaxe";
-			item->type = WEAPON;
-			item->can_dig = true;
-			item->value = 5;
+			*item = special_items[PICKAXE];
 			break;
 		case 3: case 4: case 5:
-			item->symbol = '^';
-			item->name = "Lantern";
-			item->type = WEAPON;
-			item->luminous = true;
-			item->value = 1;
+			*item = special_items[LANTURN];
 			break;
 		case 6:
-			item->symbol = '/';
-			item->name = "Orcish Sword";
-			item->type = WEAPON;
-			item->value = 5;
+			*item = special_items[O_SWORD];
 			break;
 		case 7: case 8:
-			item->symbol = ']';
-			item->name = "Helmet";
-			item->type = ARMOUR;
-			item->value = 3;
+			*item = special_items[HELMET];
 			break;
 		case 9:
 			switch (rand() % 10) {
 			case 0: case 1: case 2: case 3: case 4:
 				if (level->depth > 5) {
-					item->symbol = '/';
-					item->name = "Sword";
-					item->type = WEAPON;
-					item->value = 10;
+					*item = special_items[SWORD];
 				}
 				break;
 			case 5: case 6: case 7:
 				if (level->depth > 5) {
-					item->symbol = ']';
-					item->name = "Chain Mail";
-					item->type = ARMOUR;
-					item->value = 7;
+					*item = special_items[C_MAIL];
 				}
 				break;
 			case 8:
 				if (level->depth > 10) {
-					item->symbol = ']';
-					item->name = "Dragon Scale Mail";
-					item->type = ARMOUR;
-					item->value = 15;
+					*item = special_items[D_MAIL];
 				}
 				break;
 			case 9:
 				if (level->depth > 20) {
-					item->symbol = '/';
-					item->name = "Flaming Sword of Fire";
-					item->type = WEAPON;
-					item->value = 10;
-					item->luminous = true;
+					*item = special_items[F_SWORD];
 				}
 				break;
 			}

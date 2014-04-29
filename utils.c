@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <string.h>
+#include <math.h>
 
 #include "utils.h"
 
@@ -215,4 +216,31 @@ void _xfree(void ** ptr) {
 		free(*ptr);
 		*ptr = NULL;
 	}
+}
+
+/**
+ * A random distribution biased towards the end
+ * @param max Maximum random value
+ */
+int biased_rand(int max) {
+	if(max == 0) {
+		return 0;
+	}
+
+	/* Midpoint (rounded up) */
+	int midpoint = (max / 2) + (max % 2);
+	int out;
+
+	if(rand() % 4 == 0) {
+		/* Choose from first half */
+		out = rand() % midpoint;
+	} else if(rand() % 5 < 2) {
+		/* Choose from the third quarter */
+		out = (rand() % midpoint) + (midpoint / 2);
+	} else {
+		/* Choose from the final quarter */
+		out = (rand() % midpoint) + midpoint;
+	}
+
+	return (out > max) ? max : out;
 }
