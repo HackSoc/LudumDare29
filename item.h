@@ -27,6 +27,7 @@ typedef struct Item {
 
 	bool luminous; /**< Whether the item is luminous or not */
 	bool can_dig; /**< Whether the item is capable of digging through rock */
+	bool ranged; /**< In the case of a weapon, whether it can be used for ranged combat */
 
 	List inventory; /**< The inventory to which this item belongs. */
 

@@ -149,6 +149,7 @@ static void apply_profession(Mob * player) {
 		weapon->symbol = 'c';
 		weapon->name   = "Clog";
 		weapon->value  = 2;
+		weapon->ranged = true;
 
 		armour->symbol = 'y';
 		armour->name   = "Clogging Apron";
@@ -481,6 +482,89 @@ void player_turn(Mob * player) {
 			}
 			break;
 
+			/* Ranged combat */
+		case 'f':
+			if (player->weapon == NULL || player->weapon->ranged == false) {
+				status_push("You do not have a ranged weapon equipped!");
+				break;
+			}
+			int xdiff = 0;
+			int ydiff = 0;
+			int curx = player->xpos;
+			int cury = player->ypos;
+			switch (getch()) {
+			case 'k':
+			case '8':
+			case KEY_UP:
+				done = true;
+				xdiff =  0; ydiff = -1;
+				break;
+				
+			case 'j':
+			case '2':
+			case KEY_DOWN:
+				done = true;
+				xdiff =  0; ydiff =  1;
+				break;
+				
+			case 'h':
+			case '4':
+			case KEY_LEFT:
+				done = true;
+				xdiff = -1; ydiff =  0;
+				break;
+				
+			case 'l':
+			case '6':
+			case KEY_RIGHT:
+				done = true;
+				xdiff =  1; ydiff =  0;
+				break;
+				
+			case 'y':
+			case '7':
+				done = true;
+				xdiff = -1; ydiff = -1;
+				break;
+				
+			case 'u':
+			case '9':
+				done = true;
+				xdiff =  1; ydiff = -1;
+				break;
+				
+			case 'n':
+			case '3':
+				done = true;
+				xdiff =  1; ydiff =  1;
+				break;
+				
+			case 'b':
+			case '1':
+				done = true;
+				xdiff = -1; ydiff =  1;
+				break;
+			}
+		   
+			if (xdiff != 0 || ydiff != 0) {
+				curx += xdiff;
+				cury += ydiff;
+				while(player->level->cells[curx][cury]->solid == false) {
+					if (player->level->cells[curx][cury]->occupant != NULL) {
+						int tmpx, tmpy;
+						attack_mob(player, player->level->cells[curx][cury]->occupant);
+						tmpx = player->xpos, tmpy = player->ypos;
+						player->xpos = curx, player->ypos = cury;
+						drop_item(player, player->weapon);
+						player->xpos = tmpx, player->ypos = tmpy;
+						break;
+					}
+					curx += xdiff;
+					cury += ydiff;
+				}
+			}
+			break;
+			
 		/* Misc */
 		case '?':
 			show_help();
