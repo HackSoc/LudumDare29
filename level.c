@@ -385,7 +385,7 @@ void build_level(Level * level) {
 				break;
 			}
 		}
-		if (item->symbol != 0) {
+		if (item != NULL && item->symbol != 0) {
 			level->cells[x][y]->items = insert(level->cells[x][y]->items, &item->inventory);
 		}
 	}
