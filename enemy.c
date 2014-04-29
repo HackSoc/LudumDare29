@@ -4,6 +4,7 @@
 #include <curses.h>
 #include "enemy.h"
 #include "mob.h"
+#include "effect.h"
 
 /**
  * Definitions of enemies
@@ -86,6 +87,7 @@ Mob * create_enemy(enum EnemyType mobtype){
 		sword->type = WEAPON;
 		sword->value = 10;
 		sword->luminous = true;
+		sword->fight_effect = &inflict_fire;
 		new->inventory = insert(new->inventory, &sword->inventory);
 		wield_item(new, sword);
 
