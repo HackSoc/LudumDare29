@@ -308,41 +308,30 @@ void build_level(Level * level) {
 	/* add 5 gold for the player to find */
 	for (int i = 0; i < 5; i++) {
 		Item * item = xalloc(Item);
+		*item = default_items[GOLD];
 		int x = 1 + (rand() % (LEVELWIDTH-2));
 		int y = 1 + (rand() % (LEVELHEIGHT-2));
 
-		item->count = 1;
-		item->symbol = '$';
-		item->name = "Gold";
-		item->type = VALUABLE;
-		item->value = 5;
 		level->cells[x][y]->items = insert(level->cells[x][y]->items, &item->inventory);
 	}
 
 	/* add a regular item for the player to find */
 	{
 		Item * item = xalloc(Item);
-		item->count = 1;
+		switch (rand() % 10) {
+			case 0: case 1: case 2: case 3: case 4:
+				*item = default_items[FOOD_RATION];
+				break;
+			case 5: case 6: case 7: case 8:
+				*item = default_items[C_POISON_POTION];
+				item->effect = &cure_poison;
+				break;
+			case 9:
+				*item = default_items[STONE];
+				break;
+		}
 		int x = 1 + (rand() % (LEVELWIDTH-2));
 		int y = 1 + (rand() % (LEVELHEIGHT-2));
-		switch (rand() % 10) {
-		case 0: case 1: case 2: case 3: case 4:
-			item->symbol = '%';
-			item->name = "Food Ration";
-			item->type = FOOD;
-			item->value = 5;
-			break;
-		case 5: case 6: case 7: case 8:
-			item->symbol = '-';
-			item->name = "Potion of Cure Poison";
-			item->type = DRINK;
-			item->effect = &cure_poison;
-			break;
-		case 9:
-			item->symbol = '*';
-			item->name = "Stone";
-			break;
-		}
 		level->cells[x][y]->items = insert(level->cells[x][y]->items, &item->inventory);
 	}
 

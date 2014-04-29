@@ -55,12 +55,7 @@ Mob * create_enemy(enum EnemyType mobtype){
 
 		if (rand() % 2) {
 			Item * food = xalloc(Item);
-
-			food->count =1;
-			food->symbol = '%';
-			food->name = "Food Ration";
-			food->type = FOOD;
-			food->value = 5;
+			*food = default_items[FOOD_RATION];
 			new->inventory = insert(new->inventory, &food->inventory);
 		}
 	} else if(mobtype == WOLFMAN) {
@@ -68,12 +63,7 @@ Mob * create_enemy(enum EnemyType mobtype){
 		new->death_action = &hunter_death;
 
 		Item * food = xalloc(Item);
-
-		food->count = 1;
-		food->symbol = '%';
-		food->name = "Nourishing Food Ration";
-		food->type = FOOD;
-		food->value = 7;
+		*food = default_items[N_FOOD_RATION];
 		new->inventory = insert(new->inventory, &food->inventory);
 	} else if(mobtype == FALLEN_ANGEL) {
 		Item * sword = xalloc(Item);
@@ -82,12 +72,7 @@ Mob * create_enemy(enum EnemyType mobtype){
 		wield_item(new, sword);
 
 		Item * food = xalloc(Item);
-
-		food->count = 1;
-		food->symbol = '%';
-		food->name = "Manna";
-		food->type = FOOD;
-		food->value = 50;
+		*food = default_items[MANNA];
 		new->inventory = insert(new->inventory, &food->inventory);
 
 		new->is_bold = true;

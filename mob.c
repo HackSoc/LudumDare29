@@ -12,6 +12,8 @@
 #include "status.h"
 #include "enemy.h"
 
+extern Item default_items[];
+
 /**
  * Move the given mob to the new coordinates.
  * @param mob Entity to move.
@@ -120,7 +122,7 @@ void attack_mob(Mob * attacker, Mob * defender) {
 			"You cleave the %s in twain for %d damage.",
 			NULL
 		};
-			
+
 		status_push((const char *)random_choice((const void **)messages),
 		            defender->name,
 		            damage);
@@ -325,10 +327,7 @@ void drop_corpse(struct Mob * mob) {
 		}
 	}
 	Item * corpse = xalloc(Item);
-	corpse->type = FOOD;
-	corpse->value = 4;
-	corpse->symbol = '%';
-	corpse->count = 1;
+	*corpse = default_items[CORPSE];
 	size_t len = strlen(mob->name) + strlen(" Corpse") + 1;
 	corpse->name = xcalloc(len, char);
 	snprintf(corpse->name, len, "%s%s", mob->name, " Corpse");
