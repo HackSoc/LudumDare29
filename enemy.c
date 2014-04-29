@@ -31,6 +31,7 @@ const struct Mob default_enemies[] = {
 	ENEMY('d', "Duck",         COLOR_GREEN,  10, 1,  1,   1,  1),
 	ENEMY('g', "Goose",        COLOR_WHITE,  15, 2,  2,   2,  2
 	ENEMY('o', "Orc",          COLOR_YELLOW, 15, 3,  2,   7,  2),
+	ENEMY('P', "Cave Pirate",  COLOR_RED,    20, 3,  3,   5,  5),
 	ENEMY('W', "Wolfman",      COLOR_YELLOW, 25, 10, 3,   10, 10),
 	ENEMY('A', "Fallen Angel", COLOR_YELLOW, 50, 12, 10,  100, 25),
 	ENEMY('D', "Dragon",       COLOR_RED,    100,10, 10,  100, 30)
@@ -60,6 +61,18 @@ Mob * create_enemy(enum EnemyType mobtype){
 			*food = default_items[FOOD_RATION];
 			new->inventory = insert(new->inventory, &food->inventory);
 		}
+	} else if(mobtype == CAVE_PIRATE) {
+		new->turn_action = &hunter_turn;
+		new->death_action = &hunter_death;
+
+		Item * food = xalloc(Item);
+		*food = default_items[HARD_TACK];
+		new->inventory = insert(new->inventory, &food->inventory);
+
+		Item * cutlass = xalloc(Item);
+		*cutlass = default_items[CUTLASS];
+		new->inventory = insert(new->inventory, &cutlass->inventory);
+		wield_item(new,cutlass);
 	} else if(mobtype == WOLFMAN) {
 		new->turn_action = &hunter_turn;
 		new->death_action = &hunter_death;
