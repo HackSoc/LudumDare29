@@ -150,6 +150,7 @@ static void apply_profession(Mob * player) {
 		weapon->name   = "Clog";
 		weapon->value  = 2;
 		weapon->ranged = true;
+		weapon->count = 4;
 
 		armour->symbol = 'y';
 		armour->name   = "Clogging Apron";
