@@ -12,7 +12,7 @@
 
 extern bool quit;
 extern const struct Mob default_enemies[];
-extern const struct Item special_items[];
+extern const struct Item default_items[];
 
 /**
  * (Shallow) Clone a cell and place it in the given position.
@@ -308,41 +308,29 @@ void build_level(Level * level) {
 	/* add 5 gold for the player to find */
 	for (int i = 0; i < 5; i++) {
 		Item * item = xalloc(Item);
+		*item = default_items[GOLD];
 		int x = 1 + (rand() % (LEVELWIDTH-2));
 		int y = 1 + (rand() % (LEVELHEIGHT-2));
 
-		item->count = 1;
-		item->symbol = '$';
-		item->name = "Gold";
-		item->type = VALUABLE;
-		item->value = 5;
 		level->cells[x][y]->items = insert(level->cells[x][y]->items, &item->inventory);
 	}
 
 	/* add a regular item for the player to find */
 	{
 		Item * item = xalloc(Item);
-		item->count = 1;
+		switch (rand() % 10) {
+			case 0: case 1: case 2: case 3: case 4:
+				*item = default_items[FOOD_RATION];
+				break;
+			case 5: case 6: case 7: case 8:
+				*item = default_items[C_POISON_POTION];
+				break;
+			case 9:
+				*item = default_items[STONE];
+				break;
+		}
 		int x = 1 + (rand() % (LEVELWIDTH-2));
 		int y = 1 + (rand() % (LEVELHEIGHT-2));
-		switch (rand() % 10) {
-		case 0: case 1: case 2: case 3: case 4:
-			item->symbol = '%';
-			item->name = "Food Ration";
-			item->type = FOOD;
-			item->value = 5;
-			break;
-		case 5: case 6: case 7: case 8:
-			item->symbol = '-';
-			item->name = "Potion of Cure Poison";
-			item->type = DRINK;
-			item->effect = &cure_poison;
-			break;
-		case 9:
-			item->symbol = '*';
-			item->name = "Stone";
-			break;
-		}
 		level->cells[x][y]->items = insert(level->cells[x][y]->items, &item->inventory);
 	}
 
@@ -355,37 +343,47 @@ void build_level(Level * level) {
 
 		switch (rand() % 10) {
 		case 0: case 1: case 2:
-			*item = special_items[PICKAXE];
+			*item = default_items[PICKAXE];
 			break;
 		case 3: case 4: case 5:
-			*item = special_items[LANTURN];
+			*item = default_items[LANTURN];
 			break;
 		case 6:
-			*item = special_items[O_SWORD];
+			*item = default_items[O_SWORD];
 			break;
 		case 7: case 8:
-			*item = special_items[HELMET];
+			*item = default_items[HELMET];
 			break;
 		case 9:
-			switch (rand() % 10) {
+			switch (rand() % 13) {
 			case 0: case 1: case 2: case 3: case 4:
 				if (level->depth > 5) {
-					*item = special_items[SWORD];
+					*item = default_items[SWORD];
 				}
 				break;
 			case 5: case 6: case 7:
 				if (level->depth > 5) {
-					*item = special_items[C_MAIL];
+					*item = default_items[C_MAIL];
 				}
 				break;
 			case 8:
 				if (level->depth > 10) {
-					*item = special_items[D_MAIL];
+					*item = default_items[D_MAIL];
 				}
 				break;
-			case 9:
+			case 10:
 				if (level->depth > 20) {
-					*item = special_items[F_SWORD];
+					*item = default_items[A_PICKAXE];
+				}
+				break;
+			case 11:
+				if (level->depth > 20) {
+					*item = default_items[FLESHBOOK];
+				}
+				break;
+			case 12:
+				if (level->depth > 20) {
+					*item = default_items[W_BOOT];
 				}
 				break;
 			}

@@ -31,6 +31,7 @@ const char * professions[] = {"Miner",
                               NULL};
 
 extern bool quit;
+extern Item default_items[];
 
 /**
  * Randomise a player's name, race, and profession.
@@ -123,68 +124,28 @@ static void apply_profession(Mob * player) {
 	Item * weapon = xalloc(Item);
 	Item * armour = xalloc(Item);
 
-	weapon->type = WEAPON;
-	armour->type = ARMOUR;
-	weapon->count = 1;
-	armour->count = 1;
-
 	if(strcmp(player->profession, "Miner") == 0) {
-		weapon->symbol = '/';
-		weapon->name = "Pickaxe";
-		weapon->can_dig = true;
-		weapon->value = 5;
-
-		armour->symbol   = 'n';
-		armour->name     = "Mining Helmet";
-		armour->luminous = true;
+		*weapon = default_items[PICKAXE];
+		*armour = default_items[M_HELMET];
 	} else if(strcmp(player->profession, "Attorney") == 0) {
-		weapon->symbol = 'v';
-		weapon->name   = "Book of Tax Code";
-		weapon->value  = 2;
-
-		armour->symbol = 'r';
-		armour->name   = "Law Suit";
-		armour->fight_effect = &reflect_damage;
+		*weapon = default_items[BOOK_TAX];
+		*armour = default_items[LAW_SUIT];
 	} else if(strcmp(player->profession, "Clog Maker") == 0) {
-		weapon->symbol = 'c';
-		weapon->name   = "Clog";
-		weapon->value  = 2;
-		weapon->ranged = true;
-		weapon->count = 4;
-
-		armour->symbol = 'y';
-		armour->name   = "Clogging Apron";
+		*weapon = default_items[CLOG];
+		*armour = default_items[CLOG_APRON];
 	} else if(strcmp(player->profession, "Huntsman") == 0) {
-		weapon->symbol = '\'';
-		weapon->name   = "Hunting Knife";
-		weapon->value  = 8;
-
-		armour->symbol = 'h';
-		armour->name   = "Cloak";
+		*weapon = default_items[HUNT_KNIFE];
+		*armour = default_items[CLOAK];
 	} else if(strcmp(player->profession, "Chef") == 0) {
-		weapon->symbol = 'q';
-		weapon->name   = "Frying Pan";
-		weapon->value  = 6;
-
-		armour->symbol = 'y';
-		armour->name   = "Apron";
+		*weapon = default_items[FRY_PAN];
+		*armour = default_items[APRON];
 	} else if(strcmp(player->profession, "Tourist") == 0) {
-		weapon->symbol = 'k';
-		weapon->name   = "Camera";
-		weapon->value  = 1;
-
-		armour->symbol = 't';
-		armour->name   = "Hawaiian Shirt";
+		*weapon = default_items[CAMERA];
+		*armour = default_items[HAWAII];
 	} else if(strcmp(player->profession, "Dog") == 0) {
-		weapon->symbol = 'l';
-		weapon->name   = "Bone";
-		weapon->value  = 3;
-
-		armour->symbol = 'd';
-		armour->name   = "Fursuit";
+		*weapon = default_items[BONE];
+		*armour = default_items[FURSUIT];
 	}
-
-	armour->value  = 10 - weapon->value;
 
 	player->inventory = insert(player->inventory, &weapon->inventory);
 	player->inventory = insert(player->inventory, &armour->inventory);
@@ -210,18 +171,10 @@ Mob * create_player() {
 
 
 	Item * lantern = xalloc(Item);
-	lantern->count = 1;
-	lantern->symbol = '^';
-	lantern->name = "Lantern";
-	lantern->type = WEAPON;
-	lantern->luminous = true;
-	lantern->value = 1;
+	*lantern = default_items[LANTURN];
 
 	Item * potion = xalloc(Item);
-	potion->count = 1;
-	potion->symbol = '-';
-	potion->name = "Potion of Cure Poison";
-	potion->type = DRINK;
+	*potion = default_items[C_POISON_POTION];
 	potion->effect = &cure_poison;
 
 	player->inventory = insert(player->inventory, &lantern->inventory);
@@ -377,7 +330,7 @@ void player_turn(Mob * player) {
 		display_level(player->level);
 
 		Direction dir = select_direction(true);
-		
+
 		/* Movement in a level */
 		if(dir.ch == 0) {
 			move = true;
@@ -508,7 +461,7 @@ void player_turn(Mob * player) {
 			dir = select_direction(false);
 			int curx = player->xpos;
 			int cury = player->ypos;
-		   
+
 			if (dir.dx != 0 || dir.dy != 0) {
 				curx += dir.dx;
 				cury += dir.dy;
@@ -527,7 +480,7 @@ void player_turn(Mob * player) {
 				}
 			}
 			break;
-			
+
 		/* Misc */
 		case '?':
 			show_help();
