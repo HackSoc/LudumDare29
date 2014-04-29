@@ -283,7 +283,7 @@ void build_level(Level * level) {
 
 		/* 1. share hunter state
 		   2. hunters always appear in 2s, (giving up to 10 enemies!) */
-		if(mobtype == WOLFMAN /* || mobtype == ... */) {
+		if(mobtype == WOLFMAN  || mobtype == CAVE_PIRATE/* || mobtype == ... */) {
 			Mob * mob2 = create_enemy(mobtype);
 			add_mob_random(level, mob2);
 			if(hunterstate[mobtype] == NULL) {
