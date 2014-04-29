@@ -334,7 +334,6 @@ void player_turn(Mob * player) {
 		/* Movement in a level */
 		if(dir.ch == 0) {
 			move = true;
-			done = true;
 			xdiff = dir.dx;
 			ydiff = dir.dy;
 			break;
