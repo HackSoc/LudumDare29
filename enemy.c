@@ -26,10 +26,11 @@
 const struct Mob default_enemies[] = {
 	ENEMY('H', "Hedgehog",     COLOR_YELLOW, 5,  1,  0,   0,  0),
 	ENEMY('S', "Squirrel",     COLOR_YELLOW, 10, 2,  0,   0,  0),
-	ENEMY('D', "Duck",         COLOR_GREEN,  10, 1,  1,   1,  1),
+	ENEMY('d', "Duck",         COLOR_GREEN,  10, 1,  1,   1,  1),
 	ENEMY('o', "Orc",          COLOR_YELLOW, 15, 3,  2,   7,  2),
 	ENEMY('W', "Wolfman",      COLOR_YELLOW, 25, 10, 3,   10, 10),
-	ENEMY('A', "Fallen Angel", COLOR_YELLOW, 50, 12, 10,  100, 25)
+	ENEMY('A', "Fallen Angel", COLOR_YELLOW, 50, 12, 10,  100, 25),
+	ENEMY('D', "Dragon",       COLOR_RED,    100,10, 10,  100, 30)
 };
 
 #undef ENEMY
@@ -102,6 +103,24 @@ Mob * create_enemy(enum EnemyType mobtype){
 
 		new->is_bold = true;
 		new->luminosity = 1;
+	} else if(mobtype == DRAGON) {
+		Item * weapon = xalloc(Item);
+		weapon->count = 1;
+		weapon->name = "Dragon Fire";
+		weapon->symbol = '!';
+		weapon->type = WEAPON;
+		weapon->value = 20;
+		weapon->fight_effect = &inflict_fire;
+		new->weapon = weapon;
+
+		Item * armour = xalloc(Item);
+		armour->count = 1;
+		armour->name = "Dragon Scale Mail";
+		armour->symbol = ']';
+		armour->type = ARMOUR;
+		armour->value = 15;
+		new->inventory = insert(new->inventory, &armour->inventory);
+		new->armour = armour;
 	}
 
 	return new;

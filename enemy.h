@@ -5,7 +5,7 @@
 #include "mob.h"
 
 /* should keep the same structure as default_mobs in enemy.c */
-enum EnemyType { HEDGEHOG, SQUIRREL, DUCK, ORC, WOLFMAN, FALLEN_ANGEL, NUM_ENEMY_TYPES };
+enum EnemyType { HEDGEHOG, SQUIRREL, DUCK, ORC, WOLFMAN, FALLEN_ANGEL, DRAGON, NUM_ENEMY_TYPES };
 
 /**
  * Shared state for hunter enemies
