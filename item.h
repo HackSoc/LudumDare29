@@ -45,7 +45,8 @@ enum DefaultItem {
 	CORPSE,
 	A_PICKAXE,
 	FLESHBOOK,
-	W_BOOT
+	W_BOOT,
+	DRAG_FIRE
 };
 
 /**

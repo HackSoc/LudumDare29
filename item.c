@@ -56,6 +56,7 @@ const struct Item default_items[] = {
 	ITEM_N('/', "Advanced Mining Pickaxe", WEAPON, 18),
 	ITEM_N('v', "Book of Tax Code Bound in Human Flesh", WEAPON, 15),
 	ITEM_R('c', "Wooden Boot",            WEAPON, 15),
+	ITEM_F('!', "Dragon Fire",            WEAPON, 20, &inflict_fire),
 };
 
 #undef ITEM_N

@@ -132,6 +132,7 @@ static void apply_profession(Mob * player) {
 		*armour = default_items[LAW_SUIT];
 	} else if(strcmp(player->profession, "Clog Maker") == 0) {
 		*weapon = default_items[CLOG];
+		weapon->count = 4;
 		*armour = default_items[CLOG_APRON];
 	} else if(strcmp(player->profession, "Huntsman") == 0) {
 		*weapon = default_items[HUNT_KNIFE];

@@ -94,20 +94,12 @@ Mob * create_enemy(enum EnemyType mobtype){
 		new->luminosity = 1;
 	} else if(mobtype == DRAGON) {
 		Item * weapon = xalloc(Item);
-		weapon->count = 1;
-		weapon->name = "Dragon Fire";
-		weapon->symbol = '!';
-		weapon->type = WEAPON;
-		weapon->value = 20;
-		weapon->fight_effect = &inflict_fire;
+		*weapon = default_items[DRAG_FIRE];
 		new->weapon = weapon;
+		wield_item(new, weapon);
 
 		Item * armour = xalloc(Item);
-		armour->count = 1;
-		armour->name = "Dragon Scale Mail";
-		armour->symbol = ']';
-		armour->type = ARMOUR;
-		armour->value = 15;
+		*armour = default_items[D_MAIL];
 		new->inventory = insert(new->inventory, &armour->inventory);
 		new->armour = armour;
 	}
