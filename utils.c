@@ -183,9 +183,12 @@ void show_help() {
 	mvaddprintf( 5, 5, "You lost?");
 
 	mvaddprintf( 7, 5, "You are @");
-	mvaddprintf( 8, 5, "S and H are bad");
-	mvaddprintf( 9, 5, "Use > to go further down into the deep");
-	mvaddprintf(10, 5, "Use < to reach the light, if you can");
+	mvaddprintf( 8, 5, "Arrow keys, numpad and vim keys all move you");
+	mvaddprintf( 9, 5, "Other moving things are bad");
+	mvaddprintf(10, 5, "Use > to go further down into the deep");
+	mvaddprintf(11, 5, "Use < to reach the light, if you can");
+	mvaddprintf(12, 5, "The keys 'W', 'w', 'q', 'e', 'i', ',' and '.' are useful");
+	mvaddprintf(13, 5, "Sometimes you can throw things with 'f'");
 
 	mvaddprintf(20, 5, "Good luck.");
 
