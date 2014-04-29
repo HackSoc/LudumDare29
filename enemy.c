@@ -29,7 +29,7 @@ const struct Mob default_enemies[] = {
 	ENEMY('H', "Hedgehog",     COLOR_YELLOW, 5,  1,  0,   0,  0),
 	ENEMY('S', "Squirrel",     COLOR_YELLOW, 10, 2,  0,   0,  0),
 	ENEMY('d', "Duck",         COLOR_GREEN,  10, 1,  1,   1,  1),
-	ENEMY('g', "Goose",        COLOR_WHITE,  15, 2,  2,   2,  2
+	ENEMY('g', "Goose",        COLOR_WHITE,  15, 2,  2,   2,  2),
 	ENEMY('o', "Orc",          COLOR_YELLOW, 15, 3,  2,   7,  2),
 	ENEMY('P', "Cave Pirate",  COLOR_RED,    20, 3,  3,   5,  5),
 	ENEMY('W', "Wolfman",      COLOR_YELLOW, 25, 10, 3,   10, 10),
