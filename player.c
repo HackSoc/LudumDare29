@@ -288,6 +288,78 @@ bool attackmove_relative(Mob * player, int xdiff, int ydiff) {
 }
 
 /**
+ * Wait for a direction. Returns the direction and the character.
+ * @param allow_nop Allow a null move.
+ */
+static Direction select_direction(bool allow_nop) {
+	int ch = getch();
+	Direction out = {.dx = 0, .dy = 0, .ch = 0};
+
+	switch(ch) {
+		case 'k':
+		case '8':
+		case KEY_UP:
+			out.dy = -1;
+			break;
+
+		case 'j':
+		case '2':
+		case KEY_DOWN:
+			out.dy = 1;
+			break;
+
+		case 'h':
+		case '4':
+		case KEY_LEFT:
+			out.dx = -1;
+			break;
+
+		case 'l':
+		case '6':
+		case KEY_RIGHT:
+			out.dx = 1;
+			break;
+
+		case 'y':
+		case '7':
+			out.dx = -1;
+			out.dy = -1;
+			break;
+
+		case 'u':
+		case '9':
+			out.dx = 1;
+			out.dy = -1;
+			break;
+
+		case 'n':
+		case '3':
+			out.dx = 1;
+			out.dy = 1;
+			break;
+
+		case 'b':
+		case '1':
+			out.dx = -1;
+			out.dy = 1;
+			break;
+
+		case '5':
+		case '.':
+			if(!allow_nop) {
+				out.ch = ch;
+			}
+			break;
+
+		default:
+			out.ch = ch;
+			break;
+	}
+
+	return out;
+}
+
+/**
  * Wait for user input, and then act accordingly.
  * @param player Player entity.
  */
@@ -304,74 +376,18 @@ void player_turn(Mob * player) {
 	while(!done && !quit) {
 		display_level(player->level);
 
-		int ch = getch();
-		switch (ch) {
-			/* Movement in a level */
-		case 'k':
-		case '8':
-		case KEY_UP:
+		Direction dir = select_direction(true);
+		
+		/* Movement in a level */
+		if(dir.ch == 0) {
 			move = true;
 			done = true;
-			xdiff =  0; ydiff = -1;
+			xdiff = dir.dx;
+			ydiff = dir.dy;
 			break;
+		}
 
-		case 'j':
-		case '2':
-		case KEY_DOWN:
-			move = true;
-			done = true;
-			xdiff =  0; ydiff =  1;
-			break;
-
-		case 'h':
-		case '4':
-		case KEY_LEFT:
-			move = true;
-			done = true;
-			xdiff = -1; ydiff =  0;
-			break;
-
-		case 'l':
-		case '6':
-		case KEY_RIGHT:
-			move = true;
-			done = true;
-			xdiff =  1; ydiff =  0;
-			break;
-
-		case 'y':
-		case '7':
-			move = true;
-			done = true;
-			xdiff = -1; ydiff = -1;
-			break;
-
-		case 'u':
-		case '9':
-			move = true;
-			done = true;
-			xdiff =  1; ydiff = -1;
-			break;
-
-		case 'n':
-		case '3':
-			move = true;
-			done = true;
-			xdiff =  1; ydiff =  1;
-			break;
-
-		case 'b':
-		case '1':
-			move = true;
-			done = true;
-			xdiff = -1; ydiff =  1;
-			break;
-
-		case '5':
-		case '.':
-			done = true;
-			break;
-
+		switch (dir.ch) {
 		/* Movement between levels */
 		case '>':
 			if (current_cell->baseSymbol == '>'){
@@ -489,67 +505,13 @@ void player_turn(Mob * player) {
 				status_push("You do not have a ranged weapon equipped!");
 				break;
 			}
-			int xdiff = 0;
-			int ydiff = 0;
+			dir = select_direction(false);
 			int curx = player->xpos;
 			int cury = player->ypos;
-			switch (getch()) {
-			case 'k':
-			case '8':
-			case KEY_UP:
-				done = true;
-				xdiff =  0; ydiff = -1;
-				break;
-				
-			case 'j':
-			case '2':
-			case KEY_DOWN:
-				done = true;
-				xdiff =  0; ydiff =  1;
-				break;
-				
-			case 'h':
-			case '4':
-			case KEY_LEFT:
-				done = true;
-				xdiff = -1; ydiff =  0;
-				break;
-				
-			case 'l':
-			case '6':
-			case KEY_RIGHT:
-				done = true;
-				xdiff =  1; ydiff =  0;
-				break;
-				
-			case 'y':
-			case '7':
-				done = true;
-				xdiff = -1; ydiff = -1;
-				break;
-				
-			case 'u':
-			case '9':
-				done = true;
-				xdiff =  1; ydiff = -1;
-				break;
-				
-			case 'n':
-			case '3':
-				done = true;
-				xdiff =  1; ydiff =  1;
-				break;
-				
-			case 'b':
-			case '1':
-				done = true;
-				xdiff = -1; ydiff =  1;
-				break;
-			}
 		   
-			if (xdiff != 0 || ydiff != 0) {
-				curx += xdiff;
-				cury += ydiff;
+			if (dir.dx != 0 || dir.dy != 0) {
+				curx += dir.dx;
+				cury += dir.dy;
 				while(player->level->cells[curx][cury]->solid == false) {
 					if (player->level->cells[curx][cury]->occupant != NULL) {
 						int tmpx, tmpy;
@@ -560,8 +522,8 @@ void player_turn(Mob * player) {
 						player->xpos = tmpx, player->ypos = tmpy;
 						break;
 					}
-					curx += xdiff;
-					cury += ydiff;
+					curx += dir.dx;
+					cury += dir.dy;
 				}
 			}
 			break;
