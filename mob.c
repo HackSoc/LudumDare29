@@ -427,6 +427,7 @@ void drop_item(Mob * mob, Item * item) {
 		memcpy(cpy, item, sizeof(Item));
 		cpy->inventory.prev = NULL;
 		cpy->inventory.next = NULL;
+		cpy->count = 1;
 		cell->items = insert(cell->items, &cpy->inventory);
 	} else {
 		mob->inventory = drop(&item->inventory);
