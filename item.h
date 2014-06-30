@@ -46,7 +46,9 @@ enum DefaultItem {
 	A_PICKAXE,
 	FLESHBOOK,
 	W_BOOT,
-	DRAG_FIRE
+	DRAG_FIRE,
+
+	NO_SUCH_ITEM
 };
 
 

@@ -180,6 +180,28 @@ static void add_mob_random(Level * level, Mob * mob) {
 }
 
 /**
+ * Randomly add a number of items to the inventory. Items are NOT placed on stairs.
+ * @param level The level
+ * @param item Item type to place
+ * @param count Number of copies to place
+ */
+static void place_randomly(Level * level, enum DefaultItem item, unsigned int count) {
+	if (item == NO_SUCH_ITEM) return;
+
+	for (unsigned int i = 0; i < count; i++) {
+		Item * to_place = clone_item(item);
+		int x, y;
+
+		do {
+			x = 1 + (rand() % (LEVELWIDTH-2));
+			y = 1 + (rand() % (LEVELHEIGHT-2));
+		} while (level->cells[x][y]->baseSymbol == '<' || level->cells[x][y]->baseSymbol == '>');
+
+		level->cells[x][y]->items = insert(level->cells[x][y]->items, &to_place->inventory);
+	}
+}
+
+/**
  * Initialises a level.
  * @param level Level to initialise.
  */
@@ -302,89 +324,77 @@ void build_level(Level * level) {
 	}
 
 	/* add 5 gold for the player to find */
-	for (int i = 0; i < 5; i++) {
-		Item * item = clone_item(GOLD);
-		int x = 1 + (rand() % (LEVELWIDTH-2));
-		int y = 1 + (rand() % (LEVELHEIGHT-2));
-
-		level->cells[x][y]->items = insert(level->cells[x][y]->items, &item->inventory);
-	}
+	place_randomly(level, GOLD, 5);
 
 	/* add a regular item for the player to find */
 	{
-		Item * item;
+		enum DefaultItem item = NO_SUCH_ITEM;
 		switch (rand() % 10) {
 			case 0: case 1: case 2: case 3: case 4:
-				item = clone_item(FOOD_RATION);
+				item = FOOD_RATION;
 				break;
 			case 5: case 6: case 7: case 8:
-				item = clone_item(C_POISON_POTION);
+				item = C_POISON_POTION;
 				break;
 			case 9:
-				item = clone_item(STONE);
+				item = STONE;
 				break;
 		}
-		int x = 1 + (rand() % (LEVELWIDTH-2));
-		int y = 1 + (rand() % (LEVELHEIGHT-2));
-		level->cells[x][y]->items = insert(level->cells[x][y]->items, &item->inventory);
+		place_randomly(level, item, 1);
 	}
 
 	/* possibly add a special item, level dependent */
 	{
-		Item * item = NULL;
-		int x = 1 + (rand() % (LEVELWIDTH-2));
-		int y = 1 + (rand() % (LEVELHEIGHT-2));
+		enum DefaultItem item = NO_SUCH_ITEM;
 
 		switch (rand() % 10) {
 		case 0: case 1: case 2:
-			item = clone_item(PICKAXE);
+			item = PICKAXE;
 			break;
 		case 3: case 4: case 5:
-			item = clone_item(LANTERN);
+			item = LANTERN;
 			break;
 		case 6:
-			item = clone_item(O_SWORD);
+			item = O_SWORD;
 			break;
 		case 7: case 8:
-			item = clone_item(HELMET);
+			item = HELMET;
 			break;
 		case 9:
 			switch (rand() % 13) {
 			case 0: case 1: case 2: case 3: case 4:
 				if (level->depth > 5) {
-					item = clone_item(SWORD);
+					item = SWORD;
 				}
 				break;
 			case 5: case 6: case 7:
 				if (level->depth > 5) {
-					item = clone_item(C_MAIL);
+					item = C_MAIL;
 				}
 				break;
 			case 8:
 				if (level->depth > 10) {
-					item = clone_item(D_MAIL);
+					item = D_MAIL;
 				}
 				break;
 			case 10:
 				if (level->depth > 20) {
-					item = clone_item(A_PICKAXE);
+					item = A_PICKAXE;
 				}
 				break;
 			case 11:
 				if (level->depth > 20) {
-					item = clone_item(FLESHBOOK);
+					item = FLESHBOOK;
 				}
 				break;
 			case 12:
 				if (level->depth > 20) {
-					item = clone_item(W_BOOT);
+					item = W_BOOT;
 				}
 				break;
 			}
 		}
-		if (item != NULL && item->symbol != 0) {
-			level->cells[x][y]->items = insert(level->cells[x][y]->items, &item->inventory);
-		}
+		place_randomly(level, item, 1);
 	}
 }
 
