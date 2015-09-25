@@ -235,8 +235,8 @@ bool can_see_point(Level * level,
 	unsigned int startx = x0;
 	unsigned int starty = y0;
 
-	int dx = abs(x0 - x);
-	int dy = abs(y0 - y);
+	int dx = abs((int) x0 - (int) x);
+	int dy = abs((int) y0 - (int) y);
 
 	int sx = (x0 < x) ? 1 : -1;
 	int sy = (y0 < y) ? 1 : -1;
@@ -293,7 +293,7 @@ bool can_see(Mob * mob, unsigned int x, unsigned int y) {
 		/* Cells can be seen if they're illuminated or the mob can see
 		 * in the dark */
 		return true;
-	} else if(sqrt(pow(abs(mob->xpos - x), 2) + pow(abs(mob->ypos - y), 2)) <= 5) {
+	} else if(sqrt(pow(abs((int) mob->xpos - (int) x), 2) + pow(abs((int) mob->ypos - (int) y), 2)) <= 5) {
 		/* Or if they're sufficiently close to the mob */
 		return true;
 	} else {
