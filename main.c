@@ -57,6 +57,7 @@ int main() {
 	player->ypos = level_head->starty;
 	level_head->cells[player->xpos][player->ypos]->occupant = player;
 
+#ifndef AUTOPLAY
 	/* Intro text */
 	mvaddprintf( 5, 60, "Press '?' for help");
 	mvaddprintf(10, 10, "You enter a cave.");
@@ -66,6 +67,7 @@ int main() {
 	if (getch() == '?') {
 		show_help();
 	}
+#endif // AUTOPLAY
 	clear();
 
 	/* Game loop */

@@ -544,4 +544,5 @@ void display_level(Level * level) {
 
 	/* Display the status */
 	display_status();
+	refresh();
 }

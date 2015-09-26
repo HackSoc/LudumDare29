@@ -4,6 +4,7 @@
 #include <curses.h>
 #include <string.h>
 
+#include "autoplay.h"
 #include "item.h"
 #include "utils.h"
 #include "list.h"
@@ -144,10 +145,15 @@ void display_inventory(List * inventory, const char * title) {
 List ** choose_items(List * inventory, const char * prompt){
 	const char ** names = inventory_name_array(inventory);
 	const List ** items = inventory_array(inventory);
+#ifdef AUTOPLAY
+	List ** out = (List **)autoplay_list_choice(names, (const void **)items);
+	(void) prompt;
+#else
 	List ** out = (List **)list_choice(false,
 	                                   prompt, prompt,
 	                                   true, true,
 	                                   names, (const void **)items);
+#endif // AUTOPLAY
 	for (int i = 0; names[i] != NULL; i++) {
 		xfree(names[i]);
 	}
@@ -187,10 +193,15 @@ Item * choose_item_by_type(List * inventory,
 	names[i] = NULL;
 	items[i] = NULL;
 
+#ifdef AUTOPLAY
+	List ** res = (List **)autoplay_list_choice(names, (const void **)items);
+	(void) prompt;
+#else
 	const void ** res = list_choice(false,
 	                                prompt, prompt,
 	                                false, true,
 	                                names, items);
+#endif // AUTOPLAY
 
 	for (int i = 0; names[i] != NULL; i++) {
 		xfree(names[i]);

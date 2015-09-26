@@ -8,6 +8,10 @@ SOURCES=$(wildcard *.c)
 OBJECTS=$(addprefix $(OBJDIR)/,$(SOURCES:.c=.o))
 TARGET=ld29
 
+ifdef AUTOPLAY
+CFLAGS += -DAUTOPLAY
+endif
+
 all: $(TARGET)
 
 $(TARGET): $(OBJECTS)
@@ -15,7 +19,7 @@ $(TARGET): $(OBJECTS)
 
 $(OBJDIR)/%.o: %.c
 	mkdir -p $(OBJDIR)
-	$(CC) $(CFLAGS) $< -o $@
+	$(CC)  $(CFLAGS) $< -o $@
 
 clean:
 	rm -f $(OBJECTS) $(TARGET)

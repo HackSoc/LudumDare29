@@ -1,7 +1,9 @@
 #include <stdbool.h>
 #include <curses.h>
 #include <string.h>
+#include <time.h>
 
+#include "autoplay.h"
 #include "mob.h"
 #include "level.h"
 #include "utils.h"
@@ -42,6 +44,7 @@ static void randomise_player(Mob * player) {
 	player->profession = strdup((char *) random_choice((const void**) professions));
 }
 
+#ifndef AUTOPLAY
 /**
  * Have the human player enter the character player's name, race, and
  * profession (the opposite of randomise_player).
@@ -74,6 +77,7 @@ static void design_player(Mob * player) {
 	                                       (const void **)professions);
 	player->profession = strdup((char*) profession[0]);
 }
+#endif // AUTOPLAY
 
 /**
  * Apply race stats to the player.
@@ -179,6 +183,9 @@ Mob * create_player() {
 
 	/* Pick the name, race, and profession */
 	clear();
+#ifdef AUTOPLAY
+	randomise_player(player);
+#else
 	mvaddprintf(9, 10, "Do you want to randomly generate your player? ");
 	while(true) {
 		int choice = getch();
@@ -197,6 +204,7 @@ Mob * create_player() {
 			break;
 		}
 	}
+#endif // AUTOPLAY
 
 	apply_race(player);
 	apply_profession(player);
@@ -242,6 +250,10 @@ bool attackmove_relative(Mob * player, int xdiff, int ydiff) {
  * @param allow_nop Allow a null move.
  */
 static Direction select_direction(bool allow_nop) {
+#ifdef AUTOPLAY
+        return autoplay_select_direction();
+	(void) allow_nop;
+#else
 	int ch = getch();
 	Direction out = {.dx = 0, .dy = 0, .ch = 0};
 
@@ -307,6 +319,7 @@ static Direction select_direction(bool allow_nop) {
 	}
 
 	return out;
+#endif // AUTOPLAY
 }
 
 /**
@@ -325,7 +338,12 @@ void player_turn(Mob * player) {
 
 	while(!done && !quit) {
 		display_level(player->level);
-
+#ifdef AUTOPLAY
+		// delay to show the current level to the player
+		for(long x = 0; x < 100; x++)
+		  display_level(player->level);
+#endif // AUTOPLAY
+		
 		Direction dir = select_direction(true);
 
 		/* Movement in a level */
