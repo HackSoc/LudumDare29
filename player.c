@@ -249,9 +249,9 @@ bool attackmove_relative(Mob * player, int xdiff, int ydiff) {
  * Wait for a direction. Returns the direction and the character.
  * @param allow_nop Allow a null move.
  */
-static Direction select_direction(bool allow_nop) {
+static Direction select_direction(Mob * player, bool allow_nop) {
 #ifdef AUTOPLAY
-        return autoplay_select_direction();
+        return autoplay_select_direction(player);
 	(void) allow_nop;
 #else
 	int ch = getch();
@@ -344,7 +344,7 @@ void player_turn(Mob * player) {
 		  display_level(player->level);
 #endif // AUTOPLAY
 		
-		Direction dir = select_direction(true);
+		Direction dir = select_direction(player, true);
 
 		/* Movement in a level */
 		if(dir.ch == 0) {
@@ -472,7 +472,7 @@ void player_turn(Mob * player) {
 				status_push("You do not have a ranged weapon equipped!");
 				break;
 			}
-			dir = select_direction(false);
+			dir = select_direction(player, false);
 			int curx = player->xpos;
 			int cury = player->ypos;
 
