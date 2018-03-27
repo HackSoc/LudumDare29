@@ -18,11 +18,14 @@ endif
 all: $(TARGET)
 
 $(TARGET): $(OBJECTS)
-	$(CC) $(OBJECTS) $(LDFLAGS) -o $@
+	$(CC) -o $@ $(OBJECTS) $(LDFLAGS)
 
-$(OBJDIR)/%.o: %.c
+$(OBJDIR):
 	mkdir -p $(OBJDIR)
-	$(CC)  $(CFLAGS) $< -o $@
+	touch $(OBJDIR)
+
+$(OBJDIR)/%.o: %.c | $(OBJDIR)
+	$(CC) -o $@ $(CFLAGS) $<
 
 clean:
 	rm -f $(OBJECTS) $(TARGET)
