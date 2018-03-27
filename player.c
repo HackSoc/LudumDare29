@@ -251,9 +251,10 @@ bool attackmove_relative(Mob * player, int xdiff, int ydiff) {
  */
 static Direction select_direction(Mob * player, bool allow_nop) {
 #ifdef AUTOPLAY
-        return autoplay_select_direction(player);
+	return autoplay_select_direction(player);
 	(void) allow_nop;
 #else
+	(void) player;
 	int ch = getch();
 	Direction out = {.dx = 0, .dy = 0, .ch = 0};
 
@@ -343,7 +344,7 @@ void player_turn(Mob * player) {
 		for(long x = 0; x < 100; x++)
 		  display_level(player->level);
 #endif // AUTOPLAY
-		
+
 		Direction dir = select_direction(player, true);
 
 		/* Movement in a level */

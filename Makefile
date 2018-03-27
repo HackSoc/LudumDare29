@@ -4,6 +4,9 @@ CC=clang
 CFLAGS=-c -Wall -Wextra -Werror -pedantic -g -std=c99
 LDFLAGS=-lcurses -lm
 SOURCES=$(wildcard *.c)
+ifndef AUTOPLAY
+SOURCES := $(filter-out autoplay.c,$(SOURCES))
+endif
 
 OBJECTS=$(addprefix $(OBJDIR)/,$(SOURCES:.c=.o))
 TARGET=ld29
