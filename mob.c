@@ -413,7 +413,9 @@ bool move_mob_level(Mob * mob, bool toprev) {
 void drop_item(Mob * mob, Item * item) {
 	Cell * cell = mob->level->cells[mob->xpos][mob->ypos];
 
-	unwield_item(mob, item);
+        if (item->equipped) {
+                unwield_item(mob, item);
+        }
 
 	/* Update the cell luminosity */
 	if(item->luminous) {
